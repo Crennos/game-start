@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb1s4ldld6jrk"]
+
+[ext_resource type="Script" path="res://system/save_system_bus.gd" id="1_157tc"]
+
+[node name="SaveSystemBus" type="Node"]
+script = ExtResource("1_157tc")
