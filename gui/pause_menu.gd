@@ -12,6 +12,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+
+func toggle_vis(object):
+	if object.visible == false:
+		object.visible = true
+	
+	else:
+		object.visible = false
+	
+
 func pause():
 	if Input.is_action_just_pressed("Pause"):
 		toggle_vis(pause_menu)
@@ -23,14 +32,6 @@ func _on_resume_button_pressed() -> void:
 	toggle_vis(pause_menu)
 	if options_menu.visible == true:
 		toggle_vis(options_menu)
-	
-
-func toggle_vis(object):
-	if object.visible == false:
-		object.visible = true
-	
-	else:
-		object.visible = false
 	
 
 func _on_options_button_pressed() -> void:

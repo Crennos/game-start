@@ -1,0 +1,848 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_4hx7p"]
+
+[resource]
+script = ExtResource("1_4hx7p")
+using_states = PackedStringArray()
+titles = {
+"start": "3"
+}
+character_names = PackedStringArray("Cory", "Lucy")
+first_title = "3"
+lines = {
+"1": {
+"id": "1",
+"next_id": "3",
+"text": "start",
+"type": &"title"
+},
+"11": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "11",
+"next_id": "13",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I didn't get much sleep. I was up late studying... [wait=0.5] I didn't make much progress though.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I didn't get much sleep. I was up late studying... [wait=0.5] I didn't make much progress though.",
+"type": &"dialogue"
+},
+"13": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "13",
+"next_id": "15",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I'm sorry baby. I know you'll get there, you just need to be patient and not overwork yourself.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I'm sorry baby. I know you'll get there, you just need to be patient and not overwork yourself.",
+"type": &"dialogue"
+},
+"15": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "15",
+"next_id": "17",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Yeah... [wait=0.5] maybe. It just feels like everytime I feel like I'm starting to get the hang of it I trip again and I'm back to feeling confused and overwhelmed by it all...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Yeah... [wait=0.5] maybe. It just feels like everytime I feel like I'm starting to get the hang of it I trip again and I'm back to feeling confused and overwhelmed by it all...",
+"type": &"dialogue"
+},
+"17": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "17",
+"next_id": "19",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I know this is something that takes a lot of time to learn but sometimes it just feels like I'm setting myself up to fail. I know that's kinda the point of why I started this but I actually felt like I was getting somewhere before last night...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I know this is something that takes a lot of time to learn but sometimes it just feels like I'm setting myself up to fail. I know that's kinda the point of why I started this but I actually felt like I was getting somewhere before last night...",
+"type": &"dialogue"
+},
+"19": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "19",
+"next_id": "21",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I feel like I started too late and by the time I get the hang of it all I won't have time to make what I want to make and it'll all be for nothing.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I feel like I started too late and by the time I get the hang of it all I won't have time to make what I want to make and it'll all be for nothing.",
+"type": &"dialogue"
+},
+"21": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "21",
+"next_id": "22",
+"next_id_after": "35",
+"notes": "",
+"responses": PackedStringArray("21", "28"),
+"tags": PackedStringArray(),
+"text": "(Lucy) I'm sorry...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "(Lucy) I'm sorry...",
+"type": &"response"
+},
+"22": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "22",
+"next_id": "23",
+"notes": "",
+"parent_id": "21",
+"tags": PackedStringArray(),
+"text": "I'm sorry baby... [wait=0.5] I know it can feel hopeless sometimes but I believe you can do it. And even if you can't you gave it your best, that's more than a lot of people can say and I'm proud of you for trying.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I'm sorry baby... [wait=0.5] I know it can feel hopeless sometimes but I believe you can do it. And even if you can't you gave it your best, that's more than a lot of people can say and I'm proud of you for trying.",
+"type": &"dialogue"
+},
+"23": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "23",
+"next_id": "24",
+"notes": "",
+"parent_id": "21",
+"tags": PackedStringArray(),
+"text": "Give yourself some rest and try again when you feel more ready.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Give yourself some rest and try again when you feel more ready.",
+"type": &"dialogue"
+},
+"24": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "24",
+"next_id": "25",
+"notes": "",
+"parent_id": "21",
+"tags": PackedStringArray(),
+"text": "It's alright, I just need to talk about it a little. Help air it out so the weight doesn't just sit in my chest. It is hard, trying to grapple with my emotions. I'm not very good with that either still but I'm learning more in that way too.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "It's alright, I just need to talk about it a little. Help air it out so the weight doesn't just sit in my chest. It is hard, trying to grapple with my emotions. I'm not very good with that either still but I'm learning more in that way too.",
+"type": &"dialogue"
+},
+"25": {
+"id": "25",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "call"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Perseverance"
+}]), Array[Dictionary]([{
+"type": "number",
+"value": 1
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "26",
+"parent_id": "21",
+"type": &"mutation"
+},
+"26": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "26",
+"next_id": "35",
+"notes": "",
+"parent_id": "21",
+"tags": PackedStringArray(),
+"text": "Cory's Perseverance Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Perseverance Increased by 1.",
+"type": &"dialogue"
+},
+"28": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "28",
+"next_id": "29",
+"next_id_after": "35",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "(Lucy) It'll be alright...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "(Lucy) It'll be alright...",
+"type": &"response"
+},
+"29": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "29",
+"next_id": "30",
+"notes": "",
+"parent_id": "28",
+"tags": PackedStringArray(),
+"text": "It'll be alright... [wait=0.5] you've already come so far in such a short time. Not just with this but in general you're not the man you used to be even a couple years ago.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "It'll be alright... [wait=0.5] you've already come so far in such a short time. Not just with this but in general you're not the man you used to be even a couple years ago.",
+"type": &"dialogue"
+},
+"3": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "3",
+"next_id": "5",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Good morning, Lucy.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Good morning, Lucy.",
+"type": &"dialogue"
+},
+"30": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "30",
+"next_id": "31",
+"notes": "",
+"parent_id": "28",
+"tags": PackedStringArray(),
+"text": "You've done so much to improve yourself and look where you are now. Even that took time but you made it anyways, don't beat yourself up for not getting it right away. You will in time.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You've done so much to improve yourself and look where you are now. Even that took time but you made it anyways, don't beat yourself up for not getting it right away. You will in time.",
+"type": &"dialogue"
+},
+"31": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "31",
+"next_id": "32",
+"notes": "",
+"parent_id": "28",
+"tags": PackedStringArray(),
+"text": "I know... [wait=0.5] I've come a long way and failing is a part of the game. I've gotten a lot better at handling failure and figuring out how to solve these problems. I just never thought I would get this excited about this and love it this much.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I know... [wait=0.5] I've come a long way and failing is a part of the game. I've gotten a lot better at handling failure and figuring out how to solve these problems. I just never thought I would get this excited about this and love it this much.",
+"type": &"dialogue"
+},
+"32": {
+"id": "32",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "call"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Patience"
+}]), Array[Dictionary]([{
+"type": "number",
+"value": 1
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "33",
+"parent_id": "28",
+"type": &"mutation"
+},
+"33": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "33",
+"next_id": "35",
+"notes": "",
+"parent_id": "28",
+"tags": PackedStringArray(),
+"text": "Cory's Patience Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Patience Increased by 1.",
+"type": &"dialogue"
+},
+"35": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "35",
+"next_id": "37",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "That's right! And I'll always be right here beside you to support you all the way baby.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "That's right! And I'll always be right here beside you to support you all the way baby.",
+"type": &"dialogue"
+},
+"37": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "37",
+"next_id": "39",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Thank you. I feel a bit better now. But there is something I wanna talk about.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Thank you. I feel a bit better now. But there is something I wanna talk about.",
+"type": &"dialogue"
+},
+"39": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "39",
+"next_id": "41",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "You're welcome sweetie, I'm glad you feel better. Oh? What is that?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You're welcome sweetie, I'm glad you feel better. Oh? What is that?",
+"type": &"dialogue"
+},
+"41": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "41",
+"next_id": "43",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I have an idea to maybe help me get a better handle of this stuff and start getting some real practice. So I'd like to try to make something, something small at least. I found this free engine called Bridot I can use to get started.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I have an idea to maybe help me get a better handle of this stuff and start getting some real practice. So I'd like to try to make something, something small at least. I found this free engine called Bridot I can use to get started.",
+"type": &"dialogue"
+},
+"43": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "43",
+"next_id": "45",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I guess it uses a language called 'Britscrit' which is similar to the 'Boa' language I've been learning so I should be able to make heads and tails of it a bit more easily.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I guess it uses a language called 'Britscrit' which is similar to the 'Boa' language I've been learning so I should be able to make heads and tails of it a bit more easily.",
+"type": &"dialogue"
+},
+"45": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "45",
+"next_id": "47",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "That sounds wonderful! I think you should try it out and if you want I can help you with some ideas if you like.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "That sounds wonderful! I think you should try it out and if you want I can help you with some ideas if you like.",
+"type": &"dialogue"
+},
+"47": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "47",
+"next_id": "49",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I think so too... [wait=0.5] though I was hoping maybe you might be able to help me with some art stuff. I'm not that great at that sort of stuff and your art is amazing.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I think so too... [wait=0.5] though I was hoping maybe you might be able to help me with some art stuff. I'm not that great at that sort of stuff and your art is amazing.",
+"type": &"dialogue"
+},
+"49": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "49",
+"next_id": "50",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Oh... um... well I could try... [wait=0.5] but my muse has been very low lately and I don't wanna make you any promises.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Oh... um... well I could try... [wait=0.5] but my muse has been very low lately and I don't wanna make you any promises.",
+"type": &"dialogue"
+},
+"5": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "5",
+"next_id": "7",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Good morning, Cory!",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Good morning, Cory!",
+"type": &"dialogue"
+},
+"50": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "50",
+"next_id": "51",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Lucy's Anxiety increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Lucy's Anxiety increased by 1.",
+"type": &"dialogue"
+},
+"51": {
+"id": "51",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "call"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Anxiety"
+}]), Array[Dictionary]([{
+"type": "number",
+"value": 1
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "53",
+"type": &"mutation"
+},
+"53": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "53",
+"next_id": "54",
+"next_id_after": "65",
+"notes": "",
+"responses": PackedStringArray("53", "59"),
+"tags": PackedStringArray(),
+"text": "(Cory) Take your time",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "(Cory) Take your time",
+"type": &"response"
+},
+"54": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "54",
+"next_id": "55",
+"notes": "",
+"parent_id": "53",
+"tags": PackedStringArray(),
+"text": "You don't have to make a decision now. I know how hard it is to get started on something creative. Just knowing you are here to support me is already helping a lot.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You don't have to make a decision now. I know how hard it is to get started on something creative. Just knowing you are here to support me is already helping a lot.",
+"type": &"dialogue"
+},
+"55": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "55",
+"next_id": "56",
+"notes": "",
+"parent_id": "53",
+"tags": PackedStringArray(),
+"text": "Awwww, I love you baby. I will always support you too. I will try but I can't make any promises. Just try to be patient if I have a hard time starting.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Awwww, I love you baby. I will always support you too. I will try but I can't make any promises. Just try to be patient if I have a hard time starting.",
+"type": &"dialogue"
+},
+"56": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "56",
+"next_id": "57",
+"notes": "",
+"parent_id": "53",
+"tags": PackedStringArray(),
+"text": "Lucy's Patience increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Lucy's Patience increased by 1.",
+"type": &"dialogue"
+},
+"57": {
+"id": "57",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "call"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Patience"
+}]), Array[Dictionary]([{
+"type": "number",
+"value": 1
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "65",
+"parent_id": "53",
+"type": &"mutation"
+},
+"59": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "59",
+"next_id": "60",
+"next_id_after": "65",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "(Cory) Don't worry",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "(Cory) Don't worry",
+"type": &"response"
+},
+"60": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "60",
+"next_id": "61",
+"notes": "",
+"parent_id": "59",
+"tags": PackedStringArray(),
+"text": "Don't worry, you don't have to commit to anything. And if you do we'd both be learning together so we don't have to worry about getting it right of perfect from the start. We can grow with it together.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Don't worry, you don't have to commit to anything. And if you do we'd both be learning together so we don't have to worry about getting it right of perfect from the start. We can grow with it together.",
+"type": &"dialogue"
+},
+"61": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "61",
+"next_id": "62",
+"notes": "",
+"parent_id": "59",
+"tags": PackedStringArray(),
+"text": "That sounds nice... maybe this will help me get my muse back. I really would like to get back into doing more art stuff and this would give me a good reason to start. I'll try my best.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "That sounds nice... maybe this will help me get my muse back. I really would like to get back into doing more art stuff and this would give me a good reason to start. I'll try my best.",
+"type": &"dialogue"
+},
+"62": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "62",
+"next_id": "63",
+"notes": "",
+"parent_id": "59",
+"tags": PackedStringArray(),
+"text": "Lucy's Motivation increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Lucy's Motivation increased by 1.",
+"type": &"dialogue"
+},
+"63": {
+"id": "63",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "call"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Motivation"
+}]), Array[Dictionary]([{
+"type": "number",
+"value": 1
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "65",
+"parent_id": "59",
+"type": &"mutation"
+},
+"65": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "65",
+"next_id": "66",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Thank you baby. I'll do my best to help support you as best as I can, just let me know whatever you need that may help and I'll see what I can do.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Thank you baby. I'll do my best to help support you as best as I can, just let me know whatever you need that may help and I'll see what I can do.",
+"type": &"dialogue"
+},
+"66": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "66",
+"next_id": "67",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Cory's Motivation Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Motivation Increased by 1.",
+"type": &"dialogue"
+},
+"67": {
+"id": "67",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "call"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Motivation"
+}]), Array[Dictionary]([{
+"type": "number",
+"value": 1
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "69",
+"type": &"mutation"
+},
+"69": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "69",
+"next_id": "71",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Thank you, I love you baby.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Thank you, I love you baby.",
+"type": &"dialogue"
+},
+"7": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "7",
+"next_id": "9",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Did you sleep well?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Did you sleep well?",
+"type": &"dialogue"
+},
+"71": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "71",
+"next_id": "73",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "You're welcome, I love you too baby.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You're welcome, I love you too baby.",
+"type": &"dialogue"
+},
+"73": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "73",
+"next_id": "74",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Cory's Anxiety Reduced by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Anxiety Reduced by 1.",
+"type": &"dialogue"
+},
+"74": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "74",
+"next_id": "75",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Cory's Lethargy Reduced by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Lethargy Reduced by 1.",
+"type": &"dialogue"
+},
+"75": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "75",
+"next_id": "77",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Cory's Fragility Reduced by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Fragility Reduced by 1.",
+"type": &"dialogue"
+},
+"77": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "77",
+"next_id": "79",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "[wait=1]",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "[wait=1]",
+"type": &"dialogue"
+},
+"79": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "79",
+"next_id": "81",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Why don't you go take a quick shower and I'll make you some tea and breakfast before I head over to my mother's place.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Why don't you go take a quick shower and I'll make you some tea and breakfast before I head over to my mother's place.",
+"type": &"dialogue"
+},
+"81": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "81",
+"next_id": "83",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "That sounds lovely, thank you baby.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "That sounds lovely, thank you baby.",
+"type": &"dialogue"
+},
+"83": {
+"id": "83",
+"is_snippet": false,
+"next_id": "end",
+"type": &"goto"
+},
+"9": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "9",
+"next_id": "11",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I did! [wait=0.5] How about you?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I did! [wait=0.5] How about you?",
+"type": &"dialogue"
+}
+}
+raw_text = "~ start
+
+Cory: Good morning, Lucy.
+
+Lucy: Good morning, Cory!
+
+Cory: Did you sleep well?
+
+Lucy: I did! [wait=0.5] How about you?
+
+Cory: I didn't get much sleep. I was up late studying... [wait=0.5] I didn't make much progress though.
+
+Lucy: I'm sorry baby. I know you'll get there, you just need to be patient and not overwork yourself.
+
+Cory: Yeah... [wait=0.5] maybe. It just feels like everytime I feel like I'm starting to get the hang of it I trip again and I'm back to feeling confused and overwhelmed by it all...
+
+Cory: I know this is something that takes a lot of time to learn but sometimes it just feels like I'm setting myself up to fail. I know that's kinda the point of why I started this but I actually felt like I was getting somewhere before last night...
+
+Cory: I feel like I started too late and by the time I get the hang of it all I won't have time to make what I want to make and it'll all be for nothing.
+
+- (Lucy) I'm sorry...
+	Lucy: I'm sorry baby... [wait=0.5] I know it can feel hopeless sometimes but I believe you can do it. And even if you can't you gave it your best, that's more than a lot of people can say and I'm proud of you for trying. 
+	Lucy: Give yourself some rest and try again when you feel more ready.
+	Cory: It's alright, I just need to talk about it a little. Help air it out so the weight doesn't just sit in my chest. It is hard, trying to grapple with my emotions. I'm not very good with that either still but I'm learning more in that way too.
+	do ProgressionBus.emit_signal(\"call\", \"Perseverance\", 1)
+	Cory's Perseverance Increased by 1.
+
+- (Lucy) It'll be alright...
+	Lucy: It'll be alright... [wait=0.5] you've already come so far in such a short time. Not just with this but in general you're not the man you used to be even a couple years ago. 
+	Lucy: You've done so much to improve yourself and look where you are now. Even that took time but you made it anyways, don't beat yourself up for not getting it right away. You will in time.
+	Cory: I know... [wait=0.5] I've come a long way and failing is a part of the game. I've gotten a lot better at handling failure and figuring out how to solve these problems. I just never thought I would get this excited about this and love it this much.
+	do ProgressionBus.emit_signal(\"call\", \"Patience\", 1)
+	Cory's Patience Increased by 1.
+
+Lucy: That's right! And I'll always be right here beside you to support you all the way baby.
+
+Cory: Thank you. I feel a bit better now. But there is something I wanna talk about.
+
+Lucy: You're welcome sweetie, I'm glad you feel better. Oh? What is that?
+
+Cory: I have an idea to maybe help me get a better handle of this stuff and start getting some real practice. So I'd like to try to make something, something small at least. I found this free engine called Bridot I can use to get started.
+
+Cory: I guess it uses a language called 'Britscrit' which is similar to the 'Boa' language I've been learning so I should be able to make heads and tails of it a bit more easily.
+
+Lucy: That sounds wonderful! I think you should try it out and if you want I can help you with some ideas if you like.
+
+Cory: I think so too... [wait=0.5] though I was hoping maybe you might be able to help me with some art stuff. I'm not that great at that sort of stuff and your art is amazing.
+
+Lucy: Oh... um... well I could try... [wait=0.5] but my muse has been very low lately and I don't wanna make you any promises.
+Lucy's Anxiety increased by 1.
+do ProgressionBus.emit_signal(\"call\", \"Anxiety\", 1)
+
+- (Cory) Take your time
+	Cory: You don't have to make a decision now. I know how hard it is to get started on something creative. Just knowing you are here to support me is already helping a lot.
+	Lucy: Awwww, I love you baby. I will always support you too. I will try but I can't make any promises. Just try to be patient if I have a hard time starting.
+	Lucy's Patience increased by 1.
+	do ProgressionBus.emit_signal(\"call\", \"Patience\", 1)
+
+- (Cory) Don't worry
+	Cory: Don't worry, you don't have to commit to anything. And if you do we'd both be learning together so we don't have to worry about getting it right of perfect from the start. We can grow with it together.
+	Lucy: That sounds nice... maybe this will help me get my muse back. I really would like to get back into doing more art stuff and this would give me a good reason to start. I'll try my best.
+	Lucy's Motivation increased by 1.
+	do ProgressionBus.emit_signal(\"call\", \"Motivation\", 1)
+
+Cory: Thank you baby. I'll do my best to help support you as best as I can, just let me know whatever you need that may help and I'll see what I can do.
+Cory's Motivation Increased by 1.
+do ProgressionBus.emit_signal(\"call\", \"Motivation\", 1)
+
+Lucy: Thank you, I love you baby.
+
+Cory: You're welcome, I love you too baby.
+
+Cory's Anxiety Reduced by 1.
+Cory's Lethargy Reduced by 1.
+Cory's Fragility Reduced by 1.
+
+[wait=1]
+
+Lucy: Why don't you go take a quick shower and I'll make you some tea and breakfast before I head over to my mother's place.
+
+Cory: That sounds lovely, thank you baby.
+
+=> END"
+metadata/dialogue_manager_version = "2.45.0"

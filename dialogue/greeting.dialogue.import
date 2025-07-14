@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://bhq07g315e4s5"
+path="res://.godot/imported/greeting.dialogue-9d0eda73c3316fbd6e326196fb44f17d.tres"
+
+[deps]
+
+source_file="res://dialogue/greeting.dialogue"
+dest_files=["res://.godot/imported/greeting.dialogue-9d0eda73c3316fbd6e326196fb44f17d.tres"]
+
+[params]
+
+defaults=true

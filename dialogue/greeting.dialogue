@@ -1,0 +1,83 @@
+~ start
+
+Cory: Good morning, Lucy.
+
+Lucy: Good morning, Cory!
+
+Cory: Did you sleep well?
+
+Lucy: I did! [wait=0.5] How about you?
+
+Cory: I didn't get much sleep. I was up late studying... [wait=0.5] I didn't make much progress though.
+
+Lucy: I'm sorry baby. I know you'll get there, you just need to be patient and not overwork yourself.
+
+Cory: Yeah... [wait=0.5] maybe. It just feels like everytime I feel like I'm starting to get the hang of it I trip again and I'm back to feeling confused and overwhelmed by it all...
+
+Cory: I know this is something that takes a lot of time to learn but sometimes it just feels like I'm setting myself up to fail. I know that's kinda the point of why I started this but I actually felt like I was getting somewhere before last night...
+
+Cory: I feel like I started too late and by the time I get the hang of it all I won't have time to make what I want to make and it'll all be for nothing.
+
+- (Lucy) I'm sorry...
+	Lucy: I'm sorry baby... [wait=0.5] I know it can feel hopeless sometimes but I believe you can do it. And even if you can't you gave it your best, that's more than a lot of people can say and I'm proud of you for trying. 
+	Lucy: Give yourself some rest and try again when you feel more ready.
+	Cory: It's alright, I just need to talk about it a little. Help air it out so the weight doesn't just sit in my chest. It is hard, trying to grapple with my emotions. I'm not very good with that either still but I'm learning more in that way too.
+	do ProgressionBus.emit_signal("call", "Perseverance", 1)
+	Cory's Perseverance Increased by 1.
+
+- (Lucy) It'll be alright...
+	Lucy: It'll be alright... [wait=0.5] you've already come so far in such a short time. Not just with this but in general you're not the man you used to be even a couple years ago. 
+	Lucy: You've done so much to improve yourself and look where you are now. Even that took time but you made it anyways, don't beat yourself up for not getting it right away. You will in time.
+	Cory: I know... [wait=0.5] I've come a long way and failing is a part of the game. I've gotten a lot better at handling failure and figuring out how to solve these problems. I just never thought I would get this excited about this and love it this much.
+	do ProgressionBus.emit_signal("call", "Patience", 1)
+	Cory's Patience Increased by 1.
+
+Lucy: That's right! And I'll always be right here beside you to support you all the way baby.
+
+Cory: Thank you. I feel a bit better now. But there is something I wanna talk about.
+
+Lucy: You're welcome sweetie, I'm glad you feel better. Oh? What is that?
+
+Cory: I have an idea to maybe help me get a better handle of this stuff and start getting some real practice. So I'd like to try to make something, something small at least. I found this free engine called Bridot I can use to get started.
+
+Cory: I guess it uses a language called 'Britscrit' which is similar to the 'Boa' language I've been learning so I should be able to make heads and tails of it a bit more easily.
+
+Lucy: That sounds wonderful! I think you should try it out and if you want I can help you with some ideas if you like.
+
+Cory: I think so too... [wait=0.5] though I was hoping maybe you might be able to help me with some art stuff. I'm not that great at that sort of stuff and your art is amazing.
+
+Lucy: Oh... um... well I could try... [wait=0.5] but my muse has been very low lately and I don't wanna make you any promises.
+Lucy's Anxiety increased by 1.
+do ProgressionBus.emit_signal("call", "Anxiety", 1)
+
+- (Cory) Take your time
+	Cory: You don't have to make a decision now. I know how hard it is to get started on something creative. Just knowing you are here to support me is already helping a lot.
+	Lucy: Awwww, I love you baby. I will always support you too. I will try but I can't make any promises. Just try to be patient if I have a hard time starting.
+	Lucy's Patience increased by 1.
+	do ProgressionBus.emit_signal("call", "Patience", 1)
+
+- (Cory) Don't worry
+	Cory: Don't worry, you don't have to commit to anything. And if you do we'd both be learning together so we don't have to worry about getting it right of perfect from the start. We can grow with it together.
+	Lucy: That sounds nice... maybe this will help me get my muse back. I really would like to get back into doing more art stuff and this would give me a good reason to start. I'll try my best.
+	Lucy's Motivation increased by 1.
+	do ProgressionBus.emit_signal("call", "Motivation", 1)
+
+Cory: Thank you baby. I'll do my best to help support you as best as I can, just let me know whatever you need that may help and I'll see what I can do.
+Cory's Motivation Increased by 1.
+do ProgressionBus.emit_signal("call", "Motivation", 1)
+
+Lucy: Thank you, I love you baby.
+
+Cory: You're welcome, I love you too baby.
+
+Cory's Anxiety Reduced by 1.
+Cory's Lethargy Reduced by 1.
+Cory's Fragility Reduced by 1.
+
+[wait=1]
+
+Lucy: Why don't you go take a quick shower and I'll make you some tea and breakfast before I head over to my mother's place.
+
+Cory: That sounds lovely, thank you baby.
+
+=> END

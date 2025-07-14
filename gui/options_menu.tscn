@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://gui/options_menu.gd" id="1_obqrd"]
 
 [node name="Options_Menu" type="Control"]
+process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,9 +44,17 @@ layout_mode = 2
 layout_mode = 2
 text = "Resolution"
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
 [node name="Window Mode" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Window Mode"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
 
 [node name="Master Volume" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -75,14 +85,26 @@ layout_mode = 2
 item_count = 1
 popup/item_0/text = "Windowed"
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
 [node name="Master_Volume_Slider" type="HSlider" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 value = 100.0
 
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+
 [node name="Music_Volume_Slider" type="HSlider" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 value = 100.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
 
 [node name="SFX_Volume_Slider" type="HSlider" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -101,7 +123,7 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Start_Button" type="Button" parent="MarginContainer/NinePatchRect/HBoxContainer2"]
+[node name="Save_Button" type="Button" parent="MarginContainer/NinePatchRect/HBoxContainer2"]
 layout_mode = 2
 text = "Save
 "
@@ -121,6 +143,6 @@ text = "Close
 [connection signal="value_changed" from="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer2/Master_Volume_Slider" to="." method="_on_master_volume_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer2/Music_Volume_Slider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer2/SFX_Volume_Slider" to="." method="_on_sfx_volume_slider_value_changed"]
-[connection signal="pressed" from="MarginContainer/NinePatchRect/HBoxContainer2/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/NinePatchRect/HBoxContainer2/Save_Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MarginContainer/NinePatchRect/HBoxContainer2/Default_Button" to="." method="_on_default_button_pressed"]
 [connection signal="pressed" from="MarginContainer/NinePatchRect/HBoxContainer2/Close_Button" to="." method="_on_close_button_pressed"]

@@ -1,5 +1,7 @@
-Button
 HBoxContainer
+HSeparator
+TileMapLayer
+Button
 OptionButton
 HSlider
 MenuBar
@@ -10,5 +12,3 @@ NinePatchRect
 TabContainer
 TabBar
 MarginContainer
-CollisionShape2D
-Area2D

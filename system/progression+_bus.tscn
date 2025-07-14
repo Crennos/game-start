@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://1cja51kysayv"]
+
+[ext_resource type="Script" path="res://system/progression+_bus.gd" id="1_x8xtx"]
+
+[node name="ProgressionBus" type="Node"]
+script = ExtResource("1_x8xtx")

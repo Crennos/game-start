@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://c3swlvel4jr1"]
+[gd_scene load_steps=4 format=3 uid="uid://c3swlvel4jr1"]
+
+[ext_resource type="PackedScene" uid="uid://wqt7b4jo1def" path="res://levels/apartment_room.tscn" id="1_cclb7"]
+[ext_resource type="PackedScene" uid="uid://tuv5o0y53x7j" path="res://characters/lucy.tscn" id="2_svejs"]
+[ext_resource type="PackedScene" uid="uid://bwmlt2ig7b3fq" path="res://gui/pause_menu.tscn" id="3_ynw5c"]
 
 [node name="Main" type="Node"]
+
+[node name="Apartment_Room" parent="." instance=ExtResource("1_cclb7")]
+
+[node name="Lucy" parent="." instance=ExtResource("2_svejs")]
+
+[node name="Pause_Menu" parent="." instance=ExtResource("3_ynw5c")]
