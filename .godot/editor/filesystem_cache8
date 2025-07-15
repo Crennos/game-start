@@ -1,8 +1,8 @@
 c693a20e708c4e09bfa9edf12a750cf8
-::res://::1752530629
-day one.dialogue::Resource::734113395279097570::1752522277::1752530672::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
+::res://::1752547066
 default_bus_layout.tres::AudioBusLayout::7558095294965570709::1752447392::0::1::::<><>::
 icon.svg::CompressedTexture2D::272228164847100108::1752324178::1752324186::1::::<><>::
+rich_text_label.gd::GDScript::-1::1752531125::0::1::::<>RichTextLabel<>::
 ::res://addons/::1752462577
 ::res://addons/dialogue_manager/::1752462579
 constants.gd::GDScript::-1::1752462578::0::1::::<>Node<>::
@@ -72,16 +72,18 @@ main_view.gd::GDScript::-1::1752462579::0::1::::<>Control<>::
 main_view.tscn::PackedScene::4884668666408697448::1752462579::0::1::::<><>::res://addons/dialogue_manager/views/main_view.gd<>uid://civ6shmka5e8u::::res://addons/dialogue_manager/components/code_edit.tscn<>uid://dnufpcdrreva3::::res://addons/dialogue_manager/components/files_list.tscn<>uid://ctns6ouwwd68i::::res://addons/dialogue_manager/components/title_list.tscn<>uid://co8yl23idiwbi::::res://addons/dialogue_manager/components/update_button.tscn<>uid://gr8nakpbrhby::::res://addons/dialogue_manager/components/search_and_replace.tscn<>uid://cs8pwrxr5vxix::::res://addons/dialogue_manager/components/errors_panel.tscn<>res://addons/dialogue_manager/components/code_edit_syntax_highlighter.gd<>uid://cpg4lg1r3ff6m::::res://addons/dialogue_manager/views/settings_view.tscn<>uid://0n7hwviyyly4::::res://addons/dialogue_manager/components/find_in_files.tscn
 settings_view.gd::GDScript::-1::1752462579::0::1::::<>TabContainer<>::
 settings_view.tscn::PackedScene::5839841081119266502::1752462579::0::1::::<><>::res://addons/dialogue_manager/views/settings_view.gd
-::res://characters/::1752530629
+::res://characters/::1752547066
 cory.gd::GDScript::-1::1752530137::0::1::::<>CharacterBody2D<>::
-cory.tscn::PackedScene::3932315741683928116::1752530671::0::1::::<><>::res://characters/cory.gd
+cory.tscn::PackedScene::3932315741683928116::1752547066::0::1::::<><>::res://characters/cory.gd
 lucy.gd::GDScript::-1::1752530141::0::1::::<>CharacterBody2D<>::
-lucy.tscn::PackedScene::1376204989947734309::1752530671::0::1::::<><>::res://characters/lucy.gd
-::res://dialogue/::1752530629
+lucy.tscn::PackedScene::1376204989947734309::1752547066::0::1::::<><>::res://characters/lucy.gd
+::res://dialogue/::1752547066
 balloon.gd::GDScript::-1::1752463555::0::1::::<>CanvasLayer<>::
 balloon.tscn::PackedScene::7871119011697486665::1752465939::0::1::::<><>::res://dialogue/balloon.gd<>uid://ckvgyvclnwggo::::res://addons/dialogue_manager/dialogue_label.tscn<>res://addons/dialogue_manager/dialogue_reponses_menu.gd
+day one.dialogue::Resource::1237679479155547690::1752547121::1752547121::0::::<><>::
 exper_balloon.tscn::PackedScene::4228062616589583712::1752466078::0::1::::<><>::res://dialogue/balloon.gd<>uid://ckvgyvclnwggo::::res://addons/dialogue_manager/dialogue_label.tscn<>res://addons/dialogue_manager/dialogue_reponses_menu.gd
-greeting.dialogue::Resource::2912348063064629430::1752522258::1752530672::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
+first morning.dialogue::Resource::734113395279097570::1752538243::1752538429::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
+greeting.dialogue::Resource::2912348063064629430::1752522258::1752547121::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
 ::res://examples/::1752461873
 audioDemo.gd::GDScript::-1::1752461872::0::1::::<>Control<>::
 Characters.tres::Resource/CharacterList::7778104419182407793::1752461872::0::1::::<><>::res://addons/dialogue_nodes/objects/CharacterList.gd<>res://addons/dialogue_nodes/objects/Character.gd<>uid://b2hbqv3slgfxt::::res://examples/profile0.png
@@ -101,23 +103,22 @@ ExampleSignals.tres::Resource/DialogueData::4451938646115500077::1752461872::0::
 ExampleVariables.tres::Resource/DialogueData::4886097951687637358::1752461872::0::1::::<><>::res://addons/dialogue_nodes/objects/DialogueData.gd
 profile0.png::CompressedTexture2D::4296060542971295061::1752461872::1752461873::1::::<><>::
 voice.ogg::AudioStreamOggVorbis::2976354597759940103::1752461873::1752461873::1::::<><>::
-::res://gui/::1752530629
+::res://gui/::1752547066
 main_menu.gd::GDScript::-1::1752433424::0::1::::<>Control<>::
-main_menu.tscn::PackedScene::4043813398691021624::1752530671::0::1::::<><>::res://gui/main_menu.gd<>uid://bln0sjssdaxub::::res://gui/options_menu.tscn
+main_menu.tscn::PackedScene::4043813398691021624::1752547066::0::1::::<><>::res://gui/main_menu.gd<>uid://bln0sjssdaxub::::res://gui/options_menu.tscn
 options_menu.gd::GDScript::-1::1752433378::0::1::::<>Control<>::
-options_menu.tscn::PackedScene::3186885444962188789::1752530671::0::1::::<><>::res://gui/options_menu.gd
-pause_menu.gd::GDScript::-1::1752433400::0::1::::<>Control<>::
-pause_menu.tscn::PackedScene::3956051024587491314::1752530671::0::1::::<><>::res://gui/pause_menu.gd<>uid://bln0sjssdaxub::::res://gui/options_menu.tscn
-::res://levels/::1752530629
-1111.png::CompressedTexture2D::7242998720006709717::1752529034::1752529048::1::::<><>::
+options_menu.tscn::PackedScene::3186885444962188789::1752547066::0::1::::<><>::res://gui/options_menu.gd
+pause_menu.gd::GDScript::-1::1752530714::0::1::::<>Control<>::
+pause_menu.tscn::PackedScene::3956051024587491314::1752547066::0::1::::<><>::res://gui/pause_menu.gd<>uid://bln0sjssdaxub::::res://gui/options_menu.tscn
+::res://levels/::1752547066
 apartment_room.gd::GDScript::-1::1752446993::0::1::::<>TileMapLayer<>::
-apartment_room.tscn::PackedScene::1578395470120519593::1752530671::0::1::::<><>::res://levels/apartment_room.gd<>uid://dbgtepdflhnvp::::res://levels/1111.png
-Carpet_Tile.png::CompressedTexture2D::5274069905553435034::1752523676::1752523756::1::::<><>::
-pixil-frame-0 (8).png::CompressedTexture2D::592214648571710279::1752528878::1752528924::1::::<><>::
+apartment_room.tscn::PackedScene::1578395470120519593::1752547066::0::1::::<><>::uid://io4xogf3gnln::::res://levels/pixil-frame-0 (8).png<>res://levels/apartment_room.gd
+newcarp.png::CompressedTexture2D::5295700189048223369::1752537529::1752537552::1::::<><>::
+pixil-frame-0 (8).png::CompressedTexture2D::592214648571710279::1752537760::1752537788::1::::<><>::
 ::res://mechanics/::1752324618
-::res://system/::1752530629
-main.tscn::PackedScene::199313068120779096::1752530671::0::1::::<><>::uid://wqt7b4jo1def::::res://levels/apartment_room.tscn<>uid://tuv5o0y53x7j::::res://characters/lucy.tscn<>uid://bwmlt2ig7b3fq::::res://gui/pause_menu.tscn
+::res://system/::1752547066
+main.tscn::PackedScene::199313068120779096::1752547066::0::1::::<><>::uid://wqt7b4jo1def::::res://levels/apartment_room.tscn<>uid://tuv5o0y53x7j::::res://characters/lucy.tscn<>uid://bwmlt2ig7b3fq::::res://gui/pause_menu.tscn
 progression+_bus.gd::GDScript::-1::1752529060::0::1::::<>Node<>::
-progression+_bus.tscn::PackedScene::1829586759384413461::1752530671::0::1::::<><>::res://system/progression+_bus.gd
+progression+_bus.tscn::PackedScene::1829586759384413461::1752547066::0::1::::<><>::res://system/progression+_bus.gd
 save_system_bus.gd::GDScript::-1::1752447130::0::1::::<>Node<>::
-save_system_bus.tscn::PackedScene::2511428625726018872::1752530671::0::1::::<><>::res://system/save_system_bus.gd
+save_system_bus.tscn::PackedScene::2511428625726018872::1752547066::0::1::::<><>::res://system/save_system_bus.gd

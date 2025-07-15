@@ -5,6 +5,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_fs74g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ggmds"]
+radius = 24.0
 
 [node name="Lucy" type="CharacterBody2D"]
 script = ExtResource("1_d751e")
@@ -14,7 +15,7 @@ script = ExtResource("1_d751e")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fs74g")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Action_Area" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Action_Area"]
 shape = SubResource("CircleShape2D_ggmds")

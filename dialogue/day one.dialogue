@@ -1,0 +1,61 @@
+~ start
+
+
+Cory: Alright... let's take a look and see what we have here.
+
+...[wait=2] [next=auto]
+
+Cory: (Oh boy... this looks pretty overwhelming... I don't even know where to start to look... what are these 'nodes'...?)
+Cory's Anxiety Increased by 1.
+do ProgressionBus.emit_signal("call", "Anxiety", 1)
+
+Cory: (Are these 'objects'... or 'classes'...? I haven't started to learn about that stuff yet... all my learning has been pretty basic stuff until now... this looks so far beyond me...)
+Cory's Fragility Increased by 1.
+do ProgressionBus.emit_signal("call", "Fragility", 1)
+
+Cory: Alright... let's take it slow and easy... focus on one thing at a time. Right now let's go find out how to make a 'Sprite' and make it move like that Tuber guy suggested...
+Cory's Focus Increased by 1.
+do ProgressionBus.emit_signal("call", "Focus", 1)
+Cory's Perseverance Increased by 1.
+do ProgressionBus.emit_signal("call", "Perseverance", 1)
+
+TuberMan: So what you're gonna wanna do is...
+
+Cory: Uh huh... 
+Cory: Alright...
+
+TuberMan: And when you open this scrit you'll see...
+
+
+Cory: Oh wow... that's a lot all of a sudden... what is even all that? 
+	//unsleeves CharBodD2         com{trigger; whole}
+	⁦//if⁦ sleeved ;= SPEED * delta then{
+	//@portable vari sen ; buoy = #CharBD2.Kinesis._at_readied()
+
+-
+	Cory's Anxiety Increased by 1.
+	Cory's Fragility Increased by 1.
+
+Cory: [stops video] Alright...
+
+- Try watching again
+	Cory: Let's try again and just focus on what he's doing instead of everything else.
+	...[wait=2] [next=auto]
+	TuberMan: And when you open this scrit you'll see a bunch of code but you don't need to worry about all that. You can leave that all alone, it's good enough as it is to get you started.
+	Cory: Alright.
+	Cory's Focus Increased by 1.
+	==>< tutorial part two
+
+- Take a break
+	Cory: Maybe just give this a little bit and come back to it. We don't have to quit, we can go study for a little instead.
+	Cory's Motivation Increased by 1.
+
+- Continue without watching
+	Cory: Let's just try to get our hands dirty first. I don't want to be too reliant on the tutorials from the onset or I won't learn elsewise.
+	Cory's Perseverance Increased by 1.
+
+
+~ tutorial_part_two
+
+
+=> END

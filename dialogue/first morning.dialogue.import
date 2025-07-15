@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://kpu0f4kk3yww"
+path="res://.godot/imported/first morning.dialogue-e2ba8a09038ed22011811331707ac00b.tres"
+
+[deps]
+
+source_file="res://dialogue/first morning.dialogue"
+dest_files=["res://.godot/imported/first morning.dialogue-e2ba8a09038ed22011811331707ac00b.tres"]
+
+[params]
+
+defaults=true

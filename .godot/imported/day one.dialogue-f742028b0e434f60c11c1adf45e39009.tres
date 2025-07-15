@@ -1,0 +1,606 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_21644"]
+
+[resource]
+script = ExtResource("1_21644")
+using_states = PackedStringArray()
+titles = {
+"start": "3",
+"tutorial_part_two": "64"
+}
+character_names = PackedStringArray("Cory", "TuberMan")
+first_title = "3"
+lines = {
+"1": {
+"id": "1",
+"next_id": "3",
+"text": "start",
+"type": &"title"
+},
+"11": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "11",
+"next_id": "12",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "(Oh boy... this looks pretty overwhelming... I don't even know where to start to look... what are these 'nodes'...?)",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "(Oh boy... this looks pretty overwhelming... I don't even know where to start to look... what are these 'nodes'...?)",
+"type": &"dialogue"
+},
+"12": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "12",
+"next_id": "13",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Cory's Anxiety Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Anxiety Increased by 1.",
+"type": &"dialogue"
+},
+"13": {
+"id": "13",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "call"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Anxiety"
+}]), Array[Dictionary]([{
+"type": "number",
+"value": 1
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "15",
+"type": &"mutation"
+},
+"15": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "15",
+"next_id": "16",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "(Are these 'objects'... or 'classes'...? I haven't started to learn about that stuff yet... all my learning has been pretty basic stuff until now... this looks so far beyond me...)",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "(Are these 'objects'... or 'classes'...? I haven't started to learn about that stuff yet... all my learning has been pretty basic stuff until now... this looks so far beyond me...)",
+"type": &"dialogue"
+},
+"16": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "16",
+"next_id": "17",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Cory's Fragility Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Fragility Increased by 1.",
+"type": &"dialogue"
+},
+"17": {
+"id": "17",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "call"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Fragility"
+}]), Array[Dictionary]([{
+"type": "number",
+"value": 1
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "19",
+"type": &"mutation"
+},
+"19": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "19",
+"next_id": "20",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Alright... let's take it slow and easy... focus on one thing at a time. Right now let's go find out how to make a 'Sprite' and make it move like that Tuber guy suggested...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Alright... let's take it slow and easy... focus on one thing at a time. Right now let's go find out how to make a 'Sprite' and make it move like that Tuber guy suggested...",
+"type": &"dialogue"
+},
+"20": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "20",
+"next_id": "21",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Cory's Focus Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Focus Increased by 1.",
+"type": &"dialogue"
+},
+"21": {
+"id": "21",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "call"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Focus"
+}]), Array[Dictionary]([{
+"type": "number",
+"value": 1
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "22",
+"type": &"mutation"
+},
+"22": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "22",
+"next_id": "23",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Cory's Perseverance Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Perseverance Increased by 1.",
+"type": &"dialogue"
+},
+"23": {
+"id": "23",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "call"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Perseverance"
+}]), Array[Dictionary]([{
+"type": "number",
+"value": 1
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "25",
+"type": &"mutation"
+},
+"25": {
+"character": "TuberMan",
+"character_replacements": Array[Dictionary]([]),
+"id": "25",
+"next_id": "27",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "So what you're gonna wanna do is...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "So what you're gonna wanna do is...",
+"type": &"dialogue"
+},
+"27": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "27",
+"next_id": "28",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Uh huh...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Uh huh...",
+"type": &"dialogue"
+},
+"28": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "28",
+"next_id": "30",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Alright...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Alright...",
+"type": &"dialogue"
+},
+"3": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "3",
+"next_id": "7",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "|
+Cory's Anxiety Increased by 1.
+Cory's Fragility Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "|
+Cory's Anxiety Increased by 1.
+Cory's Fragility Increased by 1.",
+"type": &"dialogue"
+},
+"30": {
+"character": "TuberMan",
+"character_replacements": Array[Dictionary]([]),
+"id": "30",
+"next_id": "32",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "And when you open this scrit you'll see...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "And when you open this scrit you'll see...",
+"type": &"dialogue"
+},
+"32": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "32",
+"next_id": "33",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "|",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "|",
+"type": &"dialogue"
+},
+"33": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "33",
+"next_id": "38",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Oh wow... that's a lot all of a sudden... what is even all that?
+unsleeves CharBodD2         com{trigger; whole}
+⁦if⁦ sleeved ;= SPEED * delta then{
+@portable vari sen ; buoy = #CharBD2.Kinesis._at_readied()",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Oh wow... that's a lot all of a sudden... what is even all that?
+unsleeves CharBodD2         com{trigger; whole}
+⁦if⁦ sleeved ;= SPEED * delta then{
+@portable vari sen ; buoy = #CharBD2.Kinesis._at_readied()",
+"type": &"dialogue"
+},
+"38": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "38",
+"next_id": "42",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "|
+Cory's Anxiety Increased by 1.
+Cory's Fragility Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "|
+Cory's Anxiety Increased by 1.
+Cory's Fragility Increased by 1.",
+"type": &"dialogue"
+},
+"42": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "42",
+"next_id": "44",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "[stops video] Alright...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "[stops video] Alright...",
+"type": &"dialogue"
+},
+"44": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "44",
+"next_id": "45",
+"next_id_after": "64",
+"notes": "",
+"responses": PackedStringArray("44", "52", "56"),
+"tags": PackedStringArray(),
+"text": "Try watching again",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Try watching again",
+"type": &"response"
+},
+"45": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "45",
+"next_id": "46",
+"notes": "",
+"parent_id": "44",
+"tags": PackedStringArray(),
+"text": "Let's try again and just focus on what he's doing instead of everything else.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Let's try again and just focus on what he's doing instead of everything else.",
+"type": &"dialogue"
+},
+"46": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "46",
+"next_id": "47",
+"notes": "",
+"parent_id": "44",
+"tags": PackedStringArray(),
+"text": "...[wait=2] [next=auto]",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "...[wait=2] [next=auto]",
+"type": &"dialogue"
+},
+"47": {
+"character": "TuberMan",
+"character_replacements": Array[Dictionary]([]),
+"id": "47",
+"next_id": "48",
+"notes": "",
+"parent_id": "44",
+"tags": PackedStringArray(),
+"text": "And when you open this scrit you'll see a bunch of code but you don't need to worry about all that. You can leave that all alone, it's good enough as it is to get you started.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "And when you open this scrit you'll see a bunch of code but you don't need to worry about all that. You can leave that all alone, it's good enough as it is to get you started.",
+"type": &"dialogue"
+},
+"48": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "48",
+"next_id": "49",
+"notes": "",
+"parent_id": "44",
+"tags": PackedStringArray(),
+"text": "Alright.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Alright.",
+"type": &"dialogue"
+},
+"49": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "49",
+"next_id": "50",
+"notes": "",
+"parent_id": "44",
+"tags": PackedStringArray(),
+"text": "Cory's Focus Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Focus Increased by 1.",
+"type": &"dialogue"
+},
+"50": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "50",
+"next_id": "64",
+"notes": "",
+"parent_id": "44",
+"tags": PackedStringArray(),
+"text": "==>< tutorial part two",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "==>< tutorial part two",
+"type": &"dialogue"
+},
+"52": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "52",
+"next_id": "53",
+"next_id_after": "64",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Take a break",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Take a break",
+"type": &"response"
+},
+"53": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "53",
+"next_id": "54",
+"notes": "",
+"parent_id": "52",
+"tags": PackedStringArray(),
+"text": "Maybe just give this a little bit and come back to it. We don't have to quit, we can go study for a little instead.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Maybe just give this a little bit and come back to it. We don't have to quit, we can go study for a little instead.",
+"type": &"dialogue"
+},
+"54": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "54",
+"next_id": "64",
+"notes": "",
+"parent_id": "52",
+"tags": PackedStringArray(),
+"text": "Cory's Motivation Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Motivation Increased by 1.",
+"type": &"dialogue"
+},
+"56": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "56",
+"next_id": "57",
+"next_id_after": "64",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Continue without watching",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Continue without watching",
+"type": &"response"
+},
+"57": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "57",
+"next_id": "58",
+"notes": "",
+"parent_id": "56",
+"tags": PackedStringArray(),
+"text": "Let's just try to get our hands dirty first. I don't want to be too reliant on the tutorials from the onset or I won't learn elsewise.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Let's just try to get our hands dirty first. I don't want to be too reliant on the tutorials from the onset or I won't learn elsewise.",
+"type": &"dialogue"
+},
+"58": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "58",
+"next_id": "64",
+"notes": "",
+"parent_id": "56",
+"tags": PackedStringArray(),
+"text": "Cory's Perseverance Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Perseverance Increased by 1.",
+"type": &"dialogue"
+},
+"61": {
+"id": "61",
+"next_id": "64",
+"text": "tutorial_part_two",
+"type": &"title"
+},
+"64": {
+"id": "64",
+"is_snippet": false,
+"next_id": "end",
+"type": &"goto"
+},
+"7": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "7",
+"next_id": "9",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Alright... let's take a look and see what we have here.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Alright... let's take a look and see what we have here.",
+"type": &"dialogue"
+},
+"9": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "9",
+"next_id": "11",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "...[wait=2] [next=auto]",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "...[wait=2] [next=auto]",
+"type": &"dialogue"
+}
+}
+raw_text = "~ start
+
+|
+	Cory's Anxiety Increased by 1.
+	Cory's Fragility Increased by 1.
+
+Cory: Alright... let's take a look and see what we have here.
+
+...[wait=2] [next=auto]
+
+Cory: (Oh boy... this looks pretty overwhelming... I don't even know where to start to look... what are these 'nodes'...?)
+Cory's Anxiety Increased by 1.
+do ProgressionBus.emit_signal(\"call\", \"Anxiety\", 1)
+
+Cory: (Are these 'objects'... or 'classes'...? I haven't started to learn about that stuff yet... all my learning has been pretty basic stuff until now... this looks so far beyond me...)
+Cory's Fragility Increased by 1.
+do ProgressionBus.emit_signal(\"call\", \"Fragility\", 1)
+
+Cory: Alright... let's take it slow and easy... focus on one thing at a time. Right now let's go find out how to make a 'Sprite' and make it move like that Tuber guy suggested...
+Cory's Focus Increased by 1.
+do ProgressionBus.emit_signal(\"call\", \"Focus\", 1)
+Cory's Perseverance Increased by 1.
+do ProgressionBus.emit_signal(\"call\", \"Perseverance\", 1)
+
+TuberMan: So what you're gonna wanna do is...
+
+Cory: Uh huh... 
+Cory: Alright...
+
+TuberMan: And when you open this scrit you'll see...
+
+|
+Cory: Oh wow... that's a lot all of a sudden... what is even all that? 
+	unsleeves CharBodD2         com{trigger; whole}
+	⁦if⁦ sleeved ;= SPEED * delta then{
+	@portable vari sen ; buoy = #CharBD2.Kinesis._at_readied()
+
+|
+	Cory's Anxiety Increased by 1.
+	Cory's Fragility Increased by 1.
+
+Cory: [stops video] Alright...
+
+- Try watching again
+	Cory: Let's try again and just focus on what he's doing instead of everything else.
+	...[wait=2] [next=auto]
+	TuberMan: And when you open this scrit you'll see a bunch of code but you don't need to worry about all that. You can leave that all alone, it's good enough as it is to get you started.
+	Cory: Alright.
+	Cory's Focus Increased by 1.
+	==>< tutorial part two
+
+- Take a break
+	Cory: Maybe just give this a little bit and come back to it. We don't have to quit, we can go study for a little instead.
+	Cory's Motivation Increased by 1.
+
+- Continue without watching
+	Cory: Let's just try to get our hands dirty first. I don't want to be too reliant on the tutorials from the onset or I won't learn elsewise.
+	Cory's Perseverance Increased by 1.
+
+
+~ tutorial_part_two
+
+
+=> END"
+metadata/dialogue_manager_version = "2.45.0"

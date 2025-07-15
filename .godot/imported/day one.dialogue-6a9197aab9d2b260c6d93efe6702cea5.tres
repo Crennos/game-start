@@ -8,7 +8,7 @@ using_states = PackedStringArray()
 titles = {
 "start": "5"
 }
-character_names = PackedStringArray()
+character_names = PackedStringArray("Cory", "TuberMan")
 first_title = "5"
 lines = {
 "1": {
@@ -17,14 +17,348 @@ lines = {
 "text": "start",
 "type": &"title"
 },
-"5": {
-"id": "5",
+"10": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "10",
+"next_id": "11",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Cory's Anxiety Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Anxiety Increased by 1.",
+"type": &"dialogue"
+},
+"11": {
+"id": "11",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "call"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Anxiety"
+}]), Array[Dictionary]([{
+"type": "number",
+"value": 1
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "13",
+"type": &"mutation"
+},
+"13": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "13",
+"next_id": "14",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "(Are these 'objects'... or 'classes'...? I haven't started to learn about that stuff yet... all my learning has been pretty basic stuff until now... this looks so far beyond me...)",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "(Are these 'objects'... or 'classes'...? I haven't started to learn about that stuff yet... all my learning has been pretty basic stuff until now... this looks so far beyond me...)",
+"type": &"dialogue"
+},
+"14": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "14",
+"next_id": "15",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Cory's Fragility Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Fragility Increased by 1.",
+"type": &"dialogue"
+},
+"15": {
+"id": "15",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "call"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Fragility"
+}]), Array[Dictionary]([{
+"type": "number",
+"value": 1
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "17",
+"type": &"mutation"
+},
+"17": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "17",
+"next_id": "18",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Alright... let's take it slow and easy... focus on one thing at a time. Right now let's go find out how to make a 'Sprite' and make it move like that Tuber guy suggested...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Alright... let's take it slow and easy... focus on one thing at a time. Right now let's go find out how to make a 'Sprite' and make it move like that Tuber guy suggested...",
+"type": &"dialogue"
+},
+"18": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "18",
+"next_id": "19",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Cory's Focus Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Focus Increased by 1.",
+"type": &"dialogue"
+},
+"19": {
+"id": "19",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "call"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Focus"
+}]), Array[Dictionary]([{
+"type": "number",
+"value": 1
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "20",
+"type": &"mutation"
+},
+"20": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "20",
+"next_id": "21",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Cory's Perseverance Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Perseverance Increased by 1.",
+"type": &"dialogue"
+},
+"21": {
+"id": "21",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "call"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Perseverance"
+}]), Array[Dictionary]([{
+"type": "number",
+"value": 1
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "23",
+"type": &"mutation"
+},
+"23": {
+"character": "TuberMan",
+"character_replacements": Array[Dictionary]([]),
+"id": "23",
+"next_id": "25",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "So what you're gonna wanna do is...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "So what you're gonna wanna do is...",
+"type": &"dialogue"
+},
+"25": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "25",
+"next_id": "26",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Uh huh...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Uh huh...",
+"type": &"dialogue"
+},
+"26": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "26",
+"next_id": "28",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Alright...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Alright...",
+"type": &"dialogue"
+},
+"28": {
+"character": "TuberMan",
+"character_replacements": Array[Dictionary]([]),
+"id": "28",
+"next_id": "30",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "And when you open this scrit you'll see...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "And when you open this scrit you'll see...",
+"type": &"dialogue"
+},
+"30": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "30",
+"next_id": "34",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Oh wow... that's a lot all of a sudden... what is even all that?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Oh wow... that's a lot all of a sudden... what is even all that?",
+"type": &"dialogue"
+},
+"34": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "34",
+"next_id": "35",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Cory's Anxiety Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Anxiety Increased by 1.",
+"type": &"dialogue"
+},
+"35": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "35",
+"next_id": "39",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Cory's Fragility Increased by 1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Fragility Increased by 1.",
+"type": &"dialogue"
+},
+"39": {
+"id": "39",
 "is_snippet": false,
 "next_id": "end",
 "type": &"goto"
+},
+"5": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "5",
+"next_id": "7",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Alright... let's take a look and see what we have here.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Alright... let's take a look and see what we have here.",
+"type": &"dialogue"
+},
+"7": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "7",
+"next_id": "9",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "...[wait=2] [next=auto]",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "...[wait=2] [next=auto]",
+"type": &"dialogue"
+},
+"9": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "9",
+"next_id": "10",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "(Oh boy... this looks pretty overwhelming... I don't even know where to start to look... what are these 'nodes'...?)",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "(Oh boy... this looks pretty overwhelming... I don't even know where to start to look... what are these 'nodes'...?)",
+"type": &"dialogue"
 }
 }
 raw_text = "~ start
+
+
+
+Cory: Alright... let's take a look and see what we have here.
+
+...[wait=2] [next=auto]
+
+Cory: (Oh boy... this looks pretty overwhelming... I don't even know where to start to look... what are these 'nodes'...?)
+Cory's Anxiety Increased by 1.
+do ProgressionBus.emit_signal(\"call\", \"Anxiety\", 1)
+
+Cory: (Are these 'objects'... or 'classes'...? I haven't started to learn about that stuff yet... all my learning has been pretty basic stuff until now... this looks so far beyond me...)
+Cory's Fragility Increased by 1.
+do ProgressionBus.emit_signal(\"call\", \"Fragility\", 1)
+
+Cory: Alright... let's take it slow and easy... focus on one thing at a time. Right now let's go find out how to make a 'Sprite' and make it move like that Tuber guy suggested...
+Cory's Focus Increased by 1.
+do ProgressionBus.emit_signal(\"call\", \"Focus\", 1)
+Cory's Perseverance Increased by 1.
+do ProgressionBus.emit_signal(\"call\", \"Perseverance\", 1)
+
+TuberMan: So what you're gonna wanna do is...
+
+Cory: Uh huh... 
+Cory: Alright...
+
+TuberMan: And when you open this scrit you'll see...
+
+Cory: Oh wow... that's a lot all of a sudden... what is even all that? 
+#unsleeves CharBodD2         com{trigger; whole}
+#⁦if⁦ sleeved ;= SPEED * delta then{
+#@portable vari sen ; buoy = #CharBD2.Kinesis._at_readied()
+Cory's Anxiety Increased by 1.
+Cory's Fragility Increased by 1.
 
 
 
