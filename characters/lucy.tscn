@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://tuv5o0y53x7j"]
+[gd_scene load_steps=5 format=3 uid="uid://tuv5o0y53x7j"]
 
 [ext_resource type="Script" path="res://characters/lucy.gd" id="1_d751e"]
+[ext_resource type="Texture2D" uid="uid://d44s8fv171sa" path="res://icon.svg" id="2_vw68q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fs74g"]
 
@@ -11,6 +12,7 @@ radius = 24.0
 script = ExtResource("1_d751e")
 
 [node name="Lucy_Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_vw68q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fs74g")

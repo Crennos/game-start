@@ -7,17 +7,17 @@ Cory: Alright... let's take a look and see what we have here.
 
 Cory: (Oh boy... this looks pretty overwhelming... I don't even know where to start to look... what are these 'nodes'...?)
 Cory's Anxiety Increased by 1.
-do ProgressionBus.emit_signal("call", "Anxiety", 1)
+do ProgressionBus.emit_signal("call", "Cory", "Anxiety", 1)
 
 Cory: (Are these 'objects'... or 'classes'...? I haven't started to learn about that stuff yet... all my learning has been pretty basic stuff until now... this looks so far beyond me...)
-Cory's Fragility Increased by 1.
-do ProgressionBus.emit_signal("call", "Fragility", 1)
+Cory's Frailty Increased by 1.
+do ProgressionBus.emit_signal("call", "Cory", "Frailty", 1)
 
 Cory: Alright... let's take it slow and easy... focus on one thing at a time. Right now let's go find out how to make a 'Sprite' and make it move like that Tuber guy suggested...
 Cory's Focus Increased by 1.
-do ProgressionBus.emit_signal("call", "Focus", 1)
+do ProgressionBus.emit_signal("call", "Cory", "Focus", 1)
 Cory's Perseverance Increased by 1.
-do ProgressionBus.emit_signal("call", "Perseverance", 1)
+do ProgressionBus.emit_signal("call", "Cory", "Perseverance", 1)
 
 TuberMan: So what you're gonna wanna do is...
 
@@ -33,8 +33,10 @@ Cory: Oh wow... that's a lot all of a sudden... what is even all that?
 	//@portable vari sen ; buoy = #CharBD2.Kinesis._at_readied()
 
 -
-	Cory's Anxiety Increased by 1.
-	Cory's Fragility Increased by 1.
+	Cory's Anxiety Increased by 1. 
+	Cory's Frailty Increased by 1.
+do ProgressionBus.emit_signal("call", "Cory", "Anxiety", 1)
+do ProgressionBus.emit_signal("call", "Cory", "Frailty", 1)
 
 Cory: [stops video] Alright...
 
@@ -44,18 +46,52 @@ Cory: [stops video] Alright...
 	TuberMan: And when you open this scrit you'll see a bunch of code but you don't need to worry about all that. You can leave that all alone, it's good enough as it is to get you started.
 	Cory: Alright.
 	Cory's Focus Increased by 1.
-	==>< tutorial part two
+	do ProgressionBus.emit_signal("call", "Cory", "Focus", 1)
+	=> tutorial_part_two
 
 - Take a break
 	Cory: Maybe just give this a little bit and come back to it. We don't have to quit, we can go study for a little instead.
 	Cory's Motivation Increased by 1.
+	do emit_signal("call", "Cory", "Motivation", 1)
+	Cory's Frailty Increased by 1.
+	do emit_signal("call", "Cory", "Frailty", 1)
 
 - Continue without watching
-	Cory: Let's just try to get our hands dirty first. I don't want to be too reliant on the tutorials from the onset or I won't learn elsewise.
+	Cory: Let's just try to get our hands dirty first. I don't want to be too reliant on the tutorials from the onset or I won't learn as well without them.
 	Cory's Perseverance Increased by 1.
+	do emit_signal("call", "Cory", "Lethargy", 1)
+	=> END
 
 
 ~ tutorial_part_two
+TuberMan: Next we will be inserting a sprite to this node, this will be super easy, all you do is drag and drop from here...
+Cory: Uh huh... oh wow. That's incredibly easy. I would have thought that would be so much more complicated.
+Cory's Creativity Increased by 1.
+do emit_signal("call", "Cory", "Creativity", 1)
 
+TuberMan: Then you will go here and just remove this bit of the scrit since you won't need it and you are ready to go.
+Cory: Alright. Let's give it a go.
+do emit_signal("call", "Cory", "Motivation", 1)
+Cory's Motivation Increased by 1.
+
+Cory: Drag and drop the png in there... now we go here and remove that... and then run.
+
+-click-
+
+Cory: ...
+Cory: This is my first step... [wait=2] It works! 
+Cory's Motivation Increased by 1.
+do emit_signal("call", "Cory", "Motivation", 1)
+Cory's Creativity Increased by 1.
+do emit_signal("call", "Cory", "Creativity", 1)
+
+Cory: I know I only did it by following a guide to the letter... but even faking it at first is a start to making it my own... just knowing what to do it was so easy...
+Cory: I'll use these tutorials to at least make this all feel more familiar... then once all of this doesn't feel so alien to me I will knuckle down and start getting experimental...
+Cory's Focus Increased by 1.
+do emit_signal("call", "Cory", "Focus", 1)
+Cory's Patience Increased by 1.
+do emit_signal("call", "Cory", "Patience", 1)
+
+Cory: Right. Now we have a plan. I'll check out more of this guy's stuff and others that strike me and move on from there. I don't have to master it right now, just make it familiar.
 
 => END

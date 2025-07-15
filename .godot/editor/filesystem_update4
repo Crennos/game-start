@@ -1,8 +1,6 @@
+res://system/progression+_bus.tscn
 res://characters/cory.tscn
 res://characters/cory.gd
-res://system/path_bus.tscn
-res://system/progression+_bus.tscn
-res://system/progression+_bus.gd
 res://system/main.tscn
 res://characters/lucy.tscn
 res://gui/main_menu.tscn
@@ -11,4 +9,5 @@ res://gui/options_menu.tscn
 res://system/save_system_bus.tscn
 res://levels/apartment_room.tscn
 res://characters/lucy.gd
-res://gui/pause_menu.gd
+res://progress_bar.tscn
+res://task_progress_bar.tscn

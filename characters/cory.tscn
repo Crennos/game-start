@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwa3wvurx4xgu"]
+[gd_scene load_steps=5 format=3 uid="uid://bwa3wvurx4xgu"]
 
 [ext_resource type="Script" path="res://characters/cory.gd" id="1_mbm5a"]
+[ext_resource type="Texture2D" uid="uid://d44s8fv171sa" path="res://icon.svg" id="2_y4ypd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u1vji"]
 radius = 32.0
@@ -11,6 +12,7 @@ radius = 32.0
 script = ExtResource("1_mbm5a")
 
 [node name="Cory_Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_y4ypd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_u1vji")

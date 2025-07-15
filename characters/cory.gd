@@ -11,28 +11,44 @@ const SPEED = 300.0
 @export var focus : int = 0
 
 #Negative Traits
-@export var lethargy : int = 0 #Progress slows, affects patience and creativity
-@export var fragility : int = 0 #Tires out faster, affects perservance and motivation
-@export var anxiety : int = 0 #Affects all, distracts and obfuscates
+@export var lethargy : int = 0 #Progress slows, affects motivation and creativity
+@export var frailty : int = 0 #Tires out faster, affects perservance and patience
+@export var anxiety : int = 0 #Distracts, affects focus
+@export var depression : int = 0 #Limits work time, affects all
 
 #Resistances
-@export var insight : int = 0 #Counters Apathy
-@export var grace : int = 0 #Counters Fragility 
+@export var insight : int = 0 #Counters Lethargy
+@export var heart : int = 0 #Counters Frailty
 @export var serenity : int = 0 #Counters Anxiety
-@export var hope : int = 0 #Counters All
+@export var hope : int = 0 #Counters Depression
 
 
 func _physics_process(delta: float) -> void:
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
+	detect_input(delta, true)
+	
 
 
 func detect_input(delta, process: bool):
+	var direction = 0
+	
+	if process == true:
+		if Input.is_action_pressed("left"):
+			direction += -1
+			velocity.x = direction * SPEED
+		elif Input.is_action_pressed("right"):
+			direction += 1
+			velocity.x = direction * SPEED
+		elif  Input.is_action_pressed("up"):
+			direction += -1
+			velocity.y = direction * SPEED
+		elif  Input.is_action_pressed("down"):
+			direction += 1
+			velocity.y = direction * SPEED
+		else:
+			direction = 0
+			velocity = Vector2.ZERO
+		move_and_slide()
+	
+
+func status_check():
 	pass

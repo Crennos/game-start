@@ -13,5 +13,8 @@ func _process(delta: float) -> void:
 	pass
 
 
-func add_stat(stat: String, value: int):
-	print("+", value," ", stat)
+var cory_condition : Array = []
+var lucy_condition : Array = []
+
+func add_stat(char: String, stat: String, value: int):
+	print(char, " gained +", value," ", stat)

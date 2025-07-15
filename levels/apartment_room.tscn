@@ -1,18 +1,18 @@
 [gd_scene load_steps=5 format=4 uid="uid://wqt7b4jo1def"]
 
-[ext_resource type="Texture2D" uid="uid://io4xogf3gnln" path="res://levels/pixil-frame-0 (8).png" id="1_imarx"]
+[ext_resource type="Texture2D" uid="uid://chpjn5d3qs7yj" path="res://levels/newcarp.png" id="1_kevq8"]
 [ext_resource type="Script" path="res://levels/apartment_room.gd" id="1_m6qvv"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i1toh"]
-texture = ExtResource("1_imarx")
-texture_region_size = Vector2i(100, 100)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fu5t6"]
+texture = ExtResource("1_kevq8")
+texture_region_size = Vector2i(100, 97)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_uhbgj"]
 tile_size = Vector2i(100, 97)
-sources/11 = SubResource("TileSetAtlasSource_i1toh")
+sources/0 = SubResource("TileSetAtlasSource_fu5t6")
 
 [node name="Apartment_Room" type="TileMapLayer"]
-tile_map_data = PackedByteArray("AAAAAAAACwAAAAAAAAABAAAACwAAAAAAAAACAAAACwAAAAAAAAACAAEACwAAAAAAAAABAAEACwAAAAAAAAAAAAEACwAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_uhbgj")
 script = ExtResource("1_m6qvv")
