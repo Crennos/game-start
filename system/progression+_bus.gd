@@ -35,7 +35,7 @@ var lucy_condition = {
 
 func add_stat(char: String, stat: String, value: int):
 	print(char, " gained +", value," ", stat)
-	emit_signal("stat_add")
+	emit_signal("stat_add", stat)
 
 func task_progress(increment, delta):
 	pass
