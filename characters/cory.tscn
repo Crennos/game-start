@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwa3wvurx4xgu"]
+[gd_scene load_steps=6 format=3 uid="uid://bwa3wvurx4xgu"]
 
 [ext_resource type="Script" path="res://characters/cory.gd" id="1_mbm5a"]
 [ext_resource type="Texture2D" uid="uid://d44s8fv171sa" path="res://icon.svg" id="2_y4ypd"]
+[ext_resource type="PackedScene" uid="uid://dkicfmv48pur0" path="res://gui/task_progress_bar.tscn" id="3_busmg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u1vji"]
 radius = 32.0
@@ -9,6 +10,7 @@ radius = 32.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_jospa"]
 
 [node name="Cory" type="CharacterBody2D"]
+position = Vector2(600, 344)
 script = ExtResource("1_mbm5a")
 
 [node name="Cory_Sprite" type="Sprite2D" parent="."]
@@ -21,3 +23,10 @@ shape = SubResource("CircleShape2D_u1vji")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Action_Area"]
 shape = SubResource("CircleShape2D_jospa")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Task_Progress_Bar" parent="." instance=ExtResource("3_busmg")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

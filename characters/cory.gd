@@ -3,6 +3,16 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 
+
+#Status
+@export var work_load : float = 0.0
+@export var brain_eff : int = 0
+@export var break_eff : int = 0
+@export var prob_solv_eff : int = 0
+
+@export var stress : int = 0
+@export var strain : int = 0
+
 #Positive Traits
 @export var patience : int = 0
 @export var perserverance : int = 0
@@ -23,10 +33,16 @@ const SPEED = 300.0
 @export var hope : int = 0 #Counters Depression
 
 
+const work_time : float = 100.0
+const work_mod : float = 10.0
+const progress : float = 1.0
+
+func _ready() -> void:
+	progress_check("Hi")
+
 func _physics_process(delta: float) -> void:
 	detect_input(delta, true)
 	
-
 
 func detect_input(delta, process: bool):
 	var direction = 0
@@ -52,3 +68,40 @@ func detect_input(delta, process: bool):
 
 func status_check():
 	pass
+
+func progress_check(task: String):
+	var brainstorm = "Brainstorming"
+	var work = "Working"
+	var problem_solve = "Problem Solving"
+	var stress_mod : int = 0
+	
+	if stress != 0:
+		stress_mod += stress - perserverance
+		
+	var work_pressure = motivation - (stress_mod)
+	var work_limit = work_time + (work_pressure * 10)
+	
+	print("Work Limit: ", work_limit)
+#	task_progress += progress
+	
+	if task == brainstorm:
+		pass
+	
+	if task == work:
+		pass
+		
+	
+	if task == problem_solve:
+		pass
+		
+	
+
+
+#func task_progress():
+#	pass
+
+
+
+
+func _on_timer_timeout() -> void:
+	print("Task Complete")

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://ck4qxrb4ucmxf"
+path="res://.godot/imported/letting go.dialogue-c12d39af03356d8235910fa3b8cff828.tres"
+
+[deps]
+
+source_file="res://dialogue/letting go.dialogue"
+dest_files=["res://.godot/imported/letting go.dialogue-c12d39af03356d8235910fa3b8cff828.tres"]
+
+[params]
+
+defaults=true

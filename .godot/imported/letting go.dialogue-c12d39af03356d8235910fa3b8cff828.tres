@@ -1,0 +1,539 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_cu5u1"]
+
+[resource]
+script = ExtResource("1_cu5u1")
+using_states = PackedStringArray()
+titles = {
+"lucy1": "35",
+"lucy2": "51",
+"lucy3": "54",
+"lucy4": "57",
+"start": "3"
+}
+character_names = PackedStringArray("Lucy", "Cory")
+first_title = "3"
+lines = {
+"1": {
+"id": "1",
+"next_id": "3",
+"text": "start",
+"type": &"title"
+},
+"10": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "10",
+"next_id": "11",
+"notes": "",
+"parent_id": "7",
+"tags": PackedStringArray(),
+"text": "I've been trying but everytime I try to learn something new or try something different I wind up getting stuck in an endless loop of 'what if's that just ends up paralyzing me and making me feel miserable...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I've been trying but everytime I try to learn something new or try something different I wind up getting stuck in an endless loop of 'what if's that just ends up paralyzing me and making me feel miserable...",
+"type": &"dialogue"
+},
+"11": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "11",
+"next_id": "12",
+"notes": "",
+"parent_id": "7",
+"tags": PackedStringArray(),
+"text": "I know it's something I wanted to do and I know this anxiety I have is something I need to deal with but right now it just feels like too much to handle on top of... well everything else...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I know it's something I wanted to do and I know this anxiety I have is something I need to deal with but right now it just feels like too much to handle on top of... well everything else...",
+"type": &"dialogue"
+},
+"12": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "12",
+"next_id": "13",
+"notes": "",
+"parent_id": "7",
+"tags": PackedStringArray(),
+"text": "And worst is even thinking about giving it up is making me think about all the what if's of telling my friends about me giving up on it too and just makes it all feel worse.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "And worst is even thinking about giving it up is making me think about all the what if's of telling my friends about me giving up on it too and just makes it all feel worse.",
+"type": &"dialogue"
+},
+"13": {
+"id": "13",
+"is_snippet": false,
+"next_id": "35",
+"parent_id": "7",
+"type": &"goto"
+},
+"15": {
+"condition": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"type": &"dictionary_reference",
+"value": Array[Dictionary]([{
+"type": "string",
+"value": "Frailty"
+}]),
+"variable": "cory_condition"
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "number",
+"value": 10
+}])
+},
+"id": "15",
+"next_conditional_id": "21",
+"next_id": "16",
+"next_id_after": "21",
+"type": &"condition"
+},
+"16": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "16",
+"next_id": "17",
+"notes": "",
+"parent_id": "15",
+"tags": PackedStringArray(),
+"text": "Hey... look at me. What's wrong sweetie?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Hey... look at me. What's wrong sweetie?",
+"type": &"dialogue"
+},
+"17": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "17",
+"next_id": "19",
+"notes": "",
+"parent_id": "15",
+"tags": PackedStringArray(),
+"text": "",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "",
+"type": &"dialogue"
+},
+"19": {
+"id": "19",
+"is_snippet": false,
+"next_id": "51",
+"parent_id": "15",
+"type": &"goto"
+},
+"21": {
+"condition": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"type": &"dictionary_reference",
+"value": Array[Dictionary]([{
+"type": "string",
+"value": "Lethargy"
+}]),
+"variable": "cory_condition"
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "number",
+"value": 10
+}])
+},
+"id": "21",
+"next_conditional_id": "27",
+"next_id": "22",
+"next_id_after": "27",
+"type": &"condition"
+},
+"22": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "22",
+"next_id": "23",
+"notes": "",
+"parent_id": "21",
+"tags": PackedStringArray(),
+"text": "You look tired... have you slept at all?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You look tired... have you slept at all?",
+"type": &"dialogue"
+},
+"23": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "23",
+"next_id": "25",
+"notes": "",
+"parent_id": "21",
+"tags": PackedStringArray(),
+"text": "",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "",
+"type": &"dialogue"
+},
+"25": {
+"id": "25",
+"is_snippet": false,
+"next_id": "54",
+"parent_id": "21",
+"type": &"goto"
+},
+"27": {
+"condition": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"type": &"dictionary_reference",
+"value": Array[Dictionary]([{
+"type": "string",
+"value": "Depression"
+}]),
+"variable": "cory_condition"
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "number",
+"value": 10
+}])
+},
+"id": "27",
+"next_conditional_id": "34",
+"next_id": "28",
+"next_id_after": "34",
+"type": &"condition"
+},
+"28": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "28",
+"next_id": "29",
+"notes": "",
+"parent_id": "27",
+"tags": PackedStringArray(),
+"text": "Have you been crying...?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Have you been crying...?",
+"type": &"dialogue"
+},
+"29": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "29",
+"next_id": "31",
+"notes": "",
+"parent_id": "27",
+"tags": PackedStringArray(),
+"text": "",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "",
+"type": &"dialogue"
+},
+"3": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "3",
+"next_id": "4",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Hey baby!",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Hey baby!",
+"type": &"dialogue"
+},
+"31": {
+"id": "31",
+"is_snippet": false,
+"next_id": "57",
+"parent_id": "27",
+"type": &"goto"
+},
+"34": {
+"id": "34",
+"next_id": "35",
+"text": "lucy1",
+"type": &"title"
+},
+"35": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "35",
+"next_id": "36",
+"next_id_after": "51",
+"notes": "",
+"responses": PackedStringArray("35", "39"),
+"tags": PackedStringArray(),
+"text": "(Lucy) Shhh...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "(Lucy) Shhh...",
+"type": &"response"
+},
+"36": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "36",
+"next_id": "37",
+"notes": "",
+"parent_id": "35",
+"tags": PackedStringArray(),
+"text": "Shhh... it's ok baby.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Shhh... it's ok baby.",
+"type": &"dialogue"
+},
+"37": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "37",
+"next_id": "51",
+"notes": "",
+"parent_id": "35",
+"tags": PackedStringArray(),
+"text": "No one is judging you.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "No one is judging you.",
+"type": &"dialogue"
+},
+"39": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "39",
+"next_id": "40",
+"next_id_after": "51",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "(Lucy) There's nothing wrong with letting go",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "(Lucy) There's nothing wrong with letting go",
+"type": &"response"
+},
+"4": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "4",
+"next_id": "5",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "...",
+"type": &"dialogue"
+},
+"40": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "40",
+"next_id": "41",
+"notes": "",
+"parent_id": "39",
+"tags": PackedStringArray(),
+"text": "There's nothing wrong with letting go. None of your friends are going to think any less of you for trying to do something you love or discovering that it's not all you hoped it would be.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "There's nothing wrong with letting go. None of your friends are going to think any less of you for trying to do something you love or discovering that it's not all you hoped it would be.",
+"type": &"dialogue"
+},
+"41": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "41",
+"next_id": "42",
+"notes": "",
+"parent_id": "39",
+"tags": PackedStringArray(),
+"text": "You're putting too much pressure on yourself to be perfect and no one expects you to be. You were jumping into something that none of us have ever even thought about try and you actually did it.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You're putting too much pressure on yourself to be perfect and no one expects you to be. You were jumping into something that none of us have ever even thought about try and you actually did it.",
+"type": &"dialogue"
+},
+"42": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "42",
+"next_id": "51",
+"notes": "",
+"parent_id": "39",
+"tags": PackedStringArray(),
+"text": "You did it and you gave it your all and that's more than a lot of us can say. But it's ok if it's not what you want and if it's just going to make you a nervous wreck then it's not worth your mental health.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You did it and you gave it your all and that's more than a lot of us can say. But it's ok if it's not what you want and if it's just going to make you a nervous wreck then it's not worth your mental health.",
+"type": &"dialogue"
+},
+"48": {
+"id": "48",
+"next_id": "51",
+"text": "lucy2",
+"type": &"title"
+},
+"5": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "5",
+"next_id": "7",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "What's wrong...?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "What's wrong...?",
+"type": &"dialogue"
+},
+"51": {
+"id": "51",
+"next_id": "54",
+"text": "lucy3",
+"type": &"title"
+},
+"54": {
+"id": "54",
+"next_id": "57",
+"text": "lucy4",
+"type": &"title"
+},
+"57": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "57",
+"next_id": "61",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "No matter what you do, no matter what you decide I will always be here for you and I will support and love you no matter what.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "No matter what you do, no matter what you decide I will always be here for you and I will support and love you no matter what.",
+"type": &"dialogue"
+},
+"61": {
+"id": "61",
+"is_snippet": false,
+"next_id": "end",
+"type": &"goto"
+},
+"7": {
+"condition": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"type": &"dictionary_reference",
+"value": Array[Dictionary]([{
+"type": "string",
+"value": "Anxiety"
+}]),
+"variable": "cory_condition"
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "number",
+"value": 10
+}])
+},
+"id": "7",
+"next_conditional_id": "15",
+"next_id": "8",
+"next_id_after": "15",
+"type": &"condition"
+},
+"8": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
+"id": "8",
+"next_id": "9",
+"notes": "",
+"parent_id": "7",
+"tags": PackedStringArray(),
+"text": "You look very agitated... did something happen?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You look very agitated... did something happen?",
+"type": &"dialogue"
+},
+"9": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "9",
+"next_id": "10",
+"notes": "",
+"parent_id": "7",
+"tags": PackedStringArray(),
+"text": "I think I am going to give up on trying to be a developer...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I think I am going to give up on trying to be a developer...",
+"type": &"dialogue"
+}
+}
+raw_text = "~ start
+
+Lucy: Hey baby!
+Lucy: ...
+Lucy: What's wrong...?
+
+if ProgressionBus.cory_condition[\"Anxiety\"] == 10
+	Lucy: You look very agitated... did something happen?
+	Cory: I think I am going to give up on trying to be a developer...
+	Cory: I've been trying but everytime I try to learn something new or try something different I wind up getting stuck in an endless loop of 'what if's that just ends up paralyzing me and making me feel miserable...
+	Cory: I know it's something I wanted to do and I know this anxiety I have is something I need to deal with but right now it just feels like too much to handle on top of... well everything else...
+	Cory: And worst is even thinking about giving it up is making me think about all the what if's of telling my friends about me giving up on it too and just makes it all feel worse.
+	=> lucy1
+
+if ProgressionBus.cory_condition[\"Frailty\"] == 10
+	Lucy: Hey... look at me. What's wrong sweetie?
+	Cory: 
+	
+	=> lucy2
+
+if ProgressionBus.cory_condition[\"Lethargy\"] == 10
+	Lucy: You look tired... have you slept at all?
+	Cory: 
+	
+	=> lucy3
+
+if ProgressionBus.cory_condition[\"Depression\"] == 10
+	Lucy: Have you been crying...?
+	Cory: 
+	
+	=> lucy4
+
+
+~ lucy1
+- (Lucy) Shhh...
+	Lucy: Shhh... it's ok baby.
+	Lucy: No one is judging you. 
+
+- (Lucy) There's nothing wrong with letting go
+	Lucy: There's nothing wrong with letting go. None of your friends are going to think any less of you for trying to do something you love or discovering that it's not all you hoped it would be.
+	Lucy: You're putting too much pressure on yourself to be perfect and no one expects you to be. You were jumping into something that none of us have ever even thought about try and you actually did it.
+	Lucy: You did it and you gave it your all and that's more than a lot of us can say. But it's ok if it's not what you want and if it's just going to make you a nervous wreck then it's not worth your mental health.
+	
+	
+
+
+
+~ lucy2
+
+
+~ lucy3
+
+
+~ lucy4
+
+
+Lucy: No matter what you do, no matter what you decide I will always be here for you and I will support and love you no matter what. 
+
+
+
+=> END"
+metadata/dialogue_manager_version = "2.45.0"

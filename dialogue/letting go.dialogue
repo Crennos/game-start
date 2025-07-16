@@ -1,0 +1,61 @@
+~ start
+
+Lucy: Hey baby!
+Lucy: ...
+Lucy: What's wrong...?
+
+if ProgressionBus.cory_condition["Anxiety"] == 10
+	Lucy: You look very agitated... did something happen?
+	Cory: I think I am going to give up on trying to be a developer...
+	Cory: I've been trying but everytime I try to learn something new or try something different I wind up getting stuck in an endless loop of 'what if's that just ends up paralyzing me and making me feel miserable...
+	Cory: I know it's something I wanted to do and I know this anxiety I have is something I need to deal with but right now it just feels like too much to handle on top of... well everything else...
+	Cory: And worst is even thinking about giving it up is making me think about all the what if's of telling my friends about me giving up on it too and just makes it all feel worse.
+	=> lucy1
+
+if ProgressionBus.cory_condition["Frailty"] == 10
+	Lucy: Hey... look at me. What's wrong sweetie?
+	Cory: 
+	
+	=> lucy2
+
+if ProgressionBus.cory_condition["Lethargy"] == 10
+	Lucy: You look tired... have you slept at all?
+	Cory: 
+	
+	=> lucy3
+
+if ProgressionBus.cory_condition["Depression"] == 10
+	Lucy: Have you been crying...?
+	Cory: 
+	
+	=> lucy4
+
+
+~ lucy1
+- (Lucy) Shhh...
+	Lucy: Shhh... it's ok baby.
+	Lucy: No one is judging you. 
+
+- (Lucy) There's nothing wrong with letting go
+	Lucy: There's nothing wrong with letting go. None of your friends are going to think any less of you for trying to do something you love or discovering that it's not all you hoped it would be.
+	Lucy: You're putting too much pressure on yourself to be perfect and no one expects you to be. You were jumping into something that none of us have ever even thought about try and you actually did it.
+	Lucy: You did it and you gave it your all and that's more than a lot of us can say. But it's ok if it's not what you want and if it's just going to make you a nervous wreck then it's not worth your mental health.
+	
+	
+
+
+
+~ lucy2
+
+
+~ lucy3
+
+
+~ lucy4
+
+
+Lucy: No matter what you do, no matter what you decide I will always be here for you and I will support and love you no matter what. 
+
+
+
+=> END
