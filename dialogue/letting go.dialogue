@@ -4,6 +4,15 @@ Lucy: Hey baby!
 Lucy: ...
 Lucy: What's wrong...?
 
+- (Cory) I need to talk to you...
+	Cory: I need to talk to you...
+
+- (Cory) I just had a rough day...
+	Cory: I just had a rough day... I'm not ready to talk about it yet...
+	=> alone
+
+~ rewind
+
 if ProgressionBus.cory_condition["Anxiety"] == 10
 	Lucy: You look very agitated... did something happen?
 	Cory: I think I am going to give up on trying to be a developer...
@@ -14,7 +23,9 @@ if ProgressionBus.cory_condition["Anxiety"] == 10
 
 if ProgressionBus.cory_condition["Frailty"] == 10
 	Lucy: Hey... look at me. What's wrong sweetie?
-	Cory: 
+	Cory: I just... don't think I can do it baby... I don't think I've got what it takes to be a developer. I feel like I need every little thing to be spelled out for me like a child for me to understand it.
+	Cory: And if it isn't then I go into a tailspin of confusion and insecurity and it just makes me feel terrible about myself.
+	Cory: I feel like I'm learning things so slowly and there's so much to do that I'm just setting myself up to fail and hurting myself the whole way through by exposing how inept I really am... and I just feel stupid even trying...
 	
 	=> lucy2
 
@@ -33,19 +44,30 @@ if ProgressionBus.cory_condition["Depression"] == 10
 
 ~ lucy1
 - (Lucy) Shhh...
-	Lucy: Shhh... it's ok baby.
-	Lucy: No one is judging you. 
+	Lucy: Shhh... it's ok baby. [wait=0.5] No one is judging you. 
+	Lucy: They all want you to be happy. If this makes you happy then you should keep doing it and maybe just take a break but nobody wants you to force yourself to do something because you said you were going to.
+	Lucy: You're not obligated to keep going if it's just going to make you unhappy and feel bad. No hobby or career is worth that and all that matters is what is best for you. If it means dropping this then drop it but don't feel like you have to hold onto it for anyone else.
+	Cory: You're right... it's not doing me any good to put all this pressure on myself to do this. It's just hard because I really wanted to do more with this...
+	Lucy: I know baby but you did wonderful, you did a lot more than I could and hearing you talking about your scrit's I've never been more proud of you and how far you've come.
+	Lucy: And if you need to quit to do what's best for you I'll still be proud of you too for not doing what's best for you.
+	Cory: Thank you baby...
+	
+	=> ultimatum
 
 - (Lucy) There's nothing wrong with letting go
 	Lucy: There's nothing wrong with letting go. None of your friends are going to think any less of you for trying to do something you love or discovering that it's not all you hoped it would be.
 	Lucy: You're putting too much pressure on yourself to be perfect and no one expects you to be. You were jumping into something that none of us have ever even thought about try and you actually did it.
 	Lucy: You did it and you gave it your all and that's more than a lot of us can say. But it's ok if it's not what you want and if it's just going to make you a nervous wreck then it's not worth your mental health.
+	Cory: I tried really hard... I 
 	
 	
+	=> ultimatum
 
 
 
 ~ lucy2
+- (Lucy)
+
 
 
 ~ lucy3
@@ -54,8 +76,65 @@ if ProgressionBus.cory_condition["Depression"] == 10
 ~ lucy4
 
 
+
+~ alone
+
+Lucy: Are you sure...?
+Lucy: You know you can always talk to me if you need to...
+
+- (Cory) I know...
+	Cory: I know... I just need to think and be alone for a little bit if that's ok.
+	Lucy: Of course baby, I can go to my mother's house and visit her if you want the apartment to yourself for a while.
+	Cory: Alright...
+	Lucy: If you need me just give me a call and I'll be right over ok? 
+	Cory: I will...
+	Lucy: I love you... it'll be alright.
+	Cory: I love you too baby...
+
+- (Cory) Well...
+	Cory: Well... maybe I should talk about it....
+	=> rewind
+
+
+~ lucyend
+
+~ ultimatum
+
 Lucy: No matter what you do, no matter what you decide I will always be here for you and I will support and love you no matter what. 
 
+- (Cory) Maybe I'll just give it a break
+	Cory: Maybe I'll just give it a break for a little while.
+
+- (Cory) It's not worth it
+	Cory: It's noth worth it. I really did want to give it a shot and see what I could do but I just feel like it's making me miserable and I don't want that.
+	Cory: Maybe one day I can come back to it or maybe I'll find something else but right now it's best that I put it away.
+
+- (Cory) I think I'll try again
+	Cory: I think I'll try again. Well maybe tomorrow. I feel better talking about it, I think it's just all the emotions.
+
+
+
+~ letting_go
+
+Narrator: This is the part where other games would flash a text across the screen declaring a 'Game Over', 'You Died' or some other moniker to represent one's failure.
+Narrator: In this game, however, there will be no such moniker. 
+Narrator: In this life too often have we come to associate failure with something negative, something bad, something undesirable.
+Narrator: This plight is so prevalent and, in some, so powerful that it can prove paralyzing, terrifying even and so many of us consciously avoid the risk of failure. 
+
+Narrator: Sometimes you can win through perseverance.
+Narrator: Motivation.
+Narrator: Patience.
+Narrator: Focus.
+Narrator: Creativity.
+Narrator: We all know the traits that can lead one to success. Yet sometimes even who possess these in excess fall short, no matter how often they try.
+Narrator: Or the cost of their success is anxiety, lethargy, frailty, depression and other such prices.
+Narrator: Sometimes it is not best to succeed. Just as we have cursed failure unjustly so too have we glorified success undeservedly as well.
+Narrator: An excess of success can prove every bit as cancerous as a sleuth of failures under the right circumstances.
+
+Narrator: Thus it is with this in mind I posit the idea that just as success should not be so readily uplifted as a guiding ideal nor should failure should put under as a shameful indictment.
+
+Narrator: Life is not so simple a thing. Sometimes you may succeed through your strengths, luck or with the support of others.
+Narrator: But sometimes success is failing and realizing in failure that the only way to succeed in the game is not to play... and simply learn to walk away.
 
 
 => END

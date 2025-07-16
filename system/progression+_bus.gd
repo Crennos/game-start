@@ -1,7 +1,9 @@
 extends Node
 
 signal call
-signal task_move
+signal added_trask_progress
+signal stat_add
+signal stat_sub
 
 var ten : int = 10
 
@@ -19,14 +21,21 @@ func _process(delta: float) -> void:
 
 var cory_condition = {
 	"Anxiety": 10,
-	"Frailty": 10,
-	"Lethargy": 10,
-	"Depression": 10
+	"Frailty": 0,
+	"Lethargy": 0,
+	"Depression": 0
 }
-var lucy_condition = {}
+
+var lucy_condition = {
+	"Anxiety": 10,
+	"Frailty": 0,
+	"Lethargy": 0,
+	"Depression": 0
+}
 
 func add_stat(char: String, stat: String, value: int):
 	print(char, " gained +", value," ", stat)
+	emit_signal("stat_add")
 
 func task_progress(increment, delta):
 	pass

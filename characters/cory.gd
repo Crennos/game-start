@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+@onready var actionable_area : Area2D = $Action_Area
 
 
 #Status
@@ -14,31 +14,33 @@ const SPEED = 300.0
 @export var strain : int = 0
 
 #Positive Traits
-@export var patience : int = 0
-@export var perserverance : int = 0
-@export var motivation : int = 0
-@export var creativity : int = 0
-@export var focus : int = 0
+var patience : int = 0
+var perserverance : int = 0
+var motivation : int = 0
+var creativity : int = 0
+var focus : int = 0
 
 #Negative Traits
-@export var lethargy : int = 0 #Progress slows, affects motivation and creativity
-@export var frailty : int = 0 #Tires out faster, affects perservance and patience
-@export var anxiety : int = 0 #Distracts, affects focus
-@export var depression : int = 0 #Limits work time, affects all
+var lethargy : int = 0 #Progress slows, affects motivation and creativity
+var frailty : int = 0 #Tires out faster, affects perservance and patience
+var anxiety : int = 0 #Distracts, affects focus
+var depression : int = 0 #Limits work time, affects all
 
 #Resistances
-@export var insight : int = 0 #Counters Lethargy
-@export var heart : int = 0 #Counters Frailty
-@export var serenity : int = 0 #Counters Anxiety
-@export var hope : int = 0 #Counters Depression
+var insight : int = 0 #Counters Lethargy
+var heart : int = 0 #Counters Frailty
+var serenity : int = 0 #Counters Anxiety
+var hope : int = 0 #Counters Depression
 
-
+const SPEED = 300.0
 const work_time : float = 100.0
 const work_mod : float = 10.0
 const progress : float = 1.0
 
 func _ready() -> void:
-	progress_check("Hi")
+	work_time_check()
+	ProgressionBus.stat_add.connect(trait_increase)
+	
 
 func _physics_process(delta: float) -> void:
 	detect_input(delta, true)
@@ -66,13 +68,15 @@ func detect_input(delta, process: bool):
 		move_and_slide()
 	
 
+	if Input.is_action_just_pressed("bubble_pop"):
+		#DialogueManager.show_dialogue_balloon(actionable_area.dialogue_resource, actionable_area.dialogue)
+		ProgressionBus.emit_signal("added_trask_progress", "Brainstorm", 10)
+
+
 func status_check():
 	pass
 
-func progress_check(task: String):
-	var brainstorm = "Brainstorming"
-	var work = "Working"
-	var problem_solve = "Problem Solving"
+func work_time_check():
 	var stress_mod : int = 0
 	
 	if stress != 0:
@@ -83,19 +87,24 @@ func progress_check(task: String):
 	
 	print("Work Limit: ", work_limit)
 #	task_progress += progress
-	
-	if task == brainstorm:
-		pass
-	
-	if task == work:
-		pass
-		
-	
-	if task == problem_solve:
-		pass
-		
+
+func brain_efficiency_check():
+	pass
 	
 
+func problem_solve_efficiency_check():
+	pass
+	
+
+func break_time_check():
+	pass
+	
+
+
+
+func trait_increase():
+	print("Trait Increased")
+	
 
 #func task_progress():
 #	pass
@@ -104,4 +113,5 @@ func progress_check(task: String):
 
 
 func _on_timer_timeout() -> void:
-	print("Task Complete")
+	pass
+#	print("Task Complete")

@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwa3wvurx4xgu"]
+[gd_scene load_steps=8 format=3 uid="uid://bwa3wvurx4xgu"]
 
 [ext_resource type="Script" path="res://characters/cory.gd" id="1_mbm5a"]
 [ext_resource type="Texture2D" uid="uid://d44s8fv171sa" path="res://icon.svg" id="2_y4ypd"]
 [ext_resource type="PackedScene" uid="uid://dkicfmv48pur0" path="res://gui/task_progress_bar.tscn" id="3_busmg"]
+[ext_resource type="Script" path="res://characters/action_area.gd" id="3_xhjnl"]
+[ext_resource type="Resource" uid="uid://bhq07g315e4s5" path="res://dialogue/greeting.dialogue" id="4_jb8h4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u1vji"]
 radius = 32.0
@@ -20,6 +22,9 @@ texture = ExtResource("2_y4ypd")
 shape = SubResource("CircleShape2D_u1vji")
 
 [node name="Action_Area" type="Area2D" parent="."]
+script = ExtResource("3_xhjnl")
+dialogue_resource = ExtResource("4_jb8h4")
+dialogue = "start"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Action_Area"]
 shape = SubResource("CircleShape2D_jospa")
