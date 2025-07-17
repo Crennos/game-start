@@ -1,8 +1,8 @@
 res://characters/cory.tscn
 res://characters/cory.gd
-res://gui/task_progress_bar.gd
 res://system/main.tscn
 res://characters/lucy.tscn
 res://system/progression+_bus.tscn
 res://gui/task_progress_bar.tscn
 res://system/progression+_bus.gd
+res://gui/task_progress_bar.gd

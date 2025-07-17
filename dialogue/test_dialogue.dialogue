@@ -1,0 +1,10 @@
+~ start
+
+Printer: Test Status Started
+do ProgressionBus.emit_signal("call", "Cory", "Perseverance", 1)
+do ProgressionBus.emit_signal("call2", "Cory", "Anxiety", 1)
+do ProgressionBus.emit_signal("call", "Lucy", "Perseverance", 1)
+do ProgressionBus.emit_signal("call2", "Lucy", "Anxiety", 1)
+Printer: Test Status Complete
+
+=> END

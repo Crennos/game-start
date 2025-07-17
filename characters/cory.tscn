@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d44s8fv171sa" path="res://icon.svg" id="2_y4ypd"]
 [ext_resource type="PackedScene" uid="uid://dkicfmv48pur0" path="res://gui/task_progress_bar.tscn" id="3_busmg"]
 [ext_resource type="Script" path="res://characters/action_area.gd" id="3_xhjnl"]
-[ext_resource type="Resource" uid="uid://bhq07g315e4s5" path="res://dialogue/greeting.dialogue" id="4_jb8h4"]
+[ext_resource type="Resource" uid="uid://dap3nlv4i4i6h" path="res://dialogue/test_dialogue.dialogue" id="4_2mwvr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u1vji"]
 radius = 32.0
@@ -14,6 +14,7 @@ radius = 32.0
 [node name="Cory" type="CharacterBody2D"]
 position = Vector2(600, 344)
 script = ExtResource("1_mbm5a")
+is_brainstorming = true
 
 [node name="Cory_Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_y4ypd")
@@ -23,15 +24,19 @@ shape = SubResource("CircleShape2D_u1vji")
 
 [node name="Action_Area" type="Area2D" parent="."]
 script = ExtResource("3_xhjnl")
-dialogue_resource = ExtResource("4_jb8h4")
+dialogue_resource = ExtResource("4_2mwvr")
 dialogue = "start"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Action_Area"]
 shape = SubResource("CircleShape2D_jospa")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Task Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="Task_Progress_Bar" parent="." instance=ExtResource("3_busmg")]
+offset_left = -64.0
+offset_top = -112.0
+offset_right = -34.0
+offset_bottom = -82.0
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Task Timer" to="." method="_on_task_timer_timeout"]
