@@ -1,6 +1,8 @@
 extends Area2D
 
 
+@export var actionable_present : bool
+
 @export var dialogue_resource : DialogueResource
 @export var day_one : DialogueResource
 @export var dialogue = "greeting"

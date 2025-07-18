@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqqpboiq8uasy"]
+
+[ext_resource type="Script" path="res://interact_label.gd" id="1_xt0ml"]
+
+[node name="Interact Label" type="Label"]
+visible = false
+modulate = Color(0.0509804, 0.054902, 0.870588, 1)
+offset_left = -48.0
+offset_top = -16.0
+offset_right = 46.0
+offset_bottom = 7.0
+text = "F to Interact"
+script = ExtResource("1_xt0ml")

@@ -1,11 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://wqt7b4jo1def"]
+[gd_scene load_steps=9 format=3 uid="uid://wqt7b4jo1def"]
 
 [ext_resource type="Script" path="res://levels/apartment_room.gd" id="1_m6qvv"]
 [ext_resource type="Texture2D" uid="uid://3ue7s3sxgy1l" path="res://levels/final_carp.png" id="2_a28wb"]
 [ext_resource type="Texture2D" uid="uid://snw2qivtpk8n" path="res://levels/final_wall_final.png" id="2_psn7i"]
-[ext_resource type="Texture2D" uid="uid://oyfss6gqcorx" path="res://levels/Entertainment Center Full.png" id="4_252ce"]
-[ext_resource type="Script" path="res://levels/cory_work_area.gd" id="5_p6lt7"]
-[ext_resource type="Script" path="res://levels/lucy_work_area.gd" id="6_4q4qc"]
+[ext_resource type="PackedScene" uid="uid://b0lrox2l5pft" path="res://levels/objects/desk_station.tscn" id="4_88qw3"]
 [ext_resource type="PackedScene" uid="uid://bwa3wvurx4xgu" path="res://characters/cory.tscn" id="7_agkmo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1pba"]
@@ -22,15 +20,6 @@ texture_region_size = Vector2i(100, 97)
 tile_size = Vector2i(100, 97)
 sources/6 = SubResource("TileSetAtlasSource_c1pba")
 sources/7 = SubResource("TileSetAtlasSource_hqaxi")
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_yogf4"]
-radius = 29.1548
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_os0x8"]
-radius = 25.318
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vy4d"]
-size = Vector2(72, 10)
 
 [node name="Apartment_Room" type="TileMapLayer"]
 z_index = -1
@@ -60,45 +49,12 @@ polygon = PackedVector2Array(-153, 122, 63, 122, 63, 130, -153, 130)
 position = Vector2(145, -26)
 polygon = PackedVector2Array(-49, -6, -145, -6, -145, -30, 55, -30, 55, -6)
 
-[node name="Desk_Station" type="Sprite2D" parent="."]
-z_index = 1
+[node name="Desk_Station" parent="." instance=ExtResource("4_88qw3")]
 position = Vector2(145, -26)
-texture = ExtResource("4_252ce")
-
-[node name="Cory_Work_Area" type="Area2D" parent="Desk_Station"]
-position = Vector2(-33, 2)
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("5_p6lt7")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Desk_Station/Cory_Work_Area"]
-shape = SubResource("CircleShape2D_yogf4")
-
-[node name="Lucy_Work_Area" type="Area2D" parent="Desk_Station"]
-position = Vector2(22, 14)
-collision_layer = 4
-collision_mask = 2
-script = ExtResource("6_4q4qc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Desk_Station/Lucy_Work_Area"]
-shape = SubResource("CircleShape2D_os0x8")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Desk_Station"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Desk_Station/StaticBody2D"]
-z_index = -1
-y_sort_enabled = true
-position = Vector2(0, -5)
-shape = SubResource("RectangleShape2D_0vy4d")
 
 [node name="Cory" parent="." instance=ExtResource("7_agkmo")]
 position = Vector2(136, 72)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(100, 0)
+position = Vector2(100, 1)
 zoom = Vector2(6.4, 4.7)
-
-[connection signal="area_entered" from="Desk_Station/Cory_Work_Area" to="." method="_on_cory_work_area_area_entered"]
-[connection signal="area_exited" from="Desk_Station/Cory_Work_Area" to="." method="_on_cory_work_area_area_exited"]
-[connection signal="area_entered" from="Desk_Station/Lucy_Work_Area" to="." method="_on_lucy_work_area_area_entered"]
-[connection signal="area_exited" from="Desk_Station/Lucy_Work_Area" to="." method="_on_lucy_work_area_area_exited"]

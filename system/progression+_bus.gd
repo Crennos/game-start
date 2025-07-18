@@ -6,12 +6,15 @@ signal added_task_progress
 signal stat_add
 signal stat_sub
 
+signal action_prompt
+signal task_option_update
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	connect("call", add_stat) #add_stat.bind("calm", 1))
 	connect("call2", sub_stat)
+	connect("action_prompt", task_completion_check)
 #	connect()
 	
 
@@ -28,14 +31,16 @@ var cory_condition = {
 	"Depression": 0
 }
 
-var cory_task_tracker = {
+var cory_task_status = {
 	"Task Started" : false,
-	"Task Brainstorming": 0.0,
-	"Task Progress": 0.0,
 	"Taskv Stuck": false,
-	"Task Problem Solve": 0.0,
 	"Task Completed": false,
-	
+}
+
+var cory_task_tracker = {
+	"Task Brainstorming": 1.0,
+	"Task Progress": 2.0,
+	"Task Problem Solve": 4.0
 }
 
 var cory_task_list = {
@@ -80,5 +85,38 @@ func sub_stat(char: String, stat: String, value: int):
 #	print(char, " lost -", value," ", stat)
 	emit_signal("stat_sub", char, stat)
 
-func task_progress(increment, delta):
-	pass
+func task_completion_check(char: String):
+	if char == "Cory":
+		for task in cory_task_list:
+			if cory_task_list[task] == false:
+				task_progress(char)
+				emit_signal("task_option_update", task)
+				return task
+			else:
+				continue
+	
+	elif char == "Lucy":
+		for task in lucy_task_list:
+			if lucy_task_list[task] == false:
+				emit_signal("task_option_update", task)
+				return task
+			else:
+				continue
+	
+
+func task_progress(char: String):
+	var progress_meters : Array = ["Task Brainstorming", "Task Progress", "Task Problem Solve"]
+	var task_mark = 0
+	
+	if char == "Cory":
+		for state in cory_task_status:
+			var progress_check = progress_meters[task_mark]
+			if cory_task_status[state] == false:
+				print("Task Progress: ",cory_task_tracker[progress_check])
+				break
+			else:
+				task_mark += 1
+
+
+#func task_progress(increment, delta):
+#	pass

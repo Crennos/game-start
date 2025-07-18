@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://b0lrox2l5pft"]
+
+[ext_resource type="Texture2D" uid="uid://oyfss6gqcorx" path="res://levels/Entertainment Center Full.png" id="1_8ktt5"]
+[ext_resource type="Script" path="res://levels/objects/desk_station.gd" id="2_ftnum"]
+[ext_resource type="PackedScene" uid="uid://cqqpboiq8uasy" path="res://gui/interact_label.tscn" id="3_vyc78"]
+[ext_resource type="Script" path="res://levels/objects/cory_work_area.gd" id="3_we4ci"]
+[ext_resource type="Script" path="res://levels/objects/lucy_work_area.gd" id="4_rq8sk"]
+[ext_resource type="PackedScene" uid="uid://8k5evo0pemgf" path="res://gui/action_choice_panel.tscn" id="6_6pdfb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f5mxj"]
+radius = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8ocg"]
+size = Vector2(91, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2j8s"]
+size = Vector2(26, 5)
+
+[node name="Desk_Station" type="Sprite2D"]
+texture = ExtResource("1_8ktt5")
+script = ExtResource("2_ftnum")
+
+[node name="Cory_Work_Area" type="Area2D" parent="."]
+position = Vector2(-32, 0)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_we4ci")
+work_id = "Cory"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cory_Work_Area"]
+shape = SubResource("CircleShape2D_f5mxj")
+
+[node name="Lucy_Work_Area" type="Area2D" parent="."]
+position = Vector2(24, 16)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("4_rq8sk")
+work_id = "Lucy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lucy_Work_Area"]
+shape = SubResource("CircleShape2D_f5mxj")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(24, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(-25.5, -13.5)
+shape = SubResource("RectangleShape2D_x8ocg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-3, -4.5)
+shape = SubResource("RectangleShape2D_e2j8s")
+
+[node name="Interact Label" parent="." instance=ExtResource("3_vyc78")]
+offset_top = -48.0
+offset_bottom = -25.0
+
+[node name="Action_Choice_Panel" parent="." instance=ExtResource("6_6pdfb")]
+offset_left = -105.0
+offset_top = -45.0
+offset_right = -65.0
+offset_bottom = -5.0
+
+[connection signal="area_entered" from="Cory_Work_Area" to="." method="_on_cory_work_area_area_entered"]
+[connection signal="area_exited" from="Cory_Work_Area" to="." method="_on_cory_work_area_area_exited"]
+[connection signal="area_entered" from="Lucy_Work_Area" to="." method="_on_lucy_work_area_area_entered"]
+[connection signal="area_exited" from="Lucy_Work_Area" to="." method="_on_lucy_work_area_area_exited"]

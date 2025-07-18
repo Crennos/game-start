@@ -22,7 +22,7 @@ extends CharacterBody2D
 @export var stress : int
 
 
-const SPEED = 100.0
+const SPEED = 60.0
 const work_time : float = 100.0
 const work_mod : float = 10.0
 const progress : float = 1.0
@@ -79,24 +79,32 @@ func detect_input(delta, process: bool):
 		if Input.is_action_pressed("left"):
 			direction += -1
 			velocity.x = direction * SPEED
+			velocity.y = 0
 		elif Input.is_action_pressed("right"):
 			direction += 1
 			velocity.x = direction * SPEED
+			velocity.y = 0
 		elif  Input.is_action_pressed("up"):
 			direction += -1
 			velocity.y = direction * SPEED
+			velocity.x = 0
 		elif  Input.is_action_pressed("down"):
 			direction += 1
 			velocity.y = direction * SPEED
+			velocity.x = 0
 		else:
 			direction = 0
 			velocity = Vector2.ZERO
 		move_and_slide()
 	
+		if actionable_area.actionable_present == true:
+			if Input.is_action_just_pressed("action"):
+				ProgressionBus.emit_signal("action_prompt", "Cory")
+				print("Task Triggered")
 
 	if Input.is_action_just_pressed("bubble_pop"):
-#		DialogueManager.show_dialogue_balloon(actionable_area.dialogue_resource, actionable_area.dialogue)
-		pass
+		DialogueManager.show_dialogue_balloon(actionable_area.dialogue_resource, actionable_area.dialogue)
+		
 
 #Handles Updating True values of Traits with respective mods
 func status_check(): #Condense this into 2 for loops please and thank you, possibly 3
@@ -273,3 +281,17 @@ func _on_task_timer_timeout() -> void:
 #Handles Break Time Recuperation
 func _on_break_timer_timeout() -> void:
 	break_time_check()
+
+
+func _on_action_area_area_entered(area: Area2D) -> void:
+	if area.work_id == "Cory":
+		actionable_area.actionable_present = true
+	else:
+		pass
+
+
+func _on_action_area_area_exited(area: Area2D) -> void:
+	if area.work_id == "Cory":
+		actionable_area.actionable_present = false
+	else:
+		pass

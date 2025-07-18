@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://8k5evo0pemgf"]
+
+[ext_resource type="Script" path="res://gui/action_choice_panel.gd" id="1_1740w"]
+[ext_resource type="Script" path="res://button.gd" id="1_rql1q"]
+[ext_resource type="Script" path="res://button_2.gd" id="2_3bmut"]
+
+[node name="Action_Choice_Panel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1740w")
+
+[node name="Action_List" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.1, 0.1)
+
+[node name="Task_Button" type="Button" parent="Action_List"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+script = ExtResource("1_rql1q")
+
+[node name="Break_Button" type="Button" parent="Action_List"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Break"
+script = ExtResource("2_3bmut")
+
+[node name="Leave_Button" type="Button" parent="Action_List"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Leave"
