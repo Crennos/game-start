@@ -9,7 +9,7 @@ extends TextureProgressBar
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ProgressionBus.connect("added_trask_progress", task_bar_raise)
+	ProgressionBus.connect("added_task_progress", task_bar_raise)
 	
 	 # Replace with function body.
 
@@ -22,5 +22,5 @@ func _process(delta: float) -> void:
 
 func task_bar_raise(task: String, prog: float):
 	task_bar.value += prog
-	print(task, " + ", prog)
+#	print(task, " + ", prog)
 	

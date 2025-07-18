@@ -1,26 +1,33 @@
 extends CharacterBody2D
 
-
+#Node Ref's
 @onready var actionable_area : Area2D = $Action_Area
+@onready var task_timer : Timer = $"Task Timer"
+@onready var break_timer : Timer = $"Break Timer"
 
+#Node Status
+@export var process : bool = true
 
+#Task Check
 @export var is_brainstorming : bool
 @export var is_working : bool
 @export var is_problem_solving : bool
+@export var is_on_break : bool
 
-
+#Work Status
 @export var work_load : float = 0.0
+@export var over_load : float = 0.0
+@export var burnout : int = 0
 @export var break_time : float = 0.0
-
 @export var stress : int
 
 
-
-const SPEED = 300.0
+const SPEED = 100.0
 const work_time : float = 100.0
 const work_mod : float = 10.0
 const progress : float = 1.0
 
+#Unmodified 'naked' traits
 var base_traits = {
 	"Patience" = 0,
 	"Perseverance" = 0,
@@ -38,6 +45,7 @@ var base_traits = {
 	"Strain" = 0
 }
 
+#Modified 'true' trais
 var true_traits = {
 	"True Patience" = 0,
 	"True Perseverance" = 0,
@@ -50,18 +58,20 @@ var true_traits = {
 	"True Strain" = 0
 }
 
+#Handles Connections and initial Checks, Test Function
 func _ready() -> void:
-#	work_time_check()
+	work_time_check()
 	ProgressionBus.stat_add.connect(trait_increase)
 	ProgressionBus.stat_sub.connect(trait_decrease)
 #	base_status_check()
 	status_check()
-	
+#	toggle_activity("Break", break_timer, true)
 
 func _physics_process(delta: float) -> void:
-	detect_input(delta, true)
+	detect_input(delta, process)
 	
 
+#Handles Input Control
 func detect_input(delta, process: bool):
 	var direction = 0
 	
@@ -85,34 +95,10 @@ func detect_input(delta, process: bool):
 	
 
 	if Input.is_action_just_pressed("bubble_pop"):
-		DialogueManager.show_dialogue_balloon(actionable_area.dialogue_resource, actionable_area.dialogue)
-#		status_check()
-#		ProgressionBus.emit_signal("added_trask_progress", "Brainstorm", 10)
+#		DialogueManager.show_dialogue_balloon(actionable_area.dialogue_resource, actionable_area.dialogue)
+		pass
 
-
-#func base_status_check():
-#	var character_traits : Array = [patience, 
-#	perseverance, 
-#	motivation, 
-#	creativity, 
-#	focus,
-#	lethargy,
-#	frailty,
-#	anxiety,
-#	depression,
-#	insight,
-#	heart,
-#	serenity,
-#	hope
-#	]
-#	var array_key = -1
-#	
-#	for key in base_traits:
-#		array_key += 1
-#		base_traits[key] = character_traits[array_key]
-#		print(base_traits[key])
-	
-
+#Handles Updating True values of Traits with respective mods
 func status_check(): #Condense this into 2 for loops please and thank you, possibly 3
 	var true_lethargy = base_traits["Lethargy"] + base_traits["Depression"]
 	var true_frailty = base_traits["Frailty"] + base_traits["Depression"]
@@ -132,9 +118,8 @@ func status_check(): #Condense this into 2 for loops please and thank you, possi
 	true_traits["True Creativity"] = true_creativity
 	true_traits["True Focus"] = true_focus
 	true_traits["True Strain"] = true_strain
-#	print(true_strain)
-#	print(true_traits["Strain"])
 
+#Handles Brainstorming Tick Tally
 func brain_efficiency_check():
 	var creative_add = base_traits["Creativity"] * 0.1
 	var strain_sub = true_traits["True Strain"] * -0.1
@@ -143,6 +128,7 @@ func brain_efficiency_check():
 #	print("Brainstorm ", brainstorm_progress)
 	return brainstorm_progress
 
+#Handles Problem Solving Tick Tally
 func problem_solve_efficiency_check():
 	var focus_add = base_traits["Focus"] * 0.1
 	var strain_sub = true_traits["True Strain"] * -0.1
@@ -151,6 +137,7 @@ func problem_solve_efficiency_check():
 #	print("Problem Solve ", problem_solve_progress)
 	return problem_solve_progress
 
+#Handles General Task Tick Tally
 func task_efficiency_check():
 	var strain_sub = true_traits["True Strain"] * -0.1
 	var task_efficiency = progress + strain_sub
@@ -158,6 +145,7 @@ func task_efficiency_check():
 	
 	return task_efficiency
 
+#Handles Upper Work Limit
 func work_time_check():
 	var stress_mod : int = 0
 	
@@ -166,13 +154,51 @@ func work_time_check():
 		
 	var work_pressure = base_traits["Motivation"] - (stress_mod)
 	var work_limit = work_time + (work_pressure * 10)
+#	print(work_limit)
+	
+	return work_limit
+
+#Handles Work Load Accumulation
+func work_load_limit(work_limit: float):
+	var strain = base_traits["Strain"]
+	var work_tick = 1.0
+	
+	if work_load < work_limit:
+		work_load += work_tick
+		print("Work Load: ",work_load)
+	
+	elif work_load >= work_limit:
+		over_load += work_tick
+		print("Over Load ",over_load)
+		over_load_check()
 	
 
+#Handles Overload Accumulation and Strain
+func over_load_check():
+	if over_load >= 10:
+		base_traits["Strain"] += 1
+		over_load -= 10
+		burnout += 1
+		print("Strain ", base_traits["Strain"])
+	
+
+#Handles Break reduction of Overload/Work Load
 func break_time_check():
-	pass
+	var patience_mod = base_traits["Patience"] * 0.1
+	var lethargy_mod = true_traits["True Lethargy"] * -0.1
+	var relax_tick = progress + (patience_mod + lethargy_mod)
+	
+	
+	if is_on_break == true:
+		if burnout == 0:
+			work_load -= relax_tick
+			print(work_load)
+		
+		elif burnout != 0:
+			pass
 	
 
-
+#Handles Event Trait Increases
 func trait_increase(char: String, stat: String):
 	if char == "Cory":
 		base_traits[stat] += 1
@@ -184,6 +210,7 @@ func trait_increase(char: String, stat: String):
 		pass
 	
 
+#Handles Event Trait Decreases
 func trait_decrease(char: String, stat: String):
 	if char == "Cory":
 		base_traits[stat] -= 1
@@ -194,20 +221,55 @@ func trait_decrease(char: String, stat: String):
 	else:
 		pass
 
+#Handles Activity Activation
+func toggle_activity(activity: String, timer : Timer, start: bool):
+	if start == true:
+		process = false
+		timer.start()
+		print(timer, " Started")
+	
+	elif start == false:
+		process = true
+		timer.stop()
+	
+	if activity == "Braingstorming":
+		is_brainstorming = start
+		
+	
+	elif activity == "Working":
+		is_working = start
+	
+	elif activity == "Problem Solving":
+		is_problem_solving = start
+	
+	elif activity == "Break":
+		is_on_break = start
+	
+	pass
+	
 
+#Handles Task Bar Progression
 func _on_task_timer_timeout() -> void:
 	var brainstorm_tick = brain_efficiency_check()
 	var problem_solve_tick = problem_solve_efficiency_check()
 	var task_tick = task_efficiency_check()
+	var work_time = work_time_check()
 	
 	if is_brainstorming == true:
-		ProgressionBus.emit_signal("added_trask_progress", "Braistorming Progress", brainstorm_tick)
-		print("Brainstorm Timer Cycle End")
+		ProgressionBus.emit_signal("added_task_progress", "Braistorming Progress", brainstorm_tick)
+		work_load_limit(work_time)
+#		print("Brainstorm Timer Cycle End")
 	
 	elif is_working == true:
-		ProgressionBus.emit_signal("added_trask_progress", "Working Progress", task_tick)
-		print("Task Timer Cycle End")
+		ProgressionBus.emit_signal("added_task_progress", "Working Progress", task_tick)
+		work_load_limit(work_time)
+#		print("Task Timer Cycle End")
 	
 	elif is_problem_solving == true:
-		ProgressionBus.emit_signal("added_trask_progress", "Problem Solving Progress", problem_solve_tick)
-		print("Problem Solve Timer Cycle End")
+		ProgressionBus.emit_signal("added_task_progress", "Problem Solving Progress", problem_solve_tick)
+		work_load_limit(work_time)
+#		print("Problem Solve Timer Cycle End")
+
+#Handles Break Time Recuperation
+func _on_break_timer_timeout() -> void:
+	break_time_check()

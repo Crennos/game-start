@@ -1,42 +1,52 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwa3wvurx4xgu"]
+[gd_scene load_steps=9 format=3 uid="uid://bwa3wvurx4xgu"]
 
 [ext_resource type="Script" path="res://characters/cory.gd" id="1_mbm5a"]
 [ext_resource type="Texture2D" uid="uid://d44s8fv171sa" path="res://icon.svg" id="2_y4ypd"]
 [ext_resource type="PackedScene" uid="uid://dkicfmv48pur0" path="res://gui/task_progress_bar.tscn" id="3_busmg"]
 [ext_resource type="Script" path="res://characters/action_area.gd" id="3_xhjnl"]
 [ext_resource type="Resource" uid="uid://dap3nlv4i4i6h" path="res://dialogue/test_dialogue.dialogue" id="4_2mwvr"]
+[ext_resource type="Resource" uid="uid://rvsnuvii3kc5" path="res://dialogue/day one.dialogue" id="5_combs"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_u1vji"]
-radius = 32.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugfn2"]
+size = Vector2(32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jospa"]
 
 [node name="Cory" type="CharacterBody2D"]
+z_index = 2
 position = Vector2(600, 344)
 script = ExtResource("1_mbm5a")
-is_brainstorming = true
+work_load = 100.0
 
 [node name="Cory_Sprite" type="Sprite2D" parent="."]
+position = Vector2(-4.76837e-06, 9.53674e-06)
+scale = Vector2(0.3125, 0.3125)
 texture = ExtResource("2_y4ypd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_u1vji")
+shape = SubResource("RectangleShape2D_ugfn2")
 
 [node name="Action_Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("3_xhjnl")
 dialogue_resource = ExtResource("4_2mwvr")
+day_one = ExtResource("5_combs")
 dialogue = "start"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Action_Area"]
 shape = SubResource("CircleShape2D_jospa")
 
 [node name="Task Timer" type="Timer" parent="."]
-autostart = true
+
+[node name="Break Timer" type="Timer" parent="."]
 
 [node name="Task_Progress_Bar" parent="." instance=ExtResource("3_busmg")]
-offset_left = -64.0
-offset_top = -112.0
-offset_right = -34.0
-offset_bottom = -82.0
+visible = false
+offset_left = -56.0
+offset_top = -80.0
+offset_right = -26.0
+offset_bottom = -50.0
 
 [connection signal="timeout" from="Task Timer" to="." method="_on_task_timer_timeout"]
+[connection signal="timeout" from="Break Timer" to="." method="_on_break_timer_timeout"]

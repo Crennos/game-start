@@ -1,3 +1,9 @@
+StaticBody2D
+CollisionPolygon2D
+Camera2D
+CollisionShape2D
+Area2D
+Sprite2D
 Timer
 TextureProgressBar
 ProgressBar
@@ -6,10 +12,3 @@ HBoxContainer
 HSeparator
 TileMapLayer
 Button
-OptionButton
-HSlider
-MenuBar
-Label
-VSeparator
-VBoxContainer
-NinePatchRect
