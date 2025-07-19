@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
 #Node Ref's
+@onready var cory : CharacterBody2D = $"."
 @onready var actionable_area : Area2D = $Action_Area
+@onready var task_progress_bar : TextureProgressBar = $Task_Progress_Bar
 @onready var task_timer : Timer = $"Task Timer"
 @onready var break_timer : Timer = $"Break Timer"
 
@@ -63,11 +65,9 @@ func _ready() -> void:
 	work_time_check()
 	ProgressionBus.stat_add.connect(trait_increase)
 	ProgressionBus.stat_sub.connect(trait_decrease)
-#	ProgressionBus.connect("task_initiated")
-#	ProgressionBus.connect("break_initiated")
-#	base_status_check()
+	ProgressionBus.connect("action_initiated", toggle_activity)
+	ProgressionBus.connect("task_completed", toggle_activity)
 	status_check()
-#	toggle_activity("Break", break_timer, true)
 
 func _physics_process(delta: float) -> void:
 	detect_input(delta, process)
@@ -202,7 +202,7 @@ func break_time_check():
 	if is_on_break == true:
 		if burnout == 0:
 			work_load -= relax_tick
-			print(work_load)
+#			print(work_load)
 		
 		elif burnout != 0:
 			pass
@@ -231,32 +231,46 @@ func trait_decrease(char: String, stat: String):
 	else:
 		pass
 
+#Handles Visibility Toggle
+func toggle_vis(object):
+	if object.visible == false:
+		object.visible = true
+	
+	else:
+		object.visible = false
+
 #Handles Activity Activation
-func toggle_activity(activity: String, timer : Timer, start: bool):
+func toggle_activity(activity: String, start: bool):
 	if start == true:
 		process = false
-		timer.start()
-		print(timer, " Started")
+		task_timer.start()
+		toggle_vis(task_progress_bar)
+#		print(task_timer, " Started")
 	
 	elif start == false:
 		process = true
-		timer.stop()
+		task_timer.stop()
 	
-	if activity == "Braingstorming":
+	if activity == "Brainstorming":
 		is_brainstorming = start
+		print("Brainstorm True")
 		
 	
 	elif activity == "Working":
 		is_working = start
+		print("Progress True")
 	
 	elif activity == "Problem Solving":
 		is_problem_solving = start
+		print("Problem Solve True")
 	
 	elif activity == "Break":
 		is_on_break = start
+		print("Break True")
 	
 	pass
 	
+
 
 #Handles Task Bar Progression
 func _on_task_timer_timeout() -> void:

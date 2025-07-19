@@ -35,14 +35,18 @@ func task_update(task: String, state: String):
 
 
 func _on_task_button_button_down() -> void:
-	ProgressionBus.emit_signal("task_initiated")
-	print("Start Task")
+	if current_task == "Working" or current_task == "Problem Solving" or current_task == "Brainstorming":
+		ProgressionBus.emit_signal("action_initiated", current_task, true)
+		toggle_vis(action_menu)
+		print("Start Task")
+		
 
 
 func _on_break_button_button_down() -> void:
-	ProgressionBus.emit_signal("break_initiated")
+	ProgressionBus.emit_signal("action_initiated", "Break", true)
+	toggle_vis(action_menu)
 	print("Start Break")
-
+	
 
 func _on_leave_button_button_down() -> void:
 	toggle_vis(action_menu)

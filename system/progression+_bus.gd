@@ -10,18 +10,19 @@ signal action_prompt
 signal task_option_update
 signal task_tracking_state
 
-signal task_initiated
+signal action_initiated
 signal task_completed
+signal complete_task_state
+signal break_completed
 signal task_progress_logging
 
-signal break_initiated
-signal break_completed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	connect("call", add_stat) #add_stat.bind("calm", 1))
 	connect("call2", sub_stat)
 	connect("action_prompt", task_completion_check)
+	connect("complete_task_state", complete_current_task)
 #	connect()
 	
 
@@ -40,14 +41,14 @@ var cory_condition = {
 
 var cory_task_status = {
 	"Task Started" : false,
-	"Taskv Stuck": false,
+	"Task Stuck": false,
 	"Task Completed": false,
 }
 
 var cory_task_tracker = {
-	"Task Brainstorming": 25.0,
-	"Task Progress": 2.0,
-	"Task Problem Solve": 4.0
+	"Brainstorming": 95.0,
+	"Working": 95.0,
+	"Problem Solving": 95.0
 }
 
 var cory_task_list = {
@@ -113,7 +114,7 @@ func task_completion_check(char: String):
 
 #Handles checking of task progression state
 func task_progress(char: String):
-	var progress_meters : Array = ["Task Brainstorming", "Task Progress", "Task Problem Solve"]
+	var progress_meters : Array = ["Brainstorming", "Working", "Problem Solving"]
 	var task_mark = 0
 	
 	if char == "Cory":
@@ -122,7 +123,7 @@ func task_progress(char: String):
 			if cory_task_status[state] == false:
 #				print("Task Progress: ",cory_task_tracker[progress_check])
 				emit_signal("task_tracking_state", cory_task_tracker[progress_check])
-				print("Progress is ", progress_check)
+#				print("Progress is ", progress_check)
 				return progress_check
 			else:
 				task_mark += 1
@@ -130,6 +131,22 @@ func task_progress(char: String):
 	elif char == "Lucy":
 		pass
 
-
-#func task_progress(increment, delta):
-#	pass
+func complete_current_task(char: String):
+	if char == "Cory":
+		for task in cory_task_status:
+			if cory_task_status[task] == true:
+				print("Next")
+				continue
+			else:
+				cory_task_status[task] = true
+				cory_task_tracker[task] = 0.0
+				break
+	
+	if cory_task_status["Task Completed"] == true:
+		for task in cory_task_list:
+			if cory_task_list[task] == true:
+				continue
+			else:
+				cory_task_list[task] = true
+				print("Task One Complete")
+				break

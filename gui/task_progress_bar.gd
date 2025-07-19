@@ -3,6 +3,7 @@ extends TextureProgressBar
 
 @onready var task_bar : TextureProgressBar = $"."
 
+@export var current_task : String
 @export var progress : float = 0
 
 
@@ -16,7 +17,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	task_completion_check()
 #	task_progress_bar.value += progress
 
 func toggle_vis(object):
@@ -30,6 +31,15 @@ func set_task_value(value: float):
 	task_bar.value = value
 
 func task_bar_raise(task: String, prog: float):
+	current_task = task
 	task_bar.value += prog
 #	print(task, " + ", prog)
+	
+
+func task_completion_check():
+	if task_bar.value == 100 and task_bar.visible == true:
+		toggle_vis(task_bar)
+		ProgressionBus.emit_signal("task_completed", current_task, false)
+		ProgressionBus.emit_signal("complete_task_state", "Cory")
+		print("Task Complete")
 	
