@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://gui/task_progress_bar.gd" id="4_xw730"]
 
 [node name="Task_Progress_Bar" type="TextureProgressBar"]
+visible = false
 offset_right = 30.0
 offset_bottom = 30.0
 scale = Vector2(4.2718, 2.13341)

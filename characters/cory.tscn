@@ -40,7 +40,6 @@ shape = SubResource("CircleShape2D_jospa")
 [node name="Break Timer" type="Timer" parent="."]
 
 [node name="Task_Progress_Bar" parent="." instance=ExtResource("3_busmg")]
-visible = false
 offset_left = -56.0
 offset_top = -80.0
 offset_right = -26.0

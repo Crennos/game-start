@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://button_2.gd" id="2_3bmut"]
 
 [node name="Action_Choice_Panel" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -33,3 +34,7 @@ script = ExtResource("2_3bmut")
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Leave"
+
+[connection signal="button_down" from="Action_List/Task_Button" to="." method="_on_task_button_button_down"]
+[connection signal="button_down" from="Action_List/Break_Button" to="." method="_on_break_button_button_down"]
+[connection signal="button_down" from="Action_List/Leave_Button" to="." method="_on_leave_button_button_down"]

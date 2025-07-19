@@ -8,7 +8,14 @@ signal stat_sub
 
 signal action_prompt
 signal task_option_update
+signal task_tracking_state
 
+signal task_initiated
+signal task_completed
+signal task_progress_logging
+
+signal break_initiated
+signal break_completed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,7 +45,7 @@ var cory_task_status = {
 }
 
 var cory_task_tracker = {
-	"Task Brainstorming": 1.0,
+	"Task Brainstorming": 25.0,
 	"Task Progress": 2.0,
 	"Task Problem Solve": 4.0
 }
@@ -78,19 +85,19 @@ var lucy_task_list = {
 
 
 func add_stat(char: String, stat: String, value: int):
-#	print(char, " gained +", value," ", stat)
 	emit_signal("stat_add", char, stat)
 
 func sub_stat(char: String, stat: String, value: int):
-#	print(char, " lost -", value," ", stat)
 	emit_signal("stat_sub", char, stat)
 
+#Handles accessing of available task
 func task_completion_check(char: String):
 	if char == "Cory":
 		for task in cory_task_list:
 			if cory_task_list[task] == false:
-				task_progress(char)
-				emit_signal("task_option_update", task)
+				var task_state = task_progress(char)
+				emit_signal("task_option_update", task, task_state)
+#				print(task)
 				return task
 			else:
 				continue
@@ -104,6 +111,7 @@ func task_completion_check(char: String):
 				continue
 	
 
+#Handles checking of task progression state
 func task_progress(char: String):
 	var progress_meters : Array = ["Task Brainstorming", "Task Progress", "Task Problem Solve"]
 	var task_mark = 0
@@ -112,10 +120,15 @@ func task_progress(char: String):
 		for state in cory_task_status:
 			var progress_check = progress_meters[task_mark]
 			if cory_task_status[state] == false:
-				print("Task Progress: ",cory_task_tracker[progress_check])
-				break
+#				print("Task Progress: ",cory_task_tracker[progress_check])
+				emit_signal("task_tracking_state", cory_task_tracker[progress_check])
+				print("Progress is ", progress_check)
+				return progress_check
 			else:
 				task_mark += 1
+	
+	elif char == "Lucy":
+		pass
 
 
 #func task_progress(increment, delta):

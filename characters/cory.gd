@@ -63,6 +63,8 @@ func _ready() -> void:
 	work_time_check()
 	ProgressionBus.stat_add.connect(trait_increase)
 	ProgressionBus.stat_sub.connect(trait_decrease)
+#	ProgressionBus.connect("task_initiated")
+#	ProgressionBus.connect("break_initiated")
 #	base_status_check()
 	status_check()
 #	toggle_activity("Break", break_timer, true)
@@ -100,7 +102,7 @@ func detect_input(delta, process: bool):
 		if actionable_area.actionable_present == true:
 			if Input.is_action_just_pressed("action"):
 				ProgressionBus.emit_signal("action_prompt", "Cory")
-				print("Task Triggered")
+#				print("Task Triggered")
 
 	if Input.is_action_just_pressed("bubble_pop"):
 		DialogueManager.show_dialogue_balloon(actionable_area.dialogue_resource, actionable_area.dialogue)
