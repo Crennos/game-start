@@ -13,24 +13,28 @@ func toggle_vis(object):
 
 
 func _on_cory_work_area_area_entered(area: Area2D) -> void:
-	toggle_vis(interact)
+	if area.work_id == "Cory":
+		toggle_vis(interact)
 	
 
 
 func _on_cory_work_area_area_exited(area: Area2D) -> void:
-	toggle_vis(interact)
-	if action_menu.visible == true:
-		toggle_vis(action_menu)
+	if area.work_id == "Cory":
+		toggle_vis(interact)
+		if action_menu.visible == true:
+			toggle_vis(action_menu)
 	
 
 
 func _on_lucy_work_area_area_entered(area: Area2D) -> void:
-	toggle_vis(action_menu)
+	if area.work_id == "Lucy":
+		toggle_vis(interact)
 	
 
 
 func _on_lucy_work_area_area_exited(area: Area2D) -> void:
-	toggle_vis(action_menu)
-	if action_menu.visible == true:
+	if area.work_id == "Lucy":
 		toggle_vis(action_menu)
+		if action_menu.visible == true:
+			toggle_vis(action_menu)
 		

@@ -1,6 +1,6 @@
 extends Area2D
 
-
+@export var work_id : String
 @export var actionable_present : bool
 
 @export var dialogue_resource : DialogueResource

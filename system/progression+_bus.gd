@@ -5,6 +5,7 @@ signal call2
 signal added_task_progress
 signal stat_add
 signal stat_sub
+signal update_stat_panel
 
 signal action_prompt
 signal task_option_update
@@ -30,6 +31,26 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+var cory_traits= {
+	"Patience" = 0,
+	"Perseverance" = 0,
+	"Motivation" = 0,
+	"Creativity" = 0,
+	"Focus" = 0,
+	"Insight" = 0,
+	"Anxiety" = 0,
+	"Lethargy" = 0,
+	"Frailty" = 0,
+	"Stress" = 0,
+	"Strain" = 0,
+	"Burnout" = 0,
+	"Depression" = 0,
+	"Heart" = 0,
+	"Serenity" = 0,
+	"Hope" = 0,
+}
 
 
 var cory_condition = {
@@ -98,7 +119,7 @@ func task_completion_check(char: String):
 			if cory_task_list[task] == false:
 				var task_state = task_progress(char)
 				emit_signal("task_option_update", task, task_state)
-#				print(task)
+				print(task)
 				return task
 			else:
 				continue
@@ -149,4 +170,10 @@ func complete_current_task(char: String):
 			else:
 				cory_task_list[task] = true
 				print("Task One Complete")
+				
+				for state in cory_task_status:
+					cory_task_status[state] = false
+				
+				for value in cory_task_tracker:
+					cory_task_tracker[value] = 0.0
 				break

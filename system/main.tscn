@@ -9,5 +9,6 @@
 [node name="Apartment_Room" parent="." instance=ExtResource("1_cclb7")]
 
 [node name="Lucy" parent="." instance=ExtResource("2_svejs")]
+position = Vector2(-104, -8)
 
 [node name="Pause_Menu" parent="." instance=ExtResource("3_ynw5c")]

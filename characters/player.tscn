@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbdqtbsg2ad7h"]
+
+[ext_resource type="Texture2D" uid="uid://dd0nvhl3nk17c" path="res://characters/bad-ship-pixilart.png" id="1_kquoo"]
+[ext_resource type="Script" path="res://characters/player.gd" id="1_wexxl"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_wexxl")
+
+[node name="Player_Ship" type="Sprite2D" parent="."]
+texture = ExtResource("1_kquoo")

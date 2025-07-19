@@ -14,3 +14,23 @@ texture_under = ExtResource("1_tfflp")
 texture_over = ExtResource("2_1slsh")
 texture_progress = ExtResource("3_cv38d")
 script = ExtResource("4_xw730")
+
+[node name="Prog_Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 3.97959
+offset_top = 0.468733
+offset_right = 420.98
+offset_bottom = 137.469
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(0, 0.639216, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "T"
+horizontal_alignment = 1
+
+[node name="Label_Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Label_Timer" to="." method="_on_label_timer_timeout"]

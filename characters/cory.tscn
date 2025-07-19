@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwa3wvurx4xgu"]
+[gd_scene load_steps=10 format=3 uid="uid://bwa3wvurx4xgu"]
 
 [ext_resource type="Script" path="res://characters/cory.gd" id="1_mbm5a"]
 [ext_resource type="Texture2D" uid="uid://lsdk6wb6j1ct" path="res://icon.svg" id="2_y4ypd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://characters/action_area.gd" id="3_xhjnl"]
 [ext_resource type="Resource" uid="uid://dap3nlv4i4i6h" path="res://dialogue/test_dialogue.dialogue" id="4_2mwvr"]
 [ext_resource type="Resource" uid="uid://rvsnuvii3kc5" path="res://dialogue/day one.dialogue" id="5_combs"]
+[ext_resource type="PackedScene" uid="uid://b0mnfhx2tg2s4" path="res://gui/character_traits_menu.tscn" id="7_0n8ig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugfn2"]
 size = Vector2(32, 32)
@@ -15,6 +16,7 @@ size = Vector2(32, 32)
 [node name="Cory" type="CharacterBody2D"]
 z_index = 2
 script = ExtResource("1_mbm5a")
+work_load = 95.0
 
 [node name="Cory_Sprite" type="Sprite2D" parent="."]
 position = Vector2(-4.76837e-06, 9.53674e-06)
@@ -28,6 +30,7 @@ shape = SubResource("RectangleShape2D_ugfn2")
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("3_xhjnl")
+work_id = "Cory"
 dialogue_resource = ExtResource("4_2mwvr")
 day_one = ExtResource("5_combs")
 dialogue = "start"
@@ -44,6 +47,9 @@ offset_left = -56.0
 offset_top = -80.0
 offset_right = -26.0
 offset_bottom = -50.0
+
+[node name="Character_Traits_Menu" parent="." instance=ExtResource("7_0n8ig")]
+metadata/_edit_use_anchors_ = true
 
 [connection signal="area_entered" from="Action_Area" to="." method="_on_action_area_area_entered"]
 [connection signal="area_exited" from="Action_Area" to="." method="_on_action_area_area_exited"]

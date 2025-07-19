@@ -1,0 +1,234 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0mnfhx2tg2s4"]
+
+[ext_resource type="Script" path="res://gui/character_traits_menu.gd" id="1_1mp6j"]
+[ext_resource type="Texture2D" uid="uid://2l8yyb4heoex" path="res://gui/stat_panel_backgrground.png" id="1_ax857"]
+
+[node name="Character_Traits_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1mp6j")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(130, 120)
+layout_mode = 2
+texture = ExtResource("1_ax857")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NinePatchRect"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 1196.0
+offset_bottom = 1064.0
+scale = Vector2(0.1, 0.1)
+
+[node name="Personality_VBox" type="VBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+
+[node name="Personality_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Personality"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox/HBoxContainer"]
+layout_mode = 2
+
+[node name="Patience_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Patience"
+
+[node name="Persevere_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Perseverance"
+
+[node name="Motivation_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Motivation"
+
+[node name="Creativity_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Creativity"
+
+[node name="Focus_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Focus"
+
+[node name="Insight_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Insight"
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox/HBoxContainer"]
+layout_mode = 2
+
+[node name="Patience_Level" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+
+[node name="Persevere_Level" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+
+[node name="Motivation_Level" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+
+[node name="Creativity_Level" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+
+[node name="Focus_Level" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+
+[node name="Insight_Level" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Personality_VBox/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/NinePatchRect/HBoxContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+
+[node name="Emotions_VBox" type="VBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+
+[node name="Emotions_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Emotions"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer"]
+layout_mode = 2
+
+[node name="Anxiety_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Anxiety"
+
+[node name="Lethargy_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Lethargy"
+
+[node name="Frailty_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Frailty"
+
+[node name="Stress_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Stress"
+
+[node name="Strain_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Strain"
+
+[node name="Burnout_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Burnout"
+
+[node name="Depression_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Depression"
+
+[node name="Serenity_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Serenity"
+
+[node name="Heart_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Heart"
+
+[node name="Hope_Label" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Hope"
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer"]
+layout_mode = 2
+
+[node name="Anxiety_Level" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+
+[node name="Lethargy_Level" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+
+[node name="Frailty_Level" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+
+[node name="Stress_Level" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+
+[node name="Strain_Level" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+
+[node name="Burnout_Level" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+
+[node name="Depression_Level" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+
+[node name="Serenity_Level" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+
+[node name="Heart_Level" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+
+[node name="Hope_Level" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/Emotions_VBox/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60

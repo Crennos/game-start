@@ -2,6 +2,8 @@ extends TextureProgressBar
 
 
 @onready var task_bar : TextureProgressBar = $"."
+@onready var prog_label : Label = $Prog_Label
+@onready var label_timer : Timer = $Label_Timer
 
 @export var current_task : String
 @export var progress : float = 0
@@ -31,9 +33,13 @@ func set_task_value(value: float):
 	task_bar.value = value
 
 func task_bar_raise(task: String, prog: float):
+	if label_timer.is_stopped():
+		label_timer.start()
+	toggle_vis(prog_label)
 	current_task = task
 	task_bar.value += prog
-#	print(task, " + ", prog)
+	prog_label.text = str(prog)
+	print(task, " + ", prog)
 	
 
 func task_completion_check():
@@ -43,3 +49,7 @@ func task_completion_check():
 		ProgressionBus.emit_signal("complete_task_state", "Cory")
 		print("Task Complete")
 	
+
+
+func _on_label_timer_timeout() -> void:
+	toggle_vis(prog_label)

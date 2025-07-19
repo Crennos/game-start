@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://interact_label.gd" id="1_xt0ml"]
 
 [node name="Interact Label" type="Label"]
-visible = false
 modulate = Color(0.0509804, 0.054902, 0.870588, 1)
 offset_left = -32.0
 offset_top = -8.0

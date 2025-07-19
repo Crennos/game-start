@@ -21,7 +21,7 @@ extends CharacterBody2D
 @export var over_load : float = 0.0
 @export var burnout : int = 0
 @export var break_time : float = 0.0
-@export var stress : int
+@export var stress : float
 
 
 const SPEED = 60.0
@@ -36,15 +36,17 @@ var base_traits = {
 	"Motivation" = 0,
 	"Creativity" = 0,
 	"Focus" = 0,
+	"Insight" = 0,
+	"Anxiety" = 0,
 	"Lethargy" = 0,
 	"Frailty" = 0,
-	"Anxiety" = 0,
+	"Stress" = 0,
+	"Strain" = 0,
+	"Burnout" = 0,
 	"Depression" = 0,
-	"Insight" = 0,
 	"Heart" = 0,
 	"Serenity" = 0,
 	"Hope" = 0,
-	"Strain" = 0
 }
 
 #Modified 'true' trais
@@ -128,6 +130,13 @@ func status_check(): #Condense this into 2 for loops please and thank you, possi
 	true_traits["True Creativity"] = true_creativity
 	true_traits["True Focus"] = true_focus
 	true_traits["True Strain"] = true_strain
+	ProgressionBus.emit_signal("update_stat_panel")
+
+#	character_trait_collection()
+
+#func character_trait_collection():
+#	ProgressionBus.cory_traits["Patience"] = base_traits["Patience"]
+##	ProgressionBus.cory_traits
 
 #Handles Brainstorming Tick Tally
 func brain_efficiency_check():
@@ -157,12 +166,12 @@ func task_efficiency_check():
 
 #Handles Upper Work Limit
 func work_time_check():
-	var stress_mod : int = 0
+	var burnout_mod : int = 0
 	
-	if stress != 0:
-		stress_mod += stress - base_traits["Perseverance"]
+	if burnout!= 0:
+		burnout_mod += burnout - base_traits["Perseverance"]
 		
-	var work_pressure = base_traits["Motivation"] - (stress_mod)
+	var work_pressure = base_traits["Motivation"] - (burnout)
 	var work_limit = work_time + (work_pressure * 10)
 #	print(work_limit)
 	
@@ -170,7 +179,6 @@ func work_time_check():
 
 #Handles Work Load Accumulation
 func work_load_limit(work_limit: float):
-	var strain = base_traits["Strain"]
 	var work_tick = 1.0
 	
 	if work_load < work_limit:
@@ -186,11 +194,23 @@ func work_load_limit(work_limit: float):
 #Handles Overload Accumulation and Strain
 func over_load_check():
 	if over_load >= 10:
+		ProgressionBus.emit_signal("stat_add", "Cory", "Strain")
 		base_traits["Strain"] += 1
 		over_load -= 10
-		burnout += 1
 		print("Strain ", base_traits["Strain"])
 	
+
+func stress_build():
+	var stress_tick = 1.0
+	var motivation_mod = base_traits["Motivation"] * -0.1
+	var strain_mod = base_traits["Strain"] * 0.1
+	var total_stress = stress_tick + (strain_mod + motivation_mod)
+	stress += total_stress
+#	print("+ ", total_stress, " Stress")
+	base_traits["Stress"] = stress
+	
+	pass
+
 
 #Handles Break reduction of Overload/Work Load
 func break_time_check():
@@ -249,11 +269,13 @@ func toggle_activity(activity: String, start: bool):
 	
 	elif start == false:
 		process = true
+		activity
 		task_timer.stop()
 	
+	print("Triggered")
 	if activity == "Brainstorming":
 		is_brainstorming = start
-		print("Brainstorm True")
+		print("Brainstorm ", start)
 		
 	
 	elif activity == "Working":
@@ -268,7 +290,6 @@ func toggle_activity(activity: String, start: bool):
 		is_on_break = start
 		print("Break True")
 	
-	pass
 	
 
 
@@ -280,18 +301,20 @@ func _on_task_timer_timeout() -> void:
 	var work_time = work_time_check()
 	
 	if is_brainstorming == true:
-		ProgressionBus.emit_signal("added_task_progress", "Braistorming Progress", brainstorm_tick)
+		ProgressionBus.emit_signal("added_task_progress", "Brainstorming", brainstorm_tick)
 		work_load_limit(work_time)
 #		print("Brainstorm Timer Cycle End")
 	
 	elif is_working == true:
-		ProgressionBus.emit_signal("added_task_progress", "Working Progress", task_tick)
+		ProgressionBus.emit_signal("added_task_progress", "Working", task_tick)
 		work_load_limit(work_time)
 #		print("Task Timer Cycle End")
 	
 	elif is_problem_solving == true:
-		ProgressionBus.emit_signal("added_task_progress", "Problem Solving Progress", problem_solve_tick)
+		ProgressionBus.emit_signal("added_task_progress", "Problem Solving", problem_solve_tick)
 		work_load_limit(work_time)
+	
+	stress_build()
 #		print("Problem Solve Timer Cycle End")
 
 #Handles Break Time Recuperation
