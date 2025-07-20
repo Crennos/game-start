@@ -37,6 +37,7 @@ func task_update(task: String, state: String):
 func _on_task_button_button_down() -> void:
 	if current_task == "Working" or current_task == "Problem Solving" or current_task == "Brainstorming":
 		ProgressionBus.emit_signal("action_initiated", current_task, true)
+		ProgressionBus.emit_signal("focus_production", true)
 		toggle_vis(action_menu)
 		print("Start Task")
 		

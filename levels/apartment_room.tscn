@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://wqt7b4jo1def"]
+[gd_scene load_steps=10 format=3 uid="uid://wqt7b4jo1def"]
 
 [ext_resource type="Script" path="res://levels/apartment_room.gd" id="1_m6qvv"]
 [ext_resource type="Texture2D" uid="uid://3ue7s3sxgy1l" path="res://levels/final_carp.png" id="2_a28wb"]
 [ext_resource type="Texture2D" uid="uid://snw2qivtpk8n" path="res://levels/final_wall_final.png" id="2_psn7i"]
 [ext_resource type="PackedScene" uid="uid://b0lrox2l5pft" path="res://levels/objects/desk_station.tscn" id="4_88qw3"]
+[ext_resource type="PackedScene" uid="uid://1xiua5wwbkhw" path="res://gui/coding_progression.tscn" id="6_8jnpf"]
 [ext_resource type="PackedScene" uid="uid://bwa3wvurx4xgu" path="res://characters/cory.tscn" id="7_agkmo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1pba"]
@@ -58,3 +59,5 @@ position = Vector2(100, 26)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(100, 1)
 zoom = Vector2(6.4, 4.7)
+
+[node name="Coding Progress" parent="." instance=ExtResource("6_8jnpf")]

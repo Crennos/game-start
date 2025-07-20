@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1unypk1u5162"]
+
+[ext_resource type="Texture2D" uid="uid://yb42xwpklgkd" path="res://levels/work_screen.png" id="1_uqnsi"]
+[ext_resource type="PackedScene" uid="uid://dkicfmv48pur0" path="res://gui/task_progress_bar.tscn" id="2_2tbyr"]
+[ext_resource type="PackedScene" uid="uid://1xiua5wwbkhw" path="res://gui/coding_progression.tscn" id="3_io807"]
+[ext_resource type="PackedScene" uid="uid://8k5evo0pemgf" path="res://gui/action_choice_panel.tscn" id="4_oelwx"]
+[ext_resource type="PackedScene" uid="uid://bwa3wvurx4xgu" path="res://characters/cory.tscn" id="5_l2rhm"]
+
+[node name="Work_Screen" type="Sprite2D"]
+position = Vector2(10, 26)
+scale = Vector2(1.68, 1.65)
+texture = ExtResource("1_uqnsi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, -4)
+zoom = Vector2(5.5, 5.8)
+
+[node name="Task_Progress_Bar" parent="." instance=ExtResource("2_2tbyr")]
+offset_left = -54.0
+offset_top = -14.0
+offset_right = -24.0
+offset_bottom = 16.0
+scale = Vector2(3.47762, 1.94603)
+
+[node name="Coding Progress" parent="." instance=ExtResource("3_io807")]
+offset_left = -60.1191
+offset_top = -43.6364
+offset_right = -60.1191
+offset_bottom = -43.6364
+scale = Vector2(0.96875, 0.6)
+
+[node name="Action_Choice_Panel" parent="." instance=ExtResource("4_oelwx")]
+offset_left = -18.4524
+offset_top = -16.9697
+offset_right = 10.5476
+offset_bottom = 13.0303
+current_task = "Test"
+
+[node name="Cory" parent="." instance=ExtResource("5_l2rhm")]
+visible = false

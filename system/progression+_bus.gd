@@ -16,6 +16,12 @@ signal task_completed
 signal complete_task_state
 signal break_completed
 signal task_progress_logging
+signal focus_production
+
+signal focus_influence
+signal run_task
+signal error_check
+signal debug_task
 
 
 # Called when the node enters the scene tree for the first time.
@@ -67,9 +73,22 @@ var cory_task_status = {
 }
 
 var cory_task_tracker = {
-	"Brainstorming": 95.0,
-	"Working": 95.0,
-	"Problem Solving": 95.0
+	"Brainstorming": 0.0,
+	"Working": 0.0,
+	"Problem Solving": 0.0
+}
+
+var cory_focus_log = {
+	"Coding" : 0.0,
+	"Testing": 0.0,
+	"Efficiency": 0.0,
+	"Learning": 0.0
+}
+
+var cory_skills = {
+	"Scripting": 0,
+	"Logic": 0,
+	"Familiarity": 0
 }
 
 var cory_task_list = {

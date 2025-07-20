@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://button_2.gd" id="2_3bmut"]
 
 [node name="Action_Choice_Panel" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

@@ -49,6 +49,12 @@ var base_traits = {
 	"Hope" = 0,
 }
 
+
+var work_skills = {
+	"Familiarity": 0,
+	"Experience": 0
+	}
+
 #Modified 'true' trais
 var true_traits = {
 	"True Patience" = 0,
@@ -183,11 +189,11 @@ func work_load_limit(work_limit: float):
 	
 	if work_load < work_limit:
 		work_load += work_tick
-		print("Work Load: ",work_load)
+#		print("Work Load: ",work_load)
 	
 	elif work_load >= work_limit:
 		over_load += work_tick
-		print("Over Load ",over_load)
+#		print("Over Load ",over_load)
 		over_load_check()
 	
 
@@ -227,6 +233,16 @@ func break_time_check():
 		elif burnout != 0:
 			pass
 	
+
+func focus_work_check(work: float, stress: float, familiarity: float):
+	var familiar_build = 0.0
+	work_load += work
+	stress += stress
+	familiar_build += familiarity
+	
+	if familiar_build == 100:
+		work_skills["Familiarty"] += 1
+		familiar_build = 0
 
 #Handles Event Trait Increases
 func trait_increase(char: String, stat: String):
