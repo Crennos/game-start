@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://cp0d2k6wbnk8v"]
+
+[ext_resource type="Texture2D" uid="uid://bnlxwlmo6gt3i" path="res://characters/transition.png" id="1_63eoi"]
+[ext_resource type="Script" path="res://gui/transition_scene.gd" id="2_et0pe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy53u"]
+atlas = ExtResource("1_63eoi")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqce0"]
+atlas = ExtResource("1_63eoi")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3456"]
+atlas = ExtResource("1_63eoi")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewka7"]
+atlas = ExtResource("1_63eoi")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g75jk"]
+atlas = ExtResource("1_63eoi")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3x2hk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy53u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqce0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3456")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewka7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g75jk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Transition_Scene" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_3x2hk")
+frame = 1
+script = ExtResource("2_et0pe")

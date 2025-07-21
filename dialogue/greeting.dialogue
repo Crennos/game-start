@@ -80,4 +80,6 @@ Lucy: Why don't you go take a quick shower and I'll make you some tea and breakf
 
 Cory: That sounds lovely, thank you baby.
 
+do ProgressionBus.emit_signal("end_intro")
+
 => END

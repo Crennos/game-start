@@ -1,8 +1,13 @@
 extends CharacterBody2D
 
+@export var player_active : bool
+
+
 #Node Ref's
 @onready var cory : CharacterBody2D = $"."
+@onready var cory_sprite : AnimatedSprite2D = $Cory_Sprite
 @onready var actionable_area : Area2D = $Action_Area
+@onready var trans_timer : Timer = $Trans_Timer
 @onready var task_progress_bar : TextureProgressBar = $Task_Progress_Bar
 @onready var task_timer : Timer = $"Task Timer"
 @onready var break_timer : Timer = $"Break Timer"
@@ -28,6 +33,13 @@ const SPEED = 60.0
 const work_time : float = 100.0
 const work_mod : float = 10.0
 const progress : float = 1.0
+
+var scene_dict = {
+	"Scene One": true,
+	"Scene Two": false,
+	"Scene Three": false,
+	"Scene Four": false
+}
 
 #Unmodified 'naked' traits
 var base_traits = {
@@ -75,36 +87,86 @@ func _ready() -> void:
 	ProgressionBus.stat_sub.connect(trait_decrease)
 	ProgressionBus.connect("action_initiated", toggle_activity)
 	ProgressionBus.connect("task_completed", toggle_activity)
+	ProgressionBus.connect("second_scene", ready_timer_start)
+	ProgressionBus.connect("third_scene", ready_timer_start)
+	ProgressionBus.connect("game_start", game_start)
 	status_check()
+
+func _on_trans_timer_timeout() -> void:
+	print("Time Stop")
+	
+	if scene_dict["Scene Two"] == false:
+		second_scene()
+		
+	
+	elif scene_dict["Scene Three"] == false:
+		third_scene()
+	
+	pass # Replace with function body.
+
 
 func _physics_process(delta: float) -> void:
 	detect_input(delta, process)
+
+func ready_timer_start():
+	trans_timer.start()
+	if scene_dict["Scene Two"] == false:
+		cory.global_position = Vector2(112, -16)
+		
 	
+	elif scene_dict["Scene Three"] == false:
+		cory.global_position = Vector2(65, -16)
+
+func second_scene():
+	DialogueManager.show_dialogue_balloon(actionable_area.day_one, "start")
+	scene_dict["Scene Two"] = true
+
+func third_scene():
+	DialogueManager.show_dialogue_balloon(actionable_area.week_one, "start")
+	scene_dict["Scene Three"] = true
+
+func game_start():
+	process = true
+	player_active = true
+	actionable_area.monitorable = true
 
 #Handles Input Control
 func detect_input(delta, process: bool):
 	var direction = 0
 	
-	if process == true:
+	if Input.is_action_just_pressed("Player 1"):
+		player_active = true
+	
+	if Input.is_action_just_pressed("Player 2"):
+		player_active = false
+	
+	if process == true and player_active == true:
 		if Input.is_action_pressed("left"):
+			cory_sprite.set_frame_and_progress(2, 0.0)
+			cory_sprite.flip_h
 			direction += -1
 			velocity.x = direction * SPEED
 			velocity.y = 0
 		elif Input.is_action_pressed("right"):
+			cory_sprite.set_frame_and_progress(2, 0.0)
 			direction += 1
 			velocity.x = direction * SPEED
 			velocity.y = 0
 		elif  Input.is_action_pressed("up"):
+			cory_sprite.set_frame_and_progress(1, 0.0)
 			direction += -1
 			velocity.y = direction * SPEED
 			velocity.x = 0
 		elif  Input.is_action_pressed("down"):
+			cory_sprite.set_frame_and_progress(0, 0.0)
 			direction += 1
 			velocity.y = direction * SPEED
 			velocity.x = 0
 		else:
 			direction = 0
 			velocity = Vector2.ZERO
+			
+		
 		move_and_slide()
 	
 		if actionable_area.actionable_present == true:
@@ -278,14 +340,14 @@ func toggle_vis(object):
 #Handles Activity Activation
 func toggle_activity(activity: String, start: bool):
 	if start == true:
+		toggle_vis(cory)
 		process = false
 		task_timer.start()
-		toggle_vis(task_progress_bar)
 #		print(task_timer, " Started")
 	
 	elif start == false:
 		process = true
-		activity
+		toggle_vis(cory)
 		task_timer.stop()
 	
 	print("Triggered")
@@ -306,7 +368,11 @@ func toggle_activity(activity: String, start: bool):
 		is_on_break = start
 		print("Break True")
 	
-	
+	else:
+		is_brainstorming = false
+		is_working = false
+		is_problem_solving = false
+		is_on_break = false
 
 
 #Handles Task Bar Progression

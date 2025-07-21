@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkicfmv48pur0"]
+
+[ext_resource type="Texture2D" uid="uid://wh1vb5ygxtmw" path="res://gui/progress under.png" id="1_tfflp"]
+[ext_resource type="Texture2D" uid="uid://b8vgkgyhss2kq" path="res://gui/progress top.png" id="2_1slsh"]
+[ext_resource type="Texture2D" uid="uid://hghf1itpfeby" path="res://gui/progress.png" id="3_cv38d"]
+[ext_resource type="Script" path="res://gui/task_progress_bar.gd" id="4_xw730"]
+[ext_resource type="Resource" uid="uid://bgnl4b5thak7" path="res://dialogue/first task.dialogue" id="5_aro8m"]
+
+[node name="Task_Progress_Bar" type="TextureProgressBar"]
+offset_left = 465.0
+offset_top = 289.0
+offset_right = 495.0
+offset_bottom = 319.0
+scale = Vector2(4.2718, 2.13341)
+texture_under = ExtResource("1_tfflp")
+texture_over = ExtResource("2_1slsh")
+texture_progress = ExtResource("3_cv38d")
+script = ExtResource("4_xw730")
+first_task = ExtResource("5_aro8m")
+true_complete = true
+break_point_chance = 5.0
+break_points = 5
+
+[node name="Finalize_Tab" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 8.89555
+offset_top = -8.90593
+offset_right = 203.896
+offset_bottom = 272.094
+scale = Vector2(0.05, 0.05)
+
+[node name="Run_Button" type="Button" parent="Finalize_Tab"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Run"
+
+[node name="Debug_Button" type="Button" parent="Finalize_Tab"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Debug"
+
+[node name="Exit_Button" type="Button" parent="Finalize_Tab"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Exit"
+
+[node name="Prog_Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 3.97959
+offset_top = 0.468733
+offset_right = 420.98
+offset_bottom = 137.469
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(0, 0.639216, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "T"
+horizontal_alignment = 1
+
+[node name="Label_Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="button_down" from="Finalize_Tab/Run_Button" to="." method="_on_run_button_button_down"]
+[connection signal="button_down" from="Finalize_Tab/Debug_Button" to="." method="_on_debug_button_button_down"]
+[connection signal="button_down" from="Finalize_Tab/Exit_Button" to="." method="_on_exit_button_button_down"]
+[connection signal="timeout" from="Label_Timer" to="." method="_on_label_timer_timeout"]

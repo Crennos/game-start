@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_sfwwj"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_e76m1"]
 
 [resource]
-script = ExtResource("1_sfwwj")
+script = ExtResource("1_e76m1")
 using_states = PackedStringArray()
 titles = {
+"secondend": "98",
 "start": "4",
 "tutorial_part_two": "67"
 }
@@ -47,6 +48,12 @@ lines = {
 },
 "next_id": "12",
 "type": &"mutation"
+},
+"101": {
+"id": "101",
+"is_snippet": false,
+"next_id": "end",
+"type": &"goto"
 },
 "12": {
 "character": "Cory",
@@ -665,7 +672,7 @@ Cory's Frailty Increased by 1.",
 "63": {
 "id": "63",
 "is_snippet": false,
-"next_id": "end",
+"next_id": "98",
 "parent_id": "59",
 "type": &"goto"
 },
@@ -1055,9 +1062,51 @@ Cory's Frailty Increased by 1.",
 },
 "97": {
 "id": "97",
-"is_snippet": false,
-"next_id": "end",
-"type": &"goto"
+"next_id": "98",
+"text": "secondend",
+"type": &"title"
+},
+"98": {
+"id": "98",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "transition"
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "99",
+"type": &"mutation"
+},
+"99": {
+"id": "99",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "third_scene"
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "101",
+"type": &"mutation"
 }
 }
 raw_text = "~ start
@@ -1122,7 +1171,7 @@ Cory: [stops video] Alright...
 	Cory: Let's just try to get our hands dirty first. I don't want to be too reliant on the tutorials from the onset or I won't learn as well without them.
 	Cory's Perseverance Increased by 1.
 	do emit_signal(\"call\", \"Cory\", \"Lethargy\", 1)
-	=> END
+	=> secondend
 
 
 ~ tutorial_part_two
@@ -1155,6 +1204,10 @@ Cory's Patience Increased by 1.
 do emit_signal(\"call\", \"Cory\", \"Patience\", 1)
 
 Cory: Right. Now we have a plan. I'll check out more of this guy's stuff and others that strike me and move on from there. I don't have to master it right now, just make it familiar.
+
+~ secondend
+do ProgressionBus.emit_signal(\"transition\")
+do ProgressionBus.emit_signal(\"third_scene\")
 
 => END"
 metadata/dialogue_manager_version = "2.45.0"

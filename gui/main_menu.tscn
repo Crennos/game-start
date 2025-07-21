@@ -42,6 +42,21 @@ text = "Quit
 [node name="Options_Menu" parent="." instance=ExtResource("2_d31nd")]
 layout_mode = 1
 
+[node name="Demo_End" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 462.0
+offset_top = 284.0
+offset_right = 4192.0
+offset_bottom = 830.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 400
+text = "Thanks For Playing!
+"
+
+[node name="Demo_Timer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="pressed" from="VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options_Button" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit_Button" to="." method="_on_quit_button_pressed"]

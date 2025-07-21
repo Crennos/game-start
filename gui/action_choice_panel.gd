@@ -7,6 +7,8 @@ extends Control
 @onready var leave_choice : Button = $Action_List/Leave_Button
 
 @export var current_task : String
+@export var started : bool
+@export var initiated : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,19 +37,32 @@ func task_update(task: String, state: String):
 
 
 func _on_task_button_button_down() -> void:
-	if current_task == "Working" or current_task == "Problem Solving" or current_task == "Brainstorming":
-		ProgressionBus.emit_signal("action_initiated", current_task, true)
-		ProgressionBus.emit_signal("focus_production", true)
-		toggle_vis(action_menu)
-		print("Start Task")
+	if initiated == false:
+		initiated = true
+		if current_task == "Working" or current_task == "Problem Solving" or current_task == "Brainstorming":
+			ProgressionBus.emit_signal("action_initiated", current_task, true)
+			ProgressionBus.emit_signal("focus_production", true)
+			ProgressionBus.emit_signal("computer_screen")
+			toggle_vis(action_menu)
+			print("Start Task")
 		
+			if started == false:
+				ProgressionBus.emit_signal("first_boot")
+				started = true
+				
+	else:
+		pass
 
 
 func _on_break_button_button_down() -> void:
-	ProgressionBus.emit_signal("action_initiated", "Break", true)
-	toggle_vis(action_menu)
-	print("Start Break")
+	pass
+#	ProgressionBus.emit_signal("action_initiated", "Break", true)
+#	toggle_vis(action_menu)
+#	print("Start Break")
 	
 
 func _on_leave_button_button_down() -> void:
+	initiated = false
 	toggle_vis(action_menu)
+	ProgressionBus.emit_signal("apartment_scene")
+	ProgressionBus.emit_signal("action_initiated", "None", false)

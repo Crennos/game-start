@@ -60,7 +60,7 @@ Cory: [stops video] Alright...
 	Cory: Let's just try to get our hands dirty first. I don't want to be too reliant on the tutorials from the onset or I won't learn as well without them.
 	Cory's Perseverance Increased by 1.
 	do emit_signal("call", "Cory", "Lethargy", 1)
-	=> END
+	=> secondend
 
 
 ~ tutorial_part_two
@@ -93,5 +93,9 @@ Cory's Patience Increased by 1.
 do emit_signal("call", "Cory", "Patience", 1)
 
 Cory: Right. Now we have a plan. I'll check out more of this guy's stuff and others that strike me and move on from there. I don't have to master it right now, just make it familiar.
+
+~ secondend
+do ProgressionBus.emit_signal("transition")
+do ProgressionBus.emit_signal("third_scene")
 
 => END

@@ -1,27 +1,63 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwa3wvurx4xgu"]
+[gd_scene load_steps=14 format=3 uid="uid://bwa3wvurx4xgu"]
 
 [ext_resource type="Script" path="res://characters/cory.gd" id="1_mbm5a"]
-[ext_resource type="Texture2D" uid="uid://lsdk6wb6j1ct" path="res://icon.svg" id="2_y4ypd"]
-[ext_resource type="PackedScene" uid="uid://dkicfmv48pur0" path="res://gui/task_progress_bar.tscn" id="3_busmg"]
 [ext_resource type="Script" path="res://characters/action_area.gd" id="3_xhjnl"]
 [ext_resource type="Resource" uid="uid://dap3nlv4i4i6h" path="res://dialogue/test_dialogue.dialogue" id="4_2mwvr"]
 [ext_resource type="Resource" uid="uid://rvsnuvii3kc5" path="res://dialogue/day one.dialogue" id="5_combs"]
+[ext_resource type="Resource" uid="uid://pgqj8u4yi8tl" path="res://one week later.dialogue" id="6_sam1b"]
 [ext_resource type="PackedScene" uid="uid://b0mnfhx2tg2s4" path="res://gui/character_traits_menu.tscn" id="7_0n8ig"]
+[ext_resource type="Texture2D" uid="uid://c7pbrv2tu7d3y" path="res://characters/sprite_cory_sheet.png" id="7_m65y3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0pqo"]
+atlas = ExtResource("7_m65y3")
+region = Rect2(2, 1, 25, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ucql"]
+atlas = ExtResource("7_m65y3")
+region = Rect2(2, 59, 25, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb7ao"]
+atlas = ExtResource("7_m65y3")
+region = Rect2(2, 117, 25, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnhpq"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0pqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ucql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nb7ao")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugfn2"]
-size = Vector2(32, 32)
+size = Vector2(16, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jospa"]
+radius = 16.0
 
 [node name="Cory" type="CharacterBody2D"]
 z_index = 2
 script = ExtResource("1_mbm5a")
-work_load = 95.0
+player_active = true
 
-[node name="Cory_Sprite" type="Sprite2D" parent="."]
-position = Vector2(-4.76837e-06, 9.53674e-06)
-scale = Vector2(0.3125, 0.3125)
-texture = ExtResource("2_y4ypd")
+[node name="Cory_Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(1, 1.03448)
+sprite_frames = SubResource("SpriteFrames_qnhpq")
+animation = &"new_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ugfn2")
@@ -29,31 +65,32 @@ shape = SubResource("RectangleShape2D_ugfn2")
 [node name="Action_Area" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 4
+monitorable = false
 script = ExtResource("3_xhjnl")
 work_id = "Cory"
 dialogue_resource = ExtResource("4_2mwvr")
 day_one = ExtResource("5_combs")
 dialogue = "start"
+week_one = ExtResource("6_sam1b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Action_Area"]
+position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_jospa")
 
 [node name="Task Timer" type="Timer" parent="."]
 
 [node name="Break Timer" type="Timer" parent="."]
 
-[node name="Task_Progress_Bar" parent="." instance=ExtResource("3_busmg")]
-visible = false
-offset_left = -56.0
-offset_top = -80.0
-offset_right = -26.0
-offset_bottom = -50.0
-
 [node name="Character_Traits_Menu" parent="." instance=ExtResource("7_0n8ig")]
 visible = false
 metadata/_edit_use_anchors_ = true
+
+[node name="Trans_Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
 [connection signal="area_entered" from="Action_Area" to="." method="_on_action_area_area_entered"]
 [connection signal="area_exited" from="Action_Area" to="." method="_on_action_area_area_exited"]
 [connection signal="timeout" from="Task Timer" to="." method="_on_task_timer_timeout"]
 [connection signal="timeout" from="Break Timer" to="." method="_on_break_timer_timeout"]
+[connection signal="timeout" from="Trans_Timer" to="." method="_on_trans_timer_timeout"]

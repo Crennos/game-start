@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://bgnl4b5thak7"
+path="res://.godot/imported/first task.dialogue-b4acfb11785749c897a32ea148d26dda.tres"
+
+[deps]
+
+source_file="res://dialogue/first task.dialogue"
+dest_files=["res://.godot/imported/first task.dialogue-b4acfb11785749c897a32ea148d26dda.tres"]
+
+[params]
+
+defaults=true

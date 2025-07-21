@@ -1,5 +1,13 @@
 extends Node
 
+signal transition
+signal start_game
+signal end_intro
+signal second_scene
+signal third_scene
+signal game_start
+signal end_demo
+
 signal call
 signal call2
 signal added_task_progress
@@ -15,14 +23,24 @@ signal action_initiated
 signal task_completed
 signal complete_task_state
 signal break_completed
-signal task_progress_logging
-signal focus_production
+#signal task_progress_logging
 
+signal focus_boost
+signal focus_input
+signal focus_production
+signal production_complete
 signal focus_influence
 signal run_task
 signal error_check
 signal debug_task
 
+signal start_work
+signal computer_screen
+signal stop_work
+signal apartment_scene
+
+signal first_boot
+signal boot_ready
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -17,6 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_njbp2")
+task_processing = true
 task_active = true
 coding = true
 
@@ -28,7 +29,7 @@ offset_right = 40.0
 layout_mode = 2
 
 [node name="Selector_Sprite" type="Sprite2D" parent="HBoxContainer/VBoxContainer3"]
-position = Vector2(1, 53)
+position = Vector2(0, 5)
 scale = Vector2(1, 0.5)
 texture = ExtResource("2_etnfb")
 
