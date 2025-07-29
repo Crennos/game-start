@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://pgqj8u4yi8tl"
+path="res://.godot/imported/one week later.dialogue-0a67733ea8eb7321f1dde5aba7629b77.tres"
+
+[deps]
+
+source_file="res://dialogue/one week later.dialogue"
+dest_files=["res://.godot/imported/one week later.dialogue-0a67733ea8eb7321f1dde5aba7629b77.tres"]
+
+[params]
+
+defaults=true

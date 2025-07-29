@@ -1,29 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1unypk1u5162"]
+[gd_scene load_steps=6 format=3 uid="uid://c1unypk1u5162"]
 
 [ext_resource type="Texture2D" uid="uid://yb42xwpklgkd" path="res://levels/work_screen.png" id="1_uqnsi"]
-[ext_resource type="PackedScene" uid="uid://dkicfmv48pur0" path="res://gui/task_progress_bar.tscn" id="2_2tbyr"]
 [ext_resource type="Script" path="res://gui/work_screen.gd" id="2_feuab"]
 [ext_resource type="PackedScene" uid="uid://1xiua5wwbkhw" path="res://gui/coding_progression.tscn" id="3_io807"]
 [ext_resource type="PackedScene" uid="uid://8k5evo0pemgf" path="res://gui/action_choice_panel.tscn" id="4_oelwx"]
 [ext_resource type="PackedScene" uid="uid://bwa3wvurx4xgu" path="res://characters/cory.tscn" id="5_l2rhm"]
 
 [node name="Work_Screen" type="Sprite2D"]
-position = Vector2(119, 8)
-scale = Vector2(1.68, 1.65)
+position = Vector2(120.5, 9.5)
+scale = Vector2(1.7, 1.625)
 texture = ExtResource("1_uqnsi")
 script = ExtResource("2_feuab")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, -4)
 zoom = Vector2(5.5, 5.8)
-
-[node name="Task_Progress_Bar" parent="." instance=ExtResource("2_2tbyr")]
-offset_left = -54.0
-offset_top = -14.0
-offset_right = -24.0
-offset_bottom = 16.0
-scale = Vector2(3.47762, 1.94603)
-true_complete = false
 
 [node name="Coding Progress" parent="." instance=ExtResource("3_io807")]
 offset_left = -60.1191

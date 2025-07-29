@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://1cja51kysayv"]
+[gd_scene load_steps=9 format=3 uid="uid://1cja51kysayv"]
 
 [ext_resource type="Script" path="res://system/progression+_bus.gd" id="1_x8xtx"]
+[ext_resource type="Resource" uid="uid://dap3nlv4i4i6h" path="res://dialogue/test_dialogue.dialogue" id="2_lhaf5"]
+[ext_resource type="Resource" uid="uid://bhq07g315e4s5" path="res://dialogue/greeting.dialogue" id="3_r68nn"]
+[ext_resource type="Resource" uid="uid://kpu0f4kk3yww" path="res://dialogue/first morning.dialogue" id="4_s4j2w"]
+[ext_resource type="Resource" uid="uid://rvsnuvii3kc5" path="res://dialogue/day one.dialogue" id="5_8i831"]
+[ext_resource type="Resource" uid="uid://bgnl4b5thak7" path="res://dialogue/first task.dialogue" id="6_c2pb5"]
+[ext_resource type="Resource" uid="uid://pgqj8u4yi8tl" path="res://dialogue/one week later.dialogue" id="6_pm8gy"]
+[ext_resource type="Resource" uid="uid://ck4qxrb4ucmxf" path="res://dialogue/letting go.dialogue" id="7_6p3dy"]
 
 [node name="ProgressionBus" type="Node"]
 script = ExtResource("1_x8xtx")
+test_scene = ExtResource("2_lhaf5")
+scene_one = ExtResource("3_r68nn")
+scene_two = ExtResource("4_s4j2w")
+scene_three = ExtResource("5_8i831")
+scene_four = ExtResource("6_pm8gy")
+scene_five = ExtResource("6_c2pb5")
+ultimate_scene = ExtResource("7_6p3dy")

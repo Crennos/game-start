@@ -95,7 +95,7 @@ do emit_signal("call", "Cory", "Patience", 1)
 Cory: Right. Now we have a plan. I'll check out more of this guy's stuff and others that strike me and move on from there. I don't have to master it right now, just make it familiar.
 
 ~ secondend
-do ProgressionBus.emit_signal("transition")
+do ProgressionBus.emit_signal("transition", "Scene Three")
 do ProgressionBus.emit_signal("third_scene")
 
 => END

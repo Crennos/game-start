@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_p6eqf"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_dpu86"]
 
 [resource]
-script = ExtResource("1_p6eqf")
+script = ExtResource("1_dpu86")
 using_states = PackedStringArray()
 titles = {
 "start": "3"
@@ -774,7 +774,10 @@ lines = {
 "type": &"function",
 "value": Array[Array]([Array[Dictionary]([{
 "type": "string",
-"value": "end_intro"
+"value": "transition"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Scene Two"
 }])])
 }]),
 "is_blocking": true
@@ -883,7 +886,7 @@ Lucy: Why don't you go take a quick shower and I'll make you some tea and breakf
 
 Cory: That sounds lovely, thank you baby.
 
-do ProgressionBus.emit_signal(\"end_intro\")
+do ProgressionBus.emit_signal(\"transition\", \"Scene Two\")
 
 => END"
 metadata/dialogue_manager_version = "2.45.0"

@@ -63,8 +63,11 @@ var base_traits = {
 
 
 var work_skills = {
-	"Familiarity": 0,
-	"Experience": 0
+	"Scripting"= 0,
+	"Debugging"= 0,
+	"Computer Logic"= 0,
+	"Study"= 0,
+	"Experience"= 0
 	}
 
 #Modified 'true' trais
@@ -87,48 +90,36 @@ func _ready() -> void:
 	ProgressionBus.stat_sub.connect(trait_decrease)
 	ProgressionBus.connect("action_initiated", toggle_activity)
 	ProgressionBus.connect("task_completed", toggle_activity)
-	ProgressionBus.connect("second_scene", ready_timer_start)
-	ProgressionBus.connect("third_scene", ready_timer_start)
+	ProgressionBus.connect("ready_scene", ready_timer_start)
 	ProgressionBus.connect("game_start", game_start)
 	status_check()
-
-func _on_trans_timer_timeout() -> void:
-	print("Time Stop")
-	
-	if scene_dict["Scene Two"] == false:
-		second_scene()
-		
-	
-	elif scene_dict["Scene Three"] == false:
-		third_scene()
-	
-	pass # Replace with function body.
 
 
 func _physics_process(delta: float) -> void:
 	detect_input(delta, process)
 
-func ready_timer_start():
+#Coordinates with Transition Timer
+func ready_timer_start(new_scene: String):
 	trans_timer.start()
-	if scene_dict["Scene Two"] == false:
-		cory.global_position = Vector2(112, -16)
+	if ProgressionBus.scene_completion_dict[new_scene] == false:
+		if new_scene == "Scene Two":
+			print("Second Move")
+			cory.global_position = Vector2(112, -16)
 		
 	
-	elif scene_dict["Scene Three"] == false:
-		cory.global_position = Vector2(65, -16)
+		elif new_scene == "Scene Three":
+			cory.global_position = Vector2(65, -16)
 
-func second_scene():
-	DialogueManager.show_dialogue_balloon(actionable_area.day_one, "start")
-	scene_dict["Scene Two"] = true
-
-func third_scene():
-	DialogueManager.show_dialogue_balloon(actionable_area.week_one, "start")
-	scene_dict["Scene Three"] = true
-
+#Include scene stop for this?
 func game_start():
 	process = true
 	player_active = true
 	actionable_area.monitorable = true
+
+func game_stop():
+	process = false
+	player_active = false
+	actionable_area.monitorable = false
 
 #Handles Input Control
 func detect_input(delta, process: bool):
@@ -147,21 +138,25 @@ func detect_input(delta, process: bool):
 			direction += -1
 			velocity.x = direction * SPEED
 			velocity.y = 0
+			
 		elif Input.is_action_pressed("right"):
 			cory_sprite.set_frame_and_progress(2, 0.0)
 			direction += 1
 			velocity.x = direction * SPEED
 			velocity.y = 0
+			
 		elif  Input.is_action_pressed("up"):
 			cory_sprite.set_frame_and_progress(1, 0.0)
 			direction += -1
 			velocity.y = direction * SPEED
 			velocity.x = 0
+			
 		elif  Input.is_action_pressed("down"):
 			cory_sprite.set_frame_and_progress(0, 0.0)
 			direction += 1
 			velocity.y = direction * SPEED
 			velocity.x = 0
+			
 		else:
 			direction = 0
 			velocity = Vector2.ZERO
@@ -172,11 +167,8 @@ func detect_input(delta, process: bool):
 		if actionable_area.actionable_present == true:
 			if Input.is_action_just_pressed("action"):
 				ProgressionBus.emit_signal("action_prompt", "Cory")
-#				print("Task Triggered")
-
-	if Input.is_action_just_pressed("bubble_pop"):
-		DialogueManager.show_dialogue_balloon(actionable_area.dialogue_resource, actionable_area.dialogue)
-		
+				toggle_vis(cory)
+	
 
 #Handles Updating True values of Traits with respective mods
 func status_check(): #Condense this into 2 for loops please and thank you, possibly 3
@@ -202,13 +194,11 @@ func status_check(): #Condense this into 2 for loops please and thank you, possi
 
 #	character_trait_collection()
 
-#func character_trait_collection():
-#	ProgressionBus.cory_traits["Patience"] = base_traits["Patience"]
-##	ProgressionBus.cory_traits
 
-#Handles Brainstorming Tick Tally
+
+#Handles Brainstorming Tick Tally, consider increasing tick
 func brain_efficiency_check():
-	var creative_add = base_traits["Creativity"] * 0.1
+	var creative_add = true_traits["True Creativity"] * 0.1
 	var strain_sub = true_traits["True Strain"] * -0.1
 	var brainstorm_progress = progress + (creative_add + strain_sub)
 	
@@ -217,7 +207,7 @@ func brain_efficiency_check():
 
 #Handles Problem Solving Tick Tally
 func problem_solve_efficiency_check():
-	var focus_add = base_traits["Focus"] * 0.1
+	var focus_add = true_traits["True Focus"] * 0.1
 	var strain_sub = true_traits["True Strain"] * -0.1
 	var problem_solve_progress = progress + (focus_add + strain_sub)
 	
@@ -227,7 +217,8 @@ func problem_solve_efficiency_check():
 #Handles General Task Tick Tally
 func task_efficiency_check():
 	var strain_sub = true_traits["True Strain"] * -0.1
-	var task_efficiency = progress + strain_sub
+	var experience_add = work_skills["Experience"] * 0.1
+	var task_efficiency = progress + (experience_add + strain_sub)
 	
 	
 	return task_efficiency
@@ -239,7 +230,7 @@ func work_time_check():
 	if burnout!= 0:
 		burnout_mod += burnout - base_traits["Perseverance"]
 		
-	var work_pressure = base_traits["Motivation"] - (burnout)
+	var work_pressure = true_traits["True Motivation"] - burnout
 	var work_limit = work_time + (work_pressure * 10)
 #	print(work_limit)
 	
@@ -277,7 +268,7 @@ func stress_build():
 #	print("+ ", total_stress, " Stress")
 	base_traits["Stress"] = stress
 	
-	pass
+	
 
 
 #Handles Break reduction of Overload/Work Load
@@ -341,16 +332,20 @@ func toggle_vis(object):
 func toggle_activity(activity: String, start: bool):
 	if start == true:
 		toggle_vis(cory)
+		actionable_area.monitoring = false
 		process = false
 		task_timer.start()
 #		print(task_timer, " Started")
 	
 	elif start == false:
 		process = true
+		actionable_area.monitoring = true
 		toggle_vis(cory)
 		task_timer.stop()
 	
 	print("Triggered")
+	
+	#Why the additional if statements? Are those necessary? Yeah probably...
 	if activity == "Brainstorming":
 		is_brainstorming = start
 		print("Brainstorm ", start)
@@ -384,18 +379,17 @@ func _on_task_timer_timeout() -> void:
 	
 	if is_brainstorming == true:
 		ProgressionBus.emit_signal("added_task_progress", "Brainstorming", brainstorm_tick)
-		work_load_limit(work_time)
 #		print("Brainstorm Timer Cycle End")
 	
 	elif is_working == true:
 		ProgressionBus.emit_signal("added_task_progress", "Working", task_tick)
-		work_load_limit(work_time)
 #		print("Task Timer Cycle End")
 	
 	elif is_problem_solving == true:
 		ProgressionBus.emit_signal("added_task_progress", "Problem Solving", problem_solve_tick)
-		work_load_limit(work_time)
+		
 	
+	work_load_limit(work_time)
 	stress_build()
 #		print("Problem Solve Timer Cycle End")
 

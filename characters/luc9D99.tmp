@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://tuv5o0y53x7j"]
+
+[ext_resource type="Script" path="res://characters/lucy.gd" id="1_d751e"]
+[ext_resource type="Texture2D" uid="uid://ddlrpq5xgx7t3" path="res://characters/lucy_sprite.png" id="2_7sxqr"]
+[ext_resource type="Resource" uid="uid://bhq07g315e4s5" path="res://dialogue/greeting.dialogue" id="2_smfh8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4el5"]
+size = Vector2(16, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ggmds"]
+radius = 21.0238
+
+[node name="Lucy" type="CharacterBody2D"]
+visible = false
+position = Vector2(8, -8)
+script = ExtResource("1_d751e")
+opening_dialogue = ExtResource("2_smfh8")
+
+[node name="Lucy_Sprite" type="Sprite2D" parent="."]
+position = Vector2(-3, 2.38419e-07)
+scale = Vector2(0.82, 1.09091)
+texture = ExtResource("2_7sxqr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 4)
+shape = SubResource("RectangleShape2D_d4el5")
+
+[node name="Action_Area" type="Area2D" parent="."]
+position = Vector2(-2, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Action_Area"]
+shape = SubResource("CircleShape2D_ggmds")

@@ -30,3 +30,8 @@ position = Vector2(-2, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Action_Area"]
 shape = SubResource("CircleShape2D_ggmds")
+
+[node name="Trans_Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Trans_Timer" to="." method="_on_trans_timer_timeout"]

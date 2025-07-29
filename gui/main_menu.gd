@@ -8,7 +8,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ProgressionBus.connect("end_demo", end_demo)
-	
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,7 +23,8 @@ func _on_start_button_pressed() -> void:
 	var start_game = game_start.instantiate()
 	add_sibling(start_game)
 	main_menu.queue_free()
-	ProgressionBus.emit_signal("transition")
+	ProgressionBus.emit_signal("transition", "Scene One")
+	
 
 
 func toggle_vis(object):

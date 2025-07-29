@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 
+@onready var trans_timer : Timer = $Trans_Timer
 
 @export var player_active : bool
 
@@ -30,26 +31,28 @@ const SPEED = 300.0
 @export var hope : int = 0 #Counters All
 
 func _ready() -> void:
-	ProgressionBus.connect("start_game", starting_scene)
-	ProgressionBus.connect("end_intro", next_scene)
+	ProgressionBus.connect("ready_scene", ready_scene)
 
 
 func _physics_process(delta: float) -> void:
 	detect_input(delta, true)
 	
 
-func starting_scene():
-	print("Hi")
-	lucy.visible = true
-	var tween = get_tree().create_tween()
-	tween.finished.connect(greetings_talk)
-	tween.tween_property(lucy, "global_position", Vector2(80, 32), 2)
-	
 
-func next_scene():
-	ProgressionBus.emit_signal("transition")
-	ProgressionBus.emit_signal("second_scene")
-	lucy.visible = false
+func ready_scene(new_scene: String):
+	if ProgressionBus.scene_completion_dict[new_scene] == false:
+		if new_scene == "Scene One":
+			trans_timer.start(3)
+			await trans_timer.timeout
+			lucy.visible = true
+			var tween = get_tree().create_tween()
+			tween.finished.connect(greetings_talk)
+			tween.tween_property(lucy, "global_position", Vector2(80, 32), 2)
+		
+		if new_scene == "Scene Two":
+			lucy.visible = false
+
+
 
 func greetings_talk():
 	DialogueManager.show_dialogue_balloon(lucy.opening_dialogue, "start")
@@ -80,3 +83,7 @@ func detect_input(delta, process: bool):
 	
 	if Input.is_action_just_pressed("Player 2"):
 		player_active = true
+
+
+func _on_trans_timer_timeout() -> void:
+	pass # Replace with function body.

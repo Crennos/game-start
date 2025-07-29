@@ -8,7 +8,7 @@ func _ready() -> void:
 	ProgressionBus.connect("computer_screen", load_work_scene)
 	ProgressionBus.connect("apartment_scene", load_apartment)
 	ProgressionBus.connect("end_demo", end_demo)
-	
+	ProgressionBus.emit_signal("start_scene", "Scene One")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -53,7 +53,7 @@ func set_character_values():
 	
 	for stat in cory_traits:
 		trait_dict[stat] = cory_traits[stat]
-		print("Updated Cory Trait: ", trait_dict[stat])
+#		print("Updated Cory Trait: ", trait_dict[stat])
 	
 	patience.text = str(trait_dict["Patience"])
 	perseverance.text = str(trait_dict["Perseverance"])
@@ -94,7 +94,7 @@ func negative_emotion_tracker(insight: int):
 		var insight_result = obscure_trait(trait_check, insight)
 		if insight_result is int:
 			label_list.append(str(insight_result))
-			print(label_list[negative])
+#			print(label_list[negative])
 		else:
 			label_list.append(insight_result)
 		
@@ -109,7 +109,7 @@ func negative_emotion_tracker(insight: int):
 func obscure_trait(negative: int, insight: int):
 	if insight <= 2:
 		if negative <= 2:
-			print("Low")
+#			print("Low")
 			return "Low"
 		elif negative >= 3 and negative <= 4:
 			return "Medium"
@@ -117,7 +117,7 @@ func obscure_trait(negative: int, insight: int):
 			return negative
 	elif insight >= 2 and insight <= 4:
 		if negative <= 2:
-			print("Low")
+#			print("Low")
 			return "Low"
 		elif negative >= 3 and negative <= 4:
 			return negative

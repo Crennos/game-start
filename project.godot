@@ -35,6 +35,7 @@ general/new_template="~ start
 
 window/size/viewport_width=1280
 window/size/viewport_height=920
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
@@ -100,7 +101,7 @@ trait_tab={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/greeting.dialogue", "res://dialogue/first morning.dialogue", "res://dialogue/day one.dialogue", "res://dialogue/letting go.dialogue", "res://dialogue/test_dialogue.dialogue", "res://dialogue/first task.dialogue", "res://one week later.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/greeting.dialogue", "res://dialogue/first morning.dialogue", "res://dialogue/day one.dialogue", "res://dialogue/letting go.dialogue", "res://dialogue/test_dialogue.dialogue", "res://dialogue/first task.dialogue", "res://dialogue/one week later.dialogue")
 
 [layer_names]
 

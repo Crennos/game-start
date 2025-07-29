@@ -1,11 +1,24 @@
 extends Control
 
+@onready var task_progress_bar : TextureProgressBar = $Task_Progress_Bar
 @onready var coding_bar : TextureProgressBar = $HBoxContainer/VBoxContainer/Coding_Bar
 @onready var testing_bar : TextureProgressBar = $HBoxContainer/VBoxContainer/Testing_Bar
 @onready var efficiency_bar : TextureProgressBar = $HBoxContainer/VBoxContainer/Efficiency_Bar
 @onready var learning_bar : TextureProgressBar = $HBoxContainer/VBoxContainer/Learning_Bar
 @onready var selector : Sprite2D = $HBoxContainer/VBoxContainer3/Selector_Sprite
 @onready var progress_timer : Timer = $Progress_Timer
+
+
+@export var first_task : DialogueResource
+
+@export var current_task : String
+@export var progress : float = 0
+@export var true_complete: bool
+@export var bug_tally : int
+@export var break_point_chance : float
+@export var break_points : int
+
+@export var broken_progress : float
 
 @export var task_processing : bool
 @export var task_active : bool
@@ -27,8 +40,7 @@ var current_pos = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ProgressionBus.connect("focus_production", production_growth)
-	ProgressionBus.connect("first_boot", first_boot)
-	ProgressionBus.connect("boot_ready", boot_ready)
+	ProgressionBus.connect("added_task_progress", task_bar_raise)
 	selector.global_position = Vector2(0,5)
 	production_growth(false)
 	focus(true)
@@ -99,6 +111,34 @@ func detect_input(active: bool):
 
 func initiate():
 	pass
+
+func set_task_value(value: float):
+	task_progress_bar.value = value
+	
+
+
+func task_bar_raise(task: String, prog: float):
+	current_task = task
+	task_progress_bar.value += prog
+	print(task, " + ", prog)	
+
+
+
+#func task_completion_check():
+#	if task_bar.value >= 100 and demo_end.visible == false:
+#		true_complete = true
+#		toggle_vis(demo_end)
+#		print("End Start")
+#		demo_timer.start()
+
+
+func toggle_vis(object):
+	if object.visible == false:
+		object.visible = true
+	
+	else:
+		object.visible = false
+
 
 #Handles Focus Progress for Calculations and Progress
 func focus(active: bool):
@@ -241,6 +281,37 @@ func stability_check(coding: float, testing: float, efficiency: float):
 	
 	ProgressionBus.emit_signal("error_check", error_chance)
 
+
+func bug_check(error: float):
+	var bugs = -1
+#	break_point_chance = error
+	
+	if error >= 1:
+		for bug in error:
+			bugs += 1
+			error -= 1
+		
+	
+#	bug_tally = bugs
+	print("Bugs: ", bugs)
+#	print("Breakpoint Chance: ", break_point_chance)
+
+
+func run_check():
+#	var error_threshold = 100 - break_point_chance
+	
+	for run in 100:
+		var bug_run = randi_range(1, 100)
+#		if bug_run >= error_threshold:
+#			print("Bug Found: ",bug_run)
+#			bug_tally += 1
+		
+#		else:
+#			print("No Bug: ",bug_run)
+#			continue
+		
+#	print("Bugs ", bug_tally)
+#	broken_progress += bug_tally
 
 func progress_check():
 	if coding_bar.value == 100 and completion == false:

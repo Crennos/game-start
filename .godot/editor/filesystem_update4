@@ -1,10 +1,9 @@
-res://gui/task_progress_bar.tscn
+res://characters/lucy.tscn
 res://system/main.tscn
 res://characters/cory.tscn
 res://system/progression+_bus.tscn
-res://gui/work_screen.tscn
-res://gui/coding_progression.tscn
-res://gui/action_choice_panel.tscn
+res://gui/transition_scene.tscn
 res://gui/main_menu.tscn
-res://gui/task_progress_bar.gd
-res://system/main.gd
+res://characters/lucy.gd
+res://gui/transition_scene.gd
+res://gui/main_menu.gd

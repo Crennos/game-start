@@ -12,20 +12,24 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func fade_scene():
+#Starts Transition Sweep
+func fade_scene(new_scene: String):
 	transition.visible = true
+	ProgressionBus.emit_signal("ready_scene", new_scene)
 	var tween = get_tree().create_tween()
 	tween.tween_property(transition, "position", Vector2(368, -24), 3)
 	tween.finished.connect(reset)
-		
+	
 	
 
+#Resets After Transition
 func reset():
 	transition.visible = false
 	transition.position = Vector2(80, -24)
 	if first == false:
 		first_tran()
 		first = true
+
 
 func first_tran():
 	ProgressionBus.emit_signal("start_game")
