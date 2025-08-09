@@ -12,12 +12,17 @@ signal end_scene
 signal start_game
 signal end_intro
 signal game_start
+signal task_start
+signal task_pause
 signal end_demo
 
 #Task Signals
 signal call
 signal call2
 signal added_task_progress
+signal stress_modify
+signal work_load_modify
+signal familiarity_update
 signal stat_add
 signal stat_sub
 signal update_stat_panel
@@ -36,7 +41,6 @@ signal break_completed
 
 signal focus_input
 signal focus_production
-signal focus_influence
 signal run_task
 signal error_check
 signal debug_task
@@ -60,7 +64,17 @@ signal apartment_scene
 
 @export var ultimate_scene: DialogueResource
 
-
+var scene_dict = {
+	"Greeting": "Scene One",
+	"First Morning": "Scene Two",
+	"Day One": "Scene Three",
+	"One Week Later": "Scene Four",
+	"First Task": "Scene Five"
+	
+	
+	
+	
+}
 
 var scene_completion_dict = {
 	"Test Scene": false,
@@ -84,7 +98,6 @@ func _ready() -> void:
 	connect("action_prompt", task_completion_check)
 	connect("complete_task_state", complete_current_task)
 	connect("start_scene", scene_change)
-#	connect()
 	
 
 
@@ -94,15 +107,19 @@ func _process(delta: float) -> void:
 
 #Handles all Scene Changes
 func scene_change(scene: String):
+	print(scene)
 	if scene_completion_dict[scene] == false:
 		match scene:
 			"Test Scene":
 				DialogueManager.show_dialogue_balloon(test_scene, "start")
 			"Scene One":
+#				print("Matched!")
 				DialogueManager.show_dialogue_balloon(scene_one, "start")
-			"scene Two":
+			"Scene Two":
+#				print("Matched!")
 				DialogueManager.show_dialogue_balloon(scene_two, "start")
 			"Scene Three":
+#				print("Matched!")
 				DialogueManager.show_dialogue_balloon(scene_three, "start")
 			"Scene Four":
 				DialogueManager.show_dialogue_balloon(scene_four, "start")

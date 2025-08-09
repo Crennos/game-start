@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_4ow2l"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_s3bfl"]
 
 [resource]
-script = ExtResource("1_4ow2l")
+script = ExtResource("1_s3bfl")
 using_states = PackedStringArray()
 titles = {
+"secondend": "17",
 "start": "3"
 }
 character_names = PackedStringArray("Cory")
@@ -17,29 +18,11 @@ lines = {
 "text": "start",
 "type": &"title"
 },
-"11": {
-"id": "11",
-"is_snippet": false,
-"next_id": "end",
-"type": &"goto"
-},
-"3": {
+"10": {
 "character": "Cory",
 "character_replacements": Array[Dictionary]([]),
-"id": "3",
-"next_id": "4",
-"notes": "",
-"tags": PackedStringArray(),
-"text": "Alright... let's get started.",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "Alright... let's get started.",
-"type": &"dialogue"
-},
-"4": {
-"character": "Cory",
-"character_replacements": Array[Dictionary]([]),
-"id": "4",
-"next_id": "5",
+"id": "10",
+"next_id": "11",
 "notes": "",
 "tags": PackedStringArray(),
 "text": "Let's try to make my own sprite with my own movement system.",
@@ -47,11 +30,11 @@ lines = {
 "translation_key": "Let's try to make my own sprite with my own movement system.",
 "type": &"dialogue"
 },
-"5": {
+"11": {
 "character": "Cory",
 "character_replacements": Array[Dictionary]([]),
-"id": "5",
-"next_id": "6",
+"id": "11",
+"next_id": "12",
 "notes": "",
 "tags": PackedStringArray(),
 "text": "I need to give myself the chance to fail in order to improve so I won't worry too much if my [color=#1ee656]coding[/color] is the best.",
@@ -59,11 +42,11 @@ lines = {
 "translation_key": "I need to give myself the chance to fail in order to improve so I won't worry too much if my [color=#1ee656]coding[/color] is the best.",
 "type": &"dialogue"
 },
-"6": {
+"12": {
 "character": "Cory",
 "character_replacements": Array[Dictionary]([]),
-"id": "6",
-"next_id": "7",
+"id": "12",
+"next_id": "13",
 "notes": "",
 "tags": PackedStringArray(),
 "text": "This will give me an opportunity to both [color=00a2e8]test[/color] it to catch and reduce bugs and explore ways to improve the [color=ff7f27]efficiency[/color] of my code to make it more stable.",
@@ -71,11 +54,11 @@ lines = {
 "translation_key": "This will give me an opportunity to both [color=00a2e8]test[/color] it to catch and reduce bugs and explore ways to improve the [color=ff7f27]efficiency[/color] of my code to make it more stable.",
 "type": &"dialogue"
 },
-"7": {
+"13": {
 "character": "Cory",
 "character_replacements": Array[Dictionary]([]),
-"id": "7",
-"next_id": "9",
+"id": "13",
+"next_id": "15",
 "notes": "",
 "tags": PackedStringArray(),
 "text": "None of this is supposed to be perfect. I need to [color=fff200]learn[/color] as much as I can in order to gain familiarity and experience to develop the skills and logic I need to improve myself.",
@@ -83,8 +66,14 @@ lines = {
 "translation_key": "None of this is supposed to be perfect. I need to [color=fff200]learn[/color] as much as I can in order to gain familiarity and experience to develop the skills and logic I need to improve myself.",
 "type": &"dialogue"
 },
-"9": {
-"id": "9",
+"15": {
+"id": "15",
+"next_id": "17",
+"text": "secondend",
+"type": &"title"
+},
+"17": {
+"id": "17",
 "mutation": {
 "expression": Array[Dictionary]([{
 "type": "variable",
@@ -96,16 +85,95 @@ lines = {
 "type": &"function",
 "value": Array[Array]([Array[Dictionary]([{
 "type": "string",
-"value": "boot_ready"
+"value": "task_start"
 }])])
 }]),
 "is_blocking": true
 },
-"next_id": "11",
+"next_id": "19",
 "type": &"mutation"
+},
+"19": {
+"id": "19",
+"is_snippet": false,
+"next_id": "end",
+"type": &"goto"
+},
+"3": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "3",
+"next_id": "4",
+"next_id_after": "7",
+"notes": "",
+"responses": PackedStringArray("3", "6"),
+"tags": PackedStringArray(),
+"text": "Skip",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Skip",
+"type": &"response"
+},
+"4": {
+"id": "4",
+"is_snippet": false,
+"next_id": "17",
+"parent_id": "3",
+"type": &"goto"
+},
+"6": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "6",
+"next_id": "7",
+"next_id_after": "7",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Continue",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Continue",
+"type": &"response"
+},
+"7": {
+"id": "7",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "task_pause"
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "9",
+"type": &"mutation"
+},
+"9": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "9",
+"next_id": "10",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Alright... let's get started.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Alright... let's get started.",
+"type": &"dialogue"
 }
 }
 raw_text = "~ start
+
+- Skip
+	=> secondend
+
+- Continue
+do ProgressionBus.emit_signal(\"task_pause\")
 
 Cory: Alright... let's get started.
 Cory: Let's try to make my own sprite with my own movement system.
@@ -113,7 +181,9 @@ Cory: I need to give myself the chance to fail in order to improve so I won't wo
 Cory: This will give me an opportunity to both [color=00a2e8]test[/color] it to catch and reduce bugs and explore ways to improve the [color=ff7f27]efficiency[/color] of my code to make it more stable.
 Cory: None of this is supposed to be perfect. I need to [color=fff200]learn[/color] as much as I can in order to gain familiarity and experience to develop the skills and logic I need to improve myself.
 
-do ProgressionBus.emit_signal(\"boot_ready\")
+~ secondend
+
+do ProgressionBus.emit_signal(\"task_start\")
 
 => END"
 metadata/dialogue_manager_version = "2.45.0"

@@ -14,16 +14,17 @@ func _process(delta: float) -> void:
 
 #Starts Transition Sweep
 func fade_scene(new_scene: String):
+#	print("Transition Start to ", new_scene)
 	transition.visible = true
 	ProgressionBus.emit_signal("ready_scene", new_scene)
 	var tween = get_tree().create_tween()
 	tween.tween_property(transition, "position", Vector2(368, -24), 3)
 	tween.finished.connect(reset)
 	
-	
 
 #Resets After Transition
 func reset():
+#	print("Haha Stupid")
 	transition.visible = false
 	transition.position = Vector2(80, -24)
 	if first == false:

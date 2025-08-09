@@ -16,6 +16,7 @@ extends CharacterBody2D
 @export var process : bool = true
 
 #Task Check
+#@export var is_tasking : bool
 @export var is_brainstorming : bool
 @export var is_working : bool
 @export var is_problem_solving : bool
@@ -63,10 +64,10 @@ var base_traits = {
 
 
 var work_skills = {
-	"Scripting"= 0,
-	"Debugging"= 0,
-	"Computer Logic"= 0,
-	"Study"= 0,
+	"Scripting"= 1,
+	"Debugging"= 2,
+	"Computer Logic"= 3,
+	"Study"= 4,
 	"Experience"= 0
 	}
 
@@ -85,14 +86,19 @@ var true_traits = {
 
 #Handles Connections and initial Checks, Test Function
 func _ready() -> void:
-	work_time_check()
 	ProgressionBus.stat_add.connect(trait_increase)
 	ProgressionBus.stat_sub.connect(trait_decrease)
 	ProgressionBus.connect("action_initiated", toggle_activity)
 	ProgressionBus.connect("task_completed", toggle_activity)
 	ProgressionBus.connect("ready_scene", ready_timer_start)
 	ProgressionBus.connect("game_start", game_start)
+	ProgressionBus.connect("task_start", task_start)
+	ProgressionBus.connect("task_pause", task_pause)
+	ProgressionBus.connect("stress_modify", stress_build)
+	ProgressionBus.connect("work_load_modify", work_load_limit)
+	ProgressionBus.connect("familiarity_update", familiar_build)
 	status_check()
+	
 
 
 func _physics_process(delta: float) -> void:
@@ -100,15 +106,23 @@ func _physics_process(delta: float) -> void:
 
 #Coordinates with Transition Timer
 func ready_timer_start(new_scene: String):
-	trans_timer.start()
+	trans_timer.start(3)
 	if ProgressionBus.scene_completion_dict[new_scene] == false:
 		if new_scene == "Scene Two":
-			print("Second Move")
+#			print("Second Move")
 			cory.global_position = Vector2(112, -16)
+			scene_trigger(new_scene)
 		
-	
 		elif new_scene == "Scene Three":
+			scene_trigger(new_scene)
+		
+		elif new_scene == "Scene Four":
 			cory.global_position = Vector2(65, -16)
+			scene_trigger(new_scene)
+
+func scene_trigger(new_scene: String):
+	await trans_timer.timeout
+	ProgressionBus.emit_signal("start_scene", new_scene)
 
 #Include scene stop for this?
 func game_start():
@@ -120,6 +134,14 @@ func game_stop():
 	process = false
 	player_active = false
 	actionable_area.monitorable = false
+
+func task_start():
+	task_timer.start()
+	
+
+func task_pause():
+	task_timer.stop()
+	
 
 #Handles Input Control
 func detect_input(delta, process: bool):
@@ -167,7 +189,7 @@ func detect_input(delta, process: bool):
 		if actionable_area.actionable_present == true:
 			if Input.is_action_just_pressed("action"):
 				ProgressionBus.emit_signal("action_prompt", "Cory")
-				toggle_vis(cory)
+				
 	
 
 #Handles Updating True values of Traits with respective mods
@@ -223,6 +245,39 @@ func task_efficiency_check():
 	
 	return task_efficiency
 
+#Handles Coding Work Bar Skill Modifiers 
+func work_skill_check():
+	var skill_check : Array = []
+	
+	for work in work_skills:
+		var tick : float = 1.0
+		
+		if work == "Scripting":
+			tick += work_skills[work] * 0.1
+			skill_check.append(tick)
+			#print("Scripting: ", tick)
+			
+		elif work == "Debugging":
+			tick += work_skills[work] * 0.1
+			skill_check.append(tick)
+			#print("Debugging ", tick)
+			
+		elif work == "Computer Logic":
+			tick += work_skills[work] * 0.1
+			skill_check.append(tick)
+			#print("Computer Logic: ", tick)
+		
+		elif work == "Study":
+			tick += work_skills[work] * 0.1
+			skill_check.append(tick)
+			#print("Study: ", tick)
+		
+		else:
+			pass
+		
+	
+	return skill_check
+
 #Handles Upper Work Limit
 func work_time_check():
 	var burnout_mod : int = 0
@@ -237,37 +292,38 @@ func work_time_check():
 	return work_limit
 
 #Handles Work Load Accumulation
-func work_load_limit(work_limit: float):
-	var work_tick = 1.0
+func work_load_limit(added: float):
+	var work_time = work_time_check()
+	var work_tick = 1.0 + added
+	print("Work Tick: ", work_tick)
 	
-	if work_load < work_limit:
+	if work_load < work_time:
 		work_load += work_tick
-#		print("Work Load: ",work_load)
+		print("Work Load: ",work_load)
 	
-	elif work_load >= work_limit:
+	elif work_load >= work_time:
 		over_load += work_tick
-#		print("Over Load ",over_load)
 		over_load_check()
 	
 
 #Handles Overload Accumulation and Strain
 func over_load_check():
 	if over_load >= 10:
-		ProgressionBus.emit_signal("stat_add", "Cory", "Strain")
+#		ProgressionBus.emit_signal("stat_add", "Cory", "Strain")
 		base_traits["Strain"] += 1
 		over_load -= 10
 		print("Strain ", base_traits["Strain"])
 	
 
-func stress_build():
-	var stress_tick = 1.0
+func stress_build(added: float):
+	var stress_tick = 1.0 + added
+	print("Stress Tick: ", stress_tick)
 	var motivation_mod = base_traits["Motivation"] * -0.1
 	var strain_mod = base_traits["Strain"] * 0.1
 	var total_stress = stress_tick + (strain_mod + motivation_mod)
+	print("Total Stress: ", total_stress)
 	stress += total_stress
-#	print("+ ", total_stress, " Stress")
 	base_traits["Stress"] = stress
-	
 	
 
 
@@ -287,15 +343,14 @@ func break_time_check():
 			pass
 	
 
-func focus_work_check(work: float, stress: float, familiarity: float):
-	var familiar_build = 0.0
-	work_load += work
-	stress += stress
-	familiar_build += familiarity
+func familiar_build(familiarity: float):
+	var familiar : float 
+	familiar += familiarity
+	print("Familiarity Build: ", familiar)
 	
-	if familiar_build == 100:
+	if familiar == 100:
 		work_skills["Familiarty"] += 1
-		familiar_build = 0
+		familiar = 0
 
 #Handles Event Trait Increases
 func trait_increase(char: String, stat: String):
@@ -334,7 +389,7 @@ func toggle_activity(activity: String, start: bool):
 		toggle_vis(cory)
 		actionable_area.monitoring = false
 		process = false
-		task_timer.start()
+		
 #		print(task_timer, " Started")
 	
 	elif start == false:
@@ -343,31 +398,32 @@ func toggle_activity(activity: String, start: bool):
 		toggle_vis(cory)
 		task_timer.stop()
 	
-	print("Triggered")
+#	print("Triggered")
 	
 	#Why the additional if statements? Are those necessary? Yeah probably...
 	if activity == "Brainstorming":
 		is_brainstorming = start
-		print("Brainstorm ", start)
+#		print("Brainstorm ", start)
 		
 	
 	elif activity == "Working":
 		is_working = start
-		print("Progress True")
+#		print("Progress True")
 	
 	elif activity == "Problem Solving":
 		is_problem_solving = start
-		print("Problem Solve True")
+#		print("Problem Solve True")
 	
 	elif activity == "Break":
 		is_on_break = start
-		print("Break True")
+#		print("Break True")
 	
 	else:
 		is_brainstorming = false
 		is_working = false
 		is_problem_solving = false
 		is_on_break = false
+		
 
 
 #Handles Task Bar Progression
@@ -375,22 +431,23 @@ func _on_task_timer_timeout() -> void:
 	var brainstorm_tick = brain_efficiency_check()
 	var problem_solve_tick = problem_solve_efficiency_check()
 	var task_tick = task_efficiency_check()
-	var work_time = work_time_check()
+#	var work_time = work_time_check()
+	var skills = work_skill_check()
 	
 	if is_brainstorming == true:
-		ProgressionBus.emit_signal("added_task_progress", "Brainstorming", brainstorm_tick)
+		ProgressionBus.emit_signal("added_task_progress", "Brainstorming", brainstorm_tick, skills)
 #		print("Brainstorm Timer Cycle End")
 	
 	elif is_working == true:
-		ProgressionBus.emit_signal("added_task_progress", "Working", task_tick)
+		ProgressionBus.emit_signal("added_task_progress", "Working", task_tick, skills)
 #		print("Task Timer Cycle End")
 	
 	elif is_problem_solving == true:
-		ProgressionBus.emit_signal("added_task_progress", "Problem Solving", problem_solve_tick)
+		ProgressionBus.emit_signal("added_task_progress", "Problem Solving", problem_solve_tick, skills)
 		
 	
-	work_load_limit(work_time)
-	stress_build()
+#	work_load_limit(work_time)
+#	stress_build()
 #		print("Problem Solve Timer Cycle End")
 
 #Handles Break Time Recuperation

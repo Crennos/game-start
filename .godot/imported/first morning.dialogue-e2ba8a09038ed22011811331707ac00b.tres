@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_6jno6"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_tsgep"]
 
 [resource]
-script = ExtResource("1_6jno6")
+script = ExtResource("1_tsgep")
 using_states = PackedStringArray()
 titles = {
+"secondend": "16",
 "start": "3"
 }
 character_names = PackedStringArray("Lucy", "Cory")
@@ -18,34 +19,98 @@ lines = {
 "type": &"title"
 },
 "11": {
+"character": "Lucy",
+"character_replacements": Array[Dictionary]([]),
 "id": "11",
+"next_id": "13",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Sounds good baby, just remember to take your time and don't rush. I love you, buh bye!",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Sounds good baby, just remember to take your time and don't rush. I love you, buh bye!",
+"type": &"dialogue"
+},
+"13": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "13",
+"next_id": "15",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I love you too baby, bye bye.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I love you too baby, bye bye.",
+"type": &"dialogue"
+},
+"15": {
+"id": "15",
+"next_id": "16",
+"text": "secondend",
+"type": &"title"
+},
+"16": {
+"id": "16",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "transition"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Scene Three"
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "18",
+"type": &"mutation"
+},
+"18": {
+"id": "18",
 "is_snippet": false,
 "next_id": "end",
 "type": &"goto"
 },
 "3": {
-"character": "Lucy",
+"character": "",
 "character_replacements": Array[Dictionary]([]),
 "id": "3",
-"next_id": "5",
+"next_id": "4",
+"next_id_after": "7",
 "notes": "",
+"responses": PackedStringArray("3", "6"),
 "tags": PackedStringArray(),
-"text": "Alright I'm going to head on out baby. Will you be ok coming to pick me up later?",
+"text": "Skip",
 "text_replacements": Array[Dictionary]([]),
-"translation_key": "Alright I'm going to head on out baby. Will you be ok coming to pick me up later?",
-"type": &"dialogue"
+"translation_key": "Skip",
+"type": &"response"
 },
-"5": {
-"character": "Cory",
+"4": {
+"id": "4",
+"is_snippet": false,
+"next_id": "16",
+"parent_id": "3",
+"type": &"goto"
+},
+"6": {
+"character": "",
 "character_replacements": Array[Dictionary]([]),
-"id": "5",
+"id": "6",
 "next_id": "7",
+"next_id_after": "7",
 "notes": "",
 "tags": PackedStringArray(),
-"text": "Yeah that's fine. Have fun, I'm gonna play some games for a little and then start trying to figure out this engine.",
+"text": "Continue",
 "text_replacements": Array[Dictionary]([]),
-"translation_key": "Yeah that's fine. Have fun, I'm gonna play some games for a little and then start trying to figure out this engine.",
-"type": &"dialogue"
+"translation_key": "Continue",
+"type": &"response"
 },
 "7": {
 "character": "Lucy",
@@ -54,9 +119,9 @@ lines = {
 "next_id": "9",
 "notes": "",
 "tags": PackedStringArray(),
-"text": "Sounds good baby, just remember to take your time and don't rush. I love you, buh bye!",
+"text": "Alright I'm going to head on out baby. Will you be ok coming to pick me up later?",
 "text_replacements": Array[Dictionary]([]),
-"translation_key": "Sounds good baby, just remember to take your time and don't rush. I love you, buh bye!",
+"translation_key": "Alright I'm going to head on out baby. Will you be ok coming to pick me up later?",
 "type": &"dialogue"
 },
 "9": {
@@ -66,14 +131,18 @@ lines = {
 "next_id": "11",
 "notes": "",
 "tags": PackedStringArray(),
-"text": "I love you too baby, bye bye.",
+"text": "Yeah that's fine. Have fun, I'm gonna play some games for a little and then start trying to figure out this engine.",
 "text_replacements": Array[Dictionary]([]),
-"translation_key": "I love you too baby, bye bye.",
+"translation_key": "Yeah that's fine. Have fun, I'm gonna play some games for a little and then start trying to figure out this engine.",
 "type": &"dialogue"
 }
 }
 raw_text = "~ start
 
+- Skip
+	=> secondend
+
+- Continue
 Lucy: Alright I'm going to head on out baby. Will you be ok coming to pick me up later?
 
 Cory: Yeah that's fine. Have fun, I'm gonna play some games for a little and then start trying to figure out this engine.
@@ -81,6 +150,9 @@ Cory: Yeah that's fine. Have fun, I'm gonna play some games for a little and the
 Lucy: Sounds good baby, just remember to take your time and don't rush. I love you, buh bye!
 
 Cory: I love you too baby, bye bye.
+
+~ secondend
+do ProgressionBus.emit_signal(\"transition\", \"Scene Three\")
 
 => END"
 metadata/dialogue_manager_version = "2.45.0"

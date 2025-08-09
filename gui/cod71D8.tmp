@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=3 uid="uid://1xiua5wwbkhw"]
+
+[ext_resource type="Script" path="res://gui/coding_progression.gd" id="1_njbp2"]
+[ext_resource type="Texture2D" uid="uid://dqwxlreeuh4va" path="res://gui/new bot.png" id="1_qfmlw"]
+[ext_resource type="Texture2D" uid="uid://cc3nukfdsit77" path="res://gui/new top.png" id="2_0ml7f"]
+[ext_resource type="Texture2D" uid="uid://b8h08hjl6qjp" path="res://gui/selector.png" id="2_etnfb"]
+[ext_resource type="Texture2D" uid="uid://dyn4gjkfiji1c" path="res://gui/Coding Bar.png" id="3_nimxm"]
+[ext_resource type="Texture2D" uid="uid://cbty7w6l8l404" path="res://gui/Testing Bar.png" id="4_us7hv"]
+[ext_resource type="Texture2D" uid="uid://dboacc5aiyv83" path="res://gui/Efficiency Bar.png" id="5_hktj0"]
+[ext_resource type="Texture2D" uid="uid://6fmcwd53uuq" path="res://gui/Learning Bar.png" id="6_3ogpd"]
+[ext_resource type="Texture2D" uid="uid://bnttcysrx1uyu" path="res://gui/top.png" id="9_gbwtk"]
+[ext_resource type="Texture2D" uid="uid://bvl5kbnlmoklr" path="res://gui/pixil-frame-0 (11).png" id="10_udhnv"]
+
+[node name="Coding Progress" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_njbp2")
+task_processing = true
+task_active = true
+coding = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 40.0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Selector_Sprite" type="Sprite2D" parent="HBoxContainer/VBoxContainer3"]
+position = Vector2(0, 5)
+scale = Vector2(1, 0.5)
+texture = ExtResource("2_etnfb")
+
+[node name="VSplitContainer2" type="VSplitContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Coding_Bar" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+step = 0.0
+texture_under = ExtResource("1_qfmlw")
+texture_over = ExtResource("2_0ml7f")
+texture_progress = ExtResource("3_nimxm")
+
+[node name="Testing_Bar" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+step = 0.0
+texture_under = ExtResource("1_qfmlw")
+texture_over = ExtResource("2_0ml7f")
+texture_progress = ExtResource("4_us7hv")
+
+[node name="Efficiency_Bar" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+step = 0.0
+texture_under = ExtResource("1_qfmlw")
+texture_over = ExtResource("2_0ml7f")
+texture_progress = ExtResource("5_hktj0")
+
+[node name="Learning_Bar" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+step = 0.0
+texture_under = ExtResource("1_qfmlw")
+texture_over = ExtResource("2_0ml7f")
+texture_progress = ExtResource("6_3ogpd")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Progress_Timer" type="Timer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(31, 41)
+zoom = Vector2(5, 5)
+
+[node name="Task_Progress_Bar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 88.0
+offset_right = 38.0
+offset_bottom = 100.0
+scale = Vector2(3.36796, 1.66645)
+step = 0.0
+texture_over = ExtResource("9_gbwtk")
+texture_progress = ExtResource("10_udhnv")
+
+[connection signal="timeout" from="Progress_Timer" to="." method="_on_progress_timer_timeout"]

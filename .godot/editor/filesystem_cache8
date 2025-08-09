@@ -1,5 +1,5 @@
 c693a20e708c4e09bfa9edf12a750cf8
-::res://::1753772538
+::res://::1754756355
 button.gd::GDScript::-1::1752817216::0::1::::<>Button<>::
 button_2.gd::GDScript::-1::1752817219::0::1::::<>Button<>::
 button_3.gd::GDScript::-1::1752817221::0::1::::<>Button<>::
@@ -83,16 +83,16 @@ main_view.tscn::PackedScene::4884668666408697448::1752823524::0::1::::<><>::res:
 settings_view.gd::GDScript::-1::1752823524::0::1::::<>TabContainer<>::
 settings_view.tscn::PackedScene::5839841081119266502::1752823524::0::1::::<><>::res://addons/dialogue_manager/views/settings_view.gd
 ::res://builds/::1753072834
-::res://characters/::1753772518
+::res://characters/::1754688452
 action_area.gd::GDScript::-1::1753068609::0::1::::<>Area2D<>::
 bad-ship-pixilart.png::CompressedTexture2D::7422265234369149578::1752961870::1752962102::1::::<><>::
-cory.gd::GDScript::-1::1753771364::0::1::::<>CharacterBody2D<>::
-cory.tscn::PackedScene::3932315741683928116::1753772464::0::1::::<><>::res://characters/cory.gd<>res://characters/action_area.gd<>uid://dap3nlv4i4i6h::::res://dialogue/test_dialogue.dialogue<>uid://rvsnuvii3kc5::::res://dialogue/day one.dialogue<>uid://pgqj8u4yi8tl::::res://dialogue/one week later.dialogue<>uid://b0mnfhx2tg2s4::::res://gui/character_traits_menu.tscn<>uid://c7pbrv2tu7d3y::::res://characters/sprite_cory_sheet.png
+cory.gd::GDScript::-1::1754688452::0::1::::<>CharacterBody2D<>::
+cory.tscn::PackedScene::3932315741683928116::1754688159::0::1::::<><>::res://characters/cory.gd<>res://characters/action_area.gd<>uid://dap3nlv4i4i6h::::res://dialogue/test_dialogue.dialogue<>uid://rvsnuvii3kc5::::res://dialogue/day one.dialogue<>uid://pgqj8u4yi8tl::::res://dialogue/one week later.dialogue<>uid://b0mnfhx2tg2s4::::res://gui/character_traits_menu.tscn<>uid://c7pbrv2tu7d3y::::res://characters/sprite_cory_sheet.png
 cory_sprite.png::CompressedTexture2D::7292725263660940220::1753043749::1753043780::1::::<><>::
 enemy.gd::GDScript::-1::1752962158::0::1::::<>CharacterBody2D<>::
 enemy.tscn::PackedScene::7925454982077001750::1752962330::0::1::::<><>::uid://cwucwdgl6g1re::::res://characters/pixil-frame-0 (9).png<>res://characters/enemy.gd
-lucy.gd::GDScript::-1::1753772513::0::1::::<>CharacterBody2D<>::
-lucy.tscn::PackedScene::1376204989947734309::1753772464::0::1::::<><>::res://characters/lucy.gd<>uid://ddlrpq5xgx7t3::::res://characters/lucy_sprite.png<>uid://bhq07g315e4s5::::res://dialogue/greeting.dialogue
+lucy.gd::GDScript::-1::1753810386::0::1::::<>CharacterBody2D<>::
+lucy.tscn::PackedScene::1376204989947734309::1753830756::0::1::::<><>::res://characters/lucy.gd<>uid://ddlrpq5xgx7t3::::res://characters/lucy_sprite.png<>uid://bhq07g315e4s5::::res://dialogue/greeting.dialogue
 lucy_sprite.png::CompressedTexture2D::7393596600845370394::1753063390::1753063409::1::::<><>::
 pixil-frame-0 (9).png::CompressedTexture2D::6358444371335910190::1752961830::1752962102::1::::<><>::
 pixil-frame-0 (10).png::CompressedTexture2D::1373914534911298054::1753064412::1753064412::1::::<><>::
@@ -104,16 +104,16 @@ player.tscn::PackedScene::4850228826893398083::1752962341::0::1::::<><>::uid://d
 player_ship.gd::GDScript::-1::1752962161::0::1::::<>Sprite2D<>::
 sprite_cory_sheet.png::CompressedTexture2D::7049942251194618940::1753064434::1753064434::1::::<><>::
 transition.png::CompressedTexture2D::3323020181554001644::1753063983::1753063983::1::::<><>::
-::res://dialogue/::1753772465
+::res://dialogue/::1753855473
 balloon.gd::GDScript::-1::1752644400::0::1::::<>CanvasLayer<>::
 balloon.tscn::PackedScene::7871119011697486665::1752643604::0::1::::<><>::res://dialogue/balloon.gd<>uid://ckvgyvclnwggo::::res://addons/dialogue_manager/dialogue_label.tscn<>res://addons/dialogue_manager/dialogue_reponses_menu.gd
-day one.dialogue::Resource::1237679479155547690::1753768797::1753772465::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
+day one.dialogue::Resource::1237679479155547690::1753853569::1753855473::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
 exper_balloon.tscn::PackedScene::4228062616589583712::1752466078::0::1::::<><>::res://dialogue/balloon.gd<>uid://ckvgyvclnwggo::::res://addons/dialogue_manager/dialogue_label.tscn<>res://addons/dialogue_manager/dialogue_reponses_menu.gd
-first morning.dialogue::Resource::734113395279097570::1752538243::1752823572::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
-first task.dialogue::Resource::83385600911996124::1753061049::1753071914::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
-greeting.dialogue::Resource::2912348063064629430::1753772463::1753772465::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
+first morning.dialogue::Resource::734113395279097570::1753853569::1753855473::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
+first task.dialogue::Resource::83385600911996124::1753853569::1753855473::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
+greeting.dialogue::Resource::2912348063064629430::1753853569::1753855473::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
 letting go.dialogue::Resource::5535610199564539635::1752636587::1752823572::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
-one week later.dialogue::Resource::1066208230640947573::1753069622::1753405017::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
+one week later.dialogue::Resource::1066208230640947573::1753853569::1753855473::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
 test_dialogue.dialogue::Resource::7191951620035636877::1752706327::1752823572::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
 ::res://examples/::1752461873
 audioDemo.gd::GDScript::-1::1752461872::0::1::::<>Control<>::
@@ -134,19 +134,19 @@ ExampleSignals.tres::Resource/DialogueData::4451938646115500077::1752461872::0::
 ExampleVariables.tres::Resource/DialogueData::4886097951687637358::1752461872::0::1::::<><>::res://addons/dialogue_nodes/objects/DialogueData.gd
 profile0.png::CompressedTexture2D::4296060542971295061::1752461872::1752461873::1::::<><>::
 voice.ogg::AudioStreamOggVorbis::2976354597759940103::1752461873::1752461873::1::::<><>::
-::res://gui/::1753772464
-action_choice_panel.gd::GDScript::-1::1753071433::0::1::::<>Control<>::
-action_choice_panel.tscn::PackedScene::2338705396327996721::1753436200::0::1::::<><>::res://gui/action_choice_panel.gd<>res://button.gd<>res://button_2.gd
+::res://gui/::1754743371
+action_choice_panel.gd::GDScript::-1::1753828619::0::1::::<>Control<>::
+action_choice_panel.tscn::PackedScene::2338705396327996721::1753830756::0::1::::<><>::res://gui/action_choice_panel.gd<>res://button.gd<>res://button_2.gd
 character_traits_menu.gd::GDScript::-1::1753436248::0::1::::<>Control<>::
 character_traits_menu.tscn::PackedScene::4166712962014483565::1753436233::0::1::::<><>::res://gui/character_traits_menu.gd<>uid://2l8yyb4heoex::::res://gui/stat_panel_backgrground.png
 Coding Bar.png::CompressedTexture2D::8872403205144941438::1752984644::1752984764::1::::<><>::
-coding_progression.gd::GDScript::-1::1753329798::0::1::::<>Control<>::
-coding_progression.tscn::PackedScene::1872912122125608788::1753436200::0::1::::<><>::res://gui/coding_progression.gd<>uid://dqwxlreeuh4va::::res://gui/new bot.png<>uid://cc3nukfdsit77::::res://gui/new top.png<>uid://b8h08hjl6qjp::::res://gui/selector.png<>uid://dyn4gjkfiji1c::::res://gui/Coding Bar.png<>uid://cbty7w6l8l404::::res://gui/Testing Bar.png<>uid://dboacc5aiyv83::::res://gui/Efficiency Bar.png<>uid://6fmcwd53uuq::::res://gui/Learning Bar.png<>uid://bnttcysrx1uyu::::res://gui/top.png<>uid://bvl5kbnlmoklr::::res://gui/pixil-frame-0 (11).png
+coding_progression.gd::GDScript::-1::1754688000::0::1::::<>Control<>::
+coding_progression.tscn::PackedScene::1872912122125608788::1754743371::0::1::::<><>::res://gui/coding_progression.gd<>uid://dqwxlreeuh4va::::res://gui/new bot.png<>uid://cc3nukfdsit77::::res://gui/new top.png<>uid://b8h08hjl6qjp::::res://gui/selector.png<>uid://dyn4gjkfiji1c::::res://gui/Coding Bar.png<>uid://cbty7w6l8l404::::res://gui/Testing Bar.png<>uid://dboacc5aiyv83::::res://gui/Efficiency Bar.png<>uid://6fmcwd53uuq::::res://gui/Learning Bar.png<>uid://bnttcysrx1uyu::::res://gui/top.png<>uid://bvl5kbnlmoklr::::res://gui/pixil-frame-0 (11).png
 Efficiency Bar.png::CompressedTexture2D::7258355906264474386::1752984667::1752984764::1::::<><>::
 interact_label.tscn::PackedScene::5929806198802268460::1752905549::0::1::::<><>::res://interact_label.gd
 Learning Bar.png::CompressedTexture2D::64320864076462248::1752984659::1752984764::1::::<><>::
-main_menu.gd::GDScript::-1::1753772346::0::1::::<>Control<>::
-main_menu.tscn::PackedScene::4043813398691021624::1753772464::0::1::::<><>::res://gui/main_menu.gd<>uid://bln0sjssdaxub::::res://gui/options_menu.tscn
+main_menu.gd::GDScript::-1::1753773623::0::1::::<>Control<>::
+main_menu.tscn::PackedScene::4043813398691021624::1753830756::0::1::::<><>::res://gui/main_menu.gd<>uid://bln0sjssdaxub::::res://gui/options_menu.tscn
 new bot.png::CompressedTexture2D::8329116893728666806::1752984691::1752984764::1::::<><>::
 new top.png::CompressedTexture2D::4971847201678223916::1752984701::1752984764::1::::<><>::
 options_menu.gd::GDScript::-1::1752433378::0::1::::<>Control<>::
@@ -162,27 +162,27 @@ stat_panel_backgrground.png::CompressedTexture2D::1919854716768905799::175293819
 task_progress_bar2.png::CompressedTexture2D::8826955354604364601::1753292336::1753293586::1::::<><>::
 Testing Bar.png::CompressedTexture2D::4883768945529717611::1752984673::1752984764::1::::<><>::
 top.png::CompressedTexture2D::3339257311936097140::1753294184::1753294215::1::::<><>::
-transition_scene.gd::GDScript::-1::1753768765::0::1::::<>AnimatedSprite2D<>::
-transition_scene.tscn::PackedScene::5877514407345791511::1753772464::0::1::::<><>::uid://bnlxwlmo6gt3i::::res://characters/transition.png<>res://gui/transition_scene.gd
+transition_scene.gd::GDScript::-1::1753855068::0::1::::<>AnimatedSprite2D<>::
+transition_scene.tscn::PackedScene::5877514407345791511::1753830756::0::1::::<><>::uid://bnlxwlmo6gt3i::::res://characters/transition.png<>res://gui/transition_scene.gd
 work_screen.gd::GDScript::-1::1753052893::0::1::::<>Sprite2D<>::
-work_screen.tscn::PackedScene::6639871841523475473::1753436200::0::1::::<><>::uid://yb42xwpklgkd::::res://levels/work_screen.png<>res://gui/work_screen.gd<>uid://1xiua5wwbkhw::::res://gui/coding_progression.tscn<>uid://8k5evo0pemgf::::res://gui/action_choice_panel.tscn<>uid://bwa3wvurx4xgu::::res://characters/cory.tscn
-::res://levels/::1753066501
+work_screen.tscn::PackedScene::6639871841523475473::1753830756::0::1::::<><>::uid://yb42xwpklgkd::::res://levels/work_screen.png<>res://gui/work_screen.gd<>uid://1xiua5wwbkhw::::res://gui/coding_progression.tscn<>uid://8k5evo0pemgf::::res://gui/action_choice_panel.tscn<>uid://bwa3wvurx4xgu::::res://characters/cory.tscn
+::res://levels/::1753828711
 apartment_room.gd::GDScript::-1::1753052818::0::1::::<>TileMapLayer<>::
-apartment_room.tscn::PackedScene::1578395470120519593::1753066501::0::1::::<><>::res://levels/apartment_room.gd<>uid://3ue7s3sxgy1l::::res://levels/final_carp.png<>uid://snw2qivtpk8n::::res://levels/final_wall_final.png<>uid://b0lrox2l5pft::::res://levels/objects/desk_station.tscn
+apartment_room.tscn::PackedScene::1578395470120519593::1753828711::0::1::::<><>::res://levels/apartment_room.gd<>uid://3ue7s3sxgy1l::::res://levels/final_carp.png<>uid://snw2qivtpk8n::::res://levels/final_wall_final.png<>uid://b0lrox2l5pft::::res://levels/objects/desk_station.tscn
 Entertainment Center Full.png::CompressedTexture2D::1032525599887337249::1752796854::1752796888::1::::<><>::
 final_carp.png::CompressedTexture2D::2006876179845788863::1752799170::1752799185::1::::<><>::
 final_wall_final.png::CompressedTexture2D::1291620940275828575::1752798781::1752798795::1::::<><>::
 work_screen.png::CompressedTexture2D::1688406877010581447::1753034246::1753034247::1::::<><>::
-::res://levels/objects/::1753040919
+::res://levels/objects/::1753828711
 cory_work_area.gd::GDScript::-1::1752809940::0::1::::<>Area2D<>::
 desk_station.gd::GDScript::-1::1752936807::0::1::::<>Sprite2D<>::
-desk_station.tscn::PackedScene::122497305006397497::1753040919::0::1::::<><>::uid://oyfss6gqcorx::::res://levels/Entertainment Center Full.png<>res://levels/objects/desk_station.gd<>uid://cqqpboiq8uasy::::res://gui/interact_label.tscn<>res://levels/objects/cory_work_area.gd<>res://levels/objects/lucy_work_area.gd<>uid://8k5evo0pemgf::::res://gui/action_choice_panel.tscn
+desk_station.tscn::PackedScene::122497305006397497::1753828711::0::1::::<><>::uid://oyfss6gqcorx::::res://levels/Entertainment Center Full.png<>res://levels/objects/desk_station.gd<>uid://cqqpboiq8uasy::::res://gui/interact_label.tscn<>res://levels/objects/cory_work_area.gd<>res://levels/objects/lucy_work_area.gd<>uid://8k5evo0pemgf::::res://gui/action_choice_panel.tscn
 lucy_work_area.gd::GDScript::-1::1752809954::0::1::::<>Area2D<>::
 ::res://mechanics/::1752324618
-::res://system/::1753772464
+::res://system/::1754688159
 main.gd::GDScript::-1::1753436319::0::1::::<>Node<>::
-main.tscn::PackedScene::199313068120779096::1753772464::0::1::::<><>::uid://wqt7b4jo1def::::res://levels/apartment_room.tscn<>res://system/main.gd<>uid://bwa3wvurx4xgu::::res://characters/cory.tscn<>uid://bwmlt2ig7b3fq::::res://gui/pause_menu.tscn<>uid://tuv5o0y53x7j::::res://characters/lucy.tscn<>uid://cp0d2k6wbnk8v::::res://gui/transition_scene.tscn
-progression+_bus.gd::GDScript::-1::1753768029::0::1::::<>Node<>::
-progression+_bus.tscn::PackedScene::1829586759384413461::1753772464::0::1::::<><>::res://system/progression+_bus.gd<>uid://dap3nlv4i4i6h::::res://dialogue/test_dialogue.dialogue<>uid://bhq07g315e4s5::::res://dialogue/greeting.dialogue<>uid://kpu0f4kk3yww::::res://dialogue/first morning.dialogue<>uid://rvsnuvii3kc5::::res://dialogue/day one.dialogue<>uid://bgnl4b5thak7::::res://dialogue/first task.dialogue<>uid://pgqj8u4yi8tl::::res://dialogue/one week later.dialogue<>uid://ck4qxrb4ucmxf::::res://dialogue/letting go.dialogue
+main.tscn::PackedScene::199313068120779096::1754688159::0::1::::<><>::uid://wqt7b4jo1def::::res://levels/apartment_room.tscn<>res://system/main.gd<>uid://bwa3wvurx4xgu::::res://characters/cory.tscn<>uid://bwmlt2ig7b3fq::::res://gui/pause_menu.tscn<>uid://tuv5o0y53x7j::::res://characters/lucy.tscn<>uid://cp0d2k6wbnk8v::::res://gui/transition_scene.tscn
+progression+_bus.gd::GDScript::-1::1753855088::0::1::::<>Node<>::
+progression+_bus.tscn::PackedScene::1829586759384413461::1754688159::0::1::::<><>::res://system/progression+_bus.gd<>uid://dap3nlv4i4i6h::::res://dialogue/test_dialogue.dialogue<>uid://bhq07g315e4s5::::res://dialogue/greeting.dialogue<>uid://kpu0f4kk3yww::::res://dialogue/first morning.dialogue<>uid://rvsnuvii3kc5::::res://dialogue/day one.dialogue<>uid://bgnl4b5thak7::::res://dialogue/first task.dialogue<>uid://pgqj8u4yi8tl::::res://dialogue/one week later.dialogue<>uid://ck4qxrb4ucmxf::::res://dialogue/letting go.dialogue
 save_system_bus.gd::GDScript::-1::1752447130::0::1::::<>Node<>::
 save_system_bus.tscn::PackedScene::2511428625726018872::1752643603::0::1::::<><>::res://system/save_system_bus.gd

@@ -1,5 +1,9 @@
 ~ start
 
+- Skip
+	=> secondend
+
+- Continue
 Lucy: Alright I'm going to head on out baby. Will you be ok coming to pick me up later?
 
 Cory: Yeah that's fine. Have fun, I'm gonna play some games for a little and then start trying to figure out this engine.
@@ -7,5 +11,8 @@ Cory: Yeah that's fine. Have fun, I'm gonna play some games for a little and the
 Lucy: Sounds good baby, just remember to take your time and don't rush. I love you, buh bye!
 
 Cory: I love you too baby, bye bye.
+
+~ secondend
+do ProgressionBus.emit_signal("transition", "Scene Three")
 
 => END

@@ -47,7 +47,7 @@ func _on_task_button_button_down() -> void:
 			print("Start Task")
 		
 			if started == false:
-				ProgressionBus.emit_signal("first_boot")
+				ProgressionBus.emit_signal("start_scene", "Scene Five")
 				started = true
 				
 	else:

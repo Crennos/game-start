@@ -41,20 +41,22 @@ var current_pos = 0
 func _ready() -> void:
 	ProgressionBus.connect("focus_production", production_growth)
 	ProgressionBus.connect("added_task_progress", task_bar_raise)
+	ProgressionBus.connect("task_start", start)
+	ProgressionBus.connect("task_pause", pause)
 	selector.global_position = Vector2(0,5)
-	production_growth(false)
+#	production_growth(false)
 	focus(true)
 	selector.global_position = code_pos
 
-func first_boot():
+func pause():
 	task_processing = false
 	task_active = false
 	
 
-func boot_ready():
+func start():
 	task_processing = true
 	task_active = true
-	production_growth(true)
+#	production_growth(true)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -80,18 +82,18 @@ func detect_input(active: bool):
 			current_pos -= 1
 			if current_pos < 0:
 				current_pos = 3
-			print(current_pos)
+#			print(current_pos)
 			selector.position = task_bars[current_pos]
-			print("Selector at ", selector.position)
+#			print("Selector at ", selector.position)
 			
 		
 		if Input.is_action_just_pressed("ui_down"):
 			current_pos += 1
 			if current_pos > 3:
 				current_pos = 0
-			print(current_pos)
+#			print(current_pos)
 			selector.position = task_bars[current_pos]
-			print("Selector at ", selector.position)
+#			print("Selector at ", selector.position)
 	
 #		if Input.is_action_just_pressed("task pause"):
 #			if task_processing == true:
@@ -117,10 +119,15 @@ func set_task_value(value: float):
 	
 
 
-func task_bar_raise(task: String, prog: float):
-	current_task = task
-	task_progress_bar.value += prog
-	print(task, " + ", prog)	
+func task_bar_raise(task: String, prog: float, skills: Array):
+	production_growth(true, skills)
+	
+	if coding == true:
+		current_task = task
+		task_progress_bar.value += prog
+#		print(task, " + ", prog)
+	else:
+		pass
 
 
 
@@ -142,6 +149,7 @@ func toggle_vis(object):
 
 #Handles Focus Progress for Calculations and Progress
 func focus(active: bool):
+	#Switch this to match?
 	if task_active == false:
 		selector.position = code_pos
 	
@@ -173,96 +181,79 @@ func focus(active: bool):
 	else:
 		pass
 
-#Handles Progress Bar Tick Calculations
-func production_growth(active: bool):
+#Handles Progress Bar Ticks
+func production_growth(active: bool, skills: Array):
 	task_processing = active
+	var coding_tick : float = 0.0
+	var testing_tick : float = 0.0
 	var efficiency_tick : float = 0
-	var coding_tick : float = 0
-	var testing_tick : float = 0
-	var learning_tick : float = 0
+	var learning_tick : float = 0.0
 	var work_load_mod : float = 0
 	var stress_mod : float = 0
 	var familiarity_tick : float = 0
-	
-	if coding == true:
-		coding_tick = default_tick
-		testing_tick =  default_tick * -0.1
-		efficiency_tick = default_tick * -0.1
-		learning_tick = default_tick * 0.2
-		work_load_mod = 0.2
-		stress_mod = 0.3
-		familiarity_tick = 0.1
-		
-	
-	elif testing == true:
-		coding_tick = default_tick * 0
-		testing_tick = default_tick
-		efficiency_tick = default_tick * 0.2
-		learning_tick = default_tick * 0.2
-		work_load_mod = 0.1
-		stress_mod = 0.2
-		familiarity_tick = 0.2
-		
-		
-	
-	elif efficiency == true:
-		coding_tick = default_tick * 0
-		testing_tick = default_tick * 0.2
-		efficiency_tick = default_tick
-		learning_tick = default_tick * 0.2
-		work_load_mod = 0.5
-		stress_mod = 0.5
-		familiarity_tick = 0.3
-		
-		
-	
-	elif learning == true:
-		coding_tick = 0
-		testing_tick = 0
-		efficiency_tick = 0
-		learning_tick = default_tick
-		work_load_mod = 0.2
-		stress_mod = 0.5
-		familiarity_tick = 0.5
-		
-		
-	
-	if task_processing == true:
-		progress_timer.start()
-#		print("Progress Started")
-		growth_tick(coding_tick, testing_tick, efficiency_tick, learning_tick)
-	
-	else:
-		progress_timer.stop()
-	
-	ProgressionBus.emit_signal("focus_influence", work_load_mod, stress_mod, familiarity_tick)
-	
-
-#Handles Progress Bar Progression
-func growth_tick(code: float, testing: float, efficiency: float, learning: float):
 	var code_prog = coding_bar.value
 	var test_prog = testing_bar.value
 	var eff_prog = efficiency_bar.value
-	var code_boost = 0.0
+	var learn_prog = learning_bar.value
 	
-	coding_bar.value += code
-#	print("Tick ", testing)
-	if test_prog < code_prog:
-		testing_bar.value += testing
-	else: 
-		pass
-	if eff_prog < code_prog:
-		efficiency_bar.value += efficiency
+	
+	if task_processing == true: #Begins processes for work bar calculations
+		var code = skills[0]
+		var test = skills[1]
+		var efficient = skills[2]
+		var learn = skills[3]
+#		progress_timer.start()
+		
+		if coding == true:
+			coding_tick = code
+			testing_tick =  test * -0.2
+			efficiency_tick = efficient * -0.3
+			learning_tick = learn * 0.2
+			work_load_mod = 0.2
+			stress_mod = 0.3
+			familiarity_tick = 0.1
+		
+		elif testing == true:
+			coding_tick = 0
+			testing_tick = test
+			efficiency_tick = efficient * 0.2
+			learning_tick = learn * 0.2
+			work_load_mod = 0.1
+			stress_mod = 0.2
+			familiarity_tick = 0.2
+		
+		elif efficiency == true:
+			coding_tick = 0
+			testing_tick = test * 0.2
+			efficiency_tick = efficiency
+			learning_tick = learn * 0.2
+			work_load_mod = 0.5
+			stress_mod = 0.5
+			familiarity_tick = 0.3
+			
+		elif learning == true:
+			coding_tick = 0
+			testing_tick = 0
+			efficiency_tick = 0
+			learning_tick = learn
+			work_load_mod = 0.2
+			stress_mod = 0.5
+			familiarity_tick = 0.5
+	
 	else:
 		pass
+#		progress_timer.stop()
 	
-	learning_bar.value += learning
+	coding_bar.value += coding_tick
+#	print("Is it on: ", code_prog)
+	testing_bar.value += testing_tick
+	efficiency_bar.value += efficiency_tick
+	learning_bar.value += learning_tick
 	
-	if code_prog >= 1 and coding == true:
-		code_boost += code_prog * 0.1
-	
-	stability_check(code_prog, test_prog, eff_prog)
-	ProgressionBus.emit_signal("focus_boost", code_boost)
+	ProgressionBus.emit_signal("work_load_modify", work_load_mod)
+	ProgressionBus.emit_signal("stress_modify", stress_mod)
+	ProgressionBus.emit_signal("familiarity_update", familiarity_tick)
+	stability_check(code_prog, test_prog, eff_prog) #Checks stability of code against bugs
 
 func stability_check(coding: float, testing: float, efficiency: float):
 	const code_interval = 10
@@ -277,7 +268,7 @@ func stability_check(coding: float, testing: float, efficiency: float):
 	
 	
 	error_chance += (testing_mod + efficiency_mod) * -1
-	print("Error Chance: ",error_chance, " %")
+#	print("Error Chance: ",error_chance, " %")
 	
 	ProgressionBus.emit_signal("error_check", error_chance)
 
@@ -293,7 +284,7 @@ func bug_check(error: float):
 		
 	
 #	bug_tally = bugs
-	print("Bugs: ", bugs)
+#	print("Bugs: ", bugs)
 #	print("Breakpoint Chance: ", break_point_chance)
 
 
@@ -316,9 +307,10 @@ func run_check():
 func progress_check():
 	if coding_bar.value == 100 and completion == false:
 		completion = true
-		ProgressionBus.emit_signal("production_complete")
+#		ProgressionBus.emit_signal("production_complete")
 
 
 func _on_progress_timer_timeout() -> void:
-	production_growth(task_active)
-	print("Timer Timer")
+	pass
+#	production_growth(task_active)
+#	print("Timer Timer")

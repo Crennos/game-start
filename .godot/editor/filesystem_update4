@@ -1,9 +1,7 @@
-res://characters/lucy.tscn
+res://gui/coding_progression.tscn
+res://gui/coding_progression.gd
 res://system/main.tscn
 res://characters/cory.tscn
 res://system/progression+_bus.tscn
-res://gui/transition_scene.tscn
-res://gui/main_menu.tscn
-res://characters/lucy.gd
-res://gui/transition_scene.gd
-res://gui/main_menu.gd
+res://characters/cory.gd
+res://system/progression+_bus.gd

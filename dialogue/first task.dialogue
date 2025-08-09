@@ -1,11 +1,19 @@
 ~ start
 
+- Skip
+	=> secondend
+
+- Continue
+do ProgressionBus.emit_signal("task_pause")
+
 Cory: Alright... let's get started.
 Cory: Let's try to make my own sprite with my own movement system.
 Cory: I need to give myself the chance to fail in order to improve so I won't worry too much if my [color=#1ee656]coding[/color] is the best.
 Cory: This will give me an opportunity to both [color=00a2e8]test[/color] it to catch and reduce bugs and explore ways to improve the [color=ff7f27]efficiency[/color] of my code to make it more stable.
 Cory: None of this is supposed to be perfect. I need to [color=fff200]learn[/color] as much as I can in order to gain familiarity and experience to develop the skills and logic I need to improve myself.
 
-do ProgressionBus.emit_signal("boot_ready")
+~ secondend
+
+do ProgressionBus.emit_signal("task_start")
 
 => END

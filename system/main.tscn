@@ -20,20 +20,8 @@ process = false
 [node name="Pause_Menu" parent="." instance=ExtResource("3_ynw5c")]
 
 [node name="Lucy" parent="." instance=ExtResource("5_elm7h")]
+visible = true
 position = Vector2(48, -16)
-player_active = false
-patience = 0
-perserverance = 0
-motivation = 0
-creativity = 0
-focus = 0
-lethargy = 0
-fragility = 0
-anxiety = 0
-insight = 0
-grace = 0
-serenity = 0
-hope = 0
 
 [node name="Transition_Scene" parent="." instance=ExtResource("6_lr3ah")]
 visible = false

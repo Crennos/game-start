@@ -46,16 +46,21 @@ func ready_scene(new_scene: String):
 			await trans_timer.timeout
 			lucy.visible = true
 			var tween = get_tree().create_tween()
-			tween.finished.connect(greetings_talk)
 			tween.tween_property(lucy, "global_position", Vector2(80, 32), 2)
+			await tween.finished
+			scene_trigger(new_scene)
 		
-		if new_scene == "Scene Two":
+		elif new_scene == "Scene Two":
+			lucy.global_position = Vector2(48, -16)
+		
+		elif new_scene == "Scene Three":
 			lucy.visible = false
 
+func scene_trigger(new_scene: String):
+	ProgressionBus.emit_signal("start_scene", new_scene)
 
-
-func greetings_talk():
-	DialogueManager.show_dialogue_balloon(lucy.opening_dialogue, "start")
+#func greetings_talk():
+#	DialogueManager.show_dialogue_balloon(lucy.opening_dialogue, "start")
 
 func detect_input(delta, process: bool):
 	var direction = 0
