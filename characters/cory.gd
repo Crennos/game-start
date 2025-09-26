@@ -28,6 +28,7 @@ extends CharacterBody2D
 @export var burnout : int = 0
 @export var break_time : float = 0.0
 @export var stress : float
+@export var familiar : float
 
 
 const SPEED = 60.0
@@ -343,8 +344,8 @@ func break_time_check():
 			pass
 	
 
+#Handles Familiarity Building
 func familiar_build(familiarity: float):
-	var familiar : float 
 	familiar += familiarity
 	print("Familiarity Build: ", familiar)
 	

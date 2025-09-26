@@ -1,7 +1,7 @@
-res://gui/coding_progression.tscn
-res://gui/coding_progression.gd
+res://gui/keystriker.tscn
+res://gui/key_line.gd
 res://system/main.tscn
 res://characters/cory.tscn
 res://system/progression+_bus.tscn
-res://characters/cory.gd
-res://system/progression+_bus.gd
+res://gui/coding_progression.tscn
+res://keystriker.gd

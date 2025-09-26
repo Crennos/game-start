@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://dydsqoi1wp0nj"]
+
+[ext_resource type="Script" path="res://keystriker.gd" id="1_w5icf"]
+[ext_resource type="Script" path="res://gui/key_line.gd" id="2_vjn1b"]
+
+[node name="Keystriker" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+script = ExtResource("1_w5icf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 1436.0
+offset_bottom = 1362.0
+scale = Vector2(0.1, 0.1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Key Line" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 1000
+text = "1"
+script = ExtResource("2_vjn1b")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Key Line2" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 1000
+text = "2"
+script = ExtResource("2_vjn1b")
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Key Line3" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 1000
+text = "3"
+script = ExtResource("2_vjn1b")
+
+[node name="HSplitContainer3" type="HSplitContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Key Line4" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 1000
+text = "4"
+script = ExtResource("2_vjn1b")
+
+[node name="HSplitContainer4" type="HSplitContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Key Line5" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 1000
+text = "5"
+script = ExtResource("2_vjn1b")
+
+[node name="HSplitContainer5" type="HSplitContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Key Line6" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 1000
+text = "6"
+script = ExtResource("2_vjn1b")
