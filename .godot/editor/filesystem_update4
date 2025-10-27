@@ -1,0 +1,7 @@
+res://gui/keystriker.tscn
+res://keystriker.gd
+res://system/main.tscn
+res://characters/cory.tscn
+res://system/progression+_bus.tscn
+res://gui/coding_progression.tscn
+res://gui/work_screen.tscn

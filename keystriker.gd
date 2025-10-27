@@ -44,6 +44,7 @@ var key_check = {"one" : false,
 
 var target_key : String
 var target_label : String
+var pressed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -75,7 +76,6 @@ func randomizer():
 	
 	key_script(key_assign)
 	
-
 
 func key_script(script: Array):
 	var len = len(script)
@@ -157,115 +157,169 @@ func key_finder(log: Dictionary):
 	target_label = label_key
 	
 
+#Detects Input for Keys
 func key_strike(key_input: String, key_item: String):
 	
-	match key_input:
-		"q":
-			if Input.is_action_just_pressed("key_q"):
-				key_color(key_item)
-				key_check[key_item] = true
-				key_finder(lines)
-				print("Input: Q")
-		"w":
-			if Input.is_action_just_pressed("key_w"):
-				key_color(key_item)
-				key_check[key_item] = true
-				key_finder(lines)
-				print("Input: W")
-		"e":
-			if Input.is_action_just_pressed("key_e"):
-				key_color(key_item)
-				key_check[key_item] = true
-				key_finder(lines)
-				print("Input: E")
-		"r":
-			if Input.is_action_just_pressed("key_r"):
-				key_color(key_item)
-				key_check[key_item] = true
-				key_finder(lines)
-				print("Input: R")
-		"t":
-			if Input.is_action_just_pressed("key_t"):
-				key_color(key_item)
-				key_check[key_item] = true
-				key_finder(lines)
-				print("Input: T")
-		"a":
-			if Input.is_action_just_pressed("key_a"):
-				key_color(key_item)
-				key_check[key_item] = true
-				key_finder(lines)
-				print("Input: A")
-		"s":
-			if Input.is_action_just_pressed("key_s"):
-				key_color(key_item)
-				key_check[key_item] = true
-				key_finder(lines)
-				print("Input: S")
-		"d":
-			if Input.is_action_just_pressed("key_d"):
-				key_color(key_item)
-				key_check[key_item] = true
-				key_finder(lines)
-				print("Input: D")
-		"f":
-			if Input.is_action_just_pressed("key_f"):
-				key_color(key_item)
-				key_check[key_item] = true
-				key_finder(lines)
-				print("Input: F")
-		"g":
-			if Input.is_action_just_pressed("key_g"):
-				key_color(key_item)
-				key_check[key_item] = true
-				key_finder(lines)
-				print("Input: G")
-		"z":
-			if Input.is_action_just_pressed("key_z"):
-				key_color(key_item)
-				key_check[key_item] = true
-				key_finder(lines)
-				print("Input: Z")
-		"x":
-			if Input.is_action_just_pressed("key_x"):
-				key_color(key_item)
-				key_check[key_item] = true
-				key_finder(lines)
-				print("Input: X")
-		"c":
-			if Input.is_action_just_pressed("key_c"):
-				key_color(key_item)
-				key_check[key_item] = true
-				key_finder(lines)
-				print("Input: C")
-		"v":
-			if Input.is_action_just_pressed("key_v"):
-				key_color(key_item)
-				key_check[key_item] = true
-				key_finder(lines)
-				print("Input: V")
-		"b":
-			if Input.is_action_just_pressed("key_b"):
-				key_color(key_item)
-				key_check[key_item] = true
-				key_finder(lines)
-				print("Input: B")
+	if Input.is_anything_pressed() == true and pressed == false:
+		pressed = true
 	
-	
+		match key_input:
+			"q":
+				if Input.is_action_just_pressed("key_q"):
+					key_color(key_item,true)
+					key_check[key_item] = true
+					key_finder(lines)
+				elif Input.is_anything_pressed() == true:
+					key_color(key_item, false)
+					key_finder(lines)
+			"w":
+				if Input.is_action_just_pressed("key_w"):
+					key_color(key_item, true)
+					key_check[key_item] = true
+					key_finder(lines)
+				elif Input.is_anything_pressed() == true:
+					key_color(key_item, false)
+					key_finder(lines)
+			"e":
+				if Input.is_action_just_pressed("key_e"):
+					key_color(key_item, true)
+					key_check[key_item] = true
+					key_finder(lines)
+				elif Input.is_anything_pressed() == true:
+					key_color(key_item, false)
+					key_finder(lines)
+			"r":
+				if Input.is_action_just_pressed("key_r"):
+					key_color(key_item, true)
+					key_check[key_item] = true
+					key_finder(lines)
+				elif Input.is_anything_pressed() == true:
+					key_color(key_item, false)
+					key_finder(lines)
+			"t":
+				if Input.is_action_just_pressed("key_t"):
+					key_color(key_item, true)
+					key_check[key_item] = true
+					key_finder(lines)
+				elif Input.is_anything_pressed() == true:
+					key_color(key_item, false)
+					key_finder(lines)
+			"a":
+				if Input.is_action_just_pressed("key_a"):
+					key_color(key_item, true)
+					key_check[key_item] = true
+					key_finder(lines)
+				elif Input.is_anything_pressed() == true:
+					key_color(key_item, false)
+					key_finder(lines)
+			"s":
+				if Input.is_action_just_pressed("key_s"):
+					key_color(key_item, true)
+					key_check[key_item] = true
+					key_finder(lines)
+				elif Input.is_anything_pressed() == true:
+					key_color(key_item, false)
+					key_finder(lines)
+			"d":
+				if Input.is_action_just_pressed("key_d"):
+					key_color(key_item, true)
+					key_check[key_item] = true
+					key_finder(lines)
+				elif Input.is_anything_pressed() == true:
+					key_color(key_item, false)
+					key_finder(lines)
+			"f":
+				if Input.is_action_just_pressed("key_f"):
+					key_color(key_item, true)
+					key_check[key_item] = true
+					key_finder(lines)
+				elif Input.is_anything_pressed() == true:
+					key_color(key_item, false)
+					key_finder(lines)
+			"g":
+				if Input.is_action_just_pressed("key_g"):
+					key_color(key_item, true)
+					key_check[key_item] = true
+					key_finder(lines)
+				elif Input.is_anything_pressed() == true:
+					key_color(key_item, false)
+					key_finder(lines)
+			"z":
+				if Input.is_action_just_pressed("key_z"):
+					key_color(key_item, true)
+					key_check[key_item] = true
+					key_finder(lines)
+				elif Input.is_anything_pressed() == true:
+					key_color(key_item, false)
+					key_finder(lines)
+			"x":
+				if Input.is_action_just_pressed("key_x"):
+					key_color(key_item, true)
+					key_check[key_item] = true
+					key_finder(lines)
+				elif Input.is_anything_pressed() == true:
+					key_color(key_item, false)
+					key_finder(lines)
+			"c":
+				if Input.is_action_just_pressed("key_c"):
+					key_color(key_item, true)
+					key_check[key_item] = true
+					key_finder(lines)
+				elif Input.is_anything_pressed() == true:
+					key_color(key_item, false)
+					key_finder(lines)
+			"v":
+				if Input.is_action_just_pressed("key_v"):
+					key_color(key_item, true)
+					key_check[key_item] = true
+					key_finder(lines)
+				elif Input.is_anything_pressed() == true:
+					key_color(key_item, false)
+					key_finder(lines)
+			"b":
+				if Input.is_action_just_pressed("key_b"):
+					key_color(key_item, true)
+					key_check[key_item] = true
+					key_finder(lines)
+				elif Input.is_anything_pressed() == true:
+					key_color(key_item, false)
+					key_finder(lines)
+	elif Input.is_anything_pressed() == false:
+		pressed = false
 
-func key_color(label: String):
+#Handles modulation for correct keys
+func key_color(label: String, correct: bool):
 	var tween = create_tween()
 	
-	match label:
-		"one":
-			tween.tween_property(key_line_one, "modulate", Color.RED, 0)
-		"two":
-			tween.tween_property(key_line_two, "modulate", Color.RED, 0)
-		"three":
-			tween.tween_property(key_line_three, "modulate", Color.RED, 0)
-		"four":
-			tween.tween_property(key_line_four, "modulate", Color.RED, 0)
-		"five":
-			tween.tween_property(key_line_five, "modulate", Color.RED, 0)
-		"six":
-			tween.tween_property(key_line_six, "modulate", Color.RED, 0)
+	if correct == true:
+		match label:
+			"one":
+				tween.tween_property(key_line_one, "modulate", Color.GREEN, 0)
+			"two":
+				tween.tween_property(key_line_two, "modulate", Color.GREEN, 0)
+			"three":
+				tween.tween_property(key_line_three, "modulate", Color.GREEN, 0)
+			"four":
+				tween.tween_property(key_line_four, "modulate", Color.GREEN, 0)
+			"five":
+				tween.tween_property(key_line_five, "modulate", Color.GREEN, 0)
+			"six":
+				tween.tween_property(key_line_six, "modulate", Color.GREEN, 0)
+	
+	else:
+		match label:
+			"one":
+				tween.tween_property(key_line_one, "modulate", Color.RED, 0)
+			"two":
+				tween.tween_property(key_line_two, "modulate", Color.RED, 0)
+			"three":
+				tween.tween_property(key_line_three, "modulate", Color.RED, 0)
+			"four":
+				tween.tween_property(key_line_four, "modulate", Color.RED, 0)
+			"five":
+				tween.tween_property(key_line_five, "modulate", Color.RED, 0)
+			"six":
+				tween.tween_property(key_line_six, "modulate", Color.RED, 0)
+	
+	key_check[label] = true
+	
