@@ -157,13 +157,14 @@ func detect_input(delta, process: bool):
 	if process == true and player_active == true:
 		if Input.is_action_pressed("left"):
 			cory_sprite.set_frame_and_progress(2, 0.0)
-			cory_sprite.flip_h
+			cory_sprite.flip_h = true
 			direction += -1
 			velocity.x = direction * SPEED
 			velocity.y = 0
 			
 		elif Input.is_action_pressed("right"):
 			cory_sprite.set_frame_and_progress(2, 0.0)
+			cory_sprite.flip_h = false
 			direction += 1
 			velocity.x = direction * SPEED
 			velocity.y = 0
