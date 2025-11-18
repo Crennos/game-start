@@ -26,7 +26,8 @@ grow_vertical = 2
 script = ExtResource("1_njbp2")
 task_processing = true
 task_active = true
-coding = true
+testing = true
+break_point_active = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -81,6 +82,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Progress_Timer" type="Timer" parent="."]
+autostart = true
 
 [node name="Break_Timer" type="Timer" parent="."]
 wait_time = 5.0
@@ -111,8 +113,48 @@ offset_bottom = 100.0
 scale = Vector2(3.368, 1.666)
 step = 0.0
 value = 100.0
+fill_mode = 6
 texture_over = ExtResource("9_gbwtk")
 texture_progress = ExtResource("11_6m633")
+
+[node name="Critical_Testing_Bar" type="TextureProgressBar" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 38.0
+offset_bottom = 28.0
+max_value = 10.0
+step = 0.0
+texture_under = ExtResource("1_qfmlw")
+texture_over = ExtResource("2_0ml7f")
+texture_progress = ExtResource("3_nimxm")
+
+[node name="Critical_Debugging_Bar" type="TextureProgressBar" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 38.0
+offset_bottom = 44.0
+max_value = 5.0
+step = 0.0
+texture_under = ExtResource("1_qfmlw")
+texture_over = ExtResource("2_0ml7f")
+texture_progress = ExtResource("4_us7hv")
+
+[node name="Criticial_Learning_Bar" type="TextureProgressBar" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 38.0
+offset_bottom = 60.0
+max_value = 10.0
+step = 0.0
+texture_under = ExtResource("1_qfmlw")
+texture_over = ExtResource("2_0ml7f")
+texture_progress = ExtResource("6_3ogpd")
 
 [connection signal="timeout" from="Progress_Timer" to="." method="_on_progress_timer_timeout"]
 [connection signal="timeout" from="Break_Timer" to="." method="_on_break_timer_timeout"]

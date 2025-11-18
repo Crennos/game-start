@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxu4aslw4g3jw"]
+[gd_scene load_steps=4 format=3 uid="uid://bxu4aslw4g3jw"]
 
 [ext_resource type="Script" path="res://gui/main_menu.gd" id="1_d34jh"]
 [ext_resource type="PackedScene" uid="uid://bln0sjssdaxub" path="res://gui/options_menu.tscn" id="2_d31nd"]
+[ext_resource type="Texture2D" uid="uid://bmg5kjditf5dl" path="res://gui/Proto-Back.png" id="3_rvb2p"]
 
 [node name="Main_Menu" type="Control"]
 layout_mode = 3
@@ -56,6 +57,12 @@ text = "Thanks For Playing!
 
 [node name="Demo_Timer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(632, 456)
+scale = Vector2(0.176, 0.1827)
+texture = ExtResource("3_rvb2p")
 
 [connection signal="pressed" from="VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options_Button" to="." method="_on_options_button_pressed"]

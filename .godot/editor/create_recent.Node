@@ -1,5 +1,7 @@
-Timer
+VBoxContainer
 TextureProgressBar
+Sprite2D
+Timer
 HSplitContainer
 VSeparator
 HBoxContainer
@@ -8,7 +10,5 @@ MarginContainer
 AnimatedSprite2D
 Camera2D
 Button
-VBoxContainer
-Sprite2D
 VSplitContainer
 CharacterBody2D

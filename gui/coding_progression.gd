@@ -7,6 +7,9 @@ extends Control
 @onready var learning_bar : TextureProgressBar = $HBoxContainer/VBoxContainer/Learning_Bar
 @onready var break_point_bar : TextureProgressBar = $Breakpoint_Progress_Bar
 @onready var selector : Sprite2D = $HBoxContainer/VBoxContainer3/Selector_Sprite
+@onready var critical_testing_bar : TextureProgressBar = $Critical_Testing_Bar
+@onready var critical_debugging_bar : TextureProgressBar = $Critical_Debugging_Bar
+@onready var critical_learning_bar : TextureProgressBar = $Criticial_Learning_Bar
 @onready var progress_timer : Timer = $Progress_Timer
 @onready var break_timer : Timer = $Break_Timer
 
@@ -32,6 +35,9 @@ extends Control
 @export var completion : bool
 
 const default_tick = 1.0
+var logic_mod : int = ProgressionBus.cory_skills["Computer Logic"]
+var debug_mod : int = ProgressionBus.cory_skills["Debugging"]
+var exp_mod : int = ProgressionBus.cory_skills["Experience"]
 const code_pos = Vector2(0,5)
 const test_pos = Vector2(0, 21)
 const eff_pos = Vector2(0, 37)
@@ -44,6 +50,12 @@ var current_pos = 0
 var difficutly_level : int = 10
 var bug_chance : int
 var break_point_challenges = []
+var break_point_traits = {
+	"Rebound" : 0,
+	"Puzzle" : 0.0,
+	"Complexity" : 0.0,
+	"Weight" : 0
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -56,6 +68,7 @@ func _ready() -> void:
 	focus(true)
 	selector.global_position = code_pos
 	bug_check(5, 2, 3)
+	break_point_init()
 #	stability_check(2.2, 3.3, 4.4)
 
 func pause():
@@ -260,20 +273,94 @@ func production_growth(active: bool, skills: Array):
 		ProgressionBus.emit_signal("familiarity_update", familiarity_tick)
 	
 	else:
-		break_timer.start()
-		
-		
-		if testing == true:
-			pass
-		
-		elif efficiency == true:
-			pass
-		
-		elif learning == true:
-			pass
+		pass
 		
 	
 	bug_check(code_prog, test_prog, eff_prog) #Checks stability of code against bugs
+
+#Handles Breakpoint Challenge Progression
+func challenge_progress(active: bool):
+	var break_bar = break_point_bar.value
+	var test_value = critical_testing_bar.value
+	var learn_value = critical_learning_bar.value
+	var test_tick : float = 1.0
+	var eff_tick : float = 1.0
+	var learn_tick : float = 1.0
+	var test_mod : float = 0.0
+	var learn_mod : float = 1.0 + ((learn_value / 2) * 0.1)
+	
+	
+	if testing == true:
+		break_task("Testing", test_tick)
+		
+	
+	elif efficiency == true:
+		eff_tick += (test_mod * learn_mod)
+		print("Debug: ", eff_tick)
+		break_task("Debugging", eff_tick)
+		
+	
+	elif learning == true:
+		break_task("Learning", learn_tick)
+		
+	
+	break_point_bar.value -= eff_tick + (critical_debugging_bar.value * 0.1)
+
+func break_task(task: String, value: float):
+	var test_cap = critical_testing_bar.max_value
+	var debug_cap = critical_debugging_bar.max_value
+	var learn_cap = critical_learning_bar.max_value
+	print("Task: ", task)
+	print("Value: ", value)
+	
+	match task:
+		"Testing":
+			critical_testing_bar.value += value
+			var test_bar = critical_testing_bar.value
+			print("Test: ", test_bar)
+			if test_cap == test_bar and debug_cap == test_bar / 2:
+				critical_debugging_bar.max_value += debug_cap
+				print("Debug Cap: ", debug_cap)
+		"Debugging":
+			critical_debugging_bar.value += value
+			var debug_bar = critical_debugging_bar.value
+			print("Debug: ", debug_bar)
+			if debug_bar == learn_cap and learn_cap == test_cap:
+				critical_learning_bar.max_value += learn_cap
+		"Learning":
+			critical_learning_bar.value += value
+			var learn_bar = critical_learning_bar.value
+			print("Learn: ", learn_bar)
+			if learn_cap == learn_bar and learn_cap == (test_cap * 2):
+				critical_testing_bar.max_value += test_cap
+				print("Test Cap: ", test_cap)
+		
+	
+
+func break_impact():
+	var experience = ProgressionBus.cory_skills["Experience"]
+	
+	var rebound = break_point_traits["Rebound"]
+	var puzzle = break_point_traits["Puzzle"]
+	var weight = break_point_traits["Weight"] - experience
+	
+	if testing == true:
+		critical_debugging_bar.value -= puzzle
+		critical_learning_bar.value -= puzzle
+		
+	elif efficiency == true:
+		critical_learning_bar.value -= puzzle
+		critical_testing_bar.value -= puzzle
+		
+	elif learning == true:
+		critical_debugging_bar.value -= puzzle
+		critical_testing_bar.value -= puzzle
+	
+	break_point_bar.value += rebound
+	
+	ProgressionBus.emit_signal("work_load_modify", weight)
+	ProgressionBus.emit_signal("stress_modify", weight)
+#	ProgressionBus.emit_signal("familiarity_update", familiarity_tick) #Revisit this one later
 
 #Handles Calculation of the Probability of a Bug being generated
 func bug_check(coding: float, testing: float, efficiency: float):
@@ -319,17 +406,14 @@ func bug_gen(bug_chance: float):
 #Handles the Probability of a Bug becoming a Breakpoint
 func break_check():
 	const break_min : float = 5.0
-	var breakpoint_base : float = 50.0
+	var breakpoint_base : float = 90.0
 	var difficulty_base : float = 5.0
 	var break_chance : float
 	
-	var logic_mod = ProgressionBus.cory_skills["Computer Logic"]
-	var debug_mod = ProgressionBus.cory_skills["Debugging"]
-	var exp_mod = ProgressionBus.cory_skills["Experience"]
 	
 	break_chance += (breakpoint_base + difficulty_base) - (logic_mod + debug_mod + exp_mod)
 	clampf(break_chance, 5, 100)
-	print("Breakpoint Chance: ", break_chance) #Why do we have this and break_point_chance????
+#	print("Breakpoint Chance: ", break_chance) #Why do we have this and break_point_chance????
 	
 	break_gen(break_chance)
 
@@ -345,54 +429,99 @@ func break_gen(chance: float):
 		break_point_diff()
 	
 	
-	print("Breakpoint: ", break_points)
+#	print("Breakpoint: ", break_points)
 
 #Handles random generation of Breakpoint Difficulty and appends to Challenge List
 func break_point_diff():
-	var current_break = break_point_challenges[0]
 	var null_thresh = 0.0
 	var standard = 70.0
 	var complex = 90.0
 	var difficulty = randf_range(1, 100)
 	
-	if difficulty <= null_thresh and current_break == "Simple":
-		break_points -= 1
-	
-	elif difficulty < standard:
+	if difficulty < standard:
 		break_point_challenges.append("Simple")
-		print("Breakpoint: Simple")
+#		print("Breakpoint: Simple")
 	
 	elif difficulty >= standard and difficulty < complex:
 		break_point_challenges.append("Standard")
-		print("Breakpoint: Standard")
+#		print("Breakpoint: Standard")
 	
 	elif difficulty >= complex:
 		break_point_challenges.append("Complex")
-		print("Breakpoint: Complex")
+#		print("Breakpoint: Complex")
+	
+	if difficulty <= null_thresh and break_point_challenges[0] == "Simple":
+		break_points -= 1
+#		print("Breakpoint: Nullified")
+	
 	
 	print(break_point_challenges)
- 
-#Handles Initialization of Breakpoint Progress Phase
-func break_point_init():
+
+
+#Handles Initialization Trigger of Breakpoint Progress Phase
+func break_point_init(): #May add a bool para here
 	var current_break = break_point_challenges[0]
 	
 	if break_points >= 1:
 		break_point_active = true
-		task_progress_bar.visible = false
-		break_point_bar.visible = true
+		toggle_vis(task_progress_bar)
+		toggle_vis(break_point_bar)
+		task_stage_vis()
+		break_timer.start()
 		
 	
 	else:
 		break_point_active = false
-		task_progress_bar.visible = true
-		break_point_bar.visible = false
-		
+		toggle_vis(task_progress_bar)
+		toggle_vis(break_point_bar)
+		task_stage_vis()
 	
+	print("Challenge: ", current_break)
 	break_point_config(current_break)
+
+#Handles Visibility of Task Progression Bars 
+func task_stage_vis():
+	toggle_vis(coding_bar)
+	toggle_vis(testing_bar)
+	toggle_vis(efficiency_bar)
+	toggle_vis(learning_bar)
+	toggle_vis(critical_testing_bar)
+	toggle_vis(critical_debugging_bar)
+	toggle_vis(critical_learning_bar)
 
 #Handles Configuration of Breakpoint Traits/Values based on Challenge Array entry
 func break_point_config(challenge: String):
+	var rebound : float = 0.0
+	var puzzle : int = 0
+	var complexity : float = 0.0
+	var weight : float = 0.0
 	print(challenge, "Begin")
+	
+	match challenge:
+		"Simple":
+			rebound = 50
+			puzzle = 1
+			complexity = 100
+			weight = 3
+			
+		
+		"Standard":
+			rebound = 30
+			puzzle = 2
+			complexity = 150
+			weight = 5
+		
+		"Complex":
+			rebound = 15
+			puzzle = 3
+			complexity = 200
+			weight = 10
+			
+	
+	break_point_traits["Rebound"] = rebound
+	break_point_traits["Puzzle"] = puzzle
+	break_point_traits["Complexity"] = complexity
+	break_point_traits["Weight"] = weight
 	
 
 #func run_check():
@@ -411,6 +540,8 @@ func break_point_config(challenge: String):
 #	print("Bugs ", bug_tally)
 #	broken_progress += bug_tally
 
+
+
 func progress_check():
 	if coding_bar.value == 100 and completion == false:
 		completion = true
@@ -418,10 +549,13 @@ func progress_check():
 
 
 func _on_progress_timer_timeout() -> void:
+	if break_point_active == true:
+		challenge_progress(true)
 	pass
 #	production_growth(task_active)
 #	print("Timer Timer")
 
 
 func _on_break_timer_timeout() -> void:
+	break_impact()
 	pass # Replace with function body.
