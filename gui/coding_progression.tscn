@@ -26,8 +26,6 @@ grow_vertical = 2
 script = ExtResource("1_njbp2")
 task_processing = true
 task_active = true
-testing = true
-break_point_active = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

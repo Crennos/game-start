@@ -86,6 +86,7 @@ func start():
 func _process(delta: float) -> void:
 	detect_input(task_active)
 	focus(task_active)
+	break_point_complete()
 #	progress_check()
 
 
@@ -235,6 +236,7 @@ func production_growth(active: bool, skills: Array):
 			work_load_mod = 0.2
 			stress_mod = 0.3
 			familiarity_tick = 0.1
+			bug_check(code_prog, test_prog, eff_prog) #Checks stability of code against bugs
 		
 		elif testing == true:
 			coding_tick = 0
@@ -276,7 +278,7 @@ func production_growth(active: bool, skills: Array):
 		pass
 		
 	
-	bug_check(code_prog, test_prog, eff_prog) #Checks stability of code against bugs
+	
 
 #Handles Breakpoint Challenge Progression
 func challenge_progress(active: bool):
@@ -289,23 +291,24 @@ func challenge_progress(active: bool):
 	var test_mod : float = 0.0
 	var learn_mod : float = 1.0 + ((learn_value / 2) * 0.1)
 	
-	
-	if testing == true:
-		break_task("Testing", test_tick)
+	if break_point_active == true:
+		if testing == true:
+			break_task("Testing", test_tick)
+			
 		
-	
-	elif efficiency == true:
-		eff_tick += (test_mod * learn_mod)
-		print("Debug: ", eff_tick)
-		break_task("Debugging", eff_tick)
+		elif efficiency == true:
+			eff_tick += (test_mod * learn_mod)
+			print("Debug: ", eff_tick)
+			break_task("Debugging", eff_tick)
+			
 		
-	
-	elif learning == true:
-		break_task("Learning", learn_tick)
+		elif learning == true:
+			break_task("Learning", learn_tick)
+			
 		
-	
-	break_point_bar.value -= eff_tick + (critical_debugging_bar.value * 0.1)
+		break_point_bar.value -= eff_tick + (critical_debugging_bar.value * 0.1)
 
+#Handles Calculations for Breakpoint Progress Ticks
 func break_task(task: String, value: float):
 	var test_cap = critical_testing_bar.max_value
 	var debug_cap = critical_debugging_bar.max_value
@@ -380,10 +383,7 @@ func bug_check(coding: float, testing: float, efficiency: float):
 	
 	
 	bug_gen(bug_chance)
-	bug_gen(bug_chance)
-	bug_gen(bug_chance)
-	bug_gen(bug_chance)
-	bug_gen(bug_chance)
+
 
 #Handles Calculations on when a Bug is generated
 func bug_gen(bug_chance: float):
@@ -406,7 +406,7 @@ func bug_gen(bug_chance: float):
 #Handles the Probability of a Bug becoming a Breakpoint
 func break_check():
 	const break_min : float = 5.0
-	var breakpoint_base : float = 90.0
+	var breakpoint_base : float = 5.0
 	var difficulty_base : float = 5.0
 	var break_chance : float
 	
@@ -421,13 +421,17 @@ func break_check():
 func break_gen(chance: float):
 	var break_point = 0
 	var break_roll = randf_range(1, 100)
+	print("Roll: ", break_roll)
 	var break_thresh = 100 - chance
+	print("Break Thresh: ", break_thresh)
 	
 	if break_roll >= break_thresh:
 		break_point += 1
 		break_points += break_point
 		break_point_diff()
 	
+	else:
+		pass
 	
 #	print("Breakpoint: ", break_points)
 
@@ -459,18 +463,18 @@ func break_point_diff():
 
 
 #Handles Initialization Trigger of Breakpoint Progress Phase
-func break_point_init(): #May add a bool para here
-	var current_break = break_point_challenges[0]
-	
-	if break_points >= 1:
+func break_point_init(): 
+	var current_break : String
+	print("Breakpoint Tally: ", break_points)
+	if break_points >= 1 and break_point_active == false:
 		break_point_active = true
 		toggle_vis(task_progress_bar)
 		toggle_vis(break_point_bar)
 		task_stage_vis()
 		break_timer.start()
-		
+		current_break = break_point_challenges[0]
 	
-	else:
+	elif break_points == 0 and break_point_active == true:
 		break_point_active = false
 		toggle_vis(task_progress_bar)
 		toggle_vis(break_point_bar)
@@ -499,20 +503,20 @@ func break_point_config(challenge: String):
 	
 	match challenge:
 		"Simple":
-			rebound = 50
+			rebound = 1
 			puzzle = 1
 			complexity = 100
 			weight = 3
 			
 		
 		"Standard":
-			rebound = 30
+			rebound = 2
 			puzzle = 2
 			complexity = 150
 			weight = 5
 		
 		"Complex":
-			rebound = 15
+			rebound = 3
 			puzzle = 3
 			complexity = 200
 			weight = 10
@@ -522,6 +526,26 @@ func break_point_config(challenge: String):
 	break_point_traits["Puzzle"] = puzzle
 	break_point_traits["Complexity"] = complexity
 	break_point_traits["Weight"] = weight
+	
+
+func break_reset():
+	break_point_bar.value = 100.0
+	critical_debugging_bar.value = 0.0
+	critical_testing_bar.value = 0.0
+	critical_learning_bar.value = 0.0
+
+#Handles Completion of Breakpoint Challenge
+func break_point_complete():
+	if break_point_bar.value == 0.0 and break_point_active == true:
+		break_point_active = false
+		break_points -= 1
+		break_reset()
+		break_timer.stop()
+		task_stage_vis()
+		toggle_vis(break_point_bar)
+		toggle_vis(task_progress_bar)
+		print("Breakpoint Finished")
+	
 	
 
 #func run_check():
@@ -551,7 +575,8 @@ func progress_check():
 func _on_progress_timer_timeout() -> void:
 	if break_point_active == true:
 		challenge_progress(true)
-	pass
+	else:
+		pass
 #	production_growth(task_active)
 #	print("Timer Timer")
 

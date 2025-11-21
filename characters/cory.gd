@@ -297,11 +297,11 @@ func work_time_check():
 func work_load_limit(added: float):
 	var work_time = work_time_check()
 	var work_tick = 1.0 + added
-	print("Work Tick: ", work_tick)
+#	print("Work Tick: ", work_tick)
 	
 	if work_load < work_time:
 		work_load += work_tick
-		print("Work Load: ",work_load)
+#		print("Work Load: ",work_load)
 	
 	elif work_load >= work_time:
 		over_load += work_tick
@@ -314,16 +314,16 @@ func over_load_check():
 #		ProgressionBus.emit_signal("stat_add", "Cory", "Strain")
 		base_traits["Strain"] += 1
 		over_load -= 10
-		print("Strain ", base_traits["Strain"])
+#		print("Strain ", base_traits["Strain"])
 	
 
 func stress_build(added: float):
 	var stress_tick = 1.0 + added
-	print("Stress Tick: ", stress_tick)
+#	print("Stress Tick: ", stress_tick)
 	var motivation_mod = base_traits["Motivation"] * -0.1
 	var strain_mod = base_traits["Strain"] * 0.1
 	var total_stress = stress_tick + (strain_mod + motivation_mod)
-	print("Total Stress: ", total_stress)
+#	print("Total Stress: ", total_stress)
 	stress += total_stress
 	base_traits["Stress"] = stress
 	
@@ -348,7 +348,7 @@ func break_time_check():
 #Handles Familiarity Building
 func familiar_build(familiarity: float):
 	familiar += familiarity
-	print("Familiarity Build: ", familiar)
+#	print("Familiarity Build: ", familiar)
 	
 	if familiar == 100:
 		work_skills["Familiarty"] += 1
