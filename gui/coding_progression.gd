@@ -33,6 +33,7 @@ extends Control
 @export var learning : bool
 @export var break_point_active : bool
 @export var completion : bool
+@export var debugging : bool
 
 const default_tick = 1.0
 var logic_mod : int = ProgressionBus.cory_skills["Computer Logic"]
@@ -47,9 +48,19 @@ const learn_pos = Vector2(0,53)
 var current_pos = 0
 
 #Task Difficulty/Bug Generation
-var difficutly_level : int = 10
+var difficulty_level : int = 1
 var bug_chance : int
+var bug_simple_count : int
+var bug_standard_count : int
+var bug_complex_count : int
+var bug_eff_limit : float = 100
 var break_point_challenges = []
+var bug_log = {
+	"Hidden Bugs" : [],
+	"Test Thresh" : 0,
+	"Found Bugs" : [],
+	"Bug Health" : 0
+	}
 var break_point_traits = {
 	"Rebound" : 0,
 	"Puzzle" : 0.0,
@@ -247,8 +258,11 @@ func production_growth(active: bool, skills: Array):
 			stress_mod = 0.2
 			familiarity_tick = 0.2
 			break_point_init()
+			bug_finder()
 		
-		elif efficiency == true:
+		elif efficiency == true and debugging == false:
+#			clampf(efficiency_bar.value, 0.0, bug_eff_limit)
+			clampf(efficiency_bar.max_value, 25, bug_eff_limit)
 			coding_tick = 0
 			testing_tick = test * 0.2
 			efficiency_tick = efficiency
@@ -256,6 +270,7 @@ func production_growth(active: bool, skills: Array):
 			work_load_mod = 0.5
 			stress_mod = 0.5
 			familiarity_tick = 0.3
+			bug_health_check(efficiency_bar.value)
 			
 		elif learning == true:
 			coding_tick = 0
@@ -276,8 +291,6 @@ func production_growth(active: bool, skills: Array):
 	
 	else:
 		pass
-		
-	
 	
 
 #Handles Breakpoint Challenge Progression
@@ -298,7 +311,7 @@ func challenge_progress(active: bool):
 		
 		elif efficiency == true:
 			eff_tick += (test_mod * learn_mod)
-			print("Debug: ", eff_tick)
+#			print("Debug: ", eff_tick)
 			break_task("Debugging", eff_tick)
 			
 		
@@ -313,33 +326,34 @@ func break_task(task: String, value: float):
 	var test_cap = critical_testing_bar.max_value
 	var debug_cap = critical_debugging_bar.max_value
 	var learn_cap = critical_learning_bar.max_value
-	print("Task: ", task)
-	print("Value: ", value)
+#	print("Task: ", task)
+#	print("Value: ", value)
 	
 	match task:
 		"Testing":
 			critical_testing_bar.value += value
 			var test_bar = critical_testing_bar.value
-			print("Test: ", test_bar)
+#			print("Test: ", test_bar)
 			if test_cap == test_bar and debug_cap == test_bar / 2:
 				critical_debugging_bar.max_value += debug_cap
-				print("Debug Cap: ", debug_cap)
+#				print("Debug Cap: ", debug_cap)
 		"Debugging":
 			critical_debugging_bar.value += value
 			var debug_bar = critical_debugging_bar.value
-			print("Debug: ", debug_bar)
+#			print("Debug: ", debug_bar)
 			if debug_bar == learn_cap and learn_cap == test_cap:
 				critical_learning_bar.max_value += learn_cap
 		"Learning":
 			critical_learning_bar.value += value
 			var learn_bar = critical_learning_bar.value
-			print("Learn: ", learn_bar)
+#			print("Learn: ", learn_bar)
 			if learn_cap == learn_bar and learn_cap == (test_cap * 2):
 				critical_testing_bar.max_value += test_cap
-				print("Test Cap: ", test_cap)
+#				print("Test Cap: ", test_cap)
 		
 	
 
+#Handles Regression from Breakpoint on Progress Bars
 func break_impact():
 	var experience = ProgressionBus.cory_skills["Experience"]
 	
@@ -367,7 +381,7 @@ func break_impact():
 
 #Handles Calculation of the Probability of a Bug being generated
 func bug_check(coding: float, testing: float, efficiency: float):
-	var bug_base = difficutly_level * 5
+	var bug_base = difficulty_level * 5
 	var bug_tick : float = 1.0
 	var bug_chance : float
 	var code_prog = int(coding)
@@ -387,21 +401,175 @@ func bug_check(coding: float, testing: float, efficiency: float):
 
 #Handles Calculations on when a Bug is generated
 func bug_gen(bug_chance: float):
-	var bugs = 1
 	var bug_thresh = 100 - bug_chance
 	var bug_roll = randi_range(1, 100)
 	
 	if bug_roll >= bug_thresh:
-		bugs += 1
+		var bug_scale = bug_diff()
+		bug_tally += 1
+		
 		break_check()
 		
-#	print("Thresh: ", bug_thresh)
-#	print("Roll: ", bug_roll)
 	
-	bug_tally += bugs
-#	print("Bugs: ", bug_tally)
+
+#Handles Generative Difficulty of each spawned Bug
+func bug_diff():
+	var difficulty : String
+	var current_test : float = testing_bar.value
+	var test_thresh : float
+	var bug_simple = 0.0
+	var bug_standard = 50.0
+	var bug_complex = 80.0
+	var bug_roll = randf_range(0.0, 100.0)
 	
 	
+	if bug_roll >= bug_simple and bug_roll < bug_standard:
+		difficulty = "Simple"
+		bug_log["Hidden Bugs"].append("Simple")
+		print(bug_log)
+		print("Simple Bugs: ", bug_simple_count + 1)
+		bug_simple_count += 1
+		bug_marker(5)
+	
+	elif bug_roll >= bug_standard and bug_roll < bug_complex:
+		difficulty = "Standard"
+		bug_log["Hidden Bugs"].append("Standard")
+		print(bug_log)
+		print("Standard Bugs: ", bug_standard_count + 1)
+		bug_standard_count += 1
+		bug_marker(3)
+	
+	elif bug_roll >= bug_complex:
+		difficulty = "Complex"
+		bug_log["Hidden Bugs"].append("Complex")
+		print(bug_log)
+		print("Complex Bugs: ", bug_complex_count + 1)
+		bug_complex_count += 1
+		bug_marker(5)
+	
+
+#Handles Marking of Current and Next Test Thresholds
+func bug_marker(mark : int):
+	var current_test = testing_bar.value
+	
+	if bug_log["Test Thresh"] == 0:
+		bug_log["Test Thresh"] = mark + current_test
+		print("Test Thresh ", bug_log["Test Thresh"])
+	
+	
+	else:
+		print("Test Thresh Already Exists")
+
+#Handles the Testing's Detection of Hidden Bugs
+func bug_finder():
+	var hidden_bugs = bug_log["Hidden Bugs"]
+	
+	if hidden_bugs.is_empty() == false:
+		var current_test = testing_bar.value
+		var bug_level = bug_log["Hidden Bugs"][0]
+		var test_mark = bug_log["Test Thresh"]
+		
+		if current_test >= test_mark:
+			match bug_log["Hidden Bugs"][0]:
+				"Simple":
+					print("Found 1: ", bug_level, " Bug")
+					bug_log["Hidden Bugs"].erase(bug_level)
+					print(bug_log, " Bug No Longer Hidden")
+					bug_log["Found Bugs"].append(bug_level)
+					print(bug_log["Found Bugs"][-1], " Now Discovered")
+					bug_log["Test Thresh"] = 0
+					bug_marker(5)
+				"Standard":
+					print("Found 1: ", bug_level, " Bug")
+					bug_log["Hidden Bugs"].erase(bug_level)
+					print(bug_log, " Bug No Longer Hidden")
+					bug_log["Found Bugs"].append(bug_level)
+					print(bug_log["Found Bugs"][-1], " Now Discovered")
+					bug_log["Test Thresh"] = 0
+					bug_marker(3)
+				"Complex":
+					print("Found 1: ", bug_level, " Bug")
+					bug_log["Hidden Bugs"].erase(bug_level)
+					print(bug_log, " Bug No Longer Hidden")
+					bug_log["Found Bugs"].append(bug_level)
+					print(bug_log["Found Bugs"][-1], " Now Discovered")
+					bug_log["Test Thresh"] = 0
+					bug_marker(5)
+		
+		else:
+			pass
+	else:
+		pass
+
+#Handles Logging of Bugs
+func bug_trigger(difficulty: String):
+	match difficulty:
+		"Simple":
+			print("Simple Trigger")
+			coding_bar.value -= 2
+			learning_bar.max_value -= 3
+			efficiency_bar.max_value -= 1
+			task_progress_bar.value -= 1
+		"Standard":
+			print("Standard Trigger")
+			coding_bar.value -= 5
+			learning_bar.max_value -= 5
+			efficiency_bar.max_value -= 3
+			task_progress_bar.value -= 3
+		"Complex":
+			print("Complex Trigger")
+			coding_bar.value -= 8
+			learning_bar.max_value -= 10
+			efficiency_bar.max_value -= 5
+			task_progress_bar.value -= 5
+	
+	var max_eff = efficiency_bar.max_value
+	print("Eff Limit: ", max_eff)
+
+func bug_health_check(efficiency : float):
+	var bug_health : int
+	var eff_prog = efficiency_bar.value
+	var temp_eff : float
+	var perm_eff : float
+	
+	if bug_log["Found Bugs"].is_empty() == false:
+		match bug_log["Found Bugs"][0]:
+			"Simple":
+				bug_health = 5
+				perm_eff = bug_health 
+				temp_eff = bug_health * 0.4
+				print("Temp: ", temp_eff)
+			"Standard":
+				bug_health = 10
+				perm_eff = bug_health 
+				temp_eff = bug_health * 0.4
+				print("Temp: ", temp_eff)
+			"Complex":
+				bug_health = 25
+				perm_eff = bug_health
+				temp_eff = bug_health * 0.4
+				print("Temp: ", temp_eff)
+				
+		if bug_log["Bug Health"] == 0:
+			bug_log["Bug Health"] = bug_health
+			print("Bug Health: ", bug_log["Bug Health"])
+	
+		bug_kill(bug_health)
+	
+	else:
+		pass
+
+func bug_kill(bug_health : int):
+	pass
+
+#Handles Calculation of Influence from Bugs
+#func bug_influence():
+#	var simples = bug_simple_count * 5
+#	var standards = bug_standard_count * 10
+#	var complexes = bug_complex_count * 15
+#	var max_eff = efficiency_bar.max_value
+#	
+#	
 
 #Handles the Probability of a Bug becoming a Breakpoint
 func break_check():
@@ -421,9 +589,9 @@ func break_check():
 func break_gen(chance: float):
 	var break_point = 0
 	var break_roll = randf_range(1, 100)
-	print("Roll: ", break_roll)
+#	print("Roll: ", break_roll)
 	var break_thresh = 100 - chance
-	print("Break Thresh: ", break_thresh)
+#	print("Break Thresh: ", break_thresh)
 	
 	if break_roll >= break_thresh:
 		break_point += 1
@@ -528,6 +696,7 @@ func break_point_config(challenge: String):
 	break_point_traits["Weight"] = weight
 	
 
+#Handles Resetting Breakpoint Bars
 func break_reset():
 	break_point_bar.value = 100.0
 	critical_debugging_bar.value = 0.0
@@ -548,24 +717,7 @@ func break_point_complete():
 	
 	
 
-#func run_check():
-#	var error_threshold = 100 - break_point_chance
-#	
-#	for run in 100:
-#		var bug_run = randi_range(1, 100)
-#		if bug_run >= error_threshold:
-#			print("Bug Found: ",bug_run)
-#			bug_tally += 1
-		
-#		else:
-#			print("No Bug: ",bug_run)
-#			continue
-		
-#	print("Bugs ", bug_tally)
-#	broken_progress += bug_tally
-
-
-
+#Handles Taskbar Progression Check for Completion
 func progress_check():
 	if coding_bar.value == 100 and completion == false:
 		completion = true
