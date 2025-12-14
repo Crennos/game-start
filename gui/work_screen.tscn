@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bwa3wvurx4xgu" path="res://characters/cory.tscn" id="5_l2rhm"]
 
 [node name="Work_Screen" type="Sprite2D"]
-position = Vector2(120.5, 9.5)
-scale = Vector2(1.7, 1.625)
+position = Vector2(126, 6)
+scale = Vector2(1.77333, 1.68333)
 texture = ExtResource("1_uqnsi")
 script = ExtResource("2_feuab")
 
@@ -17,10 +17,10 @@ position = Vector2(-1, -4)
 zoom = Vector2(5.5, 5.8)
 
 [node name="Coding Progress" parent="." instance=ExtResource("3_io807")]
-offset_left = -60.1191
-offset_top = -43.6364
-offset_right = -60.1191
-offset_bottom = -43.6364
+offset_left = -59.2105
+offset_top = -41.5842
+offset_right = -59.2105
+offset_bottom = -41.5842
 scale = Vector2(0.96875, 0.6)
 
 [node name="Action_Choice_Panel" parent="." instance=ExtResource("4_oelwx")]

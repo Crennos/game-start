@@ -17,10 +17,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = 48.0
-offset_right = -16.0
-offset_bottom = 48.0
+offset_left = 24.0
+offset_top = 72.0
+offset_right = 24.0
+offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_njbp2")
@@ -78,6 +78,80 @@ layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Code_Bar_Prog" type="Label" parent="."]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 3.0
+offset_right = 418.0
+offset_bottom = 412.0
+scale = Vector2(0.01, 0.01)
+theme_override_colors/font_color = Color(0, 0.905882, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 45
+theme_override_font_sizes/font_size = 300
+text = "t"
+
+[node name="Test_Bar_Prog" type="Label" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 19.0
+offset_right = 417.0
+offset_bottom = 428.0
+scale = Vector2(0.01, 0.01)
+theme_override_colors/font_color = Color(0, 0.211765, 0.984314, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 45
+theme_override_font_sizes/font_size = 300
+text = "t"
+
+[node name="Eff_Bar_Prog" type="Label" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 35.0
+offset_right = 417.0
+offset_bottom = 444.0
+scale = Vector2(0.01, 0.01)
+theme_override_colors/font_color = Color(0.790025, 0.341738, 0.0276469, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 45
+theme_override_font_sizes/font_size = 300
+text = "t"
+
+[node name="Learn_Bar_Prog" type="Label" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 51.0
+offset_right = 417.0
+offset_bottom = 460.0
+scale = Vector2(0.01, 0.01)
+theme_override_colors/font_color = Color(0.871026, 0.781457, 0.147969, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 45
+theme_override_font_sizes/font_size = 300
+text = "t"
+
+[node name="Task_Bar_Prog" type="Label" parent="."]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 76.0
+offset_right = 851.0
+offset_bottom = 1438.0
+scale = Vector2(0.01, 0.01)
+theme_override_font_sizes/font_size = 1000
+
+[node name="Break_Bar_Prog" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 51.0
+offset_top = 76.0
+offset_right = 851.0
+offset_bottom = 1438.0
+scale = Vector2(0.01, 0.01)
+theme_override_font_sizes/font_size = 1000
+text = "tt"
 
 [node name="Progress_Timer" type="Timer" parent="."]
 autostart = true
@@ -153,6 +227,87 @@ step = 0.0
 texture_under = ExtResource("1_qfmlw")
 texture_over = ExtResource("2_0ml7f")
 texture_progress = ExtResource("6_3ogpd")
+
+[node name="Code_Tick_Text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = -5.0
+offset_right = 520.0
+offset_bottom = 813.0
+scale = Vector2(0.01, 0.01)
+theme_override_colors/font_color = Color(0, 0.905882, 0, 1)
+theme_override_font_sizes/font_size = 600
+
+[node name="Test_Tick_Text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 11.0
+offset_right = 520.0
+offset_bottom = 829.0
+scale = Vector2(0.01, 0.01)
+theme_override_colors/font_color = Color(0, 0.211765, 0.984314, 1)
+theme_override_font_sizes/font_size = 600
+
+[node name="Eff_Tick_Text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 27.0
+offset_right = 520.0
+offset_bottom = 845.0
+scale = Vector2(0.01, 0.01)
+theme_override_colors/font_color = Color(0.788235, 0.341176, 0.027451, 1)
+theme_override_font_sizes/font_size = 600
+
+[node name="Learn_Tick_Text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 43.0
+offset_right = 520.0
+offset_bottom = 861.0
+scale = Vector2(0.01, 0.01)
+theme_override_colors/font_color = Color(0.870588, 0.780392, 0.14902, 1)
+theme_override_font_sizes/font_size = 600
+
+[node name="Bug_Count_Text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 78.0
+offset_right = 2878.0
+offset_bottom = 800.0
+scale = Vector2(0.01, 0.01)
+theme_override_font_sizes/font_size = 500
+text = "Bug Count
+"
+
+[node name="Simple_Bugs_Text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 8.0
+offset_right = 2878.0
+offset_bottom = 808.0
+scale = Vector2(0.01, 0.01)
+theme_override_font_sizes/font_size = 500
+text = "Simple: "
+
+[node name="Standard_Bugs_Text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 16.0
+offset_right = 2878.0
+offset_bottom = 816.0
+scale = Vector2(0.01, 0.01)
+theme_override_font_sizes/font_size = 500
+text = "Standard: 
+"
+
+[node name="Complex_Bugs_Text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 24.0
+offset_right = 2878.0
+offset_bottom = 824.0
+scale = Vector2(0.01, 0.01)
+theme_override_font_sizes/font_size = 500
+text = "Complex: "
 
 [connection signal="timeout" from="Progress_Timer" to="." method="_on_progress_timer_timeout"]
 [connection signal="timeout" from="Break_Timer" to="." method="_on_break_timer_timeout"]

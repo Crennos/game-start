@@ -1,3 +1,4 @@
+Label
 VBoxContainer
 TextureProgressBar
 Sprite2D
@@ -5,7 +6,6 @@ Timer
 HSplitContainer
 VSeparator
 HBoxContainer
-Label
 MarginContainer
 AnimatedSprite2D
 Camera2D
