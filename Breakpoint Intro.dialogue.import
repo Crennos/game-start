@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://cyvjvhua3cb7k"
+path="res://.godot/imported/Breakpoint Intro.dialogue-451e16fe519feaa5336a1d98924c40f6.tres"
+
+[deps]
+
+source_file="res://Breakpoint Intro.dialogue"
+dest_files=["res://.godot/imported/Breakpoint Intro.dialogue-451e16fe519feaa5336a1d98924c40f6.tres"]
+
+[params]
+
+defaults=true

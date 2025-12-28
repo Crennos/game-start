@@ -1,0 +1,128 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_6hiy0"]
+
+[resource]
+script = ExtResource("1_6hiy0")
+using_states = PackedStringArray()
+titles = {
+"start": "3"
+}
+character_names = PackedStringArray("Cory")
+first_title = "3"
+lines = {
+"1": {
+"id": "1",
+"next_id": "3",
+"text": "start",
+"type": &"title"
+},
+"11": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "11",
+"next_id": "13",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Tricky part is that even if I run the game often you could see a bug happen over and over and not realize it's a bug so I need to be diligent with testing.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Tricky part is that even if I run the game often you could see a bug happen over and over and not realize it's a bug so I need to be diligent with testing.",
+"type": &"dialogue"
+},
+"13": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "13",
+"next_id": "15",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Either way it may cost me more time in coding around a mistake or limit how effective and consolidated my scripts can be which hurts everything else or may even prevent me finishing what I started.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Either way it may cost me more time in coding around a mistake or limit how effective and consolidated my scripts can be which hurts everything else or may even prevent me finishing what I started.",
+"type": &"dialogue"
+},
+"15": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "15",
+"next_id": "17",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "So whatever it is I just need to do some debugging with my code efficiency to ensure that these get taken care of as I find them.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "So whatever it is I just need to do some debugging with my code efficiency to ensure that these get taken care of as I find them.",
+"type": &"dialogue"
+},
+"17": {
+"id": "17",
+"is_snippet": false,
+"next_id": "end",
+"type": &"goto"
+},
+"3": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "3",
+"next_id": "5",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Oops. Looks like I found a bug.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Oops. Looks like I found a bug.",
+"type": &"dialogue"
+},
+"5": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "5",
+"next_id": "7",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Bugs aren't really like anything is 'wrong' with the code itself so much as it is that the code isn't actually doing what 'You' think it's supposed to be doing...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Bugs aren't really like anything is 'wrong' with the code itself so much as it is that the code isn't actually doing what 'You' think it's supposed to be doing...",
+"type": &"dialogue"
+},
+"7": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "7",
+"next_id": "9",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "A lot of times it's not a big deal but others it can be game breaking. It's the difference between a minor movement hiccup I can let just slide...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "A lot of times it's not a big deal but others it can be game breaking. It's the difference between a minor movement hiccup I can let just slide...",
+"type": &"dialogue"
+},
+"9": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "9",
+"next_id": "11",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Or something that I need to fix to have a fully finished game.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Or something that I need to fix to have a fully finished game.",
+"type": &"dialogue"
+}
+}
+raw_text = "~ start
+
+Cory: Oops. Looks like I found a bug. 
+
+Cory: Bugs aren't really like anything is 'wrong' with the code itself so much as it is that the code isn't actually doing what 'You' think it's supposed to be doing...
+
+Cory: A lot of times it's not a big deal but others it can be game breaking. It's the difference between a minor movement hiccup I can let just slide...
+
+Cory: Or something that I need to fix to have a fully finished game.
+
+Cory: Tricky part is that even if I run the game often you could see a bug happen over and over and not realize it's a bug so I need to be diligent with testing.
+
+Cory: Either way it may cost me more time in coding around a mistake or limit how effective and consolidated my scripts can be which hurts everything else or may even prevent me finishing what I started.
+
+Cory: So whatever it is I just need to do some debugging with my code efficiency to ensure that these get taken care of as I find them.
+
+=> END"
+metadata/dialogue_manager_version = "2.45.0"

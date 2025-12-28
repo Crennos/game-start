@@ -1,5 +1,6 @@
 extends Control
 
+#Nodes
 @onready var task_progress_bar : TextureProgressBar = $Task_Progress_Bar
 @onready var coding_bar : TextureProgressBar = $HBoxContainer/VBoxContainer/Coding_Bar
 @onready var testing_bar : TextureProgressBar = $HBoxContainer/VBoxContainer/Testing_Bar
@@ -7,11 +8,17 @@ extends Control
 @onready var learning_bar : TextureProgressBar = $HBoxContainer/VBoxContainer/Learning_Bar
 @onready var break_point_bar : TextureProgressBar = $Breakpoint_Progress_Bar
 @onready var selector : Sprite2D = $HBoxContainer/VBoxContainer3/Selector_Sprite
+@onready var select_ghost : Sprite2D = $HBoxContainer/VBoxContainer3/Selector_Ghost
 @onready var critical_testing_bar : TextureProgressBar = $Critical_Testing_Bar
 @onready var critical_debugging_bar : TextureProgressBar = $Critical_Debugging_Bar
 @onready var critical_learning_bar : TextureProgressBar = $Criticial_Learning_Bar
+
+#Timers
 @onready var progress_timer : Timer = $Progress_Timer
 @onready var break_timer : Timer = $Break_Timer
+@onready var blink_timer : Timer = $Blink_Timer
+@onready var announce_timer : Timer = $Announce_Timer
+@onready var ghost_timer : Timer = $Ghost_Timer
 
 #Labels
 @onready var code_prog_label : Label = $Code_Bar_Prog
@@ -28,6 +35,7 @@ extends Control
 @onready var simple_bugs_text : Label = $Simple_Bugs_Text
 @onready var standard_bugs_text : Label = $Standard_Bugs_Text
 @onready var complex_bugs_text : Label = $Complex_Bugs_Text
+@onready var announce_text : Label = $Announce_Label
 
 @export var first_task : DialogueResource
 
@@ -40,7 +48,9 @@ extends Control
 
 @export var broken_progress : float
 
+#Task Checks
 @export var task_processing : bool
+@export var pause_active : bool
 @export var task_active : bool
 @export var coding : bool
 @export var testing : bool
@@ -97,8 +107,7 @@ func _ready() -> void:
 	ProgressionBus.connect("task_pause", pause)
 	selector.global_position = Vector2(0,5)
 #	production_growth(false)
-	focus(true)
-	selector.global_position = code_pos
+	selector.position = code_pos
 	bug_check(5, 2, 3)
 	break_point_init()
 	label_handler(0,0,0,0)
@@ -113,12 +122,11 @@ func start():
 	task_processing = true
 	task_active = true
 #	production_growth(true)
-	
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	detect_input(task_active)
-	focus(task_active)
 	break_point_complete()
 #	progress_check()
 
@@ -152,14 +160,40 @@ func detect_input(active: bool):
 			selector.position = task_bars[current_pos]
 #			print("Selector at ", selector.position)
 	
-#		if Input.is_action_just_pressed("task pause"):
-#			if task_processing == true:
-#				task_processing = false
-#				ProgressionBus.emit_signal("action_prompt", "Cory")
-#				production_growth(task_processing)
-#			else:
-#				task_processing = true
-#				production_growth(task_processing)
+		if Input.is_action_just_pressed("Select"):
+			if selector.position == code_pos:
+				coding = true
+				testing = false
+				efficiency = false
+				learning = false
+				ghost_select(code_pos)
+			elif selector.position == test_pos:
+				testing = true
+				coding = false
+				efficiency = false
+				learning = false
+				ghost_select(test_pos)
+			elif selector.position == eff_pos:
+				efficiency = true
+				coding = false
+				testing = false
+				learning = false
+				ghost_select(eff_pos)
+			elif selector.position == learn_pos:
+				learning = true
+				coding = false
+				efficiency = false
+				learning = false
+				ghost_select(learn_pos)
+		
+		if Input.is_action_just_pressed("task pause"):
+			if pause_active == false:
+				pause_active = true
+				ProgressionBus.emit_signal("action_prompt", "Cory")
+				
+			else:
+				pause_active = false
+				
 			
 		if Input.is_action_just_pressed("action"):
 			if coding_bar.value == 100:
@@ -167,6 +201,11 @@ func detect_input(active: bool):
 	
 	else:
 		pass
+
+func ghost_select(current_pos : Vector2):
+	select_ghost.position = current_pos
+	select_ghost.visible = true
+	ghost_timer.start()
 
 func label_handler(code: float, test: float, eff : float, learn: float):
 	var code_bar : float
@@ -188,26 +227,36 @@ func label_handler(code: float, test: float, eff : float, learn: float):
 #	print(tick_dict)
 	
 	if task_active == true and break_point_active == false:
-		code_bar = coding_bar.value
+		code_bar = snapped(coding_bar.value, 0.1)
 		code_cap = coding_bar.max_value
-		eff_bar = efficiency_bar.value
+		eff_bar = snapped(efficiency_bar.value, 0.1)
 		eff_cap = efficiency_bar.max_value
-		test_bar = testing_bar.value
+		test_bar = snapped(testing_bar.value, 0.1)
 		test_cap = testing_bar.max_value
-		learn_bar = learning_bar.value
+		learn_bar = snapped(learning_bar.value, 0.1)
 		learn_cap = learning_bar.max_value
-		task_bar = task_progress_bar.value
+		code_prog_label.visible = true
+		task_prog_label.visible = true
+		break_prog_label.visible = false
+		task_bar = snapped(task_progress_bar.value, 0.1)
 		task_cap = task_progress_bar.max_value
+		
+		task_color_swap("Task")
 	
 	elif break_point_active == true:
-		eff_bar = critical_debugging_bar.value
+		eff_bar = snapped(critical_debugging_bar.value, 0.1)
 		eff_cap = critical_debugging_bar.max_value
-		test_bar = critical_testing_bar.value
+		test_bar = snapped(critical_testing_bar.value, 0.1)
 		test_cap = critical_testing_bar.max_value
-		learn_bar = critical_learning_bar.value
+		learn_bar = snapped(critical_learning_bar.value, 0.1)
 		learn_cap = critical_learning_bar.max_value
-		break_bar = break_point_bar.value
+		code_prog_label.visible = false
+		task_prog_label.visible = false
+		break_prog_label.visible = true
+		break_bar = snapped(break_point_bar.value, 0.1)
 		break_cap = break_point_bar.max_value
+		
+		task_color_swap("Break")
 	
 	for tick in range(4):
 		var tick_text : String
@@ -231,19 +280,19 @@ func label_handler(code: float, test: float, eff : float, learn: float):
 					code_text_tick.text = tick_text
 			"Test":
 				if tick_text == "":
-					code_text_tick.visible = false
+					test_text_tick.visible = false
 				else:
 					test_text_tick.visible = true
 					test_text_tick.text = tick_text
 			"Eff":
 				if tick_text == "":
-					code_text_tick.visible = false
+					eff_text_tick.visible = false
 				else:
 					eff_text_tick.visible = true
 					eff_text_tick.text = tick_text
 			"Learn":
 				if tick_text == "":
-					code_text_tick.visible = false
+					learn_text_tick.visible = false
 				else:
 					learn_text_tick.visible = true
 					learn_text_tick.text = tick_text
@@ -259,7 +308,81 @@ func label_handler(code: float, test: float, eff : float, learn: float):
 	complex_bugs_text.text = "Complex " + str(bug_complex_count)
 	
 
-#What was this for again?
+
+func announce(event: String, level: String):
+	
+	match event:
+		"Bug Found":
+			print(event)
+			announce_text.text = level + " " + event
+		"Bug Fixed":
+			print(event)
+			announce_text.text = level + " " + event
+		"Break Start":
+			print(event)
+			announce_text.text = level + " " + event
+		"Break Fixed":
+			print(event)
+			announce_text.text = level + " " + event
+	
+	if task_processing == true and pause_active == false:
+		announce_timer.start()
+		print("Pause Announce")
+		pause_active = true
+
+#Handles Label Color Swapping
+func task_color_swap(task : String):
+	var green = Color(0.0, 0.90, 0.0, 1)
+	var orange = Color(0.79, 0.34, 0.2, 1)
+	var turqoise = Color(0.28, 0.49, 0.99, 1.00)
+	var dark_blue = Color(0.00, 0.21, 0.98, 1.00)
+	
+	match task:
+		"Task":
+			print("Color Task")
+			eff_prog_label.set("theme_override_colors/font_color", orange)
+			test_prog_label.add_theme_color_override("font_color", dark_blue)
+			eff_text_tick.set("theme_override_colors/font_color", orange)
+			test_text_tick.add_theme_color_override("font_color", dark_blue)
+		"Break":
+			print("Color Break")
+			eff_prog_label.set("theme_override_colors/font_color", turqoise)
+			test_prog_label.add_theme_color_override("font_color", green)
+			eff_text_tick.set("theme_override_colors/font_color", turqoise)
+			test_text_tick.add_theme_color_override("font_color", green)
+			
+	
+
+#Handles Text Blinking
+func text_blinker():
+	var code_vis = code_text_tick.visible
+	var test_vis = test_text_tick.visible
+	var eff_vis = eff_text_tick.visible
+	var learn_vis = learn_text_tick.visible
+	
+	var vis_list = [code_vis, test_vis, eff_vis, learn_vis]
+#	print("Vis Check 1: ", vis_list)
+	
+	for i in range(4):
+		if vis_list[i] == true:
+			vis_list[i] = false
+			
+			match i:
+				0:
+					code_text_tick.visible = vis_list[i]
+				1:
+					test_text_tick.visible = vis_list[i]
+				2:
+					eff_text_tick.visible = vis_list[i]
+				3:
+					learn_text_tick.visible = vis_list[i]
+		else:
+			pass
+	
+#	print("Vis Check 2: ", vis_list)
+
+
+#Handles First Time Interactions
 func initiate():
 	pass
 
@@ -288,40 +411,6 @@ func toggle_vis(object):
 		object.visible = false
 
 
-#Handles Focus Progress for Calculations and Progress
-func focus(active: bool):
-	#Switch this to match?
-	if task_active == false:
-		selector.position = code_pos
-	
-	if active == true:
-		if selector.position == code_pos:
-			coding = true
-#			print(coding)
-		else:
-			coding = false
-		
-		if selector.position == test_pos:
-			testing = true
-#			print(testing)
-		else:
-			testing = false
-			
-		if selector.position == eff_pos:
-			efficiency = true
-#			print(efficiency)
-		else:
-			efficiency = false
-			
-		if selector.position == learn_pos:
-			learning = true
-#			print(learning)
-
-		else:
-			learning = false
-	else:
-		pass
-
 #Handles Progress Bar Ticks
 func production_growth(active: bool, skills: Array):
 	task_processing = active
@@ -338,7 +427,7 @@ func production_growth(active: bool, skills: Array):
 	var learn_prog = learning_bar.value
 	
 	
-	if task_processing == true and break_point_active == false: #Begins processes for work bar calculations
+	if task_processing == true and break_point_active == false and pause_active == false: #Begins processes for work bar calculations
 		var code = skills[0]
 		var test = skills[1]
 		var efficient = skills[2]
@@ -387,6 +476,7 @@ func production_growth(active: bool, skills: Array):
 			stress_mod = 0.5
 			familiarity_tick = 0.5
 		
+		blink_timer.start()
 		coding_bar.value += coding_tick
 		testing_bar.value += testing_tick
 		efficiency_bar.value += efficiency_tick
@@ -400,6 +490,11 @@ func production_growth(active: bool, skills: Array):
 		pass
 	
 
+func growth_ticker(task : String):
+	pass
+	
+
+
 #Handles Breakpoint Challenge Progression
 func challenge_progress(active: bool):
 	var break_bar = break_point_bar.value
@@ -411,22 +506,24 @@ func challenge_progress(active: bool):
 	var test_mod : float = 0.0
 	var learn_mod : float = 1.0 + ((learn_value / 2) * 0.1)
 	
-	if break_point_active == true:
+	if break_point_active == true and pause_active == false:
 		if testing == true:
 			break_task("Testing", test_tick)
-			
+			label_handler(0, test_tick, 0, 0)
 		
 		elif efficiency == true:
 			eff_tick += (test_mod * learn_mod)
 #			print("Debug: ", eff_tick)
 			break_task("Debugging", eff_tick)
-			
+			label_handler(0, 0, eff_tick, 0)
 		
 		elif learning == true:
 			break_task("Learning", learn_tick)
-			
+			label_handler(0, 0, 0, learn_tick)
 		
 		break_point_bar.value -= eff_tick + (critical_debugging_bar.value * 0.1)
+		blink_timer.start()
+
 
 #Handles Calculations for Breakpoint Progress Ticks
 func break_task(task: String, value: float):
@@ -435,28 +532,30 @@ func break_task(task: String, value: float):
 	var learn_cap = critical_learning_bar.max_value
 #	print("Task: ", task)
 #	print("Value: ", value)
-	
-	match task:
-		"Testing":
-			critical_testing_bar.value += value
-			var test_bar = critical_testing_bar.value
-#			print("Test: ", test_bar)
-			if test_cap == test_bar and debug_cap == test_bar / 2:
-				critical_debugging_bar.max_value += debug_cap
-#				print("Debug Cap: ", debug_cap)
-		"Debugging":
-			critical_debugging_bar.value += value
-			var debug_bar = critical_debugging_bar.value
-#			print("Debug: ", debug_bar)
-			if debug_bar == learn_cap and learn_cap == test_cap:
-				critical_learning_bar.max_value += learn_cap
-		"Learning":
-			critical_learning_bar.value += value
-			var learn_bar = critical_learning_bar.value
-#			print("Learn: ", learn_bar)
-			if learn_cap == learn_bar and learn_cap == (test_cap * 2):
-				critical_testing_bar.max_value += test_cap
-#				print("Test Cap: ", test_cap)
+	if task_processing == true and pause_active == false:
+		match task:
+			"Testing":
+				critical_testing_bar.value += value
+				var test_bar = critical_testing_bar.value
+	#			print("Test: ", test_bar)
+				if test_cap == test_bar and debug_cap == test_bar / 2:
+					critical_debugging_bar.max_value += debug_cap
+	#				print("Debug Cap: ", debug_cap)
+			"Debugging":
+				critical_debugging_bar.value += value
+				var debug_bar = critical_debugging_bar.value
+	#			print("Debug: ", debug_bar)
+				if debug_bar == learn_cap and learn_cap == test_cap:
+					critical_learning_bar.max_value += learn_cap
+			"Learning":
+				critical_learning_bar.value += value
+				var learn_bar = critical_learning_bar.value
+	#			print("Learn: ", learn_bar)
+				if learn_cap == learn_bar and learn_cap == (test_cap * 2):
+					critical_testing_bar.max_value += test_cap
+	#				print("Test Cap: ", test_cap)
+	else:
+		pass
 		
 	
 
@@ -471,17 +570,23 @@ func break_impact():
 	if testing == true:
 		critical_debugging_bar.value -= puzzle
 		critical_learning_bar.value -= puzzle
+		learn_prog_label.text = str(snapped(critical_learning_bar.value, 0.1)) + "/" + str(critical_learning_bar.max_value)
+		eff_prog_label.text = str(snapped(critical_debugging_bar.value, 0.1)) + "/" + str(critical_debugging_bar.max_value)
 		
 	elif efficiency == true:
 		critical_learning_bar.value -= puzzle
 		critical_testing_bar.value -= puzzle
+		learn_prog_label.text = str(snapped(critical_learning_bar.value, 0.1)) + "/" + str(critical_learning_bar.max_value)
+		test_prog_label.text = str(snapped(critical_testing_bar.value, 0.1)) + "/" + str(critical_testing_bar.max_value)
 		
 	elif learning == true:
 		critical_debugging_bar.value -= puzzle
 		critical_testing_bar.value -= puzzle
-	
+		eff_prog_label.text = str(snapped(critical_debugging_bar.value, 0.1)) + "/" + str(critical_debugging_bar.max_value)
+		test_prog_label.text = str(snapped(critical_testing_bar.value, 0.1)) + "/" + str(critical_testing_bar.max_value)
+	 
 	break_point_bar.value += rebound
-	
+	break_prog_label.text = str(snapped(break_point_bar.value, 0.1)) + "/" + str(break_point_bar.max_value)
 	ProgressionBus.emit_signal("work_load_modify", weight)
 	ProgressionBus.emit_signal("stress_modify", weight)
 #	ProgressionBus.emit_signal("familiarity_update", familiarity_tick) #Revisit this one later
@@ -609,6 +714,7 @@ func bug_finder():
 					bug_simple_count += 1
 					bug_trigger("Simple")
 					bug_marker(5)
+					announce("Bug Found", bug_level)
 				"Standard":
 					print("Found 1: ", bug_level, " Bug")
 					bug_log["Hidden Bugs"].erase(bug_level)
@@ -619,6 +725,7 @@ func bug_finder():
 					bug_standard_count += 1
 					bug_trigger("Standard")
 					bug_marker(3)
+					announce("Bug Found", bug_level)
 				"Complex":
 					print("Found 1: ", bug_level, " Bug")
 					bug_log["Hidden Bugs"].erase(bug_level)
@@ -629,6 +736,7 @@ func bug_finder():
 					bug_complex_count += 1
 					bug_trigger("Complex")
 					bug_marker(5)
+					announce("Bug Found", bug_level)
 		
 		else:
 			pass
@@ -716,16 +824,19 @@ func bug_kill(bug_health : int, target : String):
 				print(bug_level, " Bug Erased")
 				bug_log["Found Bugs"].erase(bug_level)
 				print("New Bug List: ", bug_log["Found Bugs"])
+				announce("Bug Fixed", bug_level)
 			"Standard":
 				bug_standard_count -= 1
 				print(bug_level, " Bug Erased")
 				bug_log["Found Bugs"].erase(bug_level)
 				print("New Bug List: ", bug_log["Found Bugs"])
+				announce("Bug Fixed", bug_level)
 			"Complex":
 				bug_complex_count -= 1
 				print(bug_level, " Bug Erased")
 				bug_log["Found Bugs"].erase(bug_level)
 				print("New Bug List: ", bug_log["Found Bugs"])
+				announce("Bug Fixed", bug_level)
 		
 		efficiency_bar.value -= effi_marks["Temp"]
 		efficiency_bar.max_value += effi_marks["Perm"]
@@ -766,20 +877,14 @@ func break_point_init():
 	
 	print("Breakpoint Tally: ", break_points)
 	if break_count >= 1 and break_point_active == false:
+		label_handler(0.0, 0.0, 0.0, 0.0)
 		origin_bug = bug_log["Break Bugs"][-1]
 		break_point_active = true
 		toggle_vis(task_progress_bar)
 		toggle_vis(break_point_bar)
 		task_stage_vis()
 		break_timer.start()
-		
-
-
-	elif break_count == 0 and break_point_active == true:
-		break_point_active = false
-		toggle_vis(task_progress_bar)
-		toggle_vis(break_point_bar)
-		task_stage_vis()
+		announce("Break Start", origin_bug)
 	
 	print("Challenge: ", origin_bug)
 	break_point_config(origin_bug)
@@ -835,24 +940,35 @@ func break_reset():
 	critical_debugging_bar.value = 0.0
 	critical_testing_bar.value = 0.0
 	critical_learning_bar.value = 0.0
+	critical_debugging_bar.max_value = 5.0
+	critical_testing_bar.max_value = 5.0
+	critical_learning_bar.max_value = 10.0
+	
 
 #Handles Completion of Breakpoint Challenge
 func break_point_complete():
-	if break_point_bar.value == 0.0 and break_point_active == true:
-		break_point_active = false
+	if break_point_bar.value == 0.0 and break_point_active == true and announce_timer.is_stopped() == true:
+		label_handler(0.0, 0.0, 0.0, 0.0)
+		var _break = bug_log["Break Bugs"][-1]
 		bug_log["Break Count"]-= 1
-		break_reset()
+		break_point_active = false
 		break_timer.stop()
+		print("Breakpoint Finished")
+		announce("Break Fixed", _break)
+		
+	elif break_point_bar.value == 0.0 and announce_timer.is_stopped() == true:
+		label_handler(0.0, 0.0, 0.0, 0.0)
+		break_reset()
 		task_stage_vis()
 		toggle_vis(break_point_bar)
 		toggle_vis(task_progress_bar)
-		print("Breakpoint Finished")
 	
 
 #Handles Taskbar Progression Check for Completion
 func progress_check():
 	if coding_bar.value == 100 and completion == false:
 		completion = true
+		
 #		ProgressionBus.emit_signal("production_complete")
 
 
@@ -868,3 +984,17 @@ func _on_progress_timer_timeout() -> void:
 func _on_break_timer_timeout() -> void:
 	break_impact()
 	pass # Replace with function body.
+
+
+func _on_blink_timer_timeout() -> void:
+	text_blinker()
+
+
+func _on_announce_timer_timeout() -> void:
+	pause_active = false
+	print("End Announce")
+	announce_text.text = ""
+
+
+func _on_ghost_timer_timeout() -> void:
+	toggle_vis(select_ghost)

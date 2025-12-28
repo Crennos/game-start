@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var task_progress_bar : TextureProgressBar = $Task_Progress_Bar
 @onready var task_timer : Timer = $"Task Timer"
 @onready var break_timer : Timer = $"Break Timer"
+#@onready var game_menu : Control = $Game_Menu
 
 #Node Status
 @export var process : bool = true
@@ -154,6 +155,8 @@ func detect_input(delta, process: bool):
 	if Input.is_action_just_pressed("Player 2"):
 		player_active = false
 	
+		
+	
 	if process == true and player_active == true:
 		if Input.is_action_pressed("left"):
 			cory_sprite.set_frame_and_progress(2, 0.0)
@@ -187,6 +190,10 @@ func detect_input(delta, process: bool):
 			
 		
 		move_and_slide()
+		
+#		if Input.is_action_just_pressed("Pause"):
+#			toggle_vis(game_menu)
+#			get_tree().paused
 	
 		if actionable_area.actionable_present == true:
 			if Input.is_action_just_pressed("action"):

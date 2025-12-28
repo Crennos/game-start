@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://d1k7w5caef0ph"
+path="res://.godot/imported/Anxiety Cycle.dialogue-32867d05429124366d90b7a02acedafa.tres"
+
+[deps]
+
+source_file="res://Anxiety Cycle.dialogue"
+dest_files=["res://.godot/imported/Anxiety Cycle.dialogue-32867d05429124366d90b7a02acedafa.tres"]
+
+[params]
+
+defaults=true

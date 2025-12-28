@@ -1,0 +1,115 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_pd72o"]
+
+[resource]
+script = ExtResource("1_pd72o")
+using_states = PackedStringArray()
+titles = {
+"start": "3"
+}
+character_names = PackedStringArray("Cory")
+first_title = "3"
+lines = {
+"1": {
+"id": "1",
+"next_id": "3",
+"text": "start",
+"type": &"title"
+},
+"11": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "11",
+"next_id": "13",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I can try to just Debug it but I'm... not really sure how to read this error log... so I should try to Test around so I have more things I can work with...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I can try to just Debug it but I'm... not really sure how to read this error log... so I should try to Test around so I have more things I can work with...",
+"type": &"dialogue"
+},
+"13": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "13",
+"next_id": "16",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "And if that fails I should try to Learn more about the error through the documentation and whatever else I can explore to expand what I can test and debug.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "And if that fails I should try to Learn more about the error through the documentation and whatever else I can explore to expand what I can test and debug.",
+"type": &"dialogue"
+},
+"16": {
+"id": "16",
+"is_snippet": false,
+"next_id": "end",
+"type": &"goto"
+},
+"3": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "3",
+"next_id": "5",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "... Oh boy. Looks like I screwed something up.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "... Oh boy. Looks like I screwed something up.",
+"type": &"dialogue"
+},
+"5": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "5",
+"next_id": "7",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I think this is a breakpoint...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I think this is a breakpoint...",
+"type": &"dialogue"
+},
+"7": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "7",
+"next_id": "9",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Basically the program just crashes because it can't read something you've put into the code and that causes it to shut down and return an error.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Basically the program just crashes because it can't read something you've put into the code and that causes it to shut down and return an error.",
+"type": &"dialogue"
+},
+"9": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "9",
+"next_id": "11",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "That error, I think, is the 'breakpoint', and it can range from something as simple to just a misplaced letter or character or a complex issue...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "That error, I think, is the 'breakpoint', and it can range from something as simple to just a misplaced letter or character or a complex issue...",
+"type": &"dialogue"
+}
+}
+raw_text = "~ start
+
+Cory: ... Oh boy. Looks like I screwed something up.
+
+Cory: I think this is a breakpoint... 
+
+Cory: Basically the program just crashes because it can't read something you've put into the code and that causes it to shut down and return an error.
+
+Cory: That error, I think, is the 'breakpoint', and it can range from something as simple to just a misplaced letter or character or a complex issue...
+
+Cory: I can try to just Debug it but I'm... not really sure how to read this error log... so I should try to Test around so I have more things I can work with...
+
+Cory: And if that fails I should try to Learn more about the error through the documentation and whatever else I can explore to expand what I can test and debug.
+
+
+=> END"
+metadata/dialogue_manager_version = "2.45.0"

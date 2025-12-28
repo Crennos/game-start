@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://1xiua5wwbkhw"]
+[gd_scene load_steps=13 format=3 uid="uid://1xiua5wwbkhw"]
 
 [ext_resource type="Script" path="res://gui/coding_progression.gd" id="1_njbp2"]
 [ext_resource type="Texture2D" uid="uid://dqwxlreeuh4va" path="res://gui/new bot.png" id="1_qfmlw"]
 [ext_resource type="Texture2D" uid="uid://cc3nukfdsit77" path="res://gui/new top.png" id="2_0ml7f"]
 [ext_resource type="Texture2D" uid="uid://b8h08hjl6qjp" path="res://gui/selector.png" id="2_etnfb"]
+[ext_resource type="Texture2D" uid="uid://d3hd62oc327qe" path="res://gui/Hollow Selector.png" id="3_7egjb"]
 [ext_resource type="Texture2D" uid="uid://dyn4gjkfiji1c" path="res://gui/Coding Bar.png" id="3_nimxm"]
 [ext_resource type="Texture2D" uid="uid://cbty7w6l8l404" path="res://gui/Testing Bar.png" id="4_us7hv"]
 [ext_resource type="Texture2D" uid="uid://dboacc5aiyv83" path="res://gui/Efficiency Bar.png" id="5_hktj0"]
@@ -38,6 +39,12 @@ layout_mode = 2
 position = Vector2(0, 5)
 scale = Vector2(1, 0.5)
 texture = ExtResource("2_etnfb")
+
+[node name="Selector_Ghost" type="Sprite2D" parent="HBoxContainer/VBoxContainer3"]
+visible = false
+position = Vector2(0, 5)
+scale = Vector2(1, 0.533334)
+texture = ExtResource("3_7egjb")
 
 [node name="VSplitContainer2" type="VSplitContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -82,6 +89,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Code_Bar_Prog" type="Label" parent="."]
+z_index = 2
 layout_mode = 2
 offset_left = 18.0
 offset_top = 3.0
@@ -95,6 +103,7 @@ theme_override_font_sizes/font_size = 300
 text = "t"
 
 [node name="Test_Bar_Prog" type="Label" parent="."]
+z_index = 2
 layout_mode = 0
 offset_left = 17.0
 offset_top = 19.0
@@ -108,6 +117,7 @@ theme_override_font_sizes/font_size = 300
 text = "t"
 
 [node name="Eff_Bar_Prog" type="Label" parent="."]
+z_index = 2
 layout_mode = 0
 offset_left = 17.0
 offset_top = 35.0
@@ -121,6 +131,7 @@ theme_override_font_sizes/font_size = 300
 text = "t"
 
 [node name="Learn_Bar_Prog" type="Label" parent="."]
+z_index = 2
 layout_mode = 0
 offset_left = 17.0
 offset_top = 51.0
@@ -136,28 +147,43 @@ text = "t"
 [node name="Task_Bar_Prog" type="Label" parent="."]
 layout_mode = 0
 offset_left = 51.0
-offset_top = 76.0
+offset_top = 81.0
 offset_right = 851.0
-offset_bottom = 1438.0
+offset_bottom = 1443.0
 scale = Vector2(0.01, 0.01)
-theme_override_font_sizes/font_size = 1000
+theme_override_constants/outline_size = 50
+theme_override_font_sizes/font_size = 800
+text = "1"
 
 [node name="Break_Bar_Prog" type="Label" parent="."]
 visible = false
 layout_mode = 0
 offset_left = 51.0
-offset_top = 76.0
+offset_top = 81.0
 offset_right = 851.0
-offset_bottom = 1438.0
+offset_bottom = 1443.0
 scale = Vector2(0.01, 0.01)
-theme_override_font_sizes/font_size = 1000
+theme_override_constants/outline_size = 50
+theme_override_font_sizes/font_size = 800
 text = "tt"
 
 [node name="Progress_Timer" type="Timer" parent="."]
+wait_time = 1.5
 autostart = true
 
 [node name="Break_Timer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="Blink_Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Announce_Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="Ghost_Timer" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
@@ -184,7 +210,7 @@ offset_right = 38.0
 offset_bottom = 100.0
 scale = Vector2(3.368, 1.666)
 step = 0.0
-value = 100.0
+value = 10.0
 fill_mode = 6
 texture_over = ExtResource("9_gbwtk")
 texture_progress = ExtResource("11_6m633")
@@ -231,42 +257,52 @@ texture_progress = ExtResource("6_3ogpd")
 [node name="Code_Tick_Text" type="Label" parent="."]
 layout_mode = 0
 offset_left = 20.0
-offset_top = -5.0
+offset_top = -2.0
 offset_right = 520.0
-offset_bottom = 813.0
+offset_bottom = 816.0
 scale = Vector2(0.01, 0.01)
 theme_override_colors/font_color = Color(0, 0.905882, 0, 1)
-theme_override_font_sizes/font_size = 600
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 45
+theme_override_font_sizes/font_size = 300
+text = "1"
 
 [node name="Test_Tick_Text" type="Label" parent="."]
 layout_mode = 0
 offset_left = 20.0
-offset_top = 11.0
+offset_top = 14.0
 offset_right = 520.0
-offset_bottom = 829.0
+offset_bottom = 832.0
 scale = Vector2(0.01, 0.01)
 theme_override_colors/font_color = Color(0, 0.211765, 0.984314, 1)
-theme_override_font_sizes/font_size = 600
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 45
+theme_override_font_sizes/font_size = 300
+text = "1"
 
 [node name="Eff_Tick_Text" type="Label" parent="."]
 layout_mode = 0
 offset_left = 20.0
-offset_top = 27.0
+offset_top = 30.0
 offset_right = 520.0
-offset_bottom = 845.0
+offset_bottom = 848.0
 scale = Vector2(0.01, 0.01)
 theme_override_colors/font_color = Color(0.788235, 0.341176, 0.027451, 1)
-theme_override_font_sizes/font_size = 600
+theme_override_constants/outline_size = 45
+theme_override_font_sizes/font_size = 300
+text = "1"
 
 [node name="Learn_Tick_Text" type="Label" parent="."]
 layout_mode = 0
 offset_left = 20.0
-offset_top = 43.0
+offset_top = 46.0
 offset_right = 520.0
-offset_bottom = 861.0
+offset_bottom = 864.0
 scale = Vector2(0.01, 0.01)
 theme_override_colors/font_color = Color(0.870588, 0.780392, 0.14902, 1)
-theme_override_font_sizes/font_size = 600
+theme_override_constants/outline_size = 45
+theme_override_font_sizes/font_size = 300
+text = "1"
 
 [node name="Bug_Count_Text" type="Label" parent="."]
 layout_mode = 0
@@ -309,5 +345,18 @@ scale = Vector2(0.01, 0.01)
 theme_override_font_sizes/font_size = 500
 text = "Complex: "
 
+[node name="Announce_Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 59.0
+offset_right = 5181.0
+offset_bottom = 1421.0
+scale = Vector2(0.01, 0.01)
+theme_override_constants/outline_size = 100
+theme_override_font_sizes/font_size = 600
+
 [connection signal="timeout" from="Progress_Timer" to="." method="_on_progress_timer_timeout"]
 [connection signal="timeout" from="Break_Timer" to="." method="_on_break_timer_timeout"]
+[connection signal="timeout" from="Blink_Timer" to="." method="_on_blink_timer_timeout"]
+[connection signal="timeout" from="Announce_Timer" to="." method="_on_announce_timer_timeout"]
+[connection signal="timeout" from="Ghost_Timer" to="." method="_on_ghost_timer_timeout"]

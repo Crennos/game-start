@@ -4,13 +4,16 @@
 
 [node name="Options_Menu" type="Control"]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1024.0
+offset_bottom = -792.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_obqrd")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -21,8 +24,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -64.0
+offset_right = 1780.0
+offset_bottom = 1016.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.121906, 0.170156)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
 layout_mode = 2
@@ -32,44 +40,15 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+offset_left = -753.128
+offset_right = 223.872
+offset_bottom = 717.0
 grow_horizontal = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer"]
-layout_mode = 2
-
-[node name="Resolution" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Resolution"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 5)
-layout_mode = 2
-
-[node name="Window Mode" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Window Mode"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 3)
-layout_mode = 2
-
-[node name="Master Volume" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Master Volume"
-
-[node name="Music Volume" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Music Volume"
-
-[node name="SFX Volume" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "SFX Volume"
+scale = Vector2(1.95017, 1.47858)
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/NinePatchRect/HBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/separation = 50
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer"]
@@ -92,6 +71,7 @@ layout_mode = 2
 [node name="Master_Volume_Slider" type="HSlider" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+size_flags_vertical = 1
 value = 100.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer2"]
@@ -110,31 +90,87 @@ layout_mode = 2
 layout_mode = 2
 value = 100.0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/NinePatchRect"]
+[node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -64.0
+offset_right = 592.0
+offset_bottom = 554.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
 
-[node name="Save_Button" type="Button" parent="MarginContainer/NinePatchRect/HBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
 layout_mode = 2
+
+[node name="Resolution" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "Resolution"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Window Mode" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "Window Mode"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+
+[node name="Master Volume" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "Master Volume"
+
+[node name="Music Volume" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "Music Volume"
+
+[node name="SFX Volume" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "SFX Volume"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Save_Button" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "Save
 "
 
-[node name="Default_Button" type="Button" parent="MarginContainer/NinePatchRect/HBoxContainer2"]
+[node name="Default_Button" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "Default
 "
 
-[node name="Close_Button" type="Button" parent="MarginContainer/NinePatchRect/HBoxContainer2"]
+[node name="Close_Button" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "Close
 "
 
@@ -143,6 +179,6 @@ text = "Close
 [connection signal="value_changed" from="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer2/Master_Volume_Slider" to="." method="_on_master_volume_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer2/Music_Volume_Slider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/NinePatchRect/HBoxContainer/VBoxContainer2/SFX_Volume_Slider" to="." method="_on_sfx_volume_slider_value_changed"]
-[connection signal="pressed" from="MarginContainer/NinePatchRect/HBoxContainer2/Save_Button" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MarginContainer/NinePatchRect/HBoxContainer2/Default_Button" to="." method="_on_default_button_pressed"]
-[connection signal="pressed" from="MarginContainer/NinePatchRect/HBoxContainer2/Close_Button" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer3/Save_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer3/Default_Button" to="." method="_on_default_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer3/Close_Button" to="." method="_on_close_button_pressed"]

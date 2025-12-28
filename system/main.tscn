@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://wqt7b4jo1def" path="res://levels/apartment_room.tscn" id="1_cclb7"]
 [ext_resource type="Script" path="res://system/main.gd" id="1_e6v85"]
 [ext_resource type="PackedScene" uid="uid://bwa3wvurx4xgu" path="res://characters/cory.tscn" id="2_rdrm7"]
-[ext_resource type="PackedScene" uid="uid://bwmlt2ig7b3fq" path="res://gui/pause_menu.tscn" id="3_ynw5c"]
+[ext_resource type="PackedScene" uid="uid://rtyc7wf5x3lj" path="res://gui/game_menu.tscn" id="4_nq7gk"]
 [ext_resource type="PackedScene" uid="uid://tuv5o0y53x7j" path="res://characters/lucy.tscn" id="5_elm7h"]
 [ext_resource type="PackedScene" uid="uid://cp0d2k6wbnk8v" path="res://gui/transition_scene.tscn" id="6_lr3ah"]
 
@@ -17,7 +17,12 @@ position = Vector2(120, 40)
 player_active = false
 process = false
 
-[node name="Pause_Menu" parent="." instance=ExtResource("3_ynw5c")]
+[node name="Game_Menu" parent="." instance=ExtResource("4_nq7gk")]
+visible = false
+offset_left = -8.0
+offset_top = -104.0
+offset_right = -1072.0
+offset_bottom = -816.0
 
 [node name="Lucy" parent="." instance=ExtResource("5_elm7h")]
 visible = true

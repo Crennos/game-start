@@ -1,0 +1,662 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_76xfd"]
+
+[resource]
+script = ExtResource("1_76xfd")
+using_states = PackedStringArray()
+titles = {
+"push": "71",
+"reflect": "65",
+"start": "3",
+"withdraw": "68"
+}
+character_names = PackedStringArray("Cory", "Inside")
+first_title = "3"
+lines = {
+"1": {
+"id": "1",
+"next_id": "3",
+"text": "start",
+"type": &"title"
+},
+"11": {
+"character": "Inside",
+"character_replacements": Array[Dictionary]([]),
+"id": "11",
+"next_id": "13",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Real developers spend entire days working for years even to make their games... how long will it take me at this rate?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Real developers spend entire days working for years even to make their games... how long will it take me at this rate?",
+"type": &"dialogue"
+},
+"13": {
+"character": "Inside",
+"character_replacements": Array[Dictionary]([]),
+"id": "13",
+"next_id": "15",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Is it even worth trying?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Is it even worth trying?",
+"type": &"dialogue"
+},
+"15": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "15",
+"next_id": "15.2",
+"next_id_after": "65",
+"notes": "",
+"responses": PackedStringArray("15", "31", "45"),
+"tags": PackedStringArray(),
+"text": "I don't know...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I don't know...",
+"type": &"response"
+},
+"15.2": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"next_id": "16",
+"next_id_after": "65",
+"tags": PackedStringArray(),
+"text": "I don't know...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I don't know...",
+"type": &"dialogue"
+},
+"16": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "16",
+"next_id": "17",
+"notes": "",
+"parent_id": "15",
+"tags": PackedStringArray(),
+"text": "I don't know if it is... I just feel like if I keep going it'll make me feel worse...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I don't know if it is... I just feel like if I keep going it'll make me feel worse...",
+"type": &"dialogue"
+},
+"17": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "17",
+"next_id": "18",
+"notes": "",
+"parent_id": "15",
+"tags": PackedStringArray(),
+"text": "I want it so bad that it hurts but I just don't feel like I have that same drive...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I want it so bad that it hurts but I just don't feel like I have that same drive...",
+"type": &"dialogue"
+},
+"18": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "18",
+"next_id": "19",
+"notes": "",
+"parent_id": "15",
+"tags": PackedStringArray(),
+"text": "Or maybe I do have it but I just... it feels like there's stones in my chest weighing me down...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Or maybe I do have it but I just... it feels like there's stones in my chest weighing me down...",
+"type": &"dialogue"
+},
+"19": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "19",
+"next_id": "20",
+"notes": "",
+"parent_id": "15",
+"tags": PackedStringArray(),
+"text": "I keep falling into these same cycles... a few weeks strong... then a few weak... over and over again...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I keep falling into these same cycles... a few weeks strong... then a few weak... over and over again...",
+"type": &"dialogue"
+},
+"20": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "20",
+"next_id": "21",
+"notes": "",
+"parent_id": "15",
+"tags": PackedStringArray(),
+"text": "I kept telling myself its just burnout or just stress or this or that but... it has to be something else...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I kept telling myself its just burnout or just stress or this or that but... it has to be something else...",
+"type": &"dialogue"
+},
+"21": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "21",
+"next_id": "22",
+"notes": "",
+"parent_id": "15",
+"tags": PackedStringArray(),
+"text": "I've proven I CAN do this... even if to a limitted capacity right now.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I've proven I CAN do this... even if to a limitted capacity right now.",
+"type": &"dialogue"
+},
+"22": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "22",
+"next_id": "23",
+"notes": "",
+"parent_id": "15",
+"tags": PackedStringArray(),
+"text": "But this is self teaching, it's hardly like I'm getting any help learning this...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "But this is self teaching, it's hardly like I'm getting any help learning this...",
+"type": &"dialogue"
+},
+"23": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "23",
+"next_id": "24",
+"notes": "",
+"parent_id": "15",
+"tags": PackedStringArray(),
+"text": "But if it's not drive... what is it that is keeps happening to me?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "But if it's not drive... what is it that is keeps happening to me?",
+"type": &"dialogue"
+},
+"24": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "24",
+"next_id": "26",
+"notes": "",
+"parent_id": "15",
+"tags": PackedStringArray(),
+"text": "Maybe I'll take a break and reflect on it some...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Maybe I'll take a break and reflect on it some...",
+"type": &"dialogue"
+},
+"26": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "26",
+"next_id": "27",
+"notes": "",
+"parent_id": "15",
+"tags": PackedStringArray(),
+"text": "Cory's Insight Increased by 1",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Insight Increased by 1",
+"type": &"dialogue"
+},
+"27": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "27",
+"next_id": "29",
+"notes": "",
+"parent_id": "15",
+"tags": PackedStringArray(),
+"text": "Cory's Lethargy Increased by 1",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Lethargy Increased by 1",
+"type": &"dialogue"
+},
+"29": {
+"id": "29",
+"is_snippet": false,
+"next_id": "65",
+"parent_id": "15",
+"type": &"goto"
+},
+"3": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "3",
+"next_id": "5",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Alright let's see what we got...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Alright let's see what we got...",
+"type": &"dialogue"
+},
+"31": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "31",
+"next_id": "31.2",
+"next_id_after": "65",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "No...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "No...",
+"type": &"response"
+},
+"31.2": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"next_id": "32",
+"next_id_after": "65",
+"tags": PackedStringArray(),
+"text": "No...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "No...",
+"type": &"dialogue"
+},
+"32": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "32",
+"next_id": "33",
+"notes": "",
+"parent_id": "31",
+"tags": PackedStringArray(),
+"text": "No... at least not right now...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "No... at least not right now...",
+"type": &"dialogue"
+},
+"33": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "33",
+"next_id": "34",
+"notes": "",
+"parent_id": "31",
+"tags": PackedStringArray(),
+"text": "If I'm feeling this bad about it I need to push myself away from it...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "If I'm feeling this bad about it I need to push myself away from it...",
+"type": &"dialogue"
+},
+"34": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "34",
+"next_id": "35",
+"notes": "",
+"parent_id": "31",
+"tags": PackedStringArray(),
+"text": "Maybe I'll come back later after feeling better and see...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Maybe I'll come back later after feeling better and see...",
+"type": &"dialogue"
+},
+"35": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "35",
+"next_id": "36",
+"notes": "",
+"parent_id": "31",
+"tags": PackedStringArray(),
+"text": "But what if I just decide to give up doing that...?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "But what if I just decide to give up doing that...?",
+"type": &"dialogue"
+},
+"36": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "36",
+"next_id": "37",
+"notes": "",
+"parent_id": "31",
+"tags": PackedStringArray(),
+"text": "Just falling back into being comfortable not trying to do anything else?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Just falling back into being comfortable not trying to do anything else?",
+"type": &"dialogue"
+},
+"37": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "37",
+"next_id": "38",
+"notes": "",
+"parent_id": "31",
+"tags": PackedStringArray(),
+"text": "Have I even given myself a chance or am I just quitting?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Have I even given myself a chance or am I just quitting?",
+"type": &"dialogue"
+},
+"38": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "38",
+"next_id": "40",
+"notes": "",
+"parent_id": "31",
+"tags": PackedStringArray(),
+"text": "And the spiralling again... I will give myself some time to self nurture...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "And the spiralling again... I will give myself some time to self nurture...",
+"type": &"dialogue"
+},
+"40": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "40",
+"next_id": "43",
+"notes": "",
+"parent_id": "31",
+"tags": PackedStringArray(),
+"text": "Cory's Frailty Increased by 1",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Frailty Increased by 1",
+"type": &"dialogue"
+},
+"43": {
+"id": "43",
+"is_snippet": false,
+"next_id": "68",
+"parent_id": "31",
+"type": &"goto"
+},
+"45": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "45",
+"next_id": "45.2",
+"next_id_after": "65",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Yes...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Yes...",
+"type": &"response"
+},
+"45.2": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"next_id": "46",
+"next_id_after": "65",
+"tags": PackedStringArray(),
+"text": "Yes...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Yes...",
+"type": &"dialogue"
+},
+"46": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "46",
+"next_id": "47",
+"notes": "",
+"parent_id": "45",
+"tags": PackedStringArray(),
+"text": "Yes... that was the whole point of me starting this...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Yes... that was the whole point of me starting this...",
+"type": &"dialogue"
+},
+"47": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "47",
+"next_id": "48",
+"notes": "",
+"parent_id": "45",
+"tags": PackedStringArray(),
+"text": "I know I just started this as an excercise... a way to give myself a chance to fail and keep failing...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I know I just started this as an excercise... a way to give myself a chance to fail and keep failing...",
+"type": &"dialogue"
+},
+"48": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "48",
+"next_id": "49",
+"notes": "",
+"parent_id": "45",
+"tags": PackedStringArray(),
+"text": "That the failure was the point of it all so I could maybe get better and be better...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "That the failure was the point of it all so I could maybe get better and be better...",
+"type": &"dialogue"
+},
+"49": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "49",
+"next_id": "50",
+"notes": "",
+"parent_id": "45",
+"tags": PackedStringArray(),
+"text": "But this doesn't feel like failure... it just feels like... giving up again...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "But this doesn't feel like failure... it just feels like... giving up again...",
+"type": &"dialogue"
+},
+"5": {
+"character": "Inside",
+"character_replacements": Array[Dictionary]([]),
+"id": "5",
+"next_id": "7",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "So much... and after so much work too... how are we going to ever do this?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "So much... and after so much work too... how are we going to ever do this?",
+"type": &"dialogue"
+},
+"50": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "50",
+"next_id": "51",
+"notes": "",
+"parent_id": "45",
+"tags": PackedStringArray(),
+"text": "Just like my father always did... always giving up whenever things got hard...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Just like my father always did... always giving up whenever things got hard...",
+"type": &"dialogue"
+},
+"51": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "51",
+"next_id": "52",
+"notes": "",
+"parent_id": "45",
+"tags": PackedStringArray(),
+"text": "I know I shouldn't put that on myself... that's exactly why I started this.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I know I shouldn't put that on myself... that's exactly why I started this.",
+"type": &"dialogue"
+},
+"52": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "52",
+"next_id": "53",
+"notes": "",
+"parent_id": "45",
+"tags": PackedStringArray(),
+"text": "To put that to bed, to build myself up even if it's for something I'll never succeed at.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "To put that to bed, to build myself up even if it's for something I'll never succeed at.",
+"type": &"dialogue"
+},
+"53": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "53",
+"next_id": "55",
+"notes": "",
+"parent_id": "45",
+"tags": PackedStringArray(),
+"text": "And stop living in the shadow of His fear.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "And stop living in the shadow of His fear.",
+"type": &"dialogue"
+},
+"55": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "55",
+"next_id": "56",
+"notes": "",
+"parent_id": "45",
+"tags": PackedStringArray(),
+"text": "Cory's Perseverance Increased by 1",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Perseverance Increased by 1",
+"type": &"dialogue"
+},
+"56": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "56",
+"next_id": "58",
+"notes": "",
+"parent_id": "45",
+"tags": PackedStringArray(),
+"text": "Cory's Anxiety Increased by 1",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Cory's Anxiety Increased by 1",
+"type": &"dialogue"
+},
+"58": {
+"id": "58",
+"is_snippet": false,
+"next_id": "71",
+"parent_id": "45",
+"type": &"goto"
+},
+"62": {
+"id": "62",
+"next_id": "65",
+"text": "reflect",
+"type": &"title"
+},
+"65": {
+"id": "65",
+"next_id": "68",
+"text": "withdraw",
+"type": &"title"
+},
+"68": {
+"id": "68",
+"next_id": "71",
+"text": "push",
+"type": &"title"
+},
+"7": {
+"character": "Inside",
+"character_replacements": Array[Dictionary]([]),
+"id": "7",
+"next_id": "9",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I don't want to give up... but I don't think I can do this...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I don't want to give up... but I don't think I can do this...",
+"type": &"dialogue"
+},
+"71": {
+"id": "71",
+"is_snippet": false,
+"next_id": "end",
+"type": &"goto"
+},
+"9": {
+"character": "Inside",
+"character_replacements": Array[Dictionary]([]),
+"id": "9",
+"next_id": "11",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I can barely managed more than a couple hours before I get tired for the day...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I can barely managed more than a couple hours before I get tired for the day...",
+"type": &"dialogue"
+}
+}
+raw_text = "~ start
+
+Cory: Alright let's see what we got...
+
+Inside: So much... and after so much work too... how are we going to ever do this?
+
+Inside: I don't want to give up... but I don't think I can do this...
+
+Inside: I can barely managed more than a couple hours before I get tired for the day...
+
+Inside: Real developers spend entire days working for years even to make their games... how long will it take me at this rate?
+
+Inside: Is it even worth trying?
+
+- Cory: I don't know...
+	Cory: I don't know if it is... I just feel like if I keep going it'll make me feel worse...
+	Cory: I want it so bad that it hurts but I just don't feel like I have that same drive...
+	Cory: Or maybe I do have it but I just... it feels like there's stones in my chest weighing me down...
+	Cory: I keep falling into these same cycles... a few weeks strong... then a few weak... over and over again...
+	Cory: I kept telling myself its just burnout or just stress or this or that but... it has to be something else...
+	Cory: I've proven I CAN do this... even if to a limitted capacity right now.
+	Cory: But this is self teaching, it's hardly like I'm getting any help learning this...
+	Cory: But if it's not drive... what is it that is keeps happening to me?
+	Cory: Maybe I'll take a break and reflect on it some...
+	
+	Cory's Insight Increased by 1
+	Cory's Lethargy Increased by 1
+	
+	=> reflect
+
+- Cory: No...
+	Cory: No... at least not right now...
+	Cory: If I'm feeling this bad about it I need to push myself away from it...
+	Cory: Maybe I'll come back later after feeling better and see...
+	Cory: But what if I just decide to give up doing that...?
+	Cory: Just falling back into being comfortable not trying to do anything else?
+	Cory: Have I even given myself a chance or am I just quitting?
+	Cory: And the spiralling again... I will give myself some time to self nurture...
+	
+	Cory's Frailty Increased by 1
+#	Cory's Heart Increased by 1
+	
+	=> withdraw
+
+- Cory: Yes...
+	Cory: Yes... that was the whole point of me starting this...
+	Cory: I know I just started this as an excercise... a way to give myself a chance to fail and keep failing...
+	Cory: That the failure was the point of it all so I could maybe get better and be better...
+	Cory: But this doesn't feel like failure... it just feels like... giving up again...
+	Cory: Just like my father always did... always giving up whenever things got hard...
+	Cory: I know I shouldn't put that on myself... that's exactly why I started this.
+	Cory: To put that to bed, to build myself up even if it's for something I'll never succeed at.
+	Cory: And stop living in the shadow of His fear.
+	
+	Cory's Perseverance Increased by 1
+	Cory's Anxiety Increased by 1
+	
+	=> push
+
+
+
+~ reflect
+
+
+~ withdraw
+
+
+~ push
+
+
+=> END"
+metadata/dialogue_manager_version = "2.45.0"

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://mihdct2gcdaf"
+path="res://.godot/imported/Depression Cycle.dialogue-fcaa65ee9f45e0de5d758b829c9af091.tres"
+
+[deps]
+
+source_file="res://Depression Cycle.dialogue"
+dest_files=["res://.godot/imported/Depression Cycle.dialogue-fcaa65ee9f45e0de5d758b829c9af091.tres"]
+
+[params]
+
+defaults=true

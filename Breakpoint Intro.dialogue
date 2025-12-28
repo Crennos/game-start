@@ -1,0 +1,16 @@
+~ start
+
+Cory: ... Oh boy. Looks like I screwed something up.
+
+Cory: I think this is a breakpoint... 
+
+Cory: Basically the program just crashes because it can't read something you've put into the code and that causes it to shut down and return an error.
+
+Cory: That error, I think, is the 'breakpoint', and it can range from something as simple to just a misplaced letter or character or a complex issue...
+
+Cory: I can try to just Debug it but I'm... not really sure how to read this error log... so I should try to Test around so I have more things I can work with...
+
+Cory: And if that fails I should try to Learn more about the error through the documentation and whatever else I can explore to expand what I can test and debug.
+
+
+=> END

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://o3mdwglk3a6u"
+path="res://.godot/imported/Bug Intro.dialogue-5893100e95f64bf1d3379c6219f27356.tres"
+
+[deps]
+
+source_file="res://Bug Intro.dialogue"
+dest_files=["res://.godot/imported/Bug Intro.dialogue-5893100e95f64bf1d3379c6219f27356.tres"]
+
+[params]
+
+defaults=true

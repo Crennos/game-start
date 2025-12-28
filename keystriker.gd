@@ -49,7 +49,8 @@ var pressed = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomizer()
-	
+	key_line_one.add_theme_color_override("font_color", Color(0.0, 0.90, 0.0, 1))
+#	key_line_one.add_theme_color_override("font_color", Color(0.79, 0.34, 0.2, 1))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

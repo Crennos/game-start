@@ -41,6 +41,7 @@ text = "Quit
 "
 
 [node name="Options_Menu" parent="." instance=ExtResource("2_d31nd")]
+visible = false
 layout_mode = 1
 
 [node name="Demo_End" type="Label" parent="."]
