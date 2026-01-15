@@ -18,18 +18,25 @@ func _ready() -> void:
 		config.load_path
 
 
-func save_video_settings():
-	pass
+func save_video_settings(key: String, value):
+	config.set_value("audio", key, value)
+	config.save(settings_path)
+
+func load_video_settings():
+	var video_settings = {}
+	for key in config.get_section_keys("video"):
+		video_settings[key] = config.get_value("video", key)
+	return video_settings
 	
 
-func load_video_settings(key):
-	pass
+func save_audio_settings(key: String, value):
+	config.set_value("video", key, value)
+	config.save(settings_path)
 	
 
-func save_audio_settings():
-	pass
-	
-
-func load_audio_settings(key):
-	pass
+func load_audio_settings():
+	var audio_settings = {}
+	for key in config.get_section_keys("audio"):
+		audio_settings[key] = config.get_value("audio", key)
+	return audio_settings
 	

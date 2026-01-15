@@ -84,10 +84,11 @@ Cory's Fragility Reduced by 1.
 Lucy: Why don't you go take a quick shower and I'll make you some tea and breakfast before I head over to my mother's place.
 
 Cory: That sounds lovely, thank you baby.
+do ProgressionBus.emit_signal("scene_complete", "Scene One")
 
 ~ secondend
 
 do ProgressionBus.emit_signal("transition", "Scene Two")
-
+do ProgressionBus.emit_signal("scene_complete", "Scene One")
 
 => END

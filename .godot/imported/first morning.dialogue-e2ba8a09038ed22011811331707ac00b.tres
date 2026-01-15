@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_4dgfu"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_se5ju"]
 
 [resource]
-script = ExtResource("1_4dgfu")
+script = ExtResource("1_se5ju")
 using_states = PackedStringArray()
 titles = {
 "secondend": "16",
@@ -34,13 +34,37 @@ lines = {
 "character": "Cory",
 "character_replacements": Array[Dictionary]([]),
 "id": "13",
-"next_id": "15",
+"next_id": "14",
 "notes": "",
 "tags": PackedStringArray(),
 "text": "I love you too baby, bye bye.",
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "I love you too baby, bye bye.",
 "type": &"dialogue"
+},
+"14": {
+"id": "14",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "scene_complete"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Scene Two"
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "15",
+"type": &"mutation"
 },
 "15": {
 "id": "15",
@@ -65,6 +89,30 @@ lines = {
 }]), Array[Dictionary]([{
 "type": "string",
 "value": "Scene Three"
+}])])
+}]),
+"is_blocking": true
+},
+"next_id": "17",
+"type": &"mutation"
+},
+"17": {
+"id": "17",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"function": "emit_signal",
+"type": &"function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "scene_complete"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Scene Two"
 }])])
 }]),
 "is_blocking": true
@@ -150,9 +198,9 @@ Cory: Yeah that's fine. Have fun, I'm gonna play some games for a little and the
 Lucy: Sounds good baby, just remember to take your time and don't rush. I love you, buh bye!
 
 Cory: I love you too baby, bye bye.
-
+do ProgressionBus.emit_signal(\"scene_complete\", \"Scene Two\")
 ~ secondend
 do ProgressionBus.emit_signal(\"transition\", \"Scene Three\")
-
+do ProgressionBus.emit_signal(\"scene_complete\", \"Scene Two\")
 => END"
 metadata/dialogue_manager_version = "2.45.0"

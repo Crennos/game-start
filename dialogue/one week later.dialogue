@@ -8,9 +8,10 @@
 Cory: I've been learning a good bit... but I'm kinda itching to try my own hand at this myself without guidance. I don't wanna form bad habits and build tech debt but I know I can't rely on tutorials forever.
 Cory: I need to get my hands dirty and learn to problem solve and logic out my coding issues. Those will serve me better than any tutorial or technique. Adaptability and experience...
 Cory: Let's get started with this game stuff.
-
+do ProgressionBus.emit_signal("scene_complete", "Scene Four")
 ~ secondend
 
 do ProgressionBus.emit_signal("game_start")
+do ProgressionBus.emit_signal("scene_complete", "Scene Four")
 
 => END

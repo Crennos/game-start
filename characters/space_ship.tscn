@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3jfysepik5fx"]
+
+[ext_resource type="Script" path="res://characters/space_ship.gd" id="1_msh30"]
+[ext_resource type="Texture2D" uid="uid://dt6csnvxcic7q" path="res://characters/star-ship-pixilart (1).png" id="2_rfotq"]
+
+[node name="Space_Ship" type="CharacterBody2D"]
+script = ExtResource("1_msh30")
+
+[node name="Ship_Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_rfotq")
+
+[node name="Ship_Collision" type="CollisionShape2D" parent="."]

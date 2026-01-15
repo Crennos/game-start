@@ -6,7 +6,7 @@ signal ready_scene
 signal start_scene
 signal store_scene
 signal end_scene
-
+signal scene_complete
 
 #Start/Stop Signals
 signal start_game
@@ -98,7 +98,7 @@ func _ready() -> void:
 	connect("action_prompt", task_completion_check)
 	connect("complete_task_state", complete_current_task)
 	connect("start_scene", scene_change)
-	
+	connect("scene_complete", scene_flag)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -136,6 +136,21 @@ func scene_change(scene: String):
 		pass
 
 
+func scene_flag(scene: String):
+	match scene:
+		"Test Scene":
+			scene_completion_dict["Test Scene"] = true
+		"Scene One":
+			scene_completion_dict["Scene One"] = true
+		"Scene Two":
+			scene_completion_dict["Scene Two"] = true
+		"Scene Three":
+			scene_completion_dict["Scene Three"] = true
+		"Scene Four":
+			scene_completion_dict["Scene Four"] = true
+		"Scene Five":
+			scene_completion_dict["Scene Five"] = true
+
 var cory_traits= {
 	"Patience" = 0,
 	"Perseverance" = 0,
@@ -164,16 +179,25 @@ var cory_skills = {
 }
 
 var cory_condition = {
-	"Anxiety": 10,
+	"Anxiety": 0,
 	"Frailty": 0,
 	"Lethargy": 0,
 	"Depression": 0
 }
 
 var cory_task_status = {
-	"Task Started" : false,
+	"Task Active" : false,
 	"Task Stuck": false,
 	"Task Completed": false,
+	
+}
+
+var cory_task_progress = {
+	"Coding Prog" : 0.0,
+	"Testing Prog" : 0.0,
+	"Debugging Prog" : 0.0,
+	"Learning Prog" : 0.0
+	
 }
 
 var cory_task_tracker = {

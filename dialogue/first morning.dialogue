@@ -11,8 +11,8 @@ Cory: Yeah that's fine. Have fun, I'm gonna play some games for a little and the
 Lucy: Sounds good baby, just remember to take your time and don't rush. I love you, buh bye!
 
 Cory: I love you too baby, bye bye.
-
+do ProgressionBus.emit_signal("scene_complete", "Scene Two")
 ~ secondend
 do ProgressionBus.emit_signal("transition", "Scene Three")
-
+do ProgressionBus.emit_signal("scene_complete", "Scene Two")
 => END
