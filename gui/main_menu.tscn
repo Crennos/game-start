@@ -29,7 +29,11 @@ grow_vertical = 2
 
 [node name="Start_Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Start"
+text = "New Game"
+
+[node name="Continue_Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Continue"
 
 [node name="Options_Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -66,5 +70,6 @@ scale = Vector2(0.176, 0.1827)
 texture = ExtResource("3_rvb2p")
 
 [connection signal="pressed" from="VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Continue_Button" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options_Button" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit_Button" to="." method="_on_quit_button_pressed"]

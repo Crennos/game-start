@@ -1,12 +1,93 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3jfysepik5fx"]
+[gd_scene load_steps=11 format=3 uid="uid://c3jfysepik5fx"]
 
 [ext_resource type="Script" path="res://characters/space_ship.gd" id="1_msh30"]
 [ext_resource type="Texture2D" uid="uid://dt6csnvxcic7q" path="res://characters/star-ship-pixilart (1).png" id="2_rfotq"]
+[ext_resource type="Texture2D" uid="uid://dqxewykpa1qua" path="res://characters/space_shield.png" id="3_d6l8m"]
+[ext_resource type="Script" path="res://characters/player_hurt_box_area.gd" id="3_no8wx"]
+[ext_resource type="AudioStream" uid="uid://k78tbfarj63o" path="res://sfx/laserShoot.wav" id="3_uvx4f"]
+[ext_resource type="AudioStream" uid="uid://mlg2n6k8a8cr" path="res://sfx/hitHurt.wav" id="4_qeof0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cndxc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_76vfy"]
+radius = 2.0
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_elf1s"]
+radius = 7.0
+height = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qkd3h"]
+radius = 15.0
 
 [node name="Space_Ship" type="CharacterBody2D"]
 script = ExtResource("1_msh30")
 
 [node name="Ship_Sprite" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, -4.76837e-07)
+scale = Vector2(0.49, 0.49)
 texture = ExtResource("2_rfotq")
 
+[node name="Ship_Shield_Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.44, 0.44)
+texture = ExtResource("3_d6l8m")
+
 [node name="Ship_Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cndxc")
+
+[node name="Hurt_Box_Area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+priority = 1
+script = ExtResource("3_no8wx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt_Box_Area"]
+shape = SubResource("CapsuleShape2D_76vfy")
+debug_color = Color(0.974987, 0.133713, 0.216811, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurt_Box_Area"]
+scale = Vector2(2.02067, 0.277169)
+shape = SubResource("CapsuleShape2D_elf1s")
+debug_color = Color(0.973825, 0.116291, 0.289496, 0.42)
+
+[node name="Shield_Hurt_Area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield_Hurt_Area"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_qkd3h")
+
+[node name="Left_Laser_Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="Right_Laser_Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="Blink_Timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Invuln_Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Shield_Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -15)
+
+[node name="Laser_Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uvx4f")
+
+[node name="Hurt_Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qeof0")
+
+[connection signal="area_entered" from="Hurt_Box_Area" to="." method="_on_hurt_box_area_area_entered"]
+[connection signal="area_entered" from="Shield_Hurt_Area" to="." method="_on_shield_hurt_area_area_entered"]
+[connection signal="timeout" from="Blink_Timer" to="." method="_on_blink_timer_timeout"]
+[connection signal="timeout" from="Invuln_Timer" to="." method="_on_invuln_timer_timeout"]
+[connection signal="timeout" from="Shield_Timer" to="." method="_on_shield_timer_timeout"]

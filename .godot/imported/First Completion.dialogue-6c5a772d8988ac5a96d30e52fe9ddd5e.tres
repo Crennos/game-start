@@ -1,0 +1,626 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_80j1j"]
+
+[resource]
+script = ExtResource("1_80j1j")
+using_states = PackedStringArray()
+titles = {
+"Continue": "36",
+"Ending": "63",
+"Moderate": "23",
+"Strong": "29",
+"Weak": "17",
+"start": "3"
+}
+character_names = PackedStringArray("Cory")
+first_title = "3"
+lines = {
+"1": {
+"id": "1",
+"next_id": "3",
+"text": "start",
+"type": &"title"
+},
+"10": {
+"condition": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"type": &"dictionary_reference",
+"value": Array[Dictionary]([{
+"type": "string",
+"value": "First Task"
+}]),
+"variable": "cory_task_log"
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "string",
+"value": "Moderate"
+}, {
+"type": "colon"
+}])
+},
+"id": "10",
+"next_conditional_id": "13",
+"next_id": "11",
+"next_id_after": "13",
+"type": &"condition"
+},
+"11": {
+"id": "11",
+"is_snippet": false,
+"next_id": "23",
+"parent_id": "10",
+"type": &"goto"
+},
+"13": {
+"condition": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"type": &"dictionary_reference",
+"value": Array[Dictionary]([{
+"type": "string",
+"value": "First Task"
+}]),
+"variable": "cory_task_log"
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "string",
+"value": "Strong"
+}, {
+"type": "colon"
+}])
+},
+"id": "13",
+"next_conditional_id": "16",
+"next_id": "14",
+"next_id_after": "16",
+"type": &"condition"
+},
+"14": {
+"id": "14",
+"is_snippet": false,
+"next_id": "29",
+"parent_id": "13",
+"type": &"goto"
+},
+"16": {
+"id": "16",
+"next_id": "17",
+"text": "Weak",
+"type": &"title"
+},
+"17": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "17",
+"next_id": "18",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "It doesn't work all that great... but it works.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "It doesn't work all that great... but it works.",
+"type": &"dialogue"
+},
+"18": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "18",
+"next_id": "19",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "From nothing to this is more than I ever even thought I'd be able to do.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "From nothing to this is more than I ever even thought I'd be able to do.",
+"type": &"dialogue"
+},
+"19": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "19",
+"next_id": "20",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "It was very hard but I did it.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "It was very hard but I did it.",
+"type": &"dialogue"
+},
+"20": {
+"id": "20",
+"is_snippet": false,
+"next_id": "36",
+"type": &"goto"
+},
+"22": {
+"id": "22",
+"next_id": "23",
+"text": "Moderate",
+"type": &"title"
+},
+"23": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "23",
+"next_id": "24",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "It's not too shabby looking either, at least for a start.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "It's not too shabby looking either, at least for a start.",
+"type": &"dialogue"
+},
+"24": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "24",
+"next_id": "25",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I know this was some simple stuff but I don't think I did too bad for never having done it before.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I know this was some simple stuff but I don't think I did too bad for never having done it before.",
+"type": &"dialogue"
+},
+"25": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "25",
+"next_id": "26",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "It was definitely a challenge but I feel like I'm really up for it.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "It was definitely a challenge but I feel like I'm really up for it.",
+"type": &"dialogue"
+},
+"26": {
+"id": "26",
+"is_snippet": false,
+"next_id": "36",
+"type": &"goto"
+},
+"28": {
+"id": "28",
+"next_id": "29",
+"text": "Strong",
+"type": &"title"
+},
+"29": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "29",
+"next_id": "30",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I feel like I did a really great job too.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I feel like I did a really great job too.",
+"type": &"dialogue"
+},
+"3": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "3",
+"next_id": "4",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "...",
+"type": &"dialogue"
+},
+"30": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "30",
+"next_id": "31",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I mean, I'm sure it's going to get a lot more difficult and I probably made mistakes for sure.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I mean, I'm sure it's going to get a lot more difficult and I probably made mistakes for sure.",
+"type": &"dialogue"
+},
+"31": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "31",
+"next_id": "32",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "But that wasn't nearly as impossible as I thought it would be, maybe I got what it takes to do this.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "But that wasn't nearly as impossible as I thought it would be, maybe I got what it takes to do this.",
+"type": &"dialogue"
+},
+"32": {
+"id": "32",
+"is_snippet": false,
+"next_id": "36",
+"type": &"goto"
+},
+"35": {
+"id": "35",
+"next_id": "36",
+"text": "Continue",
+"type": &"title"
+},
+"36": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "36",
+"next_id": "37",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I've spent so much time trying to live by other people's warnings.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I've spent so much time trying to live by other people's warnings.",
+"type": &"dialogue"
+},
+"37": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "37",
+"next_id": "38",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Unsure of myself, unsure of my surroundings, where I am, where I'll be.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Unsure of myself, unsure of my surroundings, where I am, where I'll be.",
+"type": &"dialogue"
+},
+"38": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "38",
+"next_id": "39",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "What should I do or don't. I got by only by following the mistakes that others made and avoiding those paths. Like footsteps in the snow that abruptly end. Never stepping for myself.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "What should I do or don't. I got by only by following the mistakes that others made and avoiding those paths. Like footsteps in the snow that abruptly end. Never stepping for myself.",
+"type": &"dialogue"
+},
+"39": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "39",
+"next_id": "40",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Just backtrack and move around. Don't investigate it, just play it safe.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Just backtrack and move around. Don't investigate it, just play it safe.",
+"type": &"dialogue"
+},
+"4": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "4",
+"next_id": "5",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Oh shit...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Oh shit...",
+"type": &"dialogue"
+},
+"40": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "40",
+"next_id": "41",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I just trusted everyone knew better than me.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I just trusted everyone knew better than me.",
+"type": &"dialogue"
+},
+"41": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "41",
+"next_id": "42",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Was... better than me.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Was... better than me.",
+"type": &"dialogue"
+},
+"42": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "42",
+"next_id": "43",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "And that I couldn't even see how far ahead they were because of how far behind I was. So I had to take their advice with faith.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "And that I couldn't even see how far ahead they were because of how far behind I was. So I had to take their advice with faith.",
+"type": &"dialogue"
+},
+"43": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "43",
+"next_id": "46",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "But now that I'm finally doing it and seeing that I could actually do it I feel...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "But now that I'm finally doing it and seeing that I could actually do it I feel...",
+"type": &"dialogue"
+},
+"46": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "46",
+"next_id": "47",
+"next_id_after": "63",
+"notes": "",
+"responses": PackedStringArray("46", "52", "58"),
+"tags": PackedStringArray(),
+"text": "Angry",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Angry",
+"type": &"response"
+},
+"47": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "47",
+"next_id": "48",
+"notes": "",
+"parent_id": "46",
+"tags": PackedStringArray(),
+"text": "I'm so angry with myself... angry at them for telling me what to do when they had no idea themselves.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I'm so angry with myself... angry at them for telling me what to do when they had no idea themselves.",
+"type": &"dialogue"
+},
+"48": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "48",
+"next_id": "49",
+"notes": "",
+"parent_id": "46",
+"tags": PackedStringArray(),
+"text": "But angry at myself for letting them... for letting myself just go with it and never question it.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "But angry at myself for letting them... for letting myself just go with it and never question it.",
+"type": &"dialogue"
+},
+"49": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "49",
+"next_id": "50",
+"notes": "",
+"parent_id": "46",
+"tags": PackedStringArray(),
+"text": "Angry at myself for killing that curiousity that gave my life meaning...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Angry at myself for killing that curiousity that gave my life meaning...",
+"type": &"dialogue"
+},
+"5": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "5",
+"next_id": "7",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "I did it.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I did it.",
+"type": &"dialogue"
+},
+"50": {
+"id": "50",
+"is_snippet": false,
+"next_id": "63",
+"parent_id": "46",
+"type": &"goto"
+},
+"52": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "52",
+"next_id": "53",
+"next_id_after": "63",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Sad",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Sad",
+"type": &"response"
+},
+"53": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "53",
+"next_id": "54",
+"notes": "",
+"parent_id": "52",
+"tags": PackedStringArray(),
+"text": "I'm sad because I could have been doing this this whole time...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I'm sad because I could have been doing this this whole time...",
+"type": &"dialogue"
+},
+"54": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "54",
+"next_id": "55",
+"notes": "",
+"parent_id": "52",
+"tags": PackedStringArray(),
+"text": "Sad because I realize now the only thing ever stopping me from doing this was myself...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Sad because I realize now the only thing ever stopping me from doing this was myself...",
+"type": &"dialogue"
+},
+"55": {
+"character": "Cory",
+"character_replacements": Array[Dictionary]([]),
+"id": "55",
+"next_id": "56",
+"notes": "",
+"parent_id": "52",
+"tags": PackedStringArray(),
+"text": "Sad because I let myself down for so long without every trying.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Sad because I let myself down for so long without every trying.",
+"type": &"dialogue"
+},
+"56": {
+"id": "56",
+"is_snippet": false,
+"next_id": "63",
+"parent_id": "52",
+"type": &"goto"
+},
+"58": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "58",
+"next_id": "63",
+"next_id_after": "63",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Happy",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Happy",
+"type": &"response"
+},
+"61": {
+"id": "61",
+"next_id": "63",
+"text": "Ending",
+"type": &"title"
+},
+"63": {
+"id": "63",
+"is_snippet": false,
+"next_id": "end",
+"type": &"goto"
+},
+"7": {
+"condition": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "ProgressionBus"
+}, {
+"type": "dot"
+}, {
+"type": &"dictionary_reference",
+"value": Array[Dictionary]([{
+"type": "string",
+"value": "First Task"
+}]),
+"variable": "cory_task_log"
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "string",
+"value": "Weak"
+}, {
+"type": "colon"
+}])
+},
+"id": "7",
+"next_conditional_id": "10",
+"next_id": "8",
+"next_id_after": "10",
+"type": &"condition"
+},
+"8": {
+"id": "8",
+"is_snippet": false,
+"next_id": "17",
+"parent_id": "7",
+"type": &"goto"
+}
+}
+raw_text = "~ start
+
+Cory: ...
+Cory: Oh shit...
+Cory: I did it.
+
+if ProgressionBus.cory_task_log[\"First Task\"] == \"Weak\":
+	=> Weak
+
+if ProgressionBus.cory_task_log[\"First Task\"] == \"Moderate\":
+	=> Moderate
+
+if ProgressionBus.cory_task_log[\"First Task\"] == \"Strong\":
+	=> Strong
+
+~ Weak
+Cory: It doesn't work all that great... but it works.
+Cory: From nothing to this is more than I ever even thought I'd be able to do.
+Cory: It was very hard but I did it.
+=> Continue
+
+~ Moderate
+Cory: It's not too shabby looking either, at least for a start.
+Cory: I know this was some simple stuff but I don't think I did too bad for never having done it before.
+Cory: It was definitely a challenge but I feel like I'm really up for it.
+=> Continue
+
+~ Strong
+Cory: I feel like I did a really great job too.
+Cory: I mean, I'm sure it's going to get a lot more difficult and I probably made mistakes for sure.
+Cory: But that wasn't nearly as impossible as I thought it would be, maybe I got what it takes to do this.
+=> Continue
+
+
+~ Continue
+Cory: I've spent so much time trying to live by other people's warnings.
+Cory: Unsure of myself, unsure of my surroundings, where I am, where I'll be.
+Cory: What should I do or don't. I got by only by following the mistakes that others made and avoiding those paths. Like footsteps in the snow that abruptly end. Never stepping for myself.
+Cory: Just backtrack and move around. Don't investigate it, just play it safe.
+Cory: I just trusted everyone knew better than me.
+Cory: Was... better than me.
+Cory: And that I couldn't even see how far ahead they were because of how far behind I was. So I had to take their advice with faith.
+Cory: But now that I'm finally doing it and seeing that I could actually do it I feel...
+
+
+- Angry
+	Cory: I'm so angry with myself... angry at them for telling me what to do when they had no idea themselves.
+	Cory: But angry at myself for letting them... for letting myself just go with it and never question it.
+	Cory: Angry at myself for killing that curiousity that gave my life meaning...
+	=> Ending
+
+- Sad
+	Cory: I'm sad because I could have been doing this this whole time...
+	Cory: Sad because I realize now the only thing ever stopping me from doing this was myself...
+	Cory: Sad because I let myself down for so long without every trying.
+	=> Ending
+
+- Happy
+	
+
+~ Ending
+
+=> END"
+metadata/dialogue_manager_version = "2.45.0"

@@ -1,0 +1,63 @@
+~ start
+
+Cory: ...
+Cory: Oh shit...
+Cory: I did it.
+
+if ProgressionBus.cory_task_log["First Task"] == "Weak":
+	=> Weak
+
+if ProgressionBus.cory_task_log["First Task"] == "Moderate":
+	=> Moderate
+
+if ProgressionBus.cory_task_log["First Task"] == "Strong":
+	=> Strong
+
+~ Weak
+Cory: It doesn't work all that great... but it works.
+Cory: From nothing to this is more than I ever even thought I'd be able to do.
+Cory: It was very hard but I did it.
+=> Continue
+
+~ Moderate
+Cory: It's not too shabby looking either, at least for a start.
+Cory: I know this was some simple stuff but I don't think I did too bad for never having done it before.
+Cory: It was definitely a challenge but I feel like I'm really up for it.
+=> Continue
+
+~ Strong
+Cory: I feel like I did a really great job too.
+Cory: I mean, I'm sure it's going to get a lot more difficult and I probably made mistakes for sure.
+Cory: But that wasn't nearly as impossible as I thought it would be, maybe I got what it takes to do this.
+=> Continue
+
+
+~ Continue
+Cory: I've spent so much time trying to live by other people's warnings.
+Cory: Unsure of myself, unsure of my surroundings, where I am, where I'll be.
+Cory: What should I do or don't. I got by only by following the mistakes that others made and avoiding those paths. Like footsteps in the snow that abruptly end. Never stepping for myself.
+Cory: Just backtrack and move around. Don't investigate it, just play it safe.
+Cory: I just trusted everyone knew better than me.
+Cory: Was... better than me.
+Cory: And that I couldn't even see how far ahead they were because of how far behind I was. So I had to take their advice with faith.
+Cory: But now that I'm finally doing it and seeing that I could actually do it I feel...
+
+
+- Angry
+	Cory: I'm so angry with myself... angry at them for telling me what to do when they had no idea themselves.
+	Cory: But angry at myself for letting them... for letting myself just go with it and never question it.
+	Cory: Angry at myself for killing that curiousity that gave my life meaning...
+	=> Ending
+
+- Sad
+	Cory: I'm sad because I could have been doing this this whole time...
+	Cory: Sad because I realize now the only thing ever stopping me from doing this was myself...
+	Cory: Sad because I let myself down for so long without every trying.
+	=> Ending
+
+- Happy
+	
+
+~ Ending
+
+=> END

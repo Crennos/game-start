@@ -31,24 +31,31 @@ signal update_stat_panel
 signal action_prompt
 signal task_option_update
 signal task_tracking_state
-
 signal action_initiated
 signal task_completed
 signal complete_task_state
 signal break_completed
 #signal task_progress_logging
 
-
+#???
 signal focus_input
 signal focus_production
 signal run_task
 signal error_check
 signal debug_task
 
+#Scene Chang Signals
 signal start_work
 signal computer_screen
 signal stop_work
 signal apartment_scene
+
+#Break Game Signals
+signal score_kill
+signal score_level #? What was this for again?
+signal live_count
+signal health_count
+signal shield_state
 
 @export var test_scene: DialogueResource
 
@@ -99,6 +106,7 @@ func _ready() -> void:
 	connect("complete_task_state", complete_current_task)
 	connect("start_scene", scene_change)
 	connect("scene_complete", scene_flag)
+	connect("start_game", scene_check)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -151,6 +159,14 @@ func scene_flag(scene: String):
 		"Scene Five":
 			scene_completion_dict["Scene Five"] = true
 
+func scene_check():
+	if scene_completion_dict["Scene Four"] == true:
+		emit_signal("game_start")
+	else:
+		pass
+
+
+
 var cory_traits= {
 	"Patience" = 0,
 	"Perseverance" = 0,
@@ -196,7 +212,8 @@ var cory_task_progress = {
 	"Coding Prog" : 0.0,
 	"Testing Prog" : 0.0,
 	"Debugging Prog" : 0.0,
-	"Learning Prog" : 0.0
+	"Learning Prog" : 0.0,
+	"Task Progress" : 0.0
 	
 }
 
@@ -210,6 +227,13 @@ var cory_task_tracker = {
 	"Learning": 0.0
 }
 
+var cory_task_log = {
+	"First Task" : "",
+	"Second Task" : "",
+	"Third Task" : ""
+	
+	
+}
 
 var cory_task_list = {
 	"Task One" : false,

@@ -37,7 +37,7 @@ extends Control
 @onready var complex_bugs_text : Label = $Complex_Bugs_Text
 @onready var announce_text : Label = $Announce_Label
 @onready var result_text : Label = $Result_Label
-@onready var source_test : Label = $Source_Label
+@onready var source_text : Label = $Source_Label
 
 #Task Specific Dialogue Scenes
 @export var first_task : DialogueResource
@@ -102,8 +102,8 @@ var bug_log = {
 	"Break Count" : 0
 	}
 var effi_marks = {
-	"Temp" : 0,
-	"Perm" : 0
+	"Prog" : 0,
+	"Cap" : 0
 }
 var break_point_traits = {
 	"Rebound" : 0,
@@ -147,19 +147,6 @@ func load_progress():
 	bug_log["Break Bugs"] = load["Break Bugs"]
 	bug_log["Break Count"] = load["Break Count"]
 	
-	#print("Hidden Bugs: ", bug_log["Hidden Bugs"])
-	#print("Test Thresh: ", bug_log["Test Thresh"])
-	#print("Found Bugs", bug_log["Found Bugs"])
-	#print("Bug Health", bug_log["Bug Health"])
-	#print("Break Bugs", bug_log["Break Bugs"])
-	#print("Break Count", bug_log["Break Count"])
-	#print("Task: ", task_progress_bar.value)
-	#print("Code: ", coding_bar.value)
-	#print("Test: ", testing_bar.value)
-	#print("Eff: ", debugging_bar.value)
-	#print("Learn: ", learning_bar.value)
-	#print("Break: ", break_point_bar.value)
-	
 
 #Saves Task State
 func save_progress():
@@ -175,7 +162,6 @@ func save_progress():
 	SaveGameBus.save_task_path("Bug Health", bug_log["Bug Health"])
 	SaveGameBus.save_task_path("Break Bugs", bug_log["Break Bugs"])
 	SaveGameBus.save_task_path("Break Count", bug_log["Break Count"])
-	
 	
 
 #Triggers from Task Pause Signal
@@ -231,28 +217,32 @@ func detect_input(active: bool):
 	
 		if Input.is_action_just_pressed("Select"):
 			if selector.position == code_pos:
-				coding = true
-				testing = false
-				efficiency = false
-				learning = false
+				activity_toggle("Coding")
+#				coding = true
+#				testing = false
+#				efficiency = false
+#				learning = false
 				ghost_select(code_pos)
 			elif selector.position == test_pos:
-				testing = true
-				coding = false
-				efficiency = false
-				learning = false
+				activity_toggle("Testing")
+#				testing = true
+#				coding = false
+#				efficiency = false
+#				learning = false
 				ghost_select(test_pos)
 			elif selector.position == eff_pos:
-				efficiency = true
-				coding = false
-				testing = false
-				learning = false
+				activity_toggle("Efficiency")
+#				efficiency = true
+#				coding = false
+#				testing = false
+#				learning = false
 				ghost_select(eff_pos)
 			elif selector.position == learn_pos:
-				learning = true
-				coding = false
-				efficiency = false
-				learning = false
+				activity_toggle("Learning")
+#				learning = true
+#				coding = false
+#				efficiency = false
+#				learning = false
 				ghost_select(learn_pos)
 		
 		if Input.is_action_just_pressed("task pause"):
@@ -266,17 +256,59 @@ func detect_input(active: bool):
 				ProgressionBus.emit_signal("action_prompt", "Cory")
 				print("Pause: ", pause_active)
 			
-		if Input.is_action_just_pressed("action"):
-			if coding_bar.value == 100:
-				ProgressionBus.emit_signal("production_complete")
+		if Input.is_action_just_pressed("Check"):
+			task_progress_bar.value = 100
+			final_run_check()
 	
 	else:
 		pass
 
+#Toggles Selected Activity
+func activity_toggle(activity : String):
+	match activity:
+		"Coding":
+			if coding == true:
+				coding = false
+			else:
+				coding = true
+			testing = false
+			efficiency = false
+			learning = false
+		"Testing":
+			if testing == true:
+				testing = false
+			else:
+				testing = true
+			coding = false
+			efficiency = false
+			learning = false
+		"Efficiency":
+			if efficiency == true:
+				efficiency = false
+			else:
+				efficiency = true
+			coding = false
+			testing = false
+			learning = false
+		"Learning":
+			if learning == true:
+				learning = false
+			else:
+				learning = true
+			coding = false
+			testing = false
+			efficiency = false
+		"All":
+			coding = false
+			testing = false
+			efficiency = false
+			learning = false
+	
+
 #Controls Ghost Selector Pos and Vis
 func ghost_select(current_pos : Vector2):
 	select_ghost.position = current_pos
-	select_ghost.visible = true
+	toggle_vis(select_ghost)
 	ghost_timer.start()
 
 #Controls Label Text Displays
@@ -398,6 +430,10 @@ func announce(event: String, level: String):
 			"Break Fixed":
 				print(event)
 				announce_text.text = level + " " + event
+			"Task Run Failed":
+				announce_text.text = event
+			"Task Complete":
+				announce_text.text = event
 		
 		if task_processing == true and pause_active == false:
 			announce_timer.start()
@@ -886,22 +922,22 @@ func bug_health_check(efficiency : float):
 					bug_health = 5
 					perm_eff = bug_health * 0.4
 					temp_eff = bug_health * 0.8
-					effi_marks["Temp"] = temp_eff
-					effi_marks["Perm"] = perm_eff
+					effi_marks["Prog"] = temp_eff
+					effi_marks["Cap"] = perm_eff
 					print("Temp: ", temp_eff)
 				"Standard":
 					bug_health = 10
 					perm_eff = bug_health * 0.6
 					temp_eff = bug_health * 0.6
-					effi_marks["Temp"] = temp_eff
-					effi_marks["Perm"] = perm_eff
+					effi_marks["Prog"] = temp_eff
+					effi_marks["Cap"] = perm_eff
 					print("Temp: ", temp_eff)
 				"Complex":
 					bug_health = 25
 					perm_eff = bug_health * 0.8
 					temp_eff = bug_health * 0.4
-					effi_marks["Temp"] = temp_eff
-					effi_marks["Perm"] = perm_eff
+					effi_marks["Prog"] = temp_eff
+					effi_marks["Cap"] = perm_eff
 					print("Temp: ", temp_eff)
 				
 			bug_log["Bug Health"] = bug_health + eff_prog
@@ -1082,7 +1118,7 @@ func result_printer(result: String, source: String):
 	if result != "":
 		result_text.text = result
 	elif source != "":
-		pass
+		source_text.text = source
 
 #Handles Deletion of Bug and its Effects
 func bug_kill(bug_health : int, target : String):
@@ -1113,10 +1149,18 @@ func bug_kill(bug_health : int, target : String):
 #				print("New Bug List: ", bug_log["Found Bugs"])
 				announce("Bug Fixed", bug_level)
 		
-		debugging_bar.value -= effi_marks["Temp"]
-		debugging_bar.max_value += effi_marks["Perm"]
+		debugging_bar.value -= effi_marks["Prog"]
+		debugging_bar.max_value += effi_marks["Cap"]
+		learning_bar.value += effi_marks["Prog"]
+		learning_bar.max_value += effi_marks["Cap"]
 		
-#		result_printer("", "")
+		source_print = str(effi_marks["Prog"]) + " Debug Progress Restored" + "
+		" + str(effi_marks["Cap"]) + " Debug Cap Bonus" + " 
+		" + str(effi_marks["Prog"]) + " Learning Gained" + "
+		" + str(effi_marks["Cap"]) + " Learning Cap Bonus"
+		
+		
+		result_printer("", source_print)
 		result_roller(target)
 	else:
 		pass
@@ -1246,10 +1290,82 @@ func break_point_complete():
 
 #Handles Taskbar Progression Check for Completion
 func progress_check():
-	if coding_bar.value == 100 and completion == false:
-		completion = true
+	if task_progress_bar.value == 100 and completion == false:
+		final_run_check()
 		
 #		ProgressionBus.emit_signal("production_complete")
+
+#Handles the Calculations for Task Completion
+func final_run_check():
+	var bug_pen : int
+	
+	#Hidden Bugs
+	for bug in bug_log["Hidden Bugs"]:
+		match bug:
+			"Simple":
+				bug_pen += 1
+			"Standard":
+				bug_pen += 3
+			"Complex":
+				bug_pen += 5
+		print(bug_pen)
+	#Found Bugs
+	for bug in bug_log["Found Bugs"]:
+		match bug:
+			"Simple":
+				bug_pen += 1
+			"Standard":
+				bug_pen += 3
+			"Complex":
+				bug_pen += 5
+		print(bug_pen)
+	
+	if bug_log["Break Bugs"].is_empty() == false:
+		print("Failure")
+		announce("Task Run Failed", "")
+		activity_toggle("All Stop")
+	
+	elif bug_pen >= 50:
+		print("Failure")
+		announce("Task Run Failed", "")
+		activity_toggle("All Stop")
+	
+	elif bug_pen >= 25: #Can tweak this later
+		print(bug_log)
+		print("Bare Complete")
+		announce("Task Complete", "")
+		await announce_timer.timeout
+		ProgressionBus.cory_task_log["First Task"] = "Weak"
+		ProgressionBus.cory_task_status["Task Active"] = false
+		ProgressionBus.emit_signal("apartment_scene")
+		ProgressionBus.emit_signal("action_initiated", "None", false)
+		ProgressionBus.emit_signal("start_scene", "Scene Eight")
+		
+	elif bug_pen >= 10:
+		print(bug_log)
+		announce("Task Complete", "")
+		print("Partial Failure")
+		await announce_timer.timeout
+		ProgressionBus.cory_task_log["First Task"] = "Moderate"
+		ProgressionBus.cory_task_status["Task Active"] = false
+		ProgressionBus.emit_signal("apartment_scene")
+		ProgressionBus.emit_signal("action_initiated", "None", false)
+		ProgressionBus.emit_signal("start_scene", "Scene Eight")
+	 
+	elif  bug_pen >= 0:
+		announce("Task Complete", "")
+		print("No Failure")
+		await announce_timer.timeout
+		ProgressionBus.cory_task_log["First Task"] = "Strong"
+		ProgressionBus.cory_task_status["Task Active"] = false
+		ProgressionBus.emit_signal("apartment_scene")
+		ProgressionBus.emit_signal("action_initiated", "None", false)
+		ProgressionBus.emit_signal("start_scene", "Scene Eight")
+	
+
+#Handles Calculations for Reward of Completion
+func final_reward():
+	pass
 
 #Handles Breakpoint Progression Ticks
 func _on_progress_timer_timeout() -> void:
@@ -1275,6 +1391,7 @@ func _on_announce_timer_timeout() -> void:
 	print("End Announce")
 	announce_text.text = ""
 	result_text.text = ""
+	source_text.text = ""
 
 #Handles Ghost Selector Blinking
 func _on_ghost_timer_timeout() -> void:

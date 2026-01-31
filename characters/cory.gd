@@ -110,17 +110,22 @@ func _physics_process(delta: float) -> void:
 func ready_timer_start(new_scene: String):
 	trans_timer.start(3)
 	if ProgressionBus.scene_completion_dict[new_scene] == false:
-		if new_scene == "Scene Two":
-#			print("Second Move")
-			cory.global_position = Vector2(112, -16)
-			scene_trigger(new_scene)
-		
-		elif new_scene == "Scene Three":
-			scene_trigger(new_scene)
-		
-		elif new_scene == "Scene Four":
-			cory.global_position = Vector2(65, -16)
-			scene_trigger(new_scene)
+		match new_scene:
+			"Scene Two":
+	#			print("Second Move")
+				cory.global_position = Vector2(112, -16)
+				scene_trigger(new_scene)
+			
+			"Scene Three":
+				scene_trigger(new_scene)
+			
+			"Scene Four":
+				cory.global_position = Vector2(65, -16)
+				scene_trigger(new_scene)
+			
+			"Scene Eight":
+				scene_trigger(new_scene)
+				actionable_area.monitorable = false
 
 func scene_trigger(new_scene: String):
 	await trans_timer.timeout
@@ -128,6 +133,7 @@ func scene_trigger(new_scene: String):
 
 #Include scene stop for this?
 func game_start():
+	cory.global_position = Vector2(65, -16)
 	process = true
 	player_active = true
 	actionable_area.monitorable = true
@@ -135,7 +141,7 @@ func game_start():
 func game_stop():
 	process = false
 	player_active = false
-	actionable_area.monitorable = false
+	actionable_area.monitoring = false
 
 func task_start():
 	task_timer.start()

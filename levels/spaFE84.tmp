@@ -1,0 +1,142 @@
+[gd_scene load_steps=6 format=3 uid="uid://8i1taadiddqg"]
+
+[ext_resource type="Texture2D" uid="uid://ctg8pyendtw4" path="res://levels/space_sprite.png" id="1_qgjcn"]
+[ext_resource type="Script" path="res://space_game.gd" id="1_rvqcb"]
+[ext_resource type="PackedScene" uid="uid://dhf037j77pn0v" path="res://characters/enemy_ship.tscn" id="3_6ty1f"]
+[ext_resource type="PackedScene" uid="uid://c3jfysepik5fx" path="res://characters/space_ship.tscn" id="4_ca76o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50fmj"]
+size = Vector2(416, 20)
+
+[node name="Space_Game" type="Node2D"]
+script = ExtResource("1_rvqcb")
+
+[node name="Space" type="Node2D" parent="."]
+
+[node name="Space_Sprite" type="Sprite2D" parent="Space"]
+position = Vector2(0, 2)
+scale = Vector2(1, 0.98)
+texture = ExtResource("1_qgjcn")
+
+[node name="Space_Sprite2" type="Sprite2D" parent="Space"]
+position = Vector2(0, -104)
+scale = Vector2(1, 0.98)
+texture = ExtResource("1_qgjcn")
+
+[node name="Space_Sprite3" type="Sprite2D" parent="Space"]
+position = Vector2(152, -104)
+scale = Vector2(1, 0.98)
+texture = ExtResource("1_qgjcn")
+
+[node name="Space_Sprite4" type="Sprite2D" parent="Space"]
+position = Vector2(152, 2)
+scale = Vector2(1, 0.98)
+texture = ExtResource("1_qgjcn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="Space_Border" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(96, -96)
+scale = Vector2(2.01442, 1.94712)
+polygon = PackedVector2Array(-104, -104, 104, -104, 104, 104, -104, 104, -104, -96, -96, -96, -96, 96, 96, 96, 96, -96, 81.4757, -96, -104, -96)
+
+[node name="End_Border_Area" type="Area2D" parent="."]
+visible = false
+collision_mask = 16
+
+[node name="Top_Border" type="CollisionShape2D" parent="End_Border_Area"]
+position = Vector2(96, -320)
+shape = SubResource("RectangleShape2D_50fmj")
+
+[node name="Bottom_Border" type="CollisionShape2D" parent="End_Border_Area"]
+position = Vector2(96, 128)
+shape = SubResource("RectangleShape2D_50fmj")
+
+[node name="Enemies" type="Node2D" parent="."]
+position = Vector2(-3, -97)
+
+[node name="Enemy_Spawn_1" type="Node2D" parent="Enemies"]
+position = Vector2(-80, -80)
+
+[node name="Enemy_Spawn_2" type="Node2D" parent="Enemies"]
+position = Vector2(-48, -80)
+
+[node name="Enemy_Spawn_3" type="Node2D" parent="Enemies"]
+position = Vector2(-16, -80)
+
+[node name="Enemy_Spawn_4" type="Node2D" parent="Enemies"]
+position = Vector2(16, -80)
+
+[node name="Enemy_Spawn_5" type="Node2D" parent="Enemies"]
+position = Vector2(48, -80)
+
+[node name="Enemy_Spawn_6" type="Node2D" parent="Enemies"]
+position = Vector2(80, -80)
+
+[node name="Spawn_Timer" type="Timer" parent="Enemies"]
+wait_time = 10.0
+autostart = true
+
+[node name="Enemy_Ship" parent="Enemies" instance=ExtResource("3_6ty1f")]
+position = Vector2(-80, -80)
+
+[node name="Enemy_Ship2" parent="Enemies" instance=ExtResource("3_6ty1f")]
+position = Vector2(-48, -80)
+
+[node name="Enemy_Ship3" parent="Enemies" instance=ExtResource("3_6ty1f")]
+position = Vector2(-16, -80)
+
+[node name="Enemy_Ship4" parent="Enemies" instance=ExtResource("3_6ty1f")]
+position = Vector2(16, -80)
+
+[node name="Enemy_Ship5" parent="Enemies" instance=ExtResource("3_6ty1f")]
+position = Vector2(48, -80)
+
+[node name="Enemy_Ship6" parent="Enemies" instance=ExtResource("3_6ty1f")]
+position = Vector2(80, -80)
+
+[node name="Enemy_Spawn_7" type="Node2D" parent="Enemies"]
+position = Vector2(112, -80)
+
+[node name="Enemy_Spawn_8" type="Node2D" parent="Enemies"]
+position = Vector2(144, -80)
+
+[node name="Enemy_Spawn_9" type="Node2D" parent="Enemies"]
+position = Vector2(176, -80)
+
+[node name="Enemy_Spawn_10" type="Node2D" parent="Enemies"]
+position = Vector2(208, -80)
+
+[node name="Enemy_Spawn_11" type="Node2D" parent="Enemies"]
+position = Vector2(240, -80)
+
+[node name="Enemy_Ship7" parent="Enemies" instance=ExtResource("3_6ty1f")]
+position = Vector2(112, -80)
+
+[node name="Enemy_Ship8" parent="Enemies" instance=ExtResource("3_6ty1f")]
+position = Vector2(144, -80)
+
+[node name="Enemy_Ship9" parent="Enemies" instance=ExtResource("3_6ty1f")]
+position = Vector2(176, -80)
+
+[node name="Enemy_Ship10" parent="Enemies" instance=ExtResource("3_6ty1f")]
+position = Vector2(208, -80)
+
+[node name="Enemy_Ship11" parent="Enemies" instance=ExtResource("3_6ty1f")]
+position = Vector2(240, -80)
+
+[node name="Space_Ship" parent="." instance=ExtResource("4_ca76o")]
+z_index = 1
+position = Vector2(0, 72)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(76, -50)
+zoom = Vector2(3.7, 3.1)
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="Enemies2" type="Node2D" parent="."]
+position = Vector2(192, -192)
+
+[connection signal="timeout" from="Enemies/Spawn_Timer" to="." method="_on_spawn_timer_timeout"]

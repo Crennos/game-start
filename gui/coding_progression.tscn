@@ -353,9 +353,9 @@ offset_bottom = 1421.0
 scale = Vector2(0.01, 0.01)
 theme_override_constants/outline_size = 100
 theme_override_font_sizes/font_size = 600
-text = "t"
 
 [node name="Source_Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 67.0
 offset_right = 4008.0

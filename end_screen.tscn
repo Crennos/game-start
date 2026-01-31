@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b88k7l5qsyuhh"]
+
+[ext_resource type="Script" path="res://end_screen.gd" id="1_c0j8o"]
+
+[node name="End_Screen" type="Sprite2D"]
+script = ExtResource("1_c0j8o")

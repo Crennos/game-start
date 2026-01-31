@@ -32,6 +32,7 @@ const SPEED = 300.0
 
 func _ready() -> void:
 	ProgressionBus.connect("ready_scene", ready_scene)
+	ProgressionBus.connect("start_game", scene_state_check)
 
 
 func _physics_process(delta: float) -> void:
@@ -58,6 +59,10 @@ func ready_scene(new_scene: String):
 
 func scene_trigger(new_scene: String):
 	ProgressionBus.emit_signal("start_scene", new_scene)
+
+func scene_state_check():
+	if ProgressionBus.scene_completion_dict["Scene Three"] == true:
+		lucy.visible = false
 
 #func greetings_talk():
 #	DialogueManager.show_dialogue_balloon(lucy.opening_dialogue, "start")

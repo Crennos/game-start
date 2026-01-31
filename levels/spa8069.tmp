@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://8i1taadiddqg"]
+
+[ext_resource type="Texture2D" uid="uid://ctg8pyendtw4" path="res://levels/space_sprite.png" id="1_qgjcn"]
+[ext_resource type="Script" path="res://space_game.gd" id="1_rvqcb"]
+[ext_resource type="PackedScene" uid="uid://dhf037j77pn0v" path="res://characters/enemy_ship.tscn" id="3_6ty1f"]
+[ext_resource type="PackedScene" uid="uid://c3jfysepik5fx" path="res://characters/space_ship.tscn" id="4_ca76o"]
+
+[node name="Space_Game" type="Sprite2D"]
+texture = ExtResource("1_qgjcn")
+script = ExtResource("1_rvqcb")
+
+[node name="Space_Border" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-104, -104, 104, -104, 104, 104, -104, 104, -104, -96, -96, -96, -96, 96, 96, 96, 96, -96, -104, -96)
+
+[node name="Enemy_Ship" parent="." instance=ExtResource("3_6ty1f")]
+position = Vector2(-80, -80)
+
+[node name="Space_Ship" parent="." instance=ExtResource("4_ca76o")]
+position = Vector2(0, 72)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(6.4, 4.6)

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://biqppojlkro48"
+path="res://.godot/imported/First Completion.dialogue-6c5a772d8988ac5a96d30e52fe9ddd5e.tres"
+
+[deps]
+
+source_file="res://First Completion.dialogue"
+dest_files=["res://.godot/imported/First Completion.dialogue-6c5a772d8988ac5a96d30e52fe9ddd5e.tres"]
+
+[params]
+
+defaults=true

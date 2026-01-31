@@ -1,0 +1,172 @@
+[gd_scene load_steps=5 format=3 uid="uid://8i1taadiddqg"]
+
+[ext_resource type="Texture2D" uid="uid://ctg8pyendtw4" path="res://levels/space_sprite.png" id="1_qgjcn"]
+[ext_resource type="Script" path="res://space_game.gd" id="1_rvqcb"]
+[ext_resource type="PackedScene" uid="uid://c3jfysepik5fx" path="res://characters/space_ship.tscn" id="4_ca76o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50fmj"]
+size = Vector2(360, 26)
+
+[node name="Space_Game" type="Node2D"]
+script = ExtResource("1_rvqcb")
+
+[node name="Space" type="Node2D" parent="."]
+
+[node name="Space_Sprite" type="Sprite2D" parent="Space"]
+position = Vector2(0, 2)
+scale = Vector2(1, 0.98)
+texture = ExtResource("1_qgjcn")
+
+[node name="Space_Sprite2" type="Sprite2D" parent="Space"]
+position = Vector2(1, -111)
+scale = Vector2(1, 0.98)
+texture = ExtResource("1_qgjcn")
+
+[node name="Space_Sprite3" type="Sprite2D" parent="Space"]
+position = Vector2(151, -112)
+scale = Vector2(1, 0.98)
+texture = ExtResource("1_qgjcn")
+
+[node name="Space_Sprite4" type="Sprite2D" parent="Space"]
+position = Vector2(152, 2)
+scale = Vector2(1, 0.98)
+texture = ExtResource("1_qgjcn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Space_Border" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(76, -52)
+scale = Vector2(1.75481, 1.51442)
+polygon = PackedVector2Array(-104, -104, 104, -104, 104, 104, -104, 104, -104, -96, -96, -96, -96, 96, 96, 96, 96, -96, 81.4757, -96, -104, -96)
+
+[node name="End_Border_Area" type="Area2D" parent="."]
+collision_mask = 16
+
+[node name="Top_Border" type="CollisionShape2D" parent="End_Border_Area"]
+position = Vector2(80, -232)
+shape = SubResource("RectangleShape2D_50fmj")
+
+[node name="Bottom_Border" type="CollisionShape2D" parent="End_Border_Area"]
+position = Vector2(76, 131)
+shape = SubResource("RectangleShape2D_50fmj")
+
+[node name="Enemies" type="Node2D" parent="."]
+position = Vector2(-3, -97)
+
+[node name="Enemy_Spawn_1" type="Node2D" parent="Enemies"]
+position = Vector2(-80, -80)
+
+[node name="Enemy_Spawn_2" type="Node2D" parent="Enemies"]
+position = Vector2(-48, -80)
+
+[node name="Enemy_Spawn_3" type="Node2D" parent="Enemies"]
+position = Vector2(-16, -80)
+
+[node name="Enemy_Spawn_4" type="Node2D" parent="Enemies"]
+position = Vector2(16, -80)
+
+[node name="Enemy_Spawn_5" type="Node2D" parent="Enemies"]
+position = Vector2(48, -80)
+
+[node name="Enemy_Spawn_6" type="Node2D" parent="Enemies"]
+position = Vector2(80, -80)
+
+[node name="Enemy_Spawn_7" type="Node2D" parent="Enemies"]
+position = Vector2(112, -80)
+
+[node name="Enemy_Spawn_8" type="Node2D" parent="Enemies"]
+position = Vector2(144, -80)
+
+[node name="Enemy_Spawn_9" type="Node2D" parent="Enemies"]
+position = Vector2(176, -80)
+
+[node name="Enemy_Spawn_10" type="Node2D" parent="Enemies"]
+position = Vector2(208, -80)
+
+[node name="Enemy_Spawn_11" type="Node2D" parent="Enemies"]
+position = Vector2(240, -80)
+
+[node name="Space_Ship" parent="." instance=ExtResource("4_ca76o")]
+z_index = 1
+position = Vector2(80, 72)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(76, -54)
+zoom = Vector2(3.65, 3)
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="Start_Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Spawn_Timer" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="Shield_Timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Score_Label" type="Label" parent="."]
+z_index = 2
+offset_left = -97.0
+offset_top = -207.0
+offset_right = 657.0
+offset_bottom = 66.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 150
+text = "Score: 0"
+
+[node name="Level_Label" type="Label" parent="."]
+z_index = 2
+offset_left = 40.0
+offset_top = -208.0
+offset_right = 794.0
+offset_bottom = 65.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 150
+text = "Level 1"
+
+[node name="Wave_Label" type="Label" parent="."]
+z_index = 2
+offset_left = 152.0
+offset_top = -208.0
+offset_right = 906.0
+offset_bottom = 65.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 150
+text = "Wave 0
+"
+
+[node name="Lives_Label" type="Label" parent="."]
+z_index = 2
+offset_left = -96.0
+offset_top = 80.0
+offset_right = 658.0
+offset_bottom = 353.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 150
+text = "Lives: 3
+"
+
+[node name="Health_Label" type="Label" parent="."]
+offset_left = 152.0
+offset_top = 80.0
+offset_right = 906.0
+offset_bottom = 353.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 150
+text = "Health: 3"
+
+[node name="Shield_Label" type="Label" parent="."]
+z_index = 2
+offset_left = -8.0
+offset_top = 80.0
+offset_right = 746.0
+offset_bottom = 353.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 150
+text = "Shield: On"
+
+[connection signal="timeout" from="Start_Timer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="Spawn_Timer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="Shield_Timer" to="." method="_on_shield_timer_timeout"]

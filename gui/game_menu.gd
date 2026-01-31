@@ -37,11 +37,67 @@ func _on_continue_pressed() -> void:
 
 
 func _on_save_game_pressed() -> void:
-	pass # Replace with function body.
+	save_cory_state()
+	save_story_state()
+	save_task_state()
+	
+
+
+func save_story_state():
+	var scene = ["Test Scene", "Scene One", "Scene Two", "Scene Three", 
+	"Scene Four", "Scene Five", "Scene Six", "Scene Seven", "Scene Eight", "Ultimate Scene"]
+	var scene_path = len(scene)
+	var scene_check = ProgressionBus.scene_completion_dict
+	
+	for path in scene_path:
+		var scene_key = scene[path]
+		SaveGameBus.save_dialogue_path(scene_key, scene_check[scene_key])
+
+func save_cory_state():
+	var trait_check = ProgressionBus.cory_traits
+	var skill_check = ProgressionBus.cory_skills
+	
+	for item in trait_check:
+		print(item)
+		SaveGameBus.save_traits(item, trait_check[item])
+
+	
+	for skill in skill_check:
+
+		SaveGameBus.save_skills(skill, skill_check[skill])
+
+
+
+func save_task_state():
+	pass
+	
 
 
 func _on_load_game_pressed() -> void:
-	pass # Replace with function body.
+	var scene_check = ProgressionBus.scene_completion_dict
+	var trait_check = ProgressionBus.cory_traits
+	var skill_check = ProgressionBus.cory_skills
+	var load_scene = SaveGameBus.load_dialogue_path()
+	var load_trait = SaveGameBus.load_traits()
+	var load_skill = SaveGameBus.load_skills()
+	var scene_path = len(scene_check)
+	var trait_path = len(trait_check)
+	var skill_path = len(skill_check)
+	
+	for scene in scene_check:
+		ProgressionBus.scene_completion_dict[scene] = load_scene[scene]
+
+	
+	for item in trait_check:
+
+		ProgressionBus.cory_traits[item] = load_trait[item]
+
+	
+	for skill in skill_check:
+
+		ProgressionBus.cory_skills[skill] = load_skill[skill]
+
+	
 
 
 func _on_options_pressed() -> void:

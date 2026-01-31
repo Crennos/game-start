@@ -1,0 +1,13 @@
+res://levels/space_game.tscn
+res://space_game.gd
+res://system/progression+_bus.tscn
+res://system/progression+_bus.gd
+res://characters/space_ship.tscn
+res://characters/space_ship.gd
+res://system/main.tscn
+res://characters/cory.tscn
+res://end_screen.tscn
+res://blue_laser.tscn
+res://characters/enemy_ship.tscn
+res://red_laser.tscn
+res://gui/main_menu.tscn

@@ -1,6 +1,9 @@
 c693a20e708c4e09bfa9edf12a750cf8
-::res://::1768482759
+::res://::1769870310
 Anxiety Cycle.dialogue::Resource::9006799573238861905::1766605950::1766605950::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
+blue laser.png::CompressedTexture2D::7141324822471394496::1768846023::1768846081::1::::<><>::
+blue_laser.gd::GDScript::-1::1769618351::0::1::::<>CharacterBody2D<>::
+blue_laser.tscn::PackedScene::2679210063090658014::1769643205::0::1::::<><>::uid://c80ktunnt7cmq::::res://blue laser.png<>res://blue_laser.gd<>res://hit_box__area.gd
 Breakpoint Intro.dialogue::Resource::6501309900738173214::1766858896::1766861739::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
 Bug Intro.dialogue::Resource::1041181514637823634::1766859478::1766861739::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
 button.gd::GDScript::-1::1752813616::0::1::::<>Button<>::
@@ -8,13 +11,23 @@ button_2.gd::GDScript::-1::1752813619::0::1::::<>Button<>::
 button_3.gd::GDScript::-1::1752813621::0::1::::<>Button<>::
 default_bus_layout.tres::AudioBusLayout::7558095294965570709::1752443792::0::1::::<><>::
 Depression Cycle.dialogue::Resource::859211657652787489::1766612361::1766612420::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
-export_presets.cfg::TextFile::-1::1753069233::0::1::::<><>::
+end_screen.gd::GDScript::-1::1768758606::0::1::::<>Sprite2D<>::
+end_screen.tscn::PackedScene::4771441929817735205::1769643204::0::1::::<><>::res://end_screen.gd
+enemy_hit_area.gd::GDScript::-1::1768871466::0::1::::<>Area2D<>::
+export_presets.cfg::TextFile::-1::1768760947::0::1::::<><>::
+First Completion.dialogue::Resource::2981899768406367099::1768708438::1768708715::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
+Game-Start.png::CompressedTexture2D::1504139307468027129::1768759254::1768759291::1::::<><>::
 greeting_balloon.tscn::PackedScene::1125101660210739841::1752640662::0::1::::<><>::res://dialogue/balloon.gd<>uid://ckvgyvclnwggo::::res://addons/dialogue_manager/dialogue_label.tscn<>res://addons/dialogue_manager/dialogue_reponses_menu.gd
+hit_box__area.gd::GDScript::-1::1768932486::0::1::::<>Area2D<>::
 icon.svg::CompressedTexture2D::809437750805577879::1752320578::1762064653::1::::<><>::
 interact_label.gd::GDScript::-1::1752896938::0::1::::<>Label<>::
 keystriker.gd::GDScript::-1::1765888874::0::1::::<>Control<>::
 README.md::TextFile::-1::1752802696::0::1::::<><>::
+red laser.png::CompressedTexture2D::5441228989955043029::1768846062::1768846081::1::::<><>::
+red_laser.gd::GDScript::-1::1769617384::0::1::::<>CharacterBody2D<>::
+red_laser.tscn::PackedScene::8710763945922544024::1769643205::0::1::::<><>::res://red_laser.gd<>uid://cjr1im7c4ukwr::::res://red laser.png<>res://enemy_hit_area.gd
 save_game_bus.gd::GDScript::-1::1767540801::0::1::::<>Node<>::
+space_game.gd::GDScript::-1::1769631700::0::1::::<>Node2D<>::
 ::res://addons/::1752822925
 ::res://addons/abfi/::1752816291
 import.gd::GDScript::-1::1752816291::0::1::::<>EditorImportPlugin<>::
@@ -88,17 +101,22 @@ main_view.gd::GDScript::-1::1752819924::0::1::::<>Control<>::
 main_view.tscn::PackedScene::4884668666408697448::1752819924::0::1::::<><>::res://addons/dialogue_manager/views/main_view.gd<>uid://civ6shmka5e8u::::res://addons/dialogue_manager/components/code_edit.tscn<>uid://dnufpcdrreva3::::res://addons/dialogue_manager/components/files_list.tscn<>uid://ctns6ouwwd68i::::res://addons/dialogue_manager/components/title_list.tscn<>uid://co8yl23idiwbi::::res://addons/dialogue_manager/components/update_button.tscn<>uid://gr8nakpbrhby::::res://addons/dialogue_manager/components/search_and_replace.tscn<>uid://cs8pwrxr5vxix::::res://addons/dialogue_manager/components/errors_panel.tscn<>res://addons/dialogue_manager/components/code_edit_syntax_highlighter.gd<>uid://cpg4lg1r3ff6m::::res://addons/dialogue_manager/views/settings_view.tscn<>uid://0n7hwviyyly4::::res://addons/dialogue_manager/components/find_in_files.tscn
 settings_view.gd::GDScript::-1::1752819924::0::1::::<>TabContainer<>::
 settings_view.tscn::PackedScene::5839841081119266502::1752819924::0::1::::<><>::res://addons/dialogue_manager/views/settings_view.gd
-::res://builds/::1753069234
-::res://characters/::1768331700
+::res://builds/::1768761008
+::res://characters/::1769643205
 action_area.gd::GDScript::-1::1753065009::0::1::::<>Area2D<>::
+arrow-ship.png::CompressedTexture2D::823918416451101263::1768844797::1768844799::1::::<><>::
 bad-ship-pixilart.png::CompressedTexture2D::7422265234369149578::1752958270::1762064653::1::::<><>::
-cory.gd::GDScript::-1::1766867657::0::1::::<>CharacterBody2D<>::
-cory.tscn::PackedScene::3932315741683928116::1768331700::0::1::::<><>::res://characters/cory.gd<>res://characters/action_area.gd<>uid://dap3nlv4i4i6h::::res://dialogue/test_dialogue.dialogue<>uid://rvsnuvii3kc5::::res://dialogue/day one.dialogue<>uid://pgqj8u4yi8tl::::res://dialogue/one week later.dialogue<>uid://b0mnfhx2tg2s4::::res://gui/character_traits_menu.tscn<>uid://c7pbrv2tu7d3y::::res://characters/sprite_cory_sheet.png
+cory.gd::GDScript::-1::1768756833::0::1::::<>CharacterBody2D<>::
+cory.tscn::PackedScene::3932315741683928116::1769643204::0::1::::<><>::res://characters/cory.gd<>res://characters/action_area.gd<>uid://dap3nlv4i4i6h::::res://dialogue/test_dialogue.dialogue<>uid://rvsnuvii3kc5::::res://dialogue/day one.dialogue<>uid://pgqj8u4yi8tl::::res://dialogue/one week later.dialogue<>uid://b0mnfhx2tg2s4::::res://gui/character_traits_menu.tscn<>uid://c7pbrv2tu7d3y::::res://characters/sprite_cory_sheet.png
 cory_sprite.png::CompressedTexture2D::7292725263660940220::1753040149::1762064653::1::::<><>::
 enemy.gd::GDScript::-1::1752958558::0::1::::<>CharacterBody2D<>::
 enemy.tscn::PackedScene::7925454982077001750::1752958730::0::1::::<><>::uid://cwucwdgl6g1re::::res://characters/pixil-frame-0 (9).png<>res://characters/enemy.gd
-lucy.gd::GDScript::-1::1753806786::0::1::::<>CharacterBody2D<>::
-lucy.tscn::PackedScene::1376204989947734309::1753827156::0::1::::<><>::res://characters/lucy.gd<>uid://ddlrpq5xgx7t3::::res://characters/lucy_sprite.png<>uid://bhq07g315e4s5::::res://dialogue/greeting.dialogue
+enemy_hurt_box_area.gd::GDScript::-1::1768931876::0::1::::<>Area2D<>::
+enemy_ship.gd::GDScript::-1::1769617550::0::1::::<>CharacterBody2D<>::
+enemy_ship.tscn::PackedScene::7662475468512073555::1769643205::0::1::::<><>::res://characters/enemy_ship.gd<>uid://l0d20h27pwkl::::res://characters/arrow-ship.png<>res://characters/enemy_hurt_box_area.gd<>uid://df7ips7gwd3in::::res://sfx/enemy-laser sfx.wav
+hurt_box_area.gd::GDScript::-1::1768931868::0::1::::<>Area2D<>::
+lucy.gd::GDScript::-1::1768658336::0::1::::<>CharacterBody2D<>::
+lucy.tscn::PackedScene::1376204989947734309::1768658937::0::1::::<><>::res://characters/lucy.gd<>uid://ddlrpq5xgx7t3::::res://characters/lucy_sprite.png<>uid://bhq07g315e4s5::::res://dialogue/greeting.dialogue
 lucy_sprite.png::CompressedTexture2D::7393596600845370394::1753059790::1762064653::1::::<><>::
 pixil-frame-0 (9).png::CompressedTexture2D::6358444371335910190::1752958230::1762064653::1::::<><>::
 pixil-frame-0 (10).png::CompressedTexture2D::1373914534911298054::1753060812::1762064653::1::::<><>::
@@ -107,9 +125,11 @@ pixil-frame-0 (12).png::CompressedTexture2D::6300841546796653981::1752958337::17
 pixilart-drawing (2).png::CompressedTexture2D::389621302696535178::1752958242::1762064653::1::::<><>::
 player.gd::GDScript::-1::1752958726::0::1::::<>CharacterBody2D<>::
 player.tscn::PackedScene::4850228826893398083::1752958741::0::1::::<><>::uid://dd0nvhl3nk17c::::res://characters/bad-ship-pixilart.png<>res://characters/player.gd
+player_hurt_box_area.gd::GDScript::-1::1768932500::0::1::::<>Area2D<>::
 player_ship.gd::GDScript::-1::1752958561::0::1::::<>Sprite2D<>::
-space_ship.gd::GDScript::-1::1767547701::0::1::::<>CharacterBody2D<>::
-space_ship.tscn::PackedScene::6757055785347366889::1768331700::0::1::::<><>::res://characters/space_ship.gd<>uid://dt6csnvxcic7q::::res://characters/star-ship-pixilart (1).png
+space_shield.png::CompressedTexture2D::8330047669759189784::1769369879::1769630071::1::::<><>::
+space_ship.gd::GDScript::-1::1769631867::0::1::::<>CharacterBody2D<>::
+space_ship.tscn::PackedScene::6757055785347366889::1769643205::0::1::::<><>::res://characters/space_ship.gd<>uid://dt6csnvxcic7q::::res://characters/star-ship-pixilart (1).png<>uid://dqxewykpa1qua::::res://characters/space_shield.png<>res://characters/player_hurt_box_area.gd<>uid://k78tbfarj63o::::res://sfx/laserShoot.wav<>uid://mlg2n6k8a8cr::::res://sfx/hitHurt.wav
 sprite_cory_sheet.png::CompressedTexture2D::7049942251194618940::1753060834::1762064653::1::::<><>::
 star-ship-pixilart (1).png::CompressedTexture2D::8557000085146042456::1767549264::1767549463::1::::<><>::
 transition.png::CompressedTexture2D::3323020181554001644::1753060383::1762064653::1::::<><>::
@@ -143,24 +163,24 @@ ExampleSignals.tres::Resource/DialogueData::4451938646115500077::1752458272::0::
 ExampleVariables.tres::Resource/DialogueData::4886097951687637358::1752458272::0::1::::<><>::res://addons/dialogue_nodes/objects/DialogueData.gd
 profile0.png::CompressedTexture2D::4296060542971295061::1752458272::1762064653::1::::<><>::
 voice.ogg::AudioStreamOggVorbis::2976354597759940103::1752458273::1762064652::1::::<><>::
-::res://gui/::1768332003
-action_choice_panel.gd::GDScript::-1::1767553744::0::1::::<>Control<>::
-action_choice_panel.tscn::PackedScene::2338705396327996721::1768331701::0::1::::<><>::res://gui/action_choice_panel.gd<>res://button.gd<>res://button_2.gd
+::res://gui/::1769643205
+action_choice_panel.gd::GDScript::-1::1768676895::0::1::::<>Control<>::
+action_choice_panel.tscn::PackedScene::2338705396327996721::1768782563::0::1::::<><>::res://gui/action_choice_panel.gd<>res://button.gd<>res://button_2.gd
 character_traits_menu.gd::GDScript::-1::1753432648::0::1::::<>Control<>::
-character_traits_menu.tscn::PackedScene::4166712962014483565::1753432633::0::1::::<><>::res://gui/character_traits_menu.gd<>uid://2l8yyb4heoex::::res://gui/stat_panel_backgrground.png
+character_traits_menu.tscn::PackedScene::4166712962014483565::1768590836::0::1::::<><>::res://gui/character_traits_menu.gd<>uid://2l8yyb4heoex::::res://gui/stat_panel_backgrground.png
 Coding Bar.png::CompressedTexture2D::8872403205144941438::1752981044::1762064653::1::::<><>::
-coding_progression.gd::GDScript::-1::1768331865::0::1::::<>Control<>::
-coding_progression.tscn::PackedScene::1872912122125608788::1768332003::0::1::::<><>::res://gui/coding_progression.gd<>uid://dqwxlreeuh4va::::res://gui/new bot.png<>uid://cc3nukfdsit77::::res://gui/new top.png<>uid://b8h08hjl6qjp::::res://gui/selector.png<>uid://d3hd62oc327qe::::res://gui/Hollow Selector.png<>uid://dyn4gjkfiji1c::::res://gui/Coding Bar.png<>uid://cbty7w6l8l404::::res://gui/Testing Bar.png<>uid://dboacc5aiyv83::::res://gui/Efficiency Bar.png<>uid://6fmcwd53uuq::::res://gui/Learning Bar.png<>uid://bnttcysrx1uyu::::res://gui/top.png<>uid://bvl5kbnlmoklr::::res://gui/pixil-frame-0 (11).png<>uid://dx03wu2mkdvwb::::res://gui/task_progress_bar2.png
+coding_progression.gd::GDScript::-1::1768758484::0::1::::<>Control<>::
+coding_progression.tscn::PackedScene::1872912122125608788::1768782563::0::1::::<><>::res://gui/coding_progression.gd<>uid://dqwxlreeuh4va::::res://gui/new bot.png<>uid://cc3nukfdsit77::::res://gui/new top.png<>uid://b8h08hjl6qjp::::res://gui/selector.png<>uid://d3hd62oc327qe::::res://gui/Hollow Selector.png<>uid://dyn4gjkfiji1c::::res://gui/Coding Bar.png<>uid://cbty7w6l8l404::::res://gui/Testing Bar.png<>uid://dboacc5aiyv83::::res://gui/Efficiency Bar.png<>uid://6fmcwd53uuq::::res://gui/Learning Bar.png<>uid://bnttcysrx1uyu::::res://gui/top.png<>uid://bvl5kbnlmoklr::::res://gui/pixil-frame-0 (11).png<>uid://dx03wu2mkdvwb::::res://gui/task_progress_bar2.png
 Efficiency Bar.png::CompressedTexture2D::7258355906264474386::1752981067::1762064653::1::::<><>::
-game_menu.gd::GDScript::-1::1766886849::0::1::::<>Control<>::
-game_menu.tscn::PackedScene::1233896013588996903::1767561431::0::1::::<><>::res://gui/game_menu.gd<>uid://bln0sjssdaxub::::res://gui/options_menu.tscn
+game_menu.gd::GDScript::-1::1768659066::0::1::::<>Control<>::
+game_menu.tscn::PackedScene::1233896013588996903::1768782563::0::1::::<><>::res://gui/game_menu.gd<>uid://bln0sjssdaxub::::res://gui/options_menu.tscn
 Hollow Selector.png::CompressedTexture2D::9139239267699082236::1766862602::1766862604::1::::<><>::
 interact_label.tscn::PackedScene::5929806198802268460::1752901949::0::1::::<><>::res://interact_label.gd
 keystriker.tscn::PackedScene::8851109659123211071::1766861280::0::1::::<><>::res://keystriker.gd<>res://gui/key_line.gd
 key_line.gd::GDScript::-1::1762064697::0::1::::Key_Log<>Label<>::
 Learning Bar.png::CompressedTexture2D::64320864076462248::1752981059::1762064653::1::::<><>::
-main_menu.gd::GDScript::-1::1753770023::0::1::::<>Control<>::
-main_menu.tscn::PackedScene::4043813398691021624::1767561431::0::1::::<><>::res://gui/main_menu.gd<>uid://bln0sjssdaxub::::res://gui/options_menu.tscn<>uid://bmg5kjditf5dl::::res://gui/Proto-Back.png
+main_menu.gd::GDScript::-1::1768659126::0::1::::<>Control<>::
+main_menu.tscn::PackedScene::4043813398691021624::1769643205::0::1::::<><>::res://gui/main_menu.gd<>uid://bln0sjssdaxub::::res://gui/options_menu.tscn<>uid://bmg5kjditf5dl::::res://gui/Proto-Back.png
 new bot.png::CompressedTexture2D::8329116893728666806::1752981091::1762064653::1::::<><>::
 new top.png::CompressedTexture2D::4971847201678223916::1752981101::1762064653::1::::<><>::
 options_menu.gd::GDScript::-1::1752429778::0::1::::<>Control<>::
@@ -178,17 +198,20 @@ task_progress_bar2.png::CompressedTexture2D::8826955354604364601::1753288736::17
 Testing Bar.png::CompressedTexture2D::4883768945529717611::1752981073::1762064653::1::::<><>::
 top.png::CompressedTexture2D::3339257311936097140::1753290584::1762064653::1::::<><>::
 transition_scene.gd::GDScript::-1::1753851468::0::1::::<>AnimatedSprite2D<>::
-transition_scene.tscn::PackedScene::5877514407345791511::1753827156::0::1::::<><>::uid://bnlxwlmo6gt3i::::res://characters/transition.png<>res://gui/transition_scene.gd
+transition_scene.tscn::PackedScene::5877514407345791511::1768658937::0::1::::<><>::uid://bnlxwlmo6gt3i::::res://characters/transition.png<>res://gui/transition_scene.gd
 work_screen.gd::GDScript::-1::1762064697::0::1::::<>Sprite2D<>::
 work_screen.tscn::PackedScene::6639871841523475473::1767537813::0::1::::<><>::uid://yb42xwpklgkd::::res://levels/work_screen.png<>res://gui/work_screen.gd<>uid://1xiua5wwbkhw::::res://gui/coding_progression.tscn<>uid://8k5evo0pemgf::::res://gui/action_choice_panel.tscn<>uid://bwa3wvurx4xgu::::res://characters/cory.tscn
-::res://levels/::1768331700
+::res://levels/::1769643259
 apartment_room.gd::GDScript::-1::1753049218::0::1::::<>TileMapLayer<>::
 apartment_room.tscn::PackedScene::1578395470120519593::1767301966::0::1::::<><>::res://levels/apartment_room.gd<>uid://3ue7s3sxgy1l::::res://levels/final_carp.png<>uid://snw2qivtpk8n::::res://levels/final_wall_final.png<>uid://b0lrox2l5pft::::res://levels/objects/desk_station.tscn
 break_screen.gd::GDScript::-1::1767551529::0::1::::<>Node2D<>::
-break_screen.tscn::PackedScene::4545859210926829887::1768331700::0::1::::<><>::res://levels/break_screen.gd
+break_screen.tscn::PackedScene::4545859210926829887::1768590836::0::1::::<><>::res://levels/break_screen.gd
+end_border_area.gd::GDScript::-1::1768931688::0::1::::<>Area2D<>::
 Entertainment Center Full.png::CompressedTexture2D::1032525599887337249::1752793254::1762064653::1::::<><>::
 final_carp.png::CompressedTexture2D::2006876179845788863::1752795570::1762064653::1::::<><>::
 final_wall_final.png::CompressedTexture2D::1291620940275828575::1752795181::1762064653::1::::<><>::
+space_game.tscn::PackedScene::2334359434130786858::1769643259::0::1::::<><>::uid://ctg8pyendtw4::::res://levels/space_sprite.png<>res://space_game.gd<>uid://c3jfysepik5fx::::res://characters/space_ship.tscn
+space_sprite.png::CompressedTexture2D::180024922883473725::1768779877::1768779896::1::::<><>::
 work_screen.png::CompressedTexture2D::1688406877010581447::1753030646::1762064653::1::::<><>::
 ::res://levels/objects/::1753825111
 cory_work_area.gd::GDScript::-1::1752806340::0::1::::<>Area2D<>::
@@ -196,12 +219,17 @@ desk_station.gd::GDScript::-1::1752933207::0::1::::<>Sprite2D<>::
 desk_station.tscn::PackedScene::122497305006397497::1753825111::0::1::::<><>::uid://oyfss6gqcorx::::res://levels/Entertainment Center Full.png<>res://levels/objects/desk_station.gd<>uid://cqqpboiq8uasy::::res://gui/interact_label.tscn<>res://levels/objects/cory_work_area.gd<>res://levels/objects/lucy_work_area.gd<>uid://8k5evo0pemgf::::res://gui/action_choice_panel.tscn
 lucy_work_area.gd::GDScript::-1::1752806354::0::1::::<>Area2D<>::
 ::res://mechanics/::1752321018
-::res://system/::1768331700
+::res://sfx/::1768869004
+enemy-laser sfx.wav::AudioStreamWAV::7576779875406289477::1768868972::1768869004::1::::<><>::
+explosion.wav::AudioStreamWAV::4886250296074216433::1768857298::1768857354::1::::<><>::
+hitHurt.wav::AudioStreamWAV::865387528534057449::1768868723::1768869004::1::::<><>::
+laserShoot.wav::AudioStreamWAV::769986175626203482::1768857235::1768857354::1::::<><>::
+::res://system/::1769643205
 main.gd::GDScript::-1::1753432719::0::1::::<>Node<>::
-main.tscn::PackedScene::199313068120779096::1768331700::0::1::::<><>::uid://wqt7b4jo1def::::res://levels/apartment_room.tscn<>res://system/main.gd<>uid://bwa3wvurx4xgu::::res://characters/cory.tscn<>uid://rtyc7wf5x3lj::::res://gui/game_menu.tscn<>uid://tuv5o0y53x7j::::res://characters/lucy.tscn<>uid://cp0d2k6wbnk8v::::res://gui/transition_scene.tscn
-progression+_bus.gd::GDScript::-1::1767463203::0::1::::<>Node<>::
-progression+_bus.tscn::PackedScene::1829586759384413461::1768331700::0::1::::<><>::res://system/progression+_bus.gd<>uid://dap3nlv4i4i6h::::res://dialogue/test_dialogue.dialogue<>uid://bhq07g315e4s5::::res://dialogue/greeting.dialogue<>uid://kpu0f4kk3yww::::res://dialogue/first morning.dialogue<>uid://rvsnuvii3kc5::::res://dialogue/day one.dialogue<>uid://bgnl4b5thak7::::res://dialogue/first task.dialogue<>uid://pgqj8u4yi8tl::::res://dialogue/one week later.dialogue<>uid://ck4qxrb4ucmxf::::res://dialogue/letting go.dialogue
-save_game_bus.gd::GDScript::-1::1767564526::0::1::::<>Node<>::
-save_game_bus.tscn::PackedScene::1335930399019320375::1768331700::0::1::::<><>::res://system/save_game_bus.gd
+main.tscn::PackedScene::199313068120779096::1769643204::0::1::::<><>::uid://wqt7b4jo1def::::res://levels/apartment_room.tscn<>res://system/main.gd<>uid://bwa3wvurx4xgu::::res://characters/cory.tscn<>uid://rtyc7wf5x3lj::::res://gui/game_menu.tscn<>uid://tuv5o0y53x7j::::res://characters/lucy.tscn<>uid://cp0d2k6wbnk8v::::res://gui/transition_scene.tscn
+progression+_bus.gd::GDScript::-1::1769631620::0::1::::<>Node<>::
+progression+_bus.tscn::PackedScene::1829586759384413461::1769643205::0::1::::<><>::res://system/progression+_bus.gd<>uid://dap3nlv4i4i6h::::res://dialogue/test_dialogue.dialogue<>uid://bhq07g315e4s5::::res://dialogue/greeting.dialogue<>uid://kpu0f4kk3yww::::res://dialogue/first morning.dialogue<>uid://rvsnuvii3kc5::::res://dialogue/day one.dialogue<>uid://bgnl4b5thak7::::res://dialogue/first task.dialogue<>uid://pgqj8u4yi8tl::::res://dialogue/one week later.dialogue<>uid://ck4qxrb4ucmxf::::res://dialogue/letting go.dialogue<>uid://biqppojlkro48::::res://First Completion.dialogue
+save_game_bus.gd::GDScript::-1::1768659008::0::1::::<>Node<>::
+save_game_bus.tscn::PackedScene::1335930399019320375::1768658870::0::1::::<><>::res://system/save_game_bus.gd
 save_system_bus.gd::GDScript::-1::1767462273::0::1::::<>Node<>::
 save_system_bus.tscn::PackedScene::2511428625726018872::1767561431::0::1::::<><>::res://system/save_system_bus.gd

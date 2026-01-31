@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bef3g0ibt6elq"]
+
+[ext_resource type="Texture2D" uid="uid://c80ktunnt7cmq" path="res://blue laser.png" id="1_gve4v"]
+[ext_resource type="Script" path="res://blue_laser.gd" id="1_noe08"]
+[ext_resource type="Script" path="res://hit_box__area.gd" id="3_f850f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_727hr"]
+size = Vector2(1, 20)
+
+[node name="Blue_Laser" type="CharacterBody2D"]
+scale = Vector2(0.375, 0.38)
+script = ExtResource("1_noe08")
+
+[node name="Blue_Laser_Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_gve4v")
+
+[node name="Hit_Box_Area" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 9
+script = ExtResource("3_f850f")
+
+[node name="Hit_Box" type="CollisionShape2D" parent="Hit_Box_Area"]
+shape = SubResource("RectangleShape2D_727hr")
+debug_color = Color(0.997926, 0, 0.154754, 0.42)
+
+[connection signal="area_entered" from="Hit_Box_Area" to="." method="_on_hit_box__area_area_entered"]

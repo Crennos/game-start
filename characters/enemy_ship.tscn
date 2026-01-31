@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhf037j77pn0v"]
+
+[ext_resource type="Script" path="res://characters/enemy_ship.gd" id="1_bv15v"]
+[ext_resource type="Texture2D" uid="uid://l0d20h27pwkl" path="res://characters/arrow-ship.png" id="1_q2g0l"]
+[ext_resource type="Script" path="res://characters/enemy_hurt_box_area.gd" id="3_kpkdp"]
+[ext_resource type="AudioStream" uid="uid://df7ips7gwd3in" path="res://sfx/enemy-laser sfx.wav" id="3_man5u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j6od5"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1pon1"]
+radius = 8.0
+
+[node name="Enemy_Ship" type="CharacterBody2D"]
+z_index = 1
+script = ExtResource("1_bv15v")
+
+[node name="Enemy_Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.41, 0.516667)
+texture = ExtResource("1_q2g0l")
+
+[node name="Hurt_Box_Area" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 16
+collision_priority = 0.0
+script = ExtResource("3_kpkdp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt_Box_Area"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_j6od5")
+debug_color = Color(0.953746, 0.194675, 0.245757, 0.42)
+
+[node name="Collision_Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_Area"]
+shape = SubResource("CircleShape2D_1pon1")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 8)
+collision_layer = 8
+
+[node name="Laser_Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Recoil_Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Enemy_Laser_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_man5u")
+volume_db = -15.0
+
+[connection signal="area_entered" from="Hurt_Box_Area" to="." method="_on_hurt_box_area_area_entered"]
+[connection signal="area_entered" from="Collision_Area" to="." method="_on_collision_area_area_entered"]
+[connection signal="timeout" from="Laser_Timer" to="." method="_on_laser_timer_timeout"]
+[connection signal="timeout" from="Recoil_Timer" to="." method="_on_recoil_timer_timeout"]

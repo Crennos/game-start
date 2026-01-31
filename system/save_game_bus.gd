@@ -1,12 +1,14 @@
 extends Node
 
 var config = ConfigFile.new()
-const game_path = "User://game.ini"
-var load_path = config.load(game_path)
+const GAME_PATH = "user://game-file.ini"
+const CONTINUE_PATH = "user://continue-game.ini"
+var load_path = config.load(GAME_PATH)
+var continue_path = config.load(CONTINUE_PATH)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if !FileAccess.file_exists(game_path):
+	if !FileAccess.file_exists(GAME_PATH):
 		#Dialogue Scene List
 		config.set_value("Scene", "Intro", false)
 		config.set_value("Scene", "Intro Morning", false)
@@ -61,9 +63,11 @@ func _ready() -> void:
 		config.set_value("Skill", "Study", 0)
 		config.set_value("Skill", "Experience", 0)
 		
+		
+		config.save(GAME_PATH)
 	
 	else:
-		config.load_path
+		config.load(GAME_PATH)
 	
 
 
@@ -74,51 +78,64 @@ func _process(delta: float) -> void:
 
 func save_dialogue_path(key: String, value):
 	config.set_value("Scene", key, value)
-	config.save(game_path)
+	config.save(CONTINUE_PATH)
+	print("Save")
 
 func save_task_path(key: String, value):
 	config.set_value("Task", key, value)
-	config.save(game_path)
+	config.save(CONTINUE_PATH)
 
 func save_traits(key: String, value):
 	config.set_value("Trait", key, value)
-	config.save(game_path)
+	config.save(CONTINUE_PATH)
 
 func save_skills(key: String, value):
 	config.set_value("Skill", key, value)
-	config.save(game_path)
+	config.save(CONTINUE_PATH)
 
 func save_status(key: String, value):
 	config.set_value("Status", key, value)
-	config.save(game_path)
-
+	config.save(CONTINUE_PATH)
 
 func load_dialogue_path():
 	var dialogue_tree = {}
 	for key in config.get_section_keys("Scene"):
 		dialogue_tree[key] = config.get_value("Scene", key)
+#	print(dialogue_tree)
 	return dialogue_tree
 
 func load_task_path():
 	var task_tree = {}
 	for key in config.get_section_keys("Task"):
 		task_tree[key] = config.get_value("Task", key)
+#	print(task_tree)
 	return task_tree
 
 func load_traits():
 	var trait_tree = {}
 	for key in config.get_section_keys("Trait"):
-		trait_tree[key] = config.get_value("Train", key)
+		trait_tree[key] = config.get_value("Trait", key)
+#	print(trait_tree)
 	return trait_tree
 
 func load_skills():
 	var skill_tree = {}
 	for key in config.get_section_keys("Skill"):
 		skill_tree[key] = config.get_value("Skill", key)
+#	print(skill_tree)
 	return skill_tree
 
 func load_status():
 	var status_tree = {}
 	for key in config.get_section_keys("Status"):
 		status_tree[key] = config.get_value("Status", key)
+	
 	return status_tree
+
+func load_continue_path():
+	config.load(CONTINUE_PATH)
+	load_dialogue_path()
+#	load_task_path()
+#	load_traits()
+#	load_skills()
+#	load_status()

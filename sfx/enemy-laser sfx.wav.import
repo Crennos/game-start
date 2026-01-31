@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://df7ips7gwd3in"
+path="res://.godot/imported/enemy-laser sfx.wav-0d9b682867460774cf34fe04a4909780.sample"
+
+[deps]
+
+source_file="res://sfx/enemy-laser sfx.wav"
+dest_files=["res://.godot/imported/enemy-laser sfx.wav-0d9b682867460774cf34fe04a4909780.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
